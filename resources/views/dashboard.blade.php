@@ -13,7 +13,7 @@
 <body>
     <a href="/login">Login</a>
     <br><br>
-    
+
     <div class="row">
         <div class="col-md-12">
             <div class="container-fluid">
@@ -23,16 +23,34 @@
     </div>
     <div class="dashboard_container">
         <div class="row">
-            <div class="col-md-3 rf_margin" style="border: 1px solid black">
+            <div class="col-md-3 rf_margin">
                 <div class="profile_container">
                     <div class="profile_pic">
-                        <img src="profile.png">
+                        <img src="img/pic (1).png">
                     </div>
-                    <p>he</p>
+                    <div class="username">
+                        <p>Yoohan</p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6 rf_margin" style="border: 1px solid black">
-                <p>he</p>
+                <div class="row line1">
+                    <div class="col-md-4" style="background-color : teal;">
+                        <div class="profile_details">
+                            <div class="rectangle">fdffdf</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="profile_details">
+                        <div class="rectangle">fdffdf</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="profile_details">
+                        <div class="rectangle">fdffdf</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-3 rf_margin" style="border: 1px solid black">
                 <p>he</p>
