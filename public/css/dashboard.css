@@ -8,18 +8,29 @@ body {
     padding: 100px;
 }
 
-.dashboard {
+.dashboard_container {
     padding: 20px;
     background-color: #FBF4E2;
     border-radius: 10px;
     margin-bottom: 50px;
 }
 
-.dashboard h1 {
+.dashboard_container h1 {
     text-align: center;
     color: #463C74;
     margin-bottom: 50px;
     font-size: 40px;
+}
+
+.profile_container {
+    background-color: teal;
+    height: 250px;
+    text-align: center;
+}
+
+.profile_pic {
+    background-color: #463C74;
+    height: 90%;
 }
 
 .review_container h2 {

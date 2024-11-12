@@ -11,26 +11,31 @@
 </head>
 
 <body>
-    <div class="dashboard">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="container-fluid">
-                    <h1>Dashboard</h1>
-                </div>
+    <a href="/login">Login</a>
+    <br><br>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container-fluid">
+                <h1>Dashboard</h1>
             </div>
         </div>
+    </div>
+    <div class="dashboard_container">
         <div class="row">
-            <div class="col-md-12 rf_margin">
-                <div class="rf_container">
-                    <div class="review_container">
-                        <h2>Reviewed</h2>
-                        <p>25</p>
+            <div class="col-md-3 rf_margin" style="border: 1px solid black">
+                <div class="profile_container">
+                    <div class="profile_pic">
+                        <img src="profile.png">
                     </div>
-                    <div class="review_container">
-                        <h2>Favorites</h2>
-                        <p>20</p>
-                    </div>
+                    <p>he</p>
                 </div>
+            </div>
+            <div class="col-md-6 rf_margin" style="border: 1px solid black">
+                <p>he</p>
+            </div>
+            <div class="col-md-3 rf_margin" style="border: 1px solid black">
+                <p>he</p>
             </div>
         </div>
     </div>
@@ -47,7 +52,7 @@
                 <div class="container-fluid">
                     <div class="reviews">
                         <p class="name">Yoohan</p>
-                        <p class="text">I like this book!</p>
+                        <p class="text">Love this book!</p>
                     </div>
                 </div>
             </div>
@@ -55,7 +60,7 @@
                 <div class="container-fluid">
                     <div class="reviews">
                         <p class="name">Yoohan</p>
-                        <p class="text">This is a masterpiece!</p>
+                        <p class="text">A masterpiece!</p>
                     </div>
                 </div>
             </div>
