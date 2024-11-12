@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
@@ -13,8 +14,64 @@
 <body>
     <div class="dashboard_container">
         <div class="row">
-            <p class="login">Welcome to Bookbaya</p>
-            <p class="sign">Sign Up to Continue</p>
+            <p class="login">Welcome Back</p>
+            <p class="sign">Login to Continue</p>
+            <form class="login_form" method="POST" action="/homepage">
+                <div class="input_container">
+                    <i class="fas fa-user icon"></i>
+                    <input type="text" placeholder="Enter Username" class="input_field" required>
+                </div>
+                <div class="input_container">
+                    <i class="fas fa-lock icon"></i>
+                    <input type="password" placeholder="Enter Password" class="input_field password_field" required>
+                    <i class="fas fa-eye toggle_password" onclick="togglePassword()"></i>
+                </div>
+                <button type="submit" class="login_button">Login</button>
+            </form>
+           
+            <a class="forgot" href="#">Forgot Password</a>
+            <p class="login1">Login with</p>
+
+            <div class="social-icons text-center mt-3">
+                <a href="#" class="mx-3">
+                    <i class="fab fa-google fa-2x"></i>
+                </a>
+                <a href="#" class="mx-3">
+                    <i class="fab fa-facebook fa-2x"></i>
+                </a>
+                <a href="#" class="mx-3">
+                    <img src="{{ asset('img/login/x.svg') }}" alt="Profile" class="x-logo"></i>
+                </a>
+            </div>
+
+            <div class="row">
+                <div class="left-image-container">
+                    <img src="{{ asset('img/login/front.svg') }}" alt="Profile" class="left-image">
+                </div>
+            </div>
+        </div>
         </div>
     </div>
+
+
+    <p class="new"  style="none">New User?<a href="/signup" class="up">Sign Up</a>
+
+
+    <script>
+        function togglePassword() {
+            const passwordField = document.querySelector('.password_field');
+            const toggleIcon = document.querySelector('.toggle_password');
+    
+                if (passwordField.type === 'password') {
+                    passwordField.type = 'text';
+                    toggleIcon.classList.remove('fa-eye');
+                    toggleIcon.classList.add('fa-eye-slash');
+                } else {
+                    passwordField.type = 'password';
+                    toggleIcon.classList.remove('fa-eye-slash');
+                    toggleIcon.classList.add('fa-eye');
+                }
+            }
+    </script>
+
 </body>
