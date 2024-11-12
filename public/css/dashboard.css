@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+    font-family: Poppins;
+}
+
+body {
+    padding: 100px;
+}
+
+.dashboard {
+    padding: 20px;
+    background-color: #FBF4E2;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.dashboard h1 {
+    text-align: center;
+    color: #463C74;
+    margin-bottom: 50px;
+    font-size: 40px;
+}
+
+.review_container h2 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.review_container p {
+    text-align: center;
+    color: #ffffff;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+.rf_container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+.review_container {
+    background-color: #B4D51E;
+    padding: 20px;
+    width: 20%;
+    border-radius: 10px;
+}
+
+.dashboard .rf_margin {
+    margin-bottom: 20px;
+}
+
+.recent_reviews {
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+.recent_reviews h1{
+    text-align: left;
+    color: #463C74;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.reviews {
+    text-align: center;
+    background-color: white;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #B4D51E;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.reviews .name {
+    font-size: 20px;
+}
+
+.reviews .text {
+    font-size: 15px;
+}
+
+.reviewed_books {
+    text-align: left;
+}
+
+.reviewed_books h1{
+    text-align: left;
+    color: #463C74;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.books_container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    height: 500px;
+}
+
+.img_container {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.img_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.svg {
+    height: 20px;
+    width: 20px;
+}
+
+.book_title {
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.author {
+    font-size: 15px;
+    opacity: 50%;
+}
+
+.star_container {
+    margin-bottom: 20px;
+}
+
+.date {
+    font-size: 12px;
+    opacity: 50%;
+}
