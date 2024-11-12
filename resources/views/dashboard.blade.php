@@ -11,9 +11,6 @@
 </head>
 
 <body>
-    <a href="/login">Login</a>
-    <br><br>
-
     <div class="row">
         <div class="col-md-12">
             <div class="container-fluid">
@@ -26,34 +23,60 @@
             <div class="col-md-3 rf_margin">
                 <div class="profile_container">
                     <div class="profile_pic">
-                        <img src="img/pic (1).png">
+                        <img src="img/profile.png">
                     </div>
                     <div class="username">
                         <p>Yoohan</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 rf_margin" style="border: 1px solid black">
+            <div class="col-md-6 rf_margin">
                 <div class="row line1">
-                    <div class="col-md-4" style="background-color : teal;">
+                    <div class="col-md-4">
                         <div class="profile_details">
                             <div class="rectangle">fdffdf</div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="profile_details">
-                        <div class="rectangle">fdffdf</div>
+                            <div class="rectangle">fdffdf</div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="profile_details">
-                        <div class="rectangle">fdffdf</div>
+                            <div class="rectangle">fdffdf</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Joined in November 1, 2024</p>
+                        <p class="fave_genres">Favorite Genres</p>
+                        <p class="genres">Romance, Mystery/Thriller, Fantasy, Science Fiction, +5 More</p>
+                    </div>
+                </div>
+                <div class="row line1">
+                    <div class="col-md-4 justify_right">
+                        <div class="profile_details">
+                            <div class="rectangle">fdffdf</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 justify_left">
+                        <div class="profile_details">
+                            <div class="rectangle">fdffdf</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 rf_margin" style="border: 1px solid black">
-                <p>he</p>
+            <div class="col-md-3 rf_margin">
+                <div class="row">
+                    <p class="myfavebooks">My Favorite Books</p>
+                    <div class="col-md-12">
+                        <div class="fave_book_container">
+                            <img src=img/fave_book.png>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -162,7 +185,7 @@
                 <div class="container-fluid">
                     <div class="books_container">
                         <div class="img_container">
-                            <img src="img/pic1.jpg">
+                            <img src="img/pic (4).png">
                         </div>
                         <p class="book_title">Title 4</p>
                         <div class="star_container">
