@@ -31,46 +31,63 @@
                 </div>
             </div>
             <div class="col-md-6 rf_margin">
-                <div class="row line1">
+                <div class="row g-0">
                     <div class="col-md-4">
                         <div class="profile_details">
-                            <div class="rectangle">fdffdf</div>
+                            <div class="rectangle">
+                                <p class="numbers">100</p>
+                                <p class="txt">Books</p>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="profile_details">
-                            <div class="rectangle">fdffdf</div>
+                            <div class="rectangle">
+                                <p class="numbers">1, 245</p>
+                                <p class="txt">Friends</p>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="profile_details">
-                            <div class="rectangle">fdffdf</div>
+                            <div class="rectangle">
+                                <p class="numbers">8</p>
+                                <p class="txt">Following</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row left_pd">
                     <div class="col-md-12">
                         <p>Joined in November 1, 2024</p>
                         <p class="fave_genres">Favorite Genres</p>
                         <p class="genres">Romance, Mystery/Thriller, Fantasy, Science Fiction, +5 More</p>
                     </div>
                 </div>
-                <div class="row line1">
+                <div class="row g-0">
+                    <p class="mybookshelves">My Bookshelves</p>
                     <div class="col-md-4 justify_right">
                         <div class="profile_details">
-                            <div class="rectangle">fdffdf</div>
+                            <div class="rectangle">
+                                <p>Reviewed</p>
+                                <p class="txt">(01)</p>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4 justify_left">
                         <div class="profile_details">
-                            <div class="rectangle">fdffdf</div>
+                            <div class="rectangle">
+                                <p>Favorites</p>
+                                <p class="txt">(01)</p>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 rf_margin">
                 <div class="row">
-                    <p class="myfavebooks">My Favorite Books</p>
+                    <p class="myfavebooks">My Favorite Book</p>
                     <div class="col-md-12">
                         <div class="fave_book_container">
                             <img src=img/fave_book.png>
@@ -128,55 +145,17 @@
                 <div class="container-fluid">
                     <div class="books_container">
                         <div class="img_container">
-                            <img src="img/pic (1).png">
+                            <img src="img/cruel_prince.png">
                         </div>
-                        <p class="book_title">Title 1</p>
+                        <p class="book_title">The Cruel Prince</p>
                         <div class="star_container">
                             <img src="img/star-solid.svg" class="svg">
-                            <img src="img/star-solid.svg" class="svg">
-                            <img src="img/star-solid.svg" class="svg">
-                            <img src="img/star-solid.svg" class="svg">
-                            <img src="img/star-solid.svg" class="svg">
-                        </div>
-                        <p class="author">Laiza Mae Barias</p>
-                        <p class="date">1 week ago</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="container-fluid">
-                    <div class="books_container">
-                        <div class="img_container">
-                            <img src="img/pic (2).png">
-                        </div>
-                        <p class="book_title">Title 2</p>
-                        <div class="star_container">
-                            <img src="img/star-solid.svg" class="svg">
-                            <img src="img/star-solid.svg" class="svg">
-                            <img src="img/star-solid.svg" class="svg">
-                            <img src="img/star-solid.svg" class="svg">
-                            <img src="img/star-solid.svg" class="svg">
-                        </div>
-                        <p class="author">Mae Anne Bongat</p>
-                        <p class="date">1 week ago</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="container-fluid">
-                    <div class="books_container">
-                        <div class="img_container">
-                            <img src="img/pic (3).png">
-                        </div>
-                        <p class="book_title">Title 3</p>
-                        <div class="star_container">
                             <img src="img/star-solid.svg" class="svg">
                             <img src="img/star-solid.svg" class="svg">
                             <img src="img/star-solid.svg" class="svg">
                             <img src="img/star-regular.svg" class="svg">
-                            <img src="img/star-regular.svg" class="svg">
                         </div>
-                        <p class="author">James Anthony Rosales</p>
+                        <p class="author">Holly Black</p>
                         <p class="date">1 week ago</p>
                     </div>
                 </div>
@@ -185,9 +164,47 @@
                 <div class="container-fluid">
                     <div class="books_container">
                         <div class="img_container">
-                            <img src="img/pic (4).png">
+                            <img src="img/storm_and_silence.png">
                         </div>
-                        <p class="book_title">Title 4</p>
+                        <p class="book_title">Storm and Silence</p>
+                        <div class="star_container">
+                            <img src="img/star-solid.svg" class="svg">
+                            <img src="img/star-solid.svg" class="svg">
+                            <img src="img/star-solid.svg" class="svg">
+                            <img src="img/star-solid.svg" class="svg">
+                            <img src="img/star-solid.svg" class="svg">
+                        </div>
+                        <p class="author">Robert Thier</p>
+                        <p class="date">1 week ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="container-fluid">
+                    <div class="books_container">
+                        <div class="img_container">
+                            <img src="img/waves_of_memories.png">
+                        </div>
+                        <p class="book_title">Waves of Memories</p>
+                        <div class="star_container">
+                            <img src="img/star-solid.svg" class="svg">
+                            <img src="img/star-solid.svg" class="svg">
+                            <img src="img/star-solid.svg" class="svg">
+                            <img src="img/star-solid.svg" class="svg">
+                            <img src="img/star-solid.svg" class="svg">
+                        </div>
+                        <p class="author">Jonaxx</p>
+                        <p class="date">1 week ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="container-fluid">
+                    <div class="books_container">
+                        <div class="img_container">
+                            <img src="img/invisible_girl.png">
+                        </div>
+                        <p class="book_title">The Invisible Girl</p>
                         <div class="star_container">
                             <img src="img/star-solid.svg" class="svg">
                             <img src="img/star-solid.svg" class="svg">
@@ -195,8 +212,8 @@
                             <img src="img/star-solid.svg" class="svg">
                             <img src="img/star-half-stroke-regular.svg" class="svg">
                         </div>
-                        <p class="author">Jerald Jay Buban</p>
-                        <p class="date">1 week ago</p>
+                        <p class="author">Alexisse Rose</p>
+                        <p class="date">2 weeks ago</p>
                     </div>
                 </div>
             </div>
