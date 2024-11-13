@@ -229,9 +229,9 @@
                 <div class="container-fluid">
                     <div class="books_container">
                         <div class="img_container">
-                            <img src="img/invisible_girl.png">
+                            <img src="img/saa.png">
                         </div>
-                        <p class="book_title">The Invisible Girl</p>
+                        <p class="book_title">Stay Awake, Agatha</p>
                         <div class="star_container">
                             <img src="img/star-solid.svg" class="svg">
                             <img src="img/star-solid.svg" class="svg">
@@ -239,7 +239,7 @@
                             <img src="img/star-solid.svg" class="svg">
                             <img src="img/star-half-stroke-regular.svg" class="svg">
                         </div>
-                        <p class="author">Alexisse Rose</p>
+                        <p class="author">Serialsleeper</p>
                         <p class="date">2 weeks ago</p>
                     </div>
                 </div>
@@ -248,9 +248,9 @@
                 <div class="container-fluid">
                     <div class="books_container">
                         <div class="img_container">
-                            <img src="img/invisible_girl.png">
+                            <img src="img/twr.png">
                         </div>
-                        <p class="book_title">The Invisible Girl</p>
+                        <p class="book_title">The Wallflower's Revenge</p>
                         <div class="star_container">
                             <img src="img/star-solid.svg" class="svg">
                             <img src="img/star-solid.svg" class="svg">
@@ -258,7 +258,7 @@
                             <img src="img/star-solid.svg" class="svg">
                             <img src="img/star-half-stroke-regular.svg" class="svg">
                         </div>
-                        <p class="author">Alexisse Rose</p>
+                        <p class="author">Sweetblunch</p>
                         <p class="date">2 weeks ago</p>
                     </div>
                 </div>
