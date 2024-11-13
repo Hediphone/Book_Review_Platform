@@ -16,6 +16,7 @@
         <div class="row">
             <p class="login">Welcome Back</p>
             <p class="sign">Login to Continue</p>
+           
             <form class="login_form" method="POST" action="/homepage">
                 <div class="input_container">
                     <i class="fas fa-user icon"></i>
@@ -24,7 +25,6 @@
                 <div class="input_container">
                     <i class="fas fa-lock icon"></i>
                     <input type="password" placeholder="Enter Password" class="input_field password_field" required>
-                    <i class="fas fa-eye toggle_password" onclick="togglePassword()"></i>
                 </div>
                 <button type="submit" class="login_button">Login</button>
             </form>
@@ -33,29 +33,23 @@
             <p class="login1">Login with</p>
 
             <div class="social-icons text-center mt-3">
-                <a href="#" class="mx-3">
+                <a href="https://accounts.google.com/v3/signin/identifier?authuser=0&continue=https%3A%2F%2Fwww.google.com%2F&ec=GAlAmgQ&hl=en&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S-920004606%3A1731464646265211&ddm=1" class="mx-3" style="text-decoration: none" target="_blank">
                     <i class="fab fa-google fa-2x"></i>
                 </a>
-                <a href="#" class="mx-3">
+                <a href="https://www.facebook.com/" class="mx-3" style="text-decoration: none" target="_blank">
                     <i class="fab fa-facebook fa-2x"></i>
                 </a>
                 <a href="#" class="mx-3">
                     <img src="{{ asset('img/login/x.svg') }}" alt="Profile" class="x-logo"></i>
                 </a>
             </div>
-
             <div class="row">
                 <div class="left-image-container">
                     <img src="{{ asset('img/login/front.svg') }}" alt="Profile" class="left-image">
                 </div>
             </div>
         </div>
-        </div>
     </div>
-
-
-    <p class="new"  style="none">New User?<a href="/signup" class="up">Sign Up</a>
-
 
     <script>
         function togglePassword() {
