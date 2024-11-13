@@ -1,58 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/contact.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-
 <body>
-<main>
-        <h1>CONTACT US</h1>
+
+<h1>CONTACT US</h1>
+<main class="container">
+
+    <div class="contact-box">
         <p>We'd Love To Hear From You! <br> Let's Get in Touch</p>
         
-
-        <p><i class="fas fa-envelope icon"></i> Full Name</p>
-            <form action="#" method="post">
-                <textarea name="message" placeholder="Enter name" rows="2"></textarea>
-            </form>
-
-            <p><i class="fas fa-envelope icon"></i> Company</p>
-            <form action="#" method="post">
-                <textarea name="message" placeholder="Company name" rows="2"></textarea>
-            </form>
-
-            <p><i class="fas fa-envelope icon"></i> Email</p>
-            <form action="#" method="post">
-                <textarea name="message" placeholder="example@gmail.com" rows="2"></textarea>
-            </form>
-
-            <p><i class="fas fa-envelope icon"></i> Phone number</p>
-            <form action="#" method="post">
-                <textarea name="message" placeholder="+1 (555) 000 - 0000" rows="2"></textarea>
-            </form>
-
-            <p><i class="fas fa-envelope icon"></i> Address</p>
-            <form action="#" method="post">
-                <textarea name="message" placeholder="Brgy, City, Province" rows="2"></textarea>
-            </form>
-
-
-        <section class="message-form">
-            <h2><i class="fas fa-envelope icon"></i> Send us a message</h2>
-            <form action="#" method="post">
+        <form action="#" method="post">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label>Full Name</label>
+                    <textarea name="fullname" placeholder="Enter name" rows="1"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <label>Company</label>
+                    <textarea name="company" placeholder="Company name" rows="1"></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label>Email</label>
+                    <textarea name="email" placeholder="example@gmail.com" rows="1"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <label>Phone Number</label>
+                    <textarea name="phone" placeholder="+1 (555) 000 - 0000" rows="1"></textarea>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label>Address</label>
+                <textarea name="address" placeholder="Brgy, City, Province" rows="1"></textarea>
+            </div>
+            <div class="message-form mb-3">
+                <h2>Your Message</h2>
                 <textarea name="message" placeholder="Type your message here" rows="5"></textarea>
-                <button type="button" onclick="window.location.href='{{ url('/contact') }}'">Submit</button>
-            </form>
-        </section>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+        </form>
+    </div>
 
-    </main>
-
-
+</main>
 </body>
-
 </html>
