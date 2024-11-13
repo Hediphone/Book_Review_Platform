@@ -18,7 +18,7 @@
             <div class="col-md-3 rf_margin">
                 <div class="profile_container">
                     <div class="profile_pic">
-                        <img src="asset/images/profile.png">
+                        <img src="asset/images/dashboard/profile.png">
                     </div>
                     <div class="username">
                         <p>Yoohan</p>
@@ -84,7 +84,7 @@
                     <p class="myfavebooks">My Favorite Book</p>
                     <div class="col-md-12">
                         <div class="fave_book_container">
-                            <img src=asset/images/storm_and_silence.png>
+                            <img src=asset/images/dashboard/storm_and_silence.png>
                         </div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
             <div class="row">
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <img src="asset/images/cruel_prince.png" class="card-img-top" alt="Book Cover">
+                        <img src="asset/images/dashboard/cruel_prince.png" class="card-img-top" alt="Book Cover">
                         <div class="card-body">
                             <h5 class="book-title">The Cruel Prince</h5>
                             <h6 class="book-author">Holly Black</h6>
@@ -166,7 +166,7 @@
                 </div>
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <img src="asset/images/storm_and_silence.png" class="card-img-top" alt="Book Cover">
+                        <img src="asset/images/dashboard/storm_and_silence.png" class="card-img-top" alt="Book Cover">
                         <div class="card-body">
                             <h5 class="book-title">Storm and Silence</h5>
                             <h6 class="book-author">Robert Thier</h6>
@@ -189,7 +189,7 @@
                 </div>
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <img src="asset/images/waves_of_memories.png" class="card-img-top" alt="Book Cover">
+                        <img src="asset/images/dashboard/waves_of_memories.png" class="card-img-top" alt="Book Cover">
                         <div class="card-body">
                             <h5 class="book-title">Waves of Memories</h5>
                             <h6 class="book-author">Jonaxx Stories</h6>
@@ -212,7 +212,7 @@
                 </div>
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <img src="{{ asset('asset/images/invisible_girl.png') }}" class="card-img-top" alt="Book Cover">
+                        <img src="{{ asset('asset/images/dashboard/invisible_girl.png') }}" class="card-img-top" alt="Book Cover">
                         <div class="card-body">
                             <h5 class="book-title">The Invisible Girl</h5>
                             <h6 class="book-author">Alexisse Rose</h6>
