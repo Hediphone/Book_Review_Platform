@@ -90,7 +90,7 @@
                     <p class="myfavebooks">My Favorite Book</p>
                     <div class="col-md-12">
                         <div class="fave_book_container">
-                            <img src=img/fave_book.png>
+                            <img src=img/storm_and_silence.png>
                         </div>
                     </div>
                 </div>
@@ -106,27 +106,35 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="container-fluid">
                     <div class="reviews">
-                        <p class="name">Yoohan</p>
+                        <p class="book_title">The Shank </p>
                         <p class="text">Love this book!</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="container-fluid">
                     <div class="reviews">
-                        <p class="name">Yoohan</p>
+                        <p class="book_title">Lucid Dream</p>
                         <p class="text">A masterpiece!</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="container-fluid">
                     <div class="reviews">
-                        <p class="name">Yoohan</p>
+                        <p class="book_title">Death Delayed</p>
                         <p class="text">Plot twist is 0.0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="container-fluid">
+                    <div class="reviews">
+                        <p class="book_title">The Wallflower's Revenge</p>
+                        <p class="text">10/10</p>
                     </div>
                 </div>
             </div>
@@ -140,8 +148,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3">
+        <div class="row g-0">
+            <div class="col-md-2">
                 <div class="container-fluid">
                     <div class="books_container">
                         <div class="img_container">
@@ -160,7 +168,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="container-fluid">
                     <div class="books_container">
                         <div class="img_container">
@@ -179,7 +187,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="container-fluid">
                     <div class="books_container">
                         <div class="img_container">
@@ -198,7 +206,45 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
+                <div class="container-fluid">
+                    <div class="books_container">
+                        <div class="img_container">
+                            <img src="img/invisible_girl.png">
+                        </div>
+                        <p class="book_title">The Invisible Girl</p>
+                        <div class="star_container">
+                            <img src="img/star-solid.svg" class="svg">
+                            <img src="img/star-solid.svg" class="svg">
+                            <img src="img/star-solid.svg" class="svg">
+                            <img src="img/star-solid.svg" class="svg">
+                            <img src="img/star-half-stroke-regular.svg" class="svg">
+                        </div>
+                        <p class="author">Alexisse Rose</p>
+                        <p class="date">2 weeks ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="container-fluid">
+                    <div class="books_container">
+                        <div class="img_container">
+                            <img src="img/invisible_girl.png">
+                        </div>
+                        <p class="book_title">The Invisible Girl</p>
+                        <div class="star_container">
+                            <img src="img/star-solid.svg" class="svg">
+                            <img src="img/star-solid.svg" class="svg">
+                            <img src="img/star-solid.svg" class="svg">
+                            <img src="img/star-solid.svg" class="svg">
+                            <img src="img/star-half-stroke-regular.svg" class="svg">
+                        </div>
+                        <p class="author">Alexisse Rose</p>
+                        <p class="date">2 weeks ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
                 <div class="container-fluid">
                     <div class="books_container">
                         <div class="img_container">
