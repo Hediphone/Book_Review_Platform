@@ -8,6 +8,11 @@ Route::get('/', function () {
     return view('landing_page');
 });
 
+Route::get('/', function () {
+    return view('landing-page');
+});
+
+
 Route::get('/login', function () {
     return view('login');
 });

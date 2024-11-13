@@ -1,0 +1,258 @@
+* {
+  font-family: "Merriweather", Helvetica;  
+  }
+
+
+  .text-pri{
+    font-family: "McLaren", Helvetica;
+    color:#463C74;
+    font-size: 28px;
+  }
+
+  .text-sec{
+    font-family: "McLaren", Helvetica;
+    color: #B4D51E;
+    font-size: 28px;
+
+  }
+
+  .text-pri,
+  .text-sec{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+  
+
+
+  header.container-fluid.py-3{
+    margin-top: 18px;
+    padding:130px;
+  }
+
+  
+  #custom-input {
+    border: none;
+    background-color: #F8F7F5;
+    color: #333;
+    height: 34px;
+    padding:20px;
+  }
+
+
+  .btn.input-group-text {
+    background-color: #F8F7F5; /* Match the input background color */
+    border: none;
+    border-radius: 0 8px 8px 0; /* Rounded corners on the right */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+  }
+
+  .btn.input-group-text i {
+    color: #888; /* Subtle icon color */
+  }
+  
+  .btn.input-group-text:hover {
+    background-color: #e2e2e2; /* Light hover color */
+  }
+  
+  .form-control {
+    border-radius: 8px ; /* Rounded corners on the left */
+    border: none;
+    background-color: #F8F7F5;
+  }
+  
+  /* Style for the placeholder text to make it more subtle */
+  #custom-input::placeholder {
+    color: #A9A9A9; /* Light gray color */
+    opacity: 0.9; /* Ensure full opacity */
+    font-family: "Merriweather", Helvetica;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+  }
+
+
+  .custom-btn {
+    background-color: #B4D51E;
+    color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    padding-right:10px;
+    padding-left:10px;
+    font-family: "Merriweather", Helvetica;
+    font-size: 15px;
+    height: 32px;
+    width: 190px;
+  }
+
+  .custom-btn2 {
+    color: #f0008f;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.10);
+    border: none;
+    border-radius: 15px;
+    padding-right:10px;
+    padding-left:10px;
+    font-family: "Merriweather", Helvetica;
+    font-size: 15px;
+    height: 32px;
+    margin-right: 10px;
+    width: 100px;
+  }
+ 
+
+  .nav-link {
+    position: relative;
+    color: #000; /* Adjust the base color as needed */
+    text-decoration: none;
+  }
+  
+
+
+  
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -1px; /* Adjusts the distance from the text */
+    left: 50%;
+    transform: translateX(-50%); /* Centers the line */
+    width: 0%; /* Adjusts the width of the line */
+    height: 2px; /* Adjusts the thickness of the line */
+    background-color: #B4D51E;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 60%; /* Adjusts the width of the line on hover or when active */
+  }
+  
+  
+  .carousel-section {
+    height:180px;
+    margin: 0 auto; /* Center the carousel */
+  }
+  
+  .carousel-inner img {
+    max-width: 90%; /* Ensure the images are responsive */
+    height: 370px;
+  }
+
+  .center-image {
+    display: block; /* Makes the image behave like a block element */
+    margin-left: auto; /* Automatically adjust the left margin */
+    margin-right: auto; /* Automatically adjust the right margin */
+    width: 80%; /* Set the width to 80% */
+  }
+  
+
+  .carousel-indicators li {
+    background-color: #C4C4C4; /* Default color for inactive dots */
+    opacity: 50%;
+    width: 18px!important;
+    height: 5px; 
+    border-color: #888;
+  }
+
+  /* Style for the active indicator dot */
+  .carousel-indicators .active {
+    background-color: #B4D51E; /* Active color */
+  }
+
+
+  .star-rating i {
+    color: #FFD700; /* Gold color for filled stars */
+    font-size: 1.2rem;
+}
+.star-rating i.bi-star {
+    color: #C4C4C4; /* Grey color for empty stars */
+}
+.last-reader {
+    display: flex;
+    align-items: center;
+}
+.last-reader img {
+    margin-right: 5px;
+}
+
+.popular-now-section{
+  margin-top: 230px;
+  padding:0px 130px 0px 130px;
+}
+
+h3{
+  color:#463C74;
+  font-family: "Meriweather";
+  font-weight:600 !important;
+
+
+}
+
+.view-all-link{
+  color:#828282;
+}
+
+
+.card-img-top {
+  padding: 13px 18px 0 18px; /* 10px padding around the image */
+  width: 100%; /* Ensure the image takes up the full width */
+  height: 280px;    /* Fixed height for the image */
+  object-fit: cover;/* Ensures the image covers the area without distorting aspect ratio */
+}
+
+
+
+.book-title{
+  color:#000;
+}
+
+.book-author{
+  color:#828282;
+  font-size: small;
+}
+
+.reader{
+  color: #000;
+  font-size: small;
+  margin-right: 7px;
+}
+
+.time{
+  color: #b0a0a0;
+  font-size: x-small !important; 
+}
+
+
+.card {
+  height: 100%; /* Ensure cards stretch to fill the container */
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.latest-books-section{
+  padding:0px 130px 0px 130px;
+  margin-top:30px;
+  margin-bottom:100px;
+}
+
+
+footer{
+  background-color: #FBF4E2; 
+  padding: 20px 130px 10px 130px;
+}
+
+.cust{
+  color:#828282;
+  font-size: x-small;
+  margin-top: 10px;
+  margin-left: 2px;
+}
+
+.cm a,.cm{
+  color: #828282 !important;
+  font-size: small;
+}
