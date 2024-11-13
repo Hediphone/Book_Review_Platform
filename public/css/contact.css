@@ -23,11 +23,13 @@ p {
     background-color: #FBF4E2;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    position: relative;
 }
 
 .contact-box {
     text-align: left;
     margin-bottom: 20px;
+    border-radius: 5px;
 }
 
 .contact-box p {
@@ -66,4 +68,12 @@ button {
 
 button:hover {
     background-color: #265073!important;
+}
+
+.contact-image {
+    position: absolute;
+    bottom: -10px;
+    right: 10px;
+    width: 120px;
+    height: auto;
 }
