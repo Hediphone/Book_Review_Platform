@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-
 * {
-    font-family: Poppins;
+    font-family: "Merriweather", Helvetica;  
 }
 
 body {
@@ -12,7 +10,6 @@ body {
     height: 100vh;
     overflow: hidden;
 }
-
 
 .dashboard_container {
     display: flex;
@@ -36,7 +33,7 @@ body {
 }
 
 .sign {
-    font-size: .9rem;
+    font-size: .8rem;
     color: #111111;
     text-align: center;
 }
@@ -75,7 +72,7 @@ body {
     flex: 1;
     border: none;
     outline: none;
-    font-size: .9rem;
+    font-size: .7rem;
     color: #555;
 }
 
@@ -99,7 +96,7 @@ body {
     color: rgb(0, 0, 0);
     border: none;
     border-radius: 30px;
-    font-size: .9rem;
+    font-size: .8rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -113,20 +110,25 @@ body {
     margin-top: 30px;
     color: #265073;
     margin-bottom: 20px;
-    font-size: .83rem;
+    font-size: .7rem;
 }
 
 .left-image{
     height: 190px;
     width: 190px;
     margin-top: -170px;
-    margin-bottom: -110px;
+    margin-bottom: -170px;
     margin-left: -25px;
 }
 
 .login1 {
     text-align: center;
-    font-size: .8rem;
+    font-size: .7rem;
+}
+
+.acc{
+    margin-left: 340px;
+    font-size: .6rem;
 }
 
 .new-user {

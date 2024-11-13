@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-
 * {
-    font-family: Poppins;
+    font-family: "Merriweather", Helvetica;  
 }
 
 body {
@@ -36,7 +34,7 @@ body {
 }
 
 .sign {
-    font-size: .9rem;
+    font-size: .8rem;
     color: #111111;
     text-align: center;
 }
@@ -75,7 +73,7 @@ body {
     flex: 1;
     border: none;
     outline: none;
-    font-size: .9rem;
+    font-size: .8rem;
     color: #555;
 }
 
@@ -99,7 +97,7 @@ body {
     color: rgb(0, 0, 0);
     border: none;
     border-radius: 30px;
-    font-size: .9rem;
+    font-size: .8rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -108,45 +106,24 @@ body {
     background-color: #d1f728;
 }
 
-.forgot{
-    text-align: center;
-    margin-top: 30px;
-    color: #265073;
-    margin-bottom: 20px;
-    font-size: .83rem;
-}
 
 .left-image{
     height: 190px;
     width: 190px;
-    margin-top: -170px;
-    margin-bottom: -110px;
+    margin-top: -90px;
+    margin-bottom: -90px;
     margin-left: -25px;
 }
 
 .login1 {
     text-align: center;
-    font-size: .8rem;
+    font-size: .7rem;
 }
 
-.new-user {
-    text-align: center;
-    margin-top: 90px;
-    font-size: 0.9rem;
-    color: #111;
+.acc{
+    margin-left: 310px;
+    font-size: .6rem;
 }
-
-.sign-up-link {
-    color: #265073; 
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.sign-up-link:hover {
-    color: #0004ff; 
-    text-decoration: none;
-}
-
 
 .social-icons i {
     color: #000000;
