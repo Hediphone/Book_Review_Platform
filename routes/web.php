@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('landing_page');
@@ -22,4 +24,4 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-
+Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
