@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="asset/css/login.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/helvetica-neue-5" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,12 +47,12 @@
                     <i class="fab fa-facebook fa-2x"></i>
                 </a>
                 <a href="#" class="mx-3">
-                    <img src="{{ asset('img/login/x.svg') }}" alt="Profile" class="x-logo"></i>
+                    <img src="{{ asset('asset/images/login/x.svg') }}" alt="Profile" class="x-logo"></i>
                 </a>
             </div>
             <div class="row">
                 <div class="left-image-container">
-                    <img src="{{ asset('img/login/front.svg') }}" alt="Profile" class="left-image">
+                    <img src="{{ asset('asset/images/login/front.svg') }}" alt="Profile" class="left-image">
                 </div>
             </div>
             <p class="acc">New User?<a href="/signup" style="text-decoration: none"> Sign Up</a></p>
