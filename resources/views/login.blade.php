@@ -18,6 +18,16 @@
 </head>
 
 <body>
+    <header class="container-fluid py-3">
+        <div class="row align-items-center justify-content-between">
+            <!-- Logo/Title -->
+            <div class="col-md-3">
+                <h1 class="h4">
+                    <span class="text-pri">Book</span><span class="text-sec">Bayarn!</span>
+                </h1>
+            </div>
+    </header>
+
     <div class="dashboard_container">
         <div class="row">
             <p class="login">Welcome Back</p>
