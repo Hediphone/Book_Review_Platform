@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 * {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Merriweather", Helvetica; 
     box-sizing: border-box;
 }
 
@@ -9,6 +9,11 @@ h1 {
     text-align: center;
     color: #265073!important;
     margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+main {
+    margin: 50px 20px;
 }
 
 p {
@@ -35,18 +40,20 @@ p {
 .contact-box p {
     color: #333;
     font-size: 1.1em;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 label {
     font-weight: 500;
+    font-size: 1em;
     color: #000000;
 }
 
 textarea {
+    font-size: 0.9em;
     width: 100%;
     resize: none;
-    padding: 8px;
+    padding: 10px 15px;
     border: 1px solid #FBF4E2;
     border-radius: 10px;
 }
@@ -77,8 +84,8 @@ button:hover {
 
 .contact-image {
     position: absolute;
-    bottom: 10px; 
-    right: 10px;
+    bottom: 0px; 
+    right: 0px;
     width: 200px;
     height: auto;
     z-index: 0; 
