@@ -16,20 +16,20 @@ p {
 }
 
 .container {
-    max-width: 800px!important;
+    max-width: 700px!important;
     margin: 0 auto;
-    padding: 20px;
+    padding: 60px;
     border: 2px solid #FBF4E2;
     background-color: #FBF4E2;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    border-radius: 20px;
     position: relative;
 }
 
 .contact-box {
     text-align: left;
     margin-bottom: 20px;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 .contact-box p {
@@ -47,8 +47,8 @@ textarea {
     width: 100%;
     resize: none;
     padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #FBF4E2;
+    border-radius: 10px;
 }
 
 .message-form {
@@ -70,10 +70,16 @@ button:hover {
     background-color: #265073!important;
 }
 
+.form-fields {
+    position: relative;
+    z-index: 1;
+}
+
 .contact-image {
     position: absolute;
-    bottom: -10px;
+    bottom: 10px; 
     right: 10px;
-    width: 120px;
+    width: 200px;
     height: auto;
+    z-index: 0; 
 }

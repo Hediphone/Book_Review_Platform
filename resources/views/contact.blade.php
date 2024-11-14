@@ -15,7 +15,7 @@
     <div class="contact-box">
         <p>We'd Love To Hear From You! <br> Let's Get in Touch</p>
         
-        <form action="#" method="post">
+        <div class="form-fields">
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label>Full Name</label>
@@ -45,9 +45,9 @@
                 <textarea name="message" placeholder="Type your message here" rows="5"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
+        </div>
     </div>
-    <img src="" alt="Illustration" class="contact-image">
+    <img src="img/front.png" alt="Illustration" class="contact-image">
 </main>
 </body>
 </html>
