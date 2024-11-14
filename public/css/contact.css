@@ -21,7 +21,7 @@ p {
 }
 
 .container {
-    max-width: 700px!important;
+    max-width: 650px!important;
     margin: 0 auto;
     padding: 60px;
     border: 2px solid #FBF4E2;
@@ -49,6 +49,10 @@ label {
     color: #000000;
 }
 
+.text{
+    font-size: .7rem;
+}
+
 textarea {
     font-size: 0.9em;
     width: 100%;
@@ -62,29 +66,35 @@ textarea {
     text-align: left;
 }
 
+.btn-primary{
+    font-size: .7rem;
+    padding: 10px;
+}
+
 button {
     background-color: #265073!important;
     color: #FFF;
     border: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 1em;
+    width: 170px;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #265073!important;
+    background-color: #01345e!important;
 }
 
 .form-fields {
     position: relative;
     z-index: 1;
+    font-size: .8em;
+    letter-spacing: .4px;
 }
 
 .contact-image {
     position: absolute;
-    bottom: 0px; 
+    bottom: -6px; 
     right: 0px;
     width: 200px;
     height: auto;
