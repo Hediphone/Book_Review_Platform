@@ -19,18 +19,16 @@
 
 <body>
     <header class="title">
-        <div>
             <div class="col">
                 <h1 class="h4">
                     <span class="text-pri">Book</span><span class="text-sec">Bayarn!</span>
                 </h1>
             </div>
-        </div>
     </header>
     
     <div class="login_container">
         <div class="row">
-            <p class="login">Welcome Back</p>
+            <p class="login">Welcome Back >.<</p>
             <p class="sign">Login to Continue</p>
         
             <form class="login_form" method="POST" action="/homepage">
