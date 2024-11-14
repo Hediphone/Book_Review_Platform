@@ -11,14 +11,13 @@ body {
     overflow: hidden;
 }
 
-
 .dashboard_container {
     display: flex;
     flex-direction: column; 
     align-items: center; 
     justify-content: center;
     padding: 20px;
-    padding-top: 4%;
+    padding-top: 5%;
     background-color: #FBF4E2;
     border-radius: 30px;
     height: auto;
@@ -73,7 +72,7 @@ body {
     flex: 1;
     border: none;
     outline: none;
-    font-size: .8rem;
+    font-size: .7rem;
     color: #555;
 }
 
@@ -97,7 +96,7 @@ body {
     color: rgb(0, 0, 0);
     border: none;
     border-radius: 30px;
-    font-size: .8rem;
+    font-size: .7rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -106,12 +105,11 @@ body {
     background-color: #d1f728;
 }
 
-
-.left-image{
-    height: 190px;
+.img-fluid{
     width: 190px;
-    margin-top: -90px;
-    margin-bottom: -90px;
+    height: auto; /* To keep aspect ratio */
+    margin-top: -170px;
+    margin-bottom: -170px;
     margin-left: -25px;
 }
 
@@ -121,8 +119,8 @@ body {
 }
 
 .acc{
-    margin-left: 310px;
-    font-size: .6rem;
+    font-size: .7rem;
+    font-family: Poppins;
 }
 
 .social-icons i {
