@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Sign Up</title>
 
     <link rel="stylesheet" href="css/signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
@@ -18,7 +18,17 @@
 </head>
 
 <body>
-    <div class="dashboard_container">
+    <header class="title">
+        <div>
+            <div class="col">
+                <h1 class="h4">
+                    <span class="text-pri">Book</span><span class="text-sec">Bayarn!</span>
+                </h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="signup_container">
         <div class="row">
             <p class="login">Welcome to BookBayarn!</p>
             <p class="sign">Sign Up to Continue</p>
