@@ -33,7 +33,7 @@
             <p class="login">Welcome to BookBayarn!</p>
             <p class="sign">Sign Up to Continue</p>
            
-            <form class="login_form" method="POST" action="/homepage">
+            <form class="login_form" method="POST" action="/landing-page">
                 <div class="input_container">
                     <i class="fas fa-user icon"></i>
                     <input type="text" placeholder="Enter Your Email" class="input_field" required>

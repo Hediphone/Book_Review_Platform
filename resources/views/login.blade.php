@@ -31,7 +31,7 @@
             <p class="login">Welcome Back >.<</p>
             <p class="sign">Login to Continue</p>
         
-            <form class="login_form" method="POST" action="/homepage">
+            <form class="login_form" method="POST" action="/landing-page">
                 <div class="input_container">
                     <i class="fas fa-user icon"></i>
                     <input type="text" placeholder="Enter Username" class="input_field" required>

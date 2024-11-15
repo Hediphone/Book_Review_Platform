@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
-    return view('landing_page');
+    return view('landing-page');
 });
 
 Route::get('/', function () {
