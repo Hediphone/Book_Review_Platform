@@ -11,18 +11,37 @@ body {
     overflow: hidden;
 }
 
+.title{
+    margin-top: -550px;
+    margin-left: -250px;
+    padding-top: -100px;
+}
 
-.dashboard_container {
+.text-pri{
+    font-family: "McLaren", Helvetica;
+    color:#463C74;
+    font-size: 28px;
+}
+
+.text-sec{
+    font-family: "McLaren", Helvetica;
+    color: #B4D51E;
+    font-size: 28px;
+
+}
+
+.signup_container {
+    position: relative;
     display: flex;
     flex-direction: column; 
     align-items: center; 
     justify-content: center;
-    padding: 20px;
-    padding-top: 4%;
+    padding: 2px;
+    padding-top: 3%;
     background-color: #FBF4E2;
     border-radius: 30px;
     height: auto;
-    width: 70%;
+    max-width: 650px!important;
 }
 
 .login {
@@ -73,7 +92,7 @@ body {
     flex: 1;
     border: none;
     outline: none;
-    font-size: .8rem;
+    font-size: .7rem;
     color: #555;
 }
 
@@ -97,7 +116,7 @@ body {
     color: rgb(0, 0, 0);
     border: none;
     border-radius: 30px;
-    font-size: .8rem;
+    font-size: .7rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -106,13 +125,13 @@ body {
     background-color: #d1f728;
 }
 
-
-.left-image{
-    height: 190px;
-    width: 190px;
-    margin-top: -90px;
-    margin-bottom: -90px;
-    margin-left: -25px;
+.img-fluid{
+    position: absolute;
+    bottom: -33px; 
+    left: 0px;
+    width: 200px;
+    height: auto;
+    z-index: 0; 
 }
 
 .login1 {
@@ -121,8 +140,9 @@ body {
 }
 
 .acc{
-    margin-left: 310px;
-    font-size: .6rem;
+    margin-top: 30px;
+    font-size: .7rem;
+    font-family: Poppins;
 }
 
 .social-icons i {
