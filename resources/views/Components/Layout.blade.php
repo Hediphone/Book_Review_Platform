@@ -5,8 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Landing Page</title>
-
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
     <link href="{{ asset('asset/css/layout.css') }}" rel="stylesheet">
     <link href="{{ asset('asset/css/styleguide.css') }}" rel="stylesheet">
@@ -41,39 +39,27 @@
                 </div>
             </form>
 
-            <!-- Top Navigation Icons -->
+            @if (Request::is('home') || Request::is('dashboard'))
             <div class="col-md-4 d-flex justify-content-end align-items-center">
-                <button class="custom-btn2">Sign In</button>
-                <button class="custom-btn">Create an Account</button>
+            <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                @csrf
+                <button type="submit" class="custom-btn2">Logout</button>
+            </form>
             </div>
-        </div>
+
+            @else
+                <!-- Default Top Navigation Icons -->
+                <div class="col-md-4 d-flex justify-content-end align-items-center">
+                    <a href="{{ route('login') }}">
+                        <button class="custom-btn2">Sign In</button>
+                    </a>
+                    <a href="{{ route('register') }}">
+                        <button class="custom-btn">Create an Account</button>
+                    </a>
+                </div>
+            @endif
+
     </header>
-
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-md navbar-light">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="/dashboard">Dashboard</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="/contact">Contact Us</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="#">Blog</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
     @yield('content')
     
