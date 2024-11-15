@@ -18,7 +18,7 @@
                             <img src="asset/images/renjun.png">
                         </div>
                         <div class="username">
-                            <p style="font-size:small;">Hello, {{ Auth::user()->name }}</p>
+                            <p class="username">Hello, {{ Auth::user()->name }}</p>
                         </div>
                     </div>
                 </div>
