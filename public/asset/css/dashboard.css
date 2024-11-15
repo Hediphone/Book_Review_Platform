@@ -2,144 +2,21 @@
     font-family: "Merriweather", Helvetica;
 }
 
-header.container-fluid.py-3 {
-    margin-top: 18px;
-    padding: 130px;
+main{
+    padding: 30px 0px;
 }
-
-
-#custom-input {
-    border: none;
-    background-color: #F8F7F5;
-    color: #333;
-    height: 34px;
-    padding: 20px;
-}
-
-
-.btn.input-group-text {
-    background-color: #F8F7F5;
-    /* Match the input background color */
-    border: none;
-    border-radius: 0 8px 8px 0;
-    /* Rounded corners on the right */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 10px;
-}
-
-.btn.input-group-text i {
-    color: #888;
-    /* Subtle icon color */
-}
-
-.btn.input-group-text:hover {
-    background-color: #e2e2e2;
-    /* Light hover color */
-}
-
-.form-control {
-    border-radius: 8px;
-    /* Rounded corners on the left */
-    border: none;
-    background-color: #F8F7F5;
-}
-
-/* Style for the placeholder text to make it more subtle */
-#custom-input::placeholder {
-    color: #A9A9A9;
-    /* Light gray color */
-    opacity: 0.9;
-    /* Ensure full opacity */
-    font-family: "Merriweather", Helvetica;
-    font-size: 15px;
-    letter-spacing: 0.5px;
-}
-
-
-.custom-btn {
-    background-color: #B4D51E;
-    color: #ffffff;
-    border: none;
-    border-radius: 15px;
-    padding-right: 10px;
-    padding-left: 10px;
-    font-family: "Merriweather", Helvetica;
-    font-size: 15px;
-    height: 32px;
-    width: 190px;
-}
-
-.custom-btn2 {
-    color: #f0008f;
-    background-color: #ffffff;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.10);
-    border: none;
-    border-radius: 15px;
-    padding-right: 10px;
-    padding-left: 10px;
-    font-family: "Merriweather", Helvetica;
-    font-size: 15px;
-    height: 32px;
-    margin-right: 10px;
-    width: 100px;
-}
-
-
-.nav-link {
-    position: relative;
-    color: #000;
-    /* Adjust the base color as needed */
-    text-decoration: none;
-}
-
-.nav-link::after {
-    content: "";
-    position: absolute;
-    bottom: -1px;
-    /* Adjusts the distance from the text */
-    left: 50%;
-    transform: translateX(-50%);
-    /* Centers the line */
-    width: 0%;
-    /* Adjusts the width of the line */
-    height: 2px;
-    /* Adjusts the thickness of the line */
-    background-color: #B4D51E;
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 60%;
-    /* Adjusts the width of the line on hover or when active */
-}
-
-
-main {
-    padding: 0px 150px 100px 150px;
-}
-
-/* .container-fluid h1 {
-    text-align: center;
-    color: #463C74;
-    margin-bottom: 30px;
-    font-size: 40px;
-} */
 
 .left_pd {
-    padding-left: 30px;
+    padding-left: 20px;
 }
 
 .dashboard_container {
-    padding: 50px 100px;
+    padding: 20px;
     background-color: #FBF4E2;
-    border-radius: 50px;
-    margin-bottom: 70px;
-    margin-top: 15px;
-    width: 100%;
-    height: 450px;
+    border-radius: 30px;
+    width: 80%;
+    height: 360px;
+    margin: 15px auto 50px auto;
 }
 
 .dashboard_container h1 {
@@ -151,16 +28,17 @@ main {
 
 .profile_container {
     width: 100%;
-    height: 320px;
+    height: 70%;
     text-align: center;
     padding: 5px;
+    padding-left: 30px;
 }
 
 .profile_pic,
 .favebook_pic {
-    height: 90%;
+    height: 100%;
     margin-bottom: 10px;
-    border-radius: 10px;
+    border-radius: 30px;
     overflow: hidden;
 }
 
@@ -171,7 +49,7 @@ main {
 }
 
 .username p {
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .profile_details {
@@ -184,45 +62,51 @@ main {
     margin-bottom: 0;
 }
 
+.register_date {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
 .numbers {
     color: #ffffff;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .txt {
-    font-size: 15px;
+    font-size: 12px;
     opacity: 90%;
 }
 
 .rectangle {
     background-color: #CFE084;
-    border-radius: 10px;
-    height: 70px;
+    border-radius: 30px;
+    height: 60px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 10px;
 }
 
 .mybookshelves {
-    font-size: 20px;
-    margin-left: 45px;
+    font-size: 15px;
+    margin-left: 37px;
     margin-bottom: 5px;
     margin-top: 10px;
 }
 
 .fave_genres {
     margin-bottom: 0;
+    font-size: 15px;
 }
 
 .genres {
-    font-size: 15px;
+    font-size: 12px;
     opacity: 50%;
 }
 
 .fave_book_container {
     width: 80%;
-    height: 320px;
+    height: 95%;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 30px;
     overflow: hidden;
     margin: 0 auto;
 }
