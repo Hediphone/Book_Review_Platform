@@ -12,13 +12,13 @@
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="2500">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="center-image" src="{{ asset('asset/images/slide1.png') }}" alt="First slide">
+                        <img class="center-image" src="{{ asset('assets/images/slide1.png') }}" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="center-image" src="{{ asset('asset/images/slide2.png') }}" alt="Second slide">
+                        <img class="center-image" src="{{ asset('assets/images/slide2.png') }}" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="center-image" src="{{ asset('asset/images/slide3.png') }}" alt="Third slide">
+                        <img class="center-image" src="{{ asset('assets/images/slide3.png') }}" alt="Third slide">
                     </div>
                 </div>
 

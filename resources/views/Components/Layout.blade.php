@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-    <link href="{{ asset('asset/css/layout.css') }}" rel="stylesheet">
-    <link href="{{ asset('asset/css/styleguide.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/layout.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/styleguide.css') }}" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/helvetica-neue-5" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
