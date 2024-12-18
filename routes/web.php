@@ -24,6 +24,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/contact', function () {
         return view('contact');
     });
+
+    Route::get('/admin-dashboard', function () {
+        return view('admin-dashboard');
+    });
     
     Route::get('/home', [HomeController::class, 'index'])->name('home.index');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.show');
