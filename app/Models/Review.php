@@ -3,17 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Book extends Model
+class Review extends Model
 {
     use HasFactory;
 
-    protected $table = 'books';
+    protected $table = 'reviews';
 
     public $primaryKey = 'id';
 
     public $timestamps = true;
-
-    
 }

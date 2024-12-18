@@ -1,7 +1,7 @@
 @extends('Components.Layout')
 
 @section('styles')
-<link rel="stylesheet" href="asset/css/dashboard.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
 @endsection
 
 @section('content')
@@ -10,78 +10,80 @@
 
 <main>
     <section class="dashboard">
-        <div class="dashboard_container">
-            <div class="row">
-                <div class="col-md-3 rf_margin">
-                    <div class="profile_container">
-                        <div class="profile_pic">
-                            <img src="asset/images/renjun.png">
-                        </div>
-                        <div class="username">
-                            <p class="username">{{ Auth::user()->name }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 rf_margin">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <div class="profile_details">
-                                <div class="rectangle">
-                                    <p class="numbers">100</p>
-                                    <p class="txt">Books</p>
-                                </div>
+        <div class="container">
+            <div class="dashboard_container">
+                <div class="row">
+                    <div class="col-md-3 rf_margin">
+                        <div class="profile_container">
+                            <div class="profile_pic">
+                                <img src="assets/images/renjun.png">
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="profile_details">
-                                <div class="rectangle">
-                                    <p class="numbers">1, 245</p>
-                                    <p class="txt">Friends</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="profile_details">
-                                <div class="rectangle">
-                                    <p class="numbers">8</p>
-                                    <p class="txt">Following</p>
-                                </div>
+                            <div class="username">
+                                <p class="username">{{ Auth::user()->name }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="row left_pd">
-                        <div class="col-md-12">
-                            <p class="register_date">Joined in November 1, 2024</p>
-                            <p class="fave_genres">Favorite Genres</p>
-                            <p class="genres">Romance, Mystery/Thriller, Fantasy, Science Fiction, +5 More</p>
-                        </div>
-                    </div>
-                    <div class="row g-0">
-                        <p class="mybookshelves">My Bookshelves</p>
-                        <div class="w-100"></div>
-                        <div class="col-md-4 justify_right">
-                            <div class="profile_details">
-                                <div class="rectangle">
-                                    <p>Reviewed</p>
-                                    <p class="txt">(01)</p>
+                    <div class="col-md-6 rf_margin">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <div class="profile_details">
+                                    <div class="rectangle">
+                                        <p class="numbers">100</p>
+                                        <p class="txt">Books</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="profile_details">
+                                    <div class="rectangle">
+                                        <p class="numbers">1, 245</p>
+                                        <p class="txt">Friends</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="profile_details">
+                                    <div class="rectangle">
+                                        <p class="numbers">8</p>
+                                        <p class="txt">Following</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 justify_left">
-                            <div class="profile_details">
-                                <div class="rectangle">
-                                    <p>Favorites</p>
-                                    <p class="txt">(01)</p>
+                        <div class="row left_pd">
+                            <div class="col-md-12">
+                                <p class="register_date">Joined in November 1, 2024</p>
+                                <p class="fave_genres">Favorite Genres</p>
+                                <p class="genres">Romance, Mystery/Thriller, Fantasy, Science Fiction, +5 More</p>
+                            </div>
+                        </div>
+                        <div class="row g-0">
+                            <p class="mybookshelves">My Bookshelves</p>
+                            <div class="w-100"></div>
+                            <div class="col-md-4 justify_right">
+                                <div class="profile_details">
+                                    <div class="rectangle">
+                                        <p>Reviewed</p>
+                                        <p class="txt">(01)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 justify_left">
+                                <div class="profile_details">
+                                    <div class="rectangle">
+                                        <p>Favorites</p>
+                                        <p class="txt">(01)</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 rf_margin">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="fave_book_container">
-                                <img src=asset/images/dashboard/storm_and_silence.png>
+                    <div class="col-md-3 rf_margin">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="fave_book_container">
+                                    <img src=assets/images/dashboard/storm_and_silence.png>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -102,10 +104,7 @@
                         <div class="card">
                             <div class="reviews">
                                 <h5 class="book_title">{{ $post['title'] }}</h5>
-                                @foreach ($post['comments'] as $comment)
-                                    <span class="text">"{{ $comment['text'] }}"</span>
-                                    <span class="time">{{ $comment['time'] }}</span>
-                                @endforeach
+
                             </div>
                         </div>
                     </div>
@@ -117,10 +116,7 @@
                         <div class="card">
                             <div class="reviews">
                                 <h5 class="book_title">{{ $post['title'] }}</h5>
-                                @foreach ($post['comments'] as $comment)
-                                    <span class="text">"{{ $comment['text'] }}"</span>
-                                    <span class="time">{{ $comment['time'] }}</span>
-                                @endforeach
+
                             </div>
                         </div>
                     </div>
@@ -136,11 +132,7 @@
                 <button id="view-all-books" class="view-all-link">View All</button>
             </div>
             <div class="row" id="book-list">
-                @php
-                    usort($posts, function ($a, $b) {
-                        return $b['rating'] <=> $a['rating'];
-                    });
-                @endphp
+
 
                 @foreach (array_slice($posts, 0, 4) as $post)
                     <div class="col-md-3 mb-4 book-item">
@@ -150,18 +142,9 @@
                                 <h5 class="book-title">{{ $post['title'] }}</h5>
                                 <h6 class="book-author">{{ $post['author'] }}</h6>
                                 <div class="star-rating">
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        <i class="bi bi-star{{ $i <= $post['rating'] ? '-fill' : '' }}"></i>
-                                    @endfor
+
                                 </div>
-                                @foreach ($post['comments'] as $comment)
-                                    <div class="last-reader mt-3">
-                                        <img src="{{ asset('asset/images/renjun.png') }}" class="rounded-circle" width="24"
-                                            height="24" alt="Reader's Profile Picture">
-                                        <span class="reader">{{ $comment['reader'] }}</span>
-                                        <span class="time">{{ $comment['time'] }}</span>
-                                    </div>
-                                @endforeach
+
                             </div>
                         </div>
                     </div>
@@ -176,18 +159,9 @@
                                 <h5 class="book-title">{{ $post['title'] }}</h5>
                                 <h6 class="book-author">{{ $post['author'] }}</h6>
                                 <div class="star-rating">
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        <i class="bi bi-star{{ $i <= $post['rating'] ? '-fill' : '' }}"></i>
-                                    @endfor
+
                                 </div>
-                                @foreach ($post['comments'] as $comment)
-                                    <div class="last-reader mt-3">
-                                        <img src="{{ asset('asset/images/renjun.png') }}" class="rounded-circle" width="24"
-                                            height="24" alt="Reader's Profile Picture">
-                                        <span class="reader">{{ $comment['reader'] }}</span>
-                                        <span class="time">{{ $comment['time'] }}</span>
-                                    </div>
-                                @endforeach
+
                             </div>
                         </div>
                     </div>

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Book;
 
-class BooksController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,20 +33,9 @@ class BooksController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(string $id)
     {
-
-        $posts = $this->loadBooks();
-
-        $book = collect($posts)->firstWhere('bookID', $id);
-
-        if (!$book) {
-            abort(404);
-        }
-
-        return view('book-details', compact('book'));
-
-
+        //
     }
 
     /**
@@ -73,12 +61,4 @@ class BooksController extends Controller
     {
         //
     }
-
-    public function loadBooks()
-    {
-        $posts = Book::all()->toArray(); // Convert collection to array
-        // $slicedPosts = array_slice($posts, 0, 5); // Slice first 5 records
-        return $posts;
-    }
-
 }
