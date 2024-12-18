@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
     });
     
     Route::get('/home', [HomeController::class, 'index'])->name('home.index');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.show');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     
     
     Route::post('/logout', function () {
