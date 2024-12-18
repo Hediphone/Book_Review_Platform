@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Schema::create('reviews', function (Blueprint $table) {
-        //     $table->id('reviewID');
-        //     $table->unsignedBigInteger('userID');
-        //     $table->unsignedBigInteger('bookID');
-        //     $table->decimal('rating', 3, 2)->nullable();
-        //     $table->string('comment', 255)->nullable();
-        //     $table->timestamps();
+         Schema::create('reviews', function (Blueprint $table) {
+             $table->id('reviewID');
+             $table->unsignedBigInteger('userID');
+             $table->unsignedBigInteger('bookID');
+             $table->decimal('rating', 3, 2)->nullable();
+             $table->string('comment', 255)->nullable();
+             $table->timestamps();
 
         //     // Foreign keys
-        //     $table->foreign('bookID')->references('bookID')->on('books')->onDelete('cascade');
-        //     $table->foreign('userID')->references('userID')->on('users')->onDelete('cascade');
-        // });
+             $table->foreign('bookID')->references('bookID')->on('books')->onDelete('cascade');
+             $table->foreign('userID')->references('id')->on('users')->onDelete('cascade');
+         });
     }
 
     /**
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Schema::dropIfExists('reviews');
+         Schema::dropIfExists('reviews');
     }
 };

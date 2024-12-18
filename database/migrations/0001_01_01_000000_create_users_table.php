@@ -35,6 +35,11 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        Schema::table('sessions', function (Blueprint $table) {
+            $table->renameColumn('userID', 'user_id'); // Best if renaming is an option
+        });
+        
     }
 
     /**
