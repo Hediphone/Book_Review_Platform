@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         if (!Schema::hasTable('books')) {
             Schema::create('books', function (Blueprint $table) {
-                $table->id();
+                $table->id('bookID');
                 $table->string('title');
                 $table->string('author');
                 $table->string('genre');
