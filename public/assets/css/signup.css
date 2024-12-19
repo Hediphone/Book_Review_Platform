@@ -22,7 +22,7 @@ body {
     background-color: #FBF4E2;
     border-radius: 30px;
     height: auto;
-    width: 70%;
+    width: 50%;
 }
 
 .login {
@@ -110,9 +110,9 @@ body {
 .left-image{
     height: 190px;
     width: 190px;
-    margin-top: -90px;
-    margin-bottom: -90px;
-    margin-left: -25px;
+    margin-top: -180px;
+    margin-bottom: -160px;
+    margin-left: -20px;
 }
 
 .login1 {
@@ -121,8 +121,10 @@ body {
 }
 
 .acc{
-    margin-left: 310px;
+    margin-top: 20px;
     font-size: .6rem;
+    text-align: center;
+    width: 100%;
 }
 
 .social-icons i {
