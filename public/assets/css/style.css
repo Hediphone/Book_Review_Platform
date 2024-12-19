@@ -381,3 +381,12 @@ footer{
   text-decoration: none; /* Prevents underlining on hover */
   color: inherit; /* Keeps the color the same on hover */
 }
+
+/* Search Results */
+.results {
+  height: 70vh;
+}
+.results_container {
+  margin-top: 50px;
+  height: auto;
+}
