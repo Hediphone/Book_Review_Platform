@@ -21,7 +21,7 @@
 <body>
     <div class="dashboard_container">
         <div class="row">
-            <p class="login">Welcome Back</p>
+            <p class="login"><b>Welcome Back</b></p>
             <p class="sign">Login to Continue</p>
 
             @if(session()->has("success"))
@@ -73,7 +73,7 @@
                     <img src="{{ asset('asset/images/login/front.svg') }}" alt="Profile" class="left-image">
                 </div>
             </div>
-            <p class="acc">New User?<a href="{{route("register")}}" style="text-decoration: none"> Sign Up</a></p>
+            <p class="acc">New User?<a href="{{route("register")}}" style="text-decoration: none"> <b>Sign Up</b></a></p>
         </div>
     </div>
 

@@ -22,7 +22,7 @@
 <body>
     <div class="dashboard_container">
         <div class="row">
-            <p class="login">Welcome to BookBayarn!</p>
+            <p class="login"><b>Welcome to BookBayarn!</b></p>
             <p class="sign">Sign Up to Continue</p>
 
             @if(session()->has("success"))
