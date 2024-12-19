@@ -12,7 +12,7 @@ return new class extends Migration {
      {
           if (!Schema::hasTable('reviews')) {
                Schema::create('reviews', function (Blueprint $table) {
-                    $table->id('reviewID');
+                    $table->id();
                     $table->unsignedBigInteger('userID');
                     $table->unsignedBigInteger('bookID');
                     $table->decimal('rating', 3, 2)->nullable();
@@ -20,7 +20,7 @@ return new class extends Migration {
                     $table->timestamps();
 
                     //     // Foreign keys
-                    $table->foreign('bookID')->references('bookID')->on('books')->onDelete('cascade');
+                    $table->foreign('bookID')->references('id')->on('books')->onDelete('cascade');
                     $table->foreign('userID')->references('id')->on('users')->onDelete('cascade');
                });
           }

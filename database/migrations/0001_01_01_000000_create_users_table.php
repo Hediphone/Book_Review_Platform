@@ -17,7 +17,6 @@ return new class extends Migration {
                 $table->string('email')->unique();
                 $table->timestamp('email_verified_at')->nullable();
                 $table->string('password');
-                $table->rememberToken();
             });
         }
 
@@ -39,10 +38,6 @@ return new class extends Migration {
                 $table->integer('last_activity')->index();
             });
         }
-
-        Schema::table('sessions', function (Blueprint $table) {
-            $table->renameColumn('userID', 'user_id'); // Best if renaming is an option
-        });
 
     }
 
