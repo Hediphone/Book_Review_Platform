@@ -32,12 +32,17 @@
                                         <h5 class="book-title">{{ $book->title }}</h5>
                                         <h6 class="book-author">{{ $book->author }}</h6>
                                         <div class="star-rating">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                        </div>
+                            <span class="">{{ number_format($book->reviews_avg_rating, 1) }}</span>
+                                @for ($i = 0; $i < 5; $i++)
+                                    @if ($i < floor($book->reviews_avg_rating))
+                                        <i class="bi bi-star-fill filled"></i> <!-- Full star -->
+                                    @elseif ($i == floor($book->reviews_avg_rating) && $book->reviews_avg_rating - floor($book->reviews_avg_rating) >= 0.5)
+                                        <i class="bi bi-star-half"></i> <!-- Half star -->
+                                    @else
+                                        <i class="bi bi-star"></i> <!-- Empty star -->
+                                    @endif
+                                @endfor
+                            </div>
                                     </div>
                                 </a>
                             </div>

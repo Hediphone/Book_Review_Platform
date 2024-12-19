@@ -29,10 +29,13 @@
         <div class="row align-items-center justify-content-between">
             <!-- Logo/Title -->
             <div class="col-md-3">
-                <h1 class="h4">
-                    <span class="text-pri">Book</span><span class="text-sec">Bayarn!</span>
-                </h1>
+                <a href="/home" style="text-decoration: none;">
+                    <h1 class="h4">
+                        <span class="text-pri">Book</span><span class="text-sec">Bayarn!</span>
+                    </h1>
+                </a>
             </div>
+
 
             <!-- Search Form -->
             <form class="col-md-5 d-flex justify-content-center" action="{{ route('books.search') }}" method="GET">
@@ -45,7 +48,7 @@
                 </div>
             </form>
 
-            @if (Request::is('home*') || Request::is('dashboard') || Request::is('browse*'))
+            @if (Request::is('home*') || Request::is('dashboard') || Request::is('browse*') || Request::is('search'))
             <div class="col-md-4 d-flex justify-content-end align-items-center">
             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                 @csrf

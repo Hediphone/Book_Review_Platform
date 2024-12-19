@@ -11,20 +11,37 @@ class Review extends Model
 
     protected $table = 'reviews';
 
-    public $primaryKey = 'id';
+    protected $primaryKey = 'reviewID';  // Change this if your primary key is not 'id'
+
 
     public $timestamps = true;
 
     // Define the inverse of the one-to-many relationship with Book
     protected $fillable = ['user_id', 'book_id', 'rating', 'comment'];
 
+    
+    
+    
+     // Define the relationship for replies
+
     public function user()
     {
         return $this->belongsTo(User::class, 'userID');
     }
 
+    public function replies()
+    {
+        return $this->hasMany(Reply::class, 'review_id');  // 'review_id' is the foreign key in the replies table
+    }
+
+
     public function book()
     {
         return $this->belongsTo(Book::class, 'bookID');
     }
+    public function reviews()
+{
+    return $this->hasMany(Review::class, 'bookID');
+}
+
 }

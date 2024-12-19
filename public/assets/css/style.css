@@ -269,7 +269,7 @@ footer{
   font-size: small;
 }
 
-.book-details-section{
+.book-details-section, .book-review-section{
   padding:0px 130px 0px 130px;
   margin-top:30px;
   margin-bottom:100px;
@@ -280,7 +280,6 @@ footer{
   border-radius: 5px;
   padding:30px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  
 }
 
 .book-details-image{
@@ -437,6 +436,7 @@ footer{
 
 .results {
   height: auto;
+  padding:0px 130px 0px 130px;
 }
 .results_container {
   margin-top: 50px;
@@ -445,4 +445,90 @@ footer{
 }
 .noResult_container {
   height: 33vh;
+  padding:0px 130px 0px 130px;
+}
+
+
+.star-rating-graph{
+  border-radius: 8px;
+  box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px ;
+  padding:20px 30px;
+}
+
+.progress-bar{
+  background-color:#B4D51E !important;
+}
+
+
+#username-review{
+    margin-left: 7px;
+    margin-top: 7px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#star{
+  margin-left: 5px;
+}
+
+
+
+.text-muted{
+  color:#828282;
+  font-size:12px;
+  font-family: "Inter","Sans-serif";
+  margin-left: 8px;
+}
+
+.review-content{
+  font-size: small;
+  margin-left:7px;
+  margin-top: 10px;;
+  font-style: italic;
+}
+
+
+#icon-review{
+  margin-top: 10px;
+  margin-left:6px;
+}
+
+.btn-link{
+  color:#333 !important;
+  font-size:  x-small!important;
+}
+
+.button-spacing {
+  margin-right: 10px; /* Adjust value as needed */
+}
+
+
+.reply-item{
+  margin-left: 20px;
+}
+
+.add-review h5{
+  font-size:14px;
+}
+
+#submit{
+    border-radius: 20px;
+    width:160px;
+    background-color: #B4D51E;
+    color: #ffffff;
+    border: none;
+    font-family: "Merriweather", Helvetica;
+    font-size: 14px;
+}
+
+
+#review-text{
+  border-radius: 10px;
+  background-color: 	#F8F8F8;
+  padding:20px;
+  font-size: 13px;
+}
+
+.add-review{
+  font-size: 14px;
 }

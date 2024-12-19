@@ -77,4 +77,25 @@ Route::middleware('auth')->group(function () {
     // nakabased to sa released at column sa books since latest books siya, see logic sa method niya
 
 
+
+
+    Route::get('/browse-books/{genre}/book-detail/{id}', function ($genre, $id) {
+        // Retrieve book details from BooksController
+        $booksController = new BooksController();
+        $bookDetails = $booksController->show($genre, $id);  // Pass both genre and id
+        
+        // Retrieve reviews from ReviewController
+        $reviewController = new ReviewController();
+        $ratings = $reviewController->showRatings($genre, $id);  // Pass both genre and id
+        
+        // Merge data from both controllers and pass to the view
+        return view('books.book-details', array_merge($bookDetails->getData(), $ratings->getData(), ['genre' => $genre, 'id' => $id]));
+    })->name('books.bookDetail');
+    
+    Route::post('/browse-books/{genre}/book-detail/{id}/reply/{review_id}', [ReviewController::class, 'addReply'])->name('reviews.reply');
+
+    Route::post('/book/{id}/review', [ReviewController::class, 'store'])->name('reviews.store');
+
+
+
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Book;
+use App\Models\Review;
 use Illuminate\Support\Facades\DB;
 
 class BooksController extends Controller
@@ -37,11 +38,8 @@ class BooksController extends Controller
      */
     public function show($genre, $id)
     {
-
-        $posts = $this->loadBooks(); // Assuming this loads all books
-    
-        // Find the book by ID
-        $book = collect($posts)->firstWhere('bookID', $id);
+        // Retrieve the book by ID using Eloquent's find() method
+        $book = Book::find($id);
     
         // If the book is not found, return 404
         if (!$book) {
@@ -49,14 +47,14 @@ class BooksController extends Controller
         }
     
         // Validate that the book belongs to the given genre
-        if ($book['genre'] !== $genre) {
+        if ($book->genre !== $genre) {
             abort(404, 'Genre mismatch');
         }
     
         // Pass the book and genre to the view
         return view('books.book-details', compact('book', 'genre'));
-    
     }
+    
 
     
     /**
@@ -157,9 +155,11 @@ class BooksController extends Controller
         $books = Book::where('title', 'like', '%' . $query . '%')
                      ->orWhere('author', 'like', '%' . $query . '%')
                      ->orWhere('genre', 'LIKE', '%' . $query . '%')
+                     ->withAvg('reviews', 'rating') // Fetch the average rating
                      ->get();
 
         // Return the search results to a view (you can customize this view)
-        return view('search-results', compact('books'));
+        return view('books.search-results', compact('books'));
     }
+
 }
