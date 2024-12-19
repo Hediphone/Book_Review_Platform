@@ -26,7 +26,7 @@
                     @foreach ($books as $book)
                         <div class="col-md-3 mb-4">
                             <div class="card">
-                                <a href="{{ route('books.show', $book->id) }}">
+                            <a href="{{ route('books.bookDetail', ['genre' => $book->genre, 'id' => $book->bookID]) }}">
                                     <img src="{{ $book->cover }}" class="card-img-top" alt="Book Cover">
                                     <div class="card-body">
                                         <h5 class="book-title">{{ $book->title }}</h5>
