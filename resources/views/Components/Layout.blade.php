@@ -5,22 +5,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i"
+        rel="stylesheet">
     <link href="{{ asset('assets/css/layout.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/styleguide.css') }}" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/helvetica-neue-5" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=McLaren&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     @yield('styles')
 </head>
 
 <body>
-<!-- Header -->
-<header class="container-fluid py-3">
+    <!-- Header -->
+    <header class="container-fluid py-3">
         <div class="row align-items-center justify-content-between">
             <!-- Logo/Title -->
             <div class="col-md-3">
@@ -30,9 +35,10 @@
             </div>
 
             <!-- Search Form -->
-            <form class="col-md-5 d-flex justify-content-center" action="your_search_action_url" method="GET">
+            <form class="col-md-5 d-flex justify-content-center" action="{{ route('books.search') }}" method="GET">
                 <div class="input-group">
-                    <input type="text" class="form-control" id="custom-input" placeholder="Find the book you are looking for..." aria-label="Search">
+                    <input type="text" name="search" class="form-control" id="custom-input"
+                        placeholder="Find the book you are looking for..." aria-label="Search">
                     <button type="submit" class="btn input-group-text">
                         <i class="bi bi-search"></i>
                     </button>
@@ -62,7 +68,7 @@
     </header>
 
     @yield('content')
-    
+
     <!-- Footer -->
     <footer class="">
         <div class="container">
@@ -105,4 +111,5 @@
 
     @yield('scripts')
 </body>
+
 </html>

@@ -6,10 +6,18 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LandingPageController;
-
+use App\Http\Controllers\ReviewController;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 
+Route::get('/search', [BooksController::class, 'search'])->name('books.search');
+
+Route::get('/modals/add-book', function () {
+    return view(view: 'modals.add-book');
+});
+Route::get('/modals/edit-book', function () {
+    return view(view: 'modals.edit-book');
+});
 
 // Authentication Routes (only for guests)
 Route::middleware('guest')->group(function () {
@@ -31,8 +39,8 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/home', [HomeController::class, 'index'])->name('home.index');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-    
-    
+    Route::get('/reviews', [ReviewController::class, 'show']);
+
     Route::post('/logout', function () {
         auth()->logout(); // Logs out the user
         return redirect(route('landing-page'));

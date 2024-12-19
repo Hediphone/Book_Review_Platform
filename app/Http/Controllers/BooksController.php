@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Book;
+use Illuminate\Support\Facades\DB;
 
 class BooksController extends Controller
 {
@@ -36,6 +37,7 @@ class BooksController extends Controller
      */
     public function show($genre, $id)
     {
+
         $posts = $this->loadBooks(); // Assuming this loads all books
     
         // Find the book by ID
@@ -53,6 +55,7 @@ class BooksController extends Controller
     
         // Pass the book and genre to the view
         return view('books.book-details', compact('book', 'genre'));
+    
     }
 
     
@@ -145,12 +148,18 @@ class BooksController extends Controller
             return view('books.show-books-by-release', compact('latestBooks'));
     }
 
+    public function search(Request $request)
+    {
+        // Get the search query from the request
+        $query = $request->input('search');
 
+        // If a search query is provided, filter the books based on the title or author
+        $books = Book::where('title', 'like', '%' . $query . '%')
+                     ->orWhere('author', 'like', '%' . $query . '%')
+                     ->orWhere('genre', 'LIKE', '%' . $query . '%')
+                     ->get();
 
-    
-  
-  
-
-
-    
+        // Return the search results to a view (you can customize this view)
+        return view('search-results', compact('books'));
+    }
 }

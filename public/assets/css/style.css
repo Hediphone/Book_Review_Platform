@@ -435,5 +435,14 @@ footer{
   text-decoration: none; /* No underline on hover */
 }
 
-
-
+.results {
+  height: auto;
+}
+.results_container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: auto;
+}
+.noResult_container {
+  height: 33vh;
+}
