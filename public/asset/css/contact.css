@@ -21,7 +21,6 @@ p {
 }
 
 .container {
-    max-width: 700px!important;
     margin: 0 auto;
     padding: 60px;
     border: 2px solid #FBF4E2;
@@ -52,7 +51,7 @@ label {
 textarea {
     font-size: 0.9em;
     width: 100%;
-    resize: none;
+    resize: none !important;
     padding: 10px 15px;
     border: 1px solid #FBF4E2;
     border-radius: 10px;
