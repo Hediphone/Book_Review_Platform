@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <x-navbar />
+    <x-navbar/>
 
     <section class="book-details-section">
         <div class="container">
@@ -35,7 +35,7 @@
 @endphp
 
 @foreach ($genres as $genre)
-    <a href="#" class="genre-item">{{ $genre }}</a>
+    <a href="#" class="genre-itemm">{{ $genre }}</a>
     @if (!$loop->last)
         &nbsp;
     @endif

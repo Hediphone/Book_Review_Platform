@@ -18,7 +18,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item mx-2">
-                    <a class="nav-link {{ Request::is(patterns: 'home') ? 'active' : '' }}" href="/home">Home</a>
+                    <a class="nav-link {{ Request::is('home*') ? 'active' : '' }}" href="/home">Home</a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a class="nav-link {{ Request::is('browse*') ? 'active' : '' }}" href="/browse">Browse Books</a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">Dashboard</a>
@@ -26,9 +29,7 @@
                 <li class="nav-item mx-2">
                     <a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="/contact">Contact Us</a>
                 </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link {{ Request::is('blog') ? 'active' : '' }}" href="#">Blog</a>
-                </li>
+               
             </ul>
         </div>
     </div>

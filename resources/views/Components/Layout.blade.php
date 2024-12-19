@@ -39,7 +39,7 @@
                 </div>
             </form>
 
-            @if (Request::is('home') || Request::is('dashboard'))
+            @if (Request::is('home*') || Request::is('dashboard') || Request::is('browse*'))
             <div class="col-md-4 d-flex justify-content-end align-items-center">
             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                 @csrf

@@ -11,35 +11,36 @@
 <section class="popular-now-section">
     <div class="container">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h3 class="text-left">Popular Now</h3>
-            <a href="" class="view-all-link">View All</a>
+            <h3 class="text-left">Top Rated & Popular Now</h3>
+            <a href="{{ route('view-all.rating.show', ['genre' => 'popular']) }}" class="view-all-link">View All</a>
         </div>
 
         <div class="row">
-            @foreach (array_slice($posts, 0, 4) as $post)
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <a href="{{ route('books.show', $post['bookID']) }}">
-                            <img src="{{ asset($post['cover']) }}" class="card-img-top" alt="Book Cover">
-                            <div class="card-body">
-                                <h5 class="book-title">{{ $post['title'] }}</h5>
-                                <h6 class="book-author">{{ $post['author'] }}</h6>
-                                
-                                    <div class="star-rating">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </div>
-
-                                
-                               
+        @foreach ($popularNow as $book)
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <a href="{{ route('books.bookDetail', ['genre' => $book->genre, 'id' => $book->bookID]) }}">
+                        <img src="{{ asset($book->cover) }}" class="card-img-top" alt="Book Cover">
+                        <div class="card-body">
+                            <h5 class="book-title">{{ $book->title }}</h5>
+                            <h6 class="book-author">{{ $book->author }}</h6>
+                            <div class="star-rating">
+                            <span class="">{{ number_format($book->reviews_avg_rating, 1) }}</span>
+                                @for ($i = 0; $i < 5; $i++)
+                                    @if ($i < floor($book->reviews_avg_rating))
+                                        <i class="bi bi-star-fill filled"></i> 
+                                    @elseif ($i == floor($book->reviews_avg_rating) && $book->reviews_avg_rating - floor($book->reviews_avg_rating) >= 0.5)
+                                        <i class="bi bi-star-half"></i>>
+                                    @else
+                                        <i class="bi bi-star"></i> 
+                                    @endif
+                                @endfor
                             </div>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
-            @endforeach
+            </div>
+        @endforeach
         </div>
     </div>
 </section>
@@ -48,33 +49,34 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h3 class="text-left">Latest Books</h3>
-            <a href="" class="view-all-link">View All</a>
+            <a href="{{ route('view-all.latest-release.show', ['genre' => 'latest']) }}" class="view-all-link">View All</a>
         </div>
-
         <div class="row">
-            @foreach (array_slice($posts, 4, 4) as $post)
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <a href="{{ route('books.show', $post['bookID']) }}">
-                            <img src="{{ $post['cover'] }}" class="card-img-top" alt="Book Cover">
-                            <div class="card-body">
-                                <h5 class="book-title">{{ $post['title'] }}</h5>
-                                <h6 class="book-author">{{ $post['author'] }}</h6>
-                                
-                                    <div class="star-rating">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </div>
-
-                                
+        @foreach ($latestBooks as $book)
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <a href="{{ route('books.bookDetail', ['genre' => $book->genre, 'id' => $book->bookID]) }}">
+                        <img src="{{ asset($book->cover) }}" class="card-img-top" alt="Book Cover">
+                        <div class="card-body">
+                            <h5 class="book-title">{{ $book->title }}</h5>
+                            <h6 class="book-author">{{ $book->author }}</h6>
+                            <div class="star-rating">
+                            <span class="">{{ number_format($book->reviews_avg_rating, 1) }}</span>
+                                @for ($i = 0; $i < 5; $i++)
+                                    @if ($i < floor($book->reviews_avg_rating))
+                                        <i class="bi bi-star-fill filled"></i> <!-- Full star -->
+                                    @elseif ($i == floor($book->reviews_avg_rating) && $book->reviews_avg_rating - floor($book->reviews_avg_rating) >= 0.5)
+                                        <i class="bi bi-star-half"></i> <!-- Half star -->
+                                    @else
+                                        <i class="bi bi-star"></i> <!-- Empty star -->
+                                    @endif
+                                @endfor
                             </div>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
-            @endforeach
+            </div>
+        @endforeach
         </div>
     </div>
 </section>

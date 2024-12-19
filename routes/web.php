@@ -42,6 +42,31 @@ Route::middleware('auth')->group(function () {
     Route::get('/home/content', [BooksController::class, 'loadBooks'])->name('home.books');
     Route::get('/dashboard/content', [BooksController::class, 'loadBooks'])->name('dashboard.books');
     
-    Route::get('/books/{id}', [BooksController::class, 'show'])->name('books.show');
+
+
+    
+    Route::get('/browse', [BooksController::class, 'showByGenre'])->name('books.byGenre');
+    //will trigger the showByGenre method ng BookController, yung showByGenre will fetch all the genres first (parang naka group by para one instance lang per genre)
+    //after that it will pass variable sa method niya tas yung unique genres nasa taas parang category (referring sa browse view)
+    //then each genre naka loop siya will display the books related dun sa genre (limit 4)
+
+
+    Route::get('/browse-books/{genre}/book-detail/{id}', [BooksController::class, 'show'])->name('books.bookDetail');
+    //will return yung details ng book
+
+    
+    Route::get('/browse-books/{genre}', [BooksController::class, 'showGenre'])->name('books.browse.genre');
+    //yung category sa browse view pag clinick yung genre it will show all the books to that genre (view rendered is show-books-by-genre)
+
+
+    Route::get('/browse-books/view-all/{genre}', [BooksController::class, 'showGenre'])->name('view-all.genre.show');
+    //sa browse view , since nakalimit sa 4 ang books per genre pag clinick view all maggashow lahat ng books to that genre
+
+    Route::get('/browse/books/view-all/rating/{genre}', [BooksController::class, 'showbyRating'])->name('view-all.rating.show');
+    // sa home ito since nandun yung popular now, naka based yun sa rating ng user, (averega rating) see logic nalang sa showbyratingmethod
+
+    Route::get('/browse/books/view-all/release-date/{genre}', [BooksController::class, 'showbyReleaseDate'])->name('view-all.latest-release.show');
+    // nakabased to sa released at column sa books since latest books siya, see logic sa method niya
+
 
 });

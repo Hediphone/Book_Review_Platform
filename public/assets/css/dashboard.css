@@ -250,11 +250,14 @@ h3 {
     color: #828282;
     outline: none;
 }
+.view-all-link{
+    color:#828282;
+  }
+  .view-all-link:hover {
+      text-decoration: none;
+  }
 
-.view-all-link:hover {
-    color: #0056b3;  
-    text-decoration: underline; 
-}
+
 
 .view-all-link:focus {
     outline: none; 
@@ -273,11 +276,11 @@ h3 {
 
 
 
-.book-title {
+.book-title,.release-date{
     color: #000;
 }
 
-.book-author {
+.book-author,.release-date {
     color: #828282;
     font-size: small;
 }

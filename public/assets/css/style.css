@@ -23,6 +23,7 @@
     padding: 0;
   }
   
+  
 
 
   header.container-fluid.py-3{
@@ -185,13 +186,20 @@ h3{
   color:#463C74;
   font-family: "Meriweather";
   font-weight:600 !important;
-
-
 }
+
+.genre-list-section{
+    padding:0px 130px 0px 130px;
+}
+
 
 .view-all-link{
   color:#828282;
 }
+.view-all-link:hover {
+    text-decoration: none;
+}
+
 
 
 .card-img-top {
@@ -203,7 +211,7 @@ h3{
 
 
 
-.book-author{
+.book-author,.release-date{
   color:#828282;
   font-size: small;
 }
@@ -228,11 +236,20 @@ h3{
 
 
 
-.latest-books-section{
+.latest-books-section, .genre-section,.rating-section{
   padding:0px 130px 0px 130px;
   margin-top:30px;
   margin-bottom:100px;
 }
+
+.genre-section{
+  margin-bottom: 10px !important;
+}
+.breadcrumb{
+  margin-left: 130px;
+  margin-right: 130px;
+}
+
 
 
 footer{
@@ -352,7 +369,7 @@ footer{
 }
 
 
-.genre-item {
+.genre-itemm {
   text-decoration: none; /* Remove default underline */
   color: #4b4c4d; /* Set the link color (blue) */
   padding-bottom: 2px; /* Make space for the underline */
@@ -361,7 +378,7 @@ footer{
   transition: all 0.3s ease; /* Smooth transition for hover effect */
 }
 
-.genre-item:hover {
+.genre-itemm:hover {
   color: #0056b3; /* Darker blue on hover */
   text-decoration: underline; /* Underline appears on hover */
 }
@@ -381,3 +398,42 @@ footer{
   text-decoration: none; /* Prevents underlining on hover */
   color: inherit; /* Keeps the color the same on hover */
 }
+
+
+.genre-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  margin: 8px;
+  background-color: #f8f9fa;
+  border-radius: 10px; /* Rounded shape */
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  font-weight:400;
+  color: #212529;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+
+}
+
+.genre-item:hover {
+  background-color: #cbe45b; /* Change background on hover */
+  color: white; /* Change text color on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+  text-decoration: none;
+}
+
+.genre-item a {
+  color: inherit; /* Use the same color as the item */
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+
+.genre-item a:hover {
+  color: inherit; /* Ensure the color remains the same on hover */
+  text-decoration: none; /* No underline on hover */
+}
+
+
+

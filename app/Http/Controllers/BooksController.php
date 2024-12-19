@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Book;
 
 class BooksController extends Controller
@@ -12,7 +13,6 @@ class BooksController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -34,22 +34,28 @@ class BooksController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($genre, $id)
     {
-
-        $posts = $this->loadBooks();
-
+        $posts = $this->loadBooks(); // Assuming this loads all books
+    
+        // Find the book by ID
         $book = collect($posts)->firstWhere('bookID', $id);
-
+    
+        // If the book is not found, return 404
         if (!$book) {
             abort(404);
         }
-
-        return view('book-details', compact('book'));
-
-
+    
+        // Validate that the book belongs to the given genre
+        if ($book['genre'] !== $genre) {
+            abort(404, 'Genre mismatch');
+        }
+    
+        // Pass the book and genre to the view
+        return view('books.book-details', compact('book', 'genre'));
     }
 
+    
     /**
      * Show the form for editing the specified resource.
      */
@@ -80,5 +86,71 @@ class BooksController extends Controller
         // $slicedPosts = array_slice($posts, 0, 5); // Slice first 5 records
         return $posts;
     }
+    
 
+    public function browse()
+    {
+            return view('books.browse');
+    }
+    
+    public function showByGenre()
+    {
+        $genres = Book::select('genre')->distinct()->get(); // This fetches unique genres
+        
+        // Group books by genre and include the average rating for each book
+        $booksByGenre = [];
+        foreach ($genres as $genre) {
+            // Fetch books by genre and calculate the average rating
+            $booksByGenre[$genre->genre] = Book::where('genre', $genre->genre)
+                ->withAvg('reviews', 'rating')  // Calculate the average rating from the 'reviews' relationship
+                ->take(4)  // Limit to the first 4 books
+            ->get();
+    }
+        // Return the view with both genres and books grouped by genre
+        return view('books.browse', compact('booksByGenre', 'genres'));
+    }
+
+    
+    public function showGenre($genre)
+    {
+        // Fetch books based on the genre and calculate the average rating for each book
+        $booksByGenre = Book::where('genre', $genre)
+            ->withAvg('reviews', 'rating')  // Calculate the average rating from the 'reviews' relationship
+            ->get();
+
+            // Pass the genre and books to the view
+            return view('books.show-books-by-genre', compact('booksByGenre', 'genre'));
+    }
+
+
+    public function showByRating()
+    {
+            // Fetch books based on average rating, ordered by the rating in descending order
+            $booksByRating = Book::withAvg('reviews', 'rating')  // Calculate the average rating from the 'reviews' relationship
+                ->orderByDesc('reviews_avg_rating')  // Sort by average rating in descending order
+                ->get();  // Get the books
+
+            // Pass the books to the view
+            return view('books.show-books-by-rating', compact('booksByRating'));
+    }
+
+    public function showByReleaseDate()
+    {
+            // Fetch the latest books based on release_date
+            $latestBooks = Book::withAvg('reviews', 'rating')  // Calculate the average rating from the 'reviews' relationship
+                ->orderBy('release_date', 'desc')  // Order by release_date (newest first)
+                ->get();  // Get all books
+
+            // Pass the books to the view
+            return view('books.show-books-by-release', compact('latestBooks'));
+    }
+
+
+
+    
+  
+  
+
+
+    
 }

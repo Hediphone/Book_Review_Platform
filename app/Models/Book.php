@@ -11,9 +11,14 @@ class Book extends Model
 
     protected $table = 'books';
 
-    public $primaryKey = 'id';
+    public $primaryKey = 'bookID';
 
     public $timestamps = true;
 
+    // Define the one-to-many relationship with Review
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'bookID');  // The 'bookID' is the foreign key in the 'reviews' table
+    }
     
 }
