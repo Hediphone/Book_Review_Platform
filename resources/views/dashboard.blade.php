@@ -13,13 +13,13 @@
         <div class="container">
             <div class="dashboard_container">
                 <div class="row">
-                    <div class="col-md-3 rf_margin">
+                    <div class="col-md-3">
                         <div class="profile_container">
                             <div class="profile_pic">
                                 <img src="assets/images/renjun.png">
                             </div>
                             <div class="username">
-                                <p class="username">{{ Auth::user()->name }}</p>
+                                <p class="username"><b>{{ Auth::user()->name }}</b></p>
                             </div>
                         </div>
                     </div>
@@ -27,29 +27,24 @@
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <div class="profile_details">
-                                    <div class="rectangle">
-                                        <p class="numbers">100</p>
-                                        <p class="txt">Books</p>
-                                    </div>
+                                    <p class="numbers"><b>100</b></p>
+                                    <p class="txt">Books</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="profile_details">
-                                    <div class="rectangle">
-                                        <p class="numbers">1, 245</p>
-                                        <p class="txt">Friends</p>
-                                    </div>
+                                    <p class="numbers"><b>1, 245</b></p>
+                                    <p class="txt">Friends</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="profile_details">
-                                    <div class="rectangle">
-                                        <p class="numbers">8</p>
-                                        <p class="txt">Following</p>
-                                    </div>
+                                    <p class="numbers"><b>8</b></p>
+                                    <p class="txt">Following</p>
                                 </div>
                             </div>
                         </div>
+                        <hr color="B4D51E">
                         <div class="row left_pd">
                             <div class="col-md-12">
                                 <p class="register_date">Joined in November 1, 2024</p>
@@ -58,27 +53,25 @@
                             </div>
                         </div>
                         <div class="row g-0">
-                            <p class="mybookshelves">My Bookshelves</p>
+                            <p class="mybookshelves"><b>My Bookshelves</b></p>
                             <div class="w-100"></div>
                             <div class="col-md-4 justify_right">
                                 <div class="profile_details">
                                     <div class="rectangle">
-                                        <p>Reviewed</p>
-                                        <p class="txt">(01)</p>
+                                        <p class="text">Reviewed (01)</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 justify_left">
                                 <div class="profile_details">
                                     <div class="rectangle">
-                                        <p>Favorites</p>
-                                        <p class="txt">(01)</p>
+                                        <p class="text">Favorites (01)</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 rf_margin">
+                    <div class="col-md-3">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="fave_book_container">
