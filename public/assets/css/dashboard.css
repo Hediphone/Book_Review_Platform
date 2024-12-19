@@ -106,6 +106,7 @@ main {
     color: #556800;
     font-size: 15px;
 }
+
 .fave_genres {
     color: #556800;
     margin-bottom: 0;
@@ -163,31 +164,31 @@ main {
     height: 100%;
     border-radius: 5px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    
+
     transition: transform 0.3s ease-in-out;
 }
 
 .reviews:hover {
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
 
 .reviews .book_title {
-    font-size: 18px;  
-    font-weight: bold; 
-    color: #2C3E50;  
-    margin-bottom: 10px; 
+    font-size: 18px;
+    font-weight: bold;
+    color: #2C3E50;
+    margin-bottom: 10px;
 }
 
 .reviews .text {
     font-size: 14px;
     font-style: italic;
-    color: #7F8C8D;  
-    font-weight: 300; 
+    color: #7F8C8D;
+    font-weight: 300;
 }
 
 .reviews .time {
     font-size: 12px;
-    color: #BDC3C7;  
+    color: #BDC3C7;
     font-weight: 300;
     margin-top: 10px;
 }
@@ -265,12 +266,12 @@ h3 {
 }
 
 .view-all-link:hover {
-    color: #0056b3;  
-    text-decoration: underline; 
+    color: #0056b3;
+    text-decoration: underline;
 }
 
 .view-all-link:focus {
-    outline: none; 
+    outline: none;
 }
 
 .card-img-top {
@@ -330,4 +331,19 @@ h3 {
 
 .hidden {
     display: none !important;
+}
+
+.card a {
+    text-decoration: none;
+    color: inherit;
+    /* Ensures it inherits the color from its parent or the current context */
+}
+
+
+.card a:hover,
+.card a:focus {
+    text-decoration: none;
+    /* Prevents underlining on hover */
+    color: inherit;
+    /* Keeps the color the same on hover */
 }

@@ -130,12 +130,19 @@
                 @foreach (array_slice($posts, 0, 4) as $post)
                     <div class="col-md-3 mb-4 book-item">
                         <div class="card">
+                        <a href="{{ route('books.show', $post['id']) }}">
                             <img src="{{ $post['cover'] }}" class="card-img-top" alt="Book Cover">
                             <div class="card-body">
                                 <h5 class="book-title">{{ $post['title'] }}</h5>
                                 <h6 class="book-author">{{ $post['author'] }}</h6>
                                 <div class="star-rating">
-
+                                <div class="star-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
                                 </div>
 
                             </div>
@@ -152,7 +159,13 @@
                                 <h5 class="book-title">{{ $post['title'] }}</h5>
                                 <h6 class="book-author">{{ $post['author'] }}</h6>
                                 <div class="star-rating">
-
+                                <div class="star-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
                                 </div>
 
                             </div>
