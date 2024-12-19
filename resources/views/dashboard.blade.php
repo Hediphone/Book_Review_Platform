@@ -154,6 +154,7 @@
                 @foreach (array_slice($posts, 4) as $post)
                     <div class="col-md-3 mb-4 book-item hidden">
                         <div class="card">
+                        <a href="{{ route('books.show', $post['id']) }}">
                             <img src="{{ $post['cover'] }}" class="card-img-top" alt="Book Cover">
                             <div class="card-body">
                                 <h5 class="book-title">{{ $post['title'] }}</h5>
