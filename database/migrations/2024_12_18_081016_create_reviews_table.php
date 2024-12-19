@@ -13,16 +13,16 @@ return new class extends Migration {
           if (!Schema::hasTable('reviews')) {
                Schema::create('reviews', function (Blueprint $table) {
                     $table->id();
-                    $table->unsignedBigInteger('user_id');
-                    $table->unsignedBigInteger('book_id');
+                    $table->unsignedBigInteger('userID');
+                    $table->unsignedBigInteger('bookID');
                     $table->decimal('rating', 3, 2)->nullable();
                     $table->string('comment', 255)->nullable();
                     $table->timestamps();
-
-                    //     // Foreign keys
-                    $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
-                    $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-               });
+                
+                    $table->foreign('bookID')->references('id')->on('books')->onDelete('cascade');
+                    $table->foreign('userID')->references('id')->on('users')->onDelete('cascade');
+                });
+                
           }
      }
 
