@@ -384,9 +384,13 @@ footer{
 
 /* Search Results */
 .results {
-  height: 70vh;
+  height: auto;
 }
 .results_container {
   margin-top: 50px;
+  margin-bottom: 50px;
   height: auto;
+}
+.noResult_container {
+  height: 33vh;
 }
