@@ -27,19 +27,19 @@
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <div class="profile_details">
-                                    <p class="numbers"><b>100</b></p>
+                                    <p class="numbers"><b>{{ Auth::user()->books_count ?? 0 }}</b></p>
                                     <p class="txt">Books</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="profile_details">
-                                    <p class="numbers"><b>1, 245</b></p>
+                                    <p class="numbers"><b>{{ Auth::user()->friends_count ?? 0 }}</b></p>
                                     <p class="txt">Friends</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="profile_details">
-                                    <p class="numbers"><b>8</b></p>
+                                    <p class="numbers"><b>{{ Auth::user()->following_count ?? 0 }}</b></p>
                                     <p class="txt">Following</p>
                                 </div>
                             </div>
@@ -47,9 +47,9 @@
                         <hr color="B4D51E">
                         <div class="row left_pd">
                             <div class="col-md-12">
-                                <p class="register_date">Joined in November 1, 2024</p>
+                                <p class="register_date">Joined in {{ Auth::user()->created_at->format('F j, Y') }}</p>
                                 <p class="fave_genres">Favorite Genres</p>
-                                <p class="genres">Romance, Mystery/Thriller, Fantasy, Science Fiction, +5 More</p>
+                                <p class="genres">{{ Auth::user()->favorite_genres }}</p>
                             </div>
                         </div>
                         <div class="row g-0">
@@ -58,14 +58,14 @@
                             <div class="col-md-4 justify_right">
                                 <div class="profile_details">
                                     <div class="rectangle">
-                                        <p class="text">Reviewed (01)</p>
+                                        <p class="text">Reviewed ({{ Auth::user()->reviews ?? 0 }})</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 justify_left">
                                 <div class="profile_details">
                                     <div class="rectangle">
-                                        <p class="text">Favorites (01)</p>
+                                        <p class="text">Favorites ({{ Auth::user()->favorites ?? 0 }})</p>
                                     </div>
                                 </div>
                             </div>
