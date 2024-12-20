@@ -14,8 +14,7 @@ class ReviewsTableSeeder extends Seeder
 {
     DB::table('reviews')->insert([
         [
-            'id' => 1,
-            'user_id' => 2,
+            'userID' => 2,
             'bookID' => 1,
             'rating' => 5,
             'comment' => "A gripping dystopian novel that keeps you on the edge of your seat. Katniss's journey is both heart-wrenching and inspiring.",
@@ -23,8 +22,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 2,
-            'user_id' => 3,
+            'userID' => 3,
             'bookID' => 2,
             'rating' => 4,
             'comment' => "The sequel to The Hunger Games surpasses the first book with more intense action and deeper character development.",
@@ -32,8 +30,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 3,
-            'user_id' => 4,
+            'userID' => 4,
             'bookID' => 3,
             'rating' => 4,
             'comment' => "A powerful conclusion to the trilogy that explores the complexities of war and sacrifice, though it leaves you with mixed emotions.",
@@ -41,8 +38,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 4,
-            'user_id' => 5,
+            'userID' => 5,
             'bookID' => 4,
             'rating' => 4,
             'comment' => "An intriguing world with a strong, independent heroine, though the pacing slows down at times.",
@@ -50,8 +46,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 5,
-            'user_id' => 6,
+            'userID' => 6,
             'bookID' => 5,
             'rating' => 4,
             'comment' => "A thrilling continuation with unexpected twists and deeper world-building. The stakes are raised higher.",
@@ -59,8 +54,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 6,
-            'user_id' => 7,
+            'userID' => 7,
             'bookID' => 6,
             'rating' => 3,
             'comment' => "An emotional rollercoaster that ties up the series, though the ending is polarizing for many readers.",
@@ -68,8 +62,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 7,
-            'user_id' => 8,
+            'userID' => 8,
             'bookID' => 7,
             'rating' => 4,
             'comment' => "A fast-paced thriller with mystery and action that keeps you guessing until the very end.",
@@ -77,8 +70,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 8,
-            'user_id' => 9,
+            'userID' => 9,
             'bookID' => 8,
             'rating' => 4,
             'comment' => "A worthy follow-up to The Maze Runner. The Scorch Trials add even more danger and excitement to the series.",
@@ -86,8 +78,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 9,
-            'user_id' => 10,
+            'userID' => 10,
             'bookID' => 9,
             'rating' => 4,
             'comment' => "A satisfying conclusion to the Maze Runner series that ties up all loose ends, though it can be a bit predictable at times.",
@@ -95,8 +86,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 10,
-            'user_id' => 11,
+            'userID' => 11,
             'bookID' => 10,
             'rating' => 4,
             'comment' => "A fun, adventurous read with likable characters. The plot keeps moving at a fast pace, and there's plenty of humor along the way.",
@@ -104,8 +94,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 11,
-            'user_id' => 12,
+            'userID' => 12,
             'bookID' => 11,
             'rating' => 4,
             'comment' => 'A thrilling heist novel with unexpected twists. The characters are well-developed and the plot is full of action.',
@@ -113,8 +102,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 12,
-            'user_id' => 13,
+            'userID' => 13,
             'bookID' => 12,
             'rating' => 4,
             'comment' => 'An incredibly unique and funny take on the apocalypse. The characters are hilarious, and the plot has plenty of twists and turns.',
@@ -122,8 +110,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 13,
-            'user_id' => 14,
+            'userID' => 14,
             'bookID' => 13,
             'rating' => 4,
             'comment' => 'A thrilling ride from start to finish, with plenty of action and high stakes. It keeps you on the edge of your seat the whole time.',
@@ -131,8 +118,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 14,
-            'user_id' => 15,
+            'userID' => 15,
             'bookID' => 14,
             'rating' => 4,
             'comment' => 'A quirky and fun look at the absurdities of life. The characters are eccentric, and the humor is dark but endearing.',
@@ -140,8 +126,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 15,
-            'user_id' => 16,
+            'userID' => 16,
             'bookID' => 15,
             'rating' => 4,
             'comment' => 'A unique blend of sci-fi and humor. The characters are relatable, and the storyline is surprisingly heartwarming.',
@@ -149,8 +134,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 16,
-            'user_id' => 17,
+            'userID' => 17,
             'bookID' => 16,
             'rating' => 5,
             'comment' => 'A heartbreaking and hilarious memoir. The author\'s wit and humor make light of difficult experiences in a way that is relatable and refreshing.',
@@ -158,8 +142,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 17,
-            'user_id' => 18,
+            'userID' => 18,
             'bookID' => 17,
             'rating' => 4,
             'comment' => 'A deeply reflective and thought-provoking book about the quirks of life. It captures the absurdity of growing up in a funny and accessible way.',
@@ -167,8 +150,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 18,
-            'user_id' => 19,
+            'userID' => 19,
             'bookID' => 18,
             'rating' => 4,
             'comment' => 'A heartwarming memoir full of humor and honesty. The author’s ability to find joy in the most awkward moments is refreshing and entertaining.',
@@ -176,8 +158,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 19,
-            'user_id' => 20,
+            'userID' => 20,
             'bookID' => 19,
             'rating' => 4,
             'comment' => 'A hilarious, yet insightful, look at life through a very unique lens. It provides both humor and heartfelt moments.',
@@ -185,8 +166,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 20,
-            'user_id' => 21,
+            'userID' => 21,
             'bookID' => 20,
             'rating' => 5,
             'comment' => 'A brilliant and emotional memoir. The humor in this book will make you laugh out loud, but the poignant moments will leave you thinking long after.',
@@ -194,8 +174,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 21,
-            'user_id' => 22,
+            'userID' => 22,
             'bookID' => 21,
             'rating' => 5,
             'comment' => 'An absolutely fantastic and emotional novel. The way the author mixes humor with deep themes is impressive and touching.',
@@ -203,8 +182,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 22,
-            'user_id' => 23,
+            'userID' => 23,
             'bookID' => 22,
             'rating' => 4,
             'comment' => 'A thrilling and fast-paced adventure with a fun twist. The characters are full of depth and bring the story to life.',
@@ -212,8 +190,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 23,
-            'user_id' => 24,
+            'userID' => 24,
             'bookID' => 23,
             'rating' => 4,
             'comment' => 'A gripping story that you won\'t be able to put down. The suspense and character development are top-notch.',
@@ -221,8 +198,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 24,
-            'user_id' => 25,
+            'userID' => 25,
             'bookID' => 24,
             'rating' => 5,
             'comment' => 'A captivating start to an unforgettable journey. The characters are deeply compelling, and the world-building is exceptional.',
@@ -230,8 +206,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 25,
-            'user_id' => 26,
+            'userID' => 26,
             'bookID' => 25,
             'rating' => 4,
             'comment' => 'A beautifully written and heart-wrenching novel about love, loss, and survival. It’s hard to put down once you start.',
@@ -239,8 +214,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 26,
-            'user_id' => 27,
+            'userID' => 27,
             'bookID' => 26,
             'rating' => 4,
             'comment' => 'A strong follow-up to the first book in the series, with more action and even higher stakes. Truly a must-read for fans of the genre.',
@@ -248,8 +222,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 27,
-            'user_id' => 28,
+            'userID' => 28,
             'bookID' => 27,
             'rating' => 4,
             'comment' => 'An emotional rollercoaster with characters that feel real and grounded. The ending will leave you breathless.',
@@ -257,8 +230,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 28,
-            'user_id' => 29,
+            'userID' => 29,
             'bookID' => 28,
             'rating' => 4,
             'comment' => 'A compelling narrative with a strong message about personal growth and resilience. The plot is full of twists that keep you engaged.',
@@ -266,8 +238,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 29,
-            'user_id' => 30,
+            'userID' => 30,
             'bookID' => 29,
             'rating' => 4,
             'comment' => 'A fun, fast-paced adventure with well-crafted characters. The stakes are high, and the action never lets up.',
@@ -275,8 +246,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 30,
-            'user_id' => 31,
+            'userID' => 31,
             'bookID' => 30,
             'rating' => 5,
             'comment' => 'An inspiring and uplifting story about finding your path in the world. The author’s voice is full of warmth and wisdom.',
@@ -284,8 +254,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 31,
-            'user_id' => 31,
+            'userID' => 31,
             'bookID' => 32,
             'rating' => 4,
             'comment' => 'A funny and thought-provoking exploration of life’s complexities. The humor is sharp, and the insights are valuable.',
@@ -293,8 +262,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 32,
-            'user_id' => 32,
+            'userID' => 32,
             'bookID' => 33,
             'rating' => 4,
             'comment' => 'An intellectual and philosophical journey that challenges your assumptions. It’s not an easy read, but it’s worth every moment.',
@@ -302,8 +270,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 33,
-            'user_id' => 33,
+            'userID' => 33,
             'bookID' => 34,
             'rating' => 5,
             'comment' => 'A hilarious and heartwarming story about finding meaning in the absurd. The author’s wit shines through every page.',
@@ -311,8 +278,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 34,
-            'user_id' => 34,
+            'userID' => 34,
             'bookID' => 35,
             'rating' => 4,
             'comment' => 'An insightful and relatable memoir about navigating the awkwardness of growing up. The humor makes the hard moments bearable.',
@@ -320,8 +286,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 35,
-            'user_id' => 35,
+            'userID' => 35,
             'bookID' => 36,
             'rating' => 4,
             'comment' => 'A fascinating, deeply personal exploration of modern life. It blends humor with sharp observations about culture and technology.',
@@ -329,8 +294,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 36,
-            'user_id' => 36,
+            'userID' => 36,
             'bookID' => 37,
             'rating' => 4,
             'comment' => 'An incredibly engaging and thought-provoking narrative. The story delves into the complexities of human relationships with humor and depth.',
@@ -338,8 +302,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 37,
-            'user_id' => 37,
+            'userID' => 37,
             'bookID' => 38,
             'rating' => 5,
             'comment' => 'A beautifully written and emotionally powerful book. It deals with complex themes of identity and belonging in a compelling way.',
@@ -347,8 +310,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 38,
-            'user_id' => 38,
+            'userID' => 38,
             'bookID' => 39,
             'rating' => 5,
             'comment' => 'A rich and immersive novel with stunning world-building. The characters’ emotional journeys are what make this book stand out.',
@@ -356,8 +318,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 39,
-            'user_id' => 39,
+            'userID' => 39,
             'bookID' => 40,
             'rating' => 4,
             'comment' => 'A gripping and thought-provoking science fiction story. The author masterfully combines adventure with deep philosophical questions about humanity.',
@@ -365,8 +326,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 40,
-            'user_id' => 40,
+            'userID' => 40,
             'bookID' => 41,
             'rating' => 5,
             'comment' => 'A true classic that stands the test of time. The themes of war, survival, and morality are timeless and thought-provoking.',
@@ -374,8 +334,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 41,
-            'user_id' => 41,
+            'userID' => 41,
             'bookID' => 42,
             'rating' => 4,
             'comment' => 'An unforgettable story that delves into deep themes of humanity and love. It’s a hard-hitting and emotionally charged read.',
@@ -383,8 +342,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 42,
-            'user_id' => 42,
+            'userID' => 42,
             'bookID' => 43,
             'rating' => 4,
             'comment' => 'A compelling narrative that tackles issues of isolation and identity. The plot twists and character development are excellent.',
@@ -392,8 +350,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 43,
-            'user_id' => 43,
+            'userID' => 43,
             'bookID' => 44,
             'rating' => 4,
             'comment' => 'A gripping and intense horror novel that explores the darker sides of the human mind. Definitely not for the faint of heart.',
@@ -401,8 +358,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 44,
-            'user_id' => 44,
+            'userID' => 44,
             'bookID' => 45,
             'rating' => 5,
             'comment' => 'A chilling and unsettling story that keeps you on the edge of your seat. It’s a must-read for fans of psychological horror.',
@@ -410,8 +366,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 45,
-            'user_id' => 45,
+            'userID' => 45,
             'bookID' => 46,
             'rating' => 4,
             'comment' => 'A gripping novel that tackles themes of control, fear, and survival. The tension builds up and never lets go.',
@@ -419,8 +374,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 46,
-            'user_id' => 46,
+            'userID' => 46,
             'bookID' => 47,
             'rating' => 4,
             'comment' => 'A thrilling and suspenseful story about survival in the face of overwhelming odds. The writing keeps you hooked from start to finish.',
@@ -428,8 +382,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 47,
-            'user_id' => 47,
+            'userID' => 47,
             'bookID' => 48,
             'rating' => 4,
             'comment' => 'A dark and thought-provoking tale about the complexities of human nature. The characters are flawed but captivating.',
@@ -437,8 +390,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 48,
-            'user_id' => 48,
+            'userID' => 48,
             'bookID' => 49,
             'rating' => 4,
             'comment' => 'A fast-paced and thrilling mystery that keeps you guessing until the very end. The plot twists are absolutely shocking.',
@@ -446,8 +398,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 49,
-            'user_id' => 49,
+            'userID' => 49,
             'bookID' => 50,
             'rating' => 5,
             'comment' => 'A masterfully written psychological thriller. The characters and the plot are deep and engaging. A page-turner from start to finish.',
@@ -455,8 +406,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 50,
-            'user_id' => 50,
+            'userID' => 50,
             'bookID' => 52,
             'rating' => 4,
             'comment' => 'A gripping and thought-provoking novel that explores the consequences of greed and betrayal. The pacing is perfect.',
@@ -464,8 +414,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 51,
-            'user_id' => 51,
+            'userID' => 51,
             'bookID' => 7,
             'rating' => 5,
             'comment' => 'An outstanding work of literary fiction that explores the complexities of love, loss, and redemption. A must-read for fans of contemporary fiction.',
@@ -473,8 +422,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 52,
-            'user_id' => 52,
+            'userID' => 52,
             'bookID' => 2,
             'rating' => 4,
             'comment' => 'A heartbreaking and beautiful story that examines the fragility of life and the power of love. It’s a deeply emotional read.',
@@ -482,8 +430,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 53,
-            'user_id' => 53,
+            'userID' => 53,
             'bookID' => 50,
             'rating' => 4,
             'comment' => 'An insightful and moving memoir that sheds light on the human experience in a way that feels both personal and universal.',
@@ -491,8 +438,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 54,
-            'user_id' => 54,
+            'userID' => 54,
             'bookID' => 51,
             'rating' => 5,
             'comment' => 'A powerful and moving story that blends tragedy and triumph. The characters are relatable and deeply human.',
@@ -500,8 +446,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 55,
-            'user_id' => 55,
+            'userID' => 55,
             'bookID' => 17,
             'rating' => 4,
             'comment' => 'A humorous and poignant novel about navigating the ups and downs of life. The author’s wit and insight are spot-on.',
@@ -509,8 +454,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 56,
-            'user_id' => 56,
+            'userID' => 56,
             'bookID' => 27,
             'rating' => 4,
             'comment' => 'A cleverly written and laugh-out-loud funny memoir. The author’s humor shines through, making for an entertaining read.',
@@ -518,8 +462,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 57,
-            'user_id' => 7,
+            'userID' => 7,
             'bookID' => 8,
             'rating' => 4,
             'comment' => 'An insightful exploration of life’s complexities, with humor and depth. The memoir captures both the absurd and the beautiful aspects of existence.',
@@ -527,8 +470,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 58,
-            'user_id' => 5,
+            'userID' => 5,
             'bookID' => 19,
             'rating' => 5,
             'comment' => 'A deeply emotional and honest portrayal of the human experience. It’s a story about finding meaning in a world full of challenges.',
@@ -536,8 +478,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 59,
-            'user_id' => 9,
+            'userID' => 9,
             'bookID' => 40,
             'rating' => 5,
             'comment' => 'A fascinating and richly detailed fantasy novel with a strong, unique world-building element. The plot and characters are engrossing.',
@@ -545,8 +486,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 60,
-            'user_id' => 30,
+            'userID' => 30,
             'bookID' => 12,
             'rating' => 5,
             'comment' => 'A truly epic and immersive fantasy novel. The world-building is top-notch, and the story keeps you captivated from beginning to end.',
@@ -554,8 +494,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 61,
-            'user_id' => 21,
+            'userID' => 21,
             'bookID' => 28,
             'rating' => 4,
             'comment' => 'A fantastic and fast-paced story with rich characters. The mystery and adventure elements keep you hooked all the way through.',
@@ -563,8 +502,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 62,
-            'user_id' => 12,
+            'userID' => 12,
             'bookID' => 36,
             'rating' => 4,
             'comment' => 'An emotional and beautifully written novel about love, loss, and second chances. A truly heartwarming and moving experience.',
@@ -572,8 +510,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 63,
-            'user_id' => 11,
+            'userID' => 11,
             'bookID' => 42,
             'rating' => 4,
             'comment' => 'An exciting adventure filled with twists and turns. The writing is brilliant, and the plot keeps you on the edge of your seat.',
@@ -581,8 +518,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 64,
-            'user_id' => 4,
+            'userID' => 4,
             'bookID' => 25,
             'rating' => 4,
             'comment' => 'A thought-provoking and poignant story about human connection and the impact of our choices. A great read for those who enjoy deep themes.',
@@ -590,8 +526,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 65,
-            'user_id' => 6,
+            'userID' => 6,
             'bookID' => 9,
             'rating' => 5,
             'comment' => 'A beautiful and emotional coming-of-age story that captures the essence of growing up and the relationships that shape us.',
@@ -599,8 +534,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 66,
-            'user_id' => 50,
+            'userID' => 50,
             'bookID' => 44,
             'rating' => 4,
             'comment' => 'A gripping and intense tale of survival. The action is nonstop, and the stakes are high from start to finish.',
@@ -608,8 +542,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 67,
-            'user_id' => 16,
+            'userID' => 16,
             'bookID' => 51,
             'rating' => 4,
             'comment' => 'An insightful and well-crafted novel that tackles difficult subjects with care and sensitivity. A must-read for fans of contemporary fiction.',
@@ -617,8 +550,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 68,
-            'user_id' => 28,
+            'userID' => 28,
             'bookID' => 3,
             'rating' => 4,
             'comment' => 'A charming and lighthearted novel about love and relationships. It’s a fun and quick read, but with a surprising amount of depth.',
@@ -626,8 +558,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 69,
-            'user_id' => 39,
+            'userID' => 39,
             'bookID' => 17,
             'rating' => 5,
             'comment' => 'An inspiring story about resilience and the power of the human spirit. It’s both heart-wrenching and uplifting.',
@@ -635,8 +566,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 70,
-            'user_id' => 40,
+            'userID' => 40,
             'bookID' => 48,
             'rating' => 4,
             'comment' => 'A suspenseful and thrilling mystery that keeps you guessing until the end. The plot twists are expertly executed.',
@@ -644,8 +574,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 71,
-            'user_id' => 31,
+            'userID' => 31,
             'bookID' => 13,
             'rating' => 5,
             'comment' => 'A beautifully written and deeply moving story about love, loss, and redemption. The characters feel so real, and the story stays with you long after you finish.',
@@ -653,8 +582,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 72,
-            'user_id' => 42,
+            'userID' => 42,
             'bookID' => 11,
             'rating' => 4,
             'comment' => 'A fun and quirky tale that blends humor and heart. It’s an enjoyable read with lovable characters and plenty of charm.',
@@ -662,8 +590,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 73,
-            'user_id' => 53,
+            'userID' => 53,
             'bookID' => 33,
             'rating' => 4,
             'comment' => 'A thrilling and thought-provoking novel about the consequences of technological advancements. A fascinating read for fans of dystopian fiction.',
@@ -671,8 +598,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 74,
-            'user_id' => 54,
+            'userID' => 54,
             'bookID' => 5,
             'rating' => 4,
             'comment' => 'A gripping and intense psychological thriller that explores the darker side of human nature. The suspense is palpable, and the twists are unexpected.',
@@ -680,8 +606,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 75,
-            'user_id' => 35,
+            'userID' => 35,
             'bookID' => 20,
             'rating' => 5,
             'comment' => 'A dark and powerful novel about survival in a broken world. The characters are complex, and the story explores deep themes about humanity.',
@@ -689,8 +614,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 76,
-            'user_id' => 26,
+            'userID' => 26,
             'bookID' => 32,
             'rating' => 4,
             'comment' => 'An exciting and well-paced adventure that mixes fantasy and mystery. The plot is full of intrigue and keeps you engaged throughout.',
@@ -698,8 +622,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 77,
-            'user_id' => 27,
+            'userID' => 27,
             'bookID' => 50,
             'rating' => 5,
             'comment' => 'A beautifully written story about love and personal growth. The characters are rich and relatable, and the narrative is heartfelt and authentic.',
@@ -707,8 +630,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 78,
-            'user_id' => 18,
+            'userID' => 18,
             'bookID' => 7,
             'rating' => 4,
             'comment' => 'A lighthearted and fun romance novel. The characters are charming, and the story provides plenty of laughter and warmth.',
@@ -716,8 +638,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 79,
-            'user_id' => 49,
+            'userID' => 49,
             'bookID' => 30,
             'rating' => 4,
             'comment' => 'An action-packed and thrilling ride. The plot is fast-paced, and the stakes are high, making it a page-turner from start to finish.',
@@ -725,8 +646,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 80,
-            'user_id' => 40,
+            'userID' => 40,
             'bookID' => 22,
             'rating' => 5,
             'comment' => 'A beautifully crafted fantasy adventure with a lot of heart. The world-building and characters make it a standout in the genre.',
@@ -734,8 +654,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 81,
-            'user_id' => 31,
+            'userID' => 31,
             'bookID' => 8,
             'rating' => 5,
             'comment' => 'A brilliant work of fantasy that blends adventure, politics, and magic. The world-building is rich, and the characters are complex.',
@@ -743,8 +662,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 82,
-            'user_id' => 28,
+            'userID' => 28,
             'bookID' => 45,
             'rating' => 4,
             'comment' => 'A mesmerizing story of a young woman’s journey through a magical world. The writing is beautiful, and the plot is full of twists.',
@@ -752,8 +670,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 83,
-            'user_id' => 33,
+            'userID' => 33,
             'bookID' => 29,
             'rating' => 4,
             'comment' => 'A thrilling science fiction novel that explores the possibilities of time travel. The concepts are mind-bending, and the story is captivating.',
@@ -761,8 +678,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 84,
-            'user_id' => 22,
+            'userID' => 22,
             'bookID' => 39,
             'rating' => 4,
             'comment' => 'A witty and thought-provoking novel about the absurdity of life. The characters are flawed but lovable, and the humor is dark and sharp.',
@@ -770,8 +686,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 85,
-            'user_id' => 11,
+            'userID' => 11,
             'bookID' => 19,
             'rating' => 5,
             'comment' => 'A poignant and heart-wrenching story about the human condition. It tackles deep themes with empathy and insight.',
@@ -779,8 +694,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 86,
-            'user_id' => 16,
+            'userID' => 16,
             'bookID' => 6,
             'rating' => 4,
             'comment' => 'An interesting and engaging historical fiction novel. The characters feel authentic, and the plot moves at a steady pace.',
@@ -788,8 +702,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 87,
-            'user_id' => 47,
+            'userID' => 47,
             'bookID' => 2,
             'rating' => 5,
             'comment' => 'A classic dystopian novel that explores the dangers of totalitarianism. The themes are still relevant today, making it a must-read.',
@@ -797,8 +710,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 88,
-            'user_id' => 52,
+            'userID' => 52,
             'bookID' => 21,
             'rating' => 4,
             'comment' => 'A beautifully crafted piece of literary fiction. The author’s prose is lyrical, and the story is filled with emotion and depth.',
@@ -806,8 +718,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 89,
-            'user_id' => 56,
+            'userID' => 56,
             'bookID' => 49,
             'rating' => 4,
             'comment' => 'A gripping and intense psychological thriller. The suspense builds steadily, and the twists and turns are genuinely shocking.',
@@ -815,8 +726,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 90,
-            'user_id' => 55,
+            'userID' => 55,
             'bookID' => 4,
             'rating' => 4,
             'comment' => 'A fast-paced action novel with plenty of intrigue and suspense. The plot is engaging, and the characters are memorable.',
@@ -824,8 +734,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 91,
-            'user_id' => 51,
+            'userID' => 51,
             'bookID' => 12,
             'rating' => 4,
             'comment' => 'A fun and quirky novel that provides plenty of laughs while still delivering a heartfelt story. A delightful read!',
@@ -833,8 +742,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 92,
-            'user_id' => 42,
+            'userID' => 42,
             'bookID' => 26,
             'rating' => 5,
             'comment' => 'A stunning and emotional narrative about love, loss, and personal growth. The writing is raw and beautiful, and the characters are unforgettable.',
@@ -842,8 +750,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 93,
-            'user_id' => 43,
+            'userID' => 43,
             'bookID' => 18,
             'rating' => 4,
             'comment' => 'A chilling and atmospheric horror novel. The tension builds gradually, and the sense of dread is palpable throughout the story.',
@@ -851,8 +758,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 94,
-            'user_id' => 49,
+            'userID' => 49,
             'bookID' => 32,
             'rating' => 5,
             'comment' => 'A powerful novel about resilience and survival. The characters’ journey is both heartbreaking and inspiring, making it a must-read.',
@@ -860,8 +766,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 95,
-            'user_id' => 39,
+            'userID' => 39,
             'bookID' => 10,
             'rating' => 4,
             'comment' => 'A smart and witty political satire that takes aim at contemporary society. The humor is sharp, and the themes are deeply relevant.',
@@ -869,8 +774,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 96,
-            'user_id' => 29,
+            'userID' => 29,
             'bookID' => 48,
             'rating' => 4,
             'comment' => 'A suspenseful and thought-provoking story that explores complex ethical dilemmas. The writing is engaging, and the plot keeps you thinking long after finishing.',
@@ -878,8 +782,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 97,
-            'user_id' => 19,
+            'userID' => 19,
             'bookID' => 23,
             'rating' => 5,
             'comment' => 'A beautifully written novel about the beauty of human connections. The characters are rich and the emotional depth of the story is incredible.',
@@ -887,8 +790,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 98,
-            'user_id' => 38,
+            'userID' => 38,
             'bookID' => 33,
             'rating' => 4,
             'comment' => 'A captivating fantasy novel with an interesting magic system and a complex world. The characters are well-developed, and the story is full of surprises.',
@@ -896,8 +798,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 99,
-            'user_id' => 17,
+            'userID' => 17,
             'bookID' => 27,
             'rating' => 5,
             'comment' => 'A deep and thoughtful story that explores the intricacies of love, loss, and personal growth. The writing is delicate, and the themes are timeless.',
@@ -905,8 +806,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 100,
-            'user_id' => 27,
+            'userID' => 27,
             'bookID' => 43,
             'rating' => 4,
             'comment' => 'A fun and action-packed story with a likable protagonist. The pacing is quick, and the plot is full of twists that keep you engaged.',
@@ -914,8 +814,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 101,
-            'user_id' => 37,
+            'userID' => 37,
             'bookID' => 5,
             'rating' => 2,
             'comment' => 'The story drags on for far too long and lacks any real excitement. I couldn\'t connect with the characters, and the plot was predictable.',
@@ -923,8 +822,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 102,
-            'user_id' => 47,
+            'userID' => 47,
             'bookID' => 22,
             'rating' => 1,
             'comment' => 'Disappointing. The writing was dull, and the story didn\'t live up to the hype. I found myself skimming through most of it.',
@@ -932,8 +830,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 103,
-            'user_id' => 36,
+            'userID' => 36,
             'bookID' => 14,
             'rating' => 2,
             'comment' => 'The characters felt one-dimensional, and the plot was incredibly slow. I couldn\'t bring myself to care about what happened next.',
@@ -941,8 +838,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 104,
-            'user_id' => 35,
+            'userID' => 35,
             'bookID' => 30,
             'rating' => 1,
             'comment' => 'A complete letdown. The world-building was weak, and I didn\'t find the main character compelling at all. Not worth the read.',
@@ -950,8 +846,7 @@ class ReviewsTableSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
-            'id' => 105,
-            'user_id' => 25,
+            'userID' => 25,
             'bookID' => 11,
             'rating' => 1,
             'comment' => 'I couldn\'t get into the story at all. It felt like it was trying too hard to be deep but just ended up boring me. The pacing was awful.',
