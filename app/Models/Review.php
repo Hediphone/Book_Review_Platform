@@ -17,7 +17,7 @@ class Review extends Model
     public $timestamps = true;
 
     // Define the inverse of the one-to-many relationship with Book
-    protected $fillable = ['user_id', 'book_id', 'rating', 'comment'];
+    protected $fillable = ['userID', 'bookID', 'rating', 'comment'];
 
     
     
