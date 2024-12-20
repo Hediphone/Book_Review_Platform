@@ -84,7 +84,9 @@ class BooksTableSeeder extends Seeder
                 'title' => 'Maze Runner: The Scorch Trials',
                 'author' => 'James Dashner',
                 'genre' => 'Action, Fiction, Fantasy, Sci-Fi, Thriller',
-                'description' => '',
+                'description' => "Escaping the Maze was only the beginning.
+The world thought it had seen the worst after the Sun Flares struck the Earth’s surface, and millions of people were killed. But then an unstoppable illness ravaged the bodies and minds of the remaining survivors. Simply known as the Flare, the disease seemed unstoppable until a cure was discovered, but that relief came at a human cost.
+Now it's up to Thomas, Teresa and the others, who will discover that while they may have escaped the Maze, they've entered into an experiment more terrifying than anything they could imagine. Explore how the terrifying W.C.K.D. came to be, and how the very first Maze was designed. Discover what it takes to survive in a post-Flare world, against the violent Cranks that have begun to take over humanity, only to learn that the Glade may not be the only Maze W.C.K.D. was running.",
                 'cover' => 'assets\covers\Scorch Trials.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
