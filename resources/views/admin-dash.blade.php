@@ -48,6 +48,7 @@
                     <table class="inventoryTable">
                         <thead>
                             <tr>
+                                <th></th> <!-- Checkbox column -->
                                 <th>BookID</th>
                                 <th>Cover</th>
                                 <th>Title</th>
@@ -64,6 +65,7 @@
                         <tbody>
                             @foreach ($books as $book)
                                 <tr>
+                                    <td><input type="checkbox" name="selectedBooks[]"></td>
                                     <td>{{ $book->bookID }}</td>
                                     <td><img src="{{ asset($book->cover) }}" alt="Book Cover"
                                             style="width: 50px; height: auto;"></td>
@@ -84,7 +86,8 @@
                                         {{ $book->release_date }}
                                     @else
                                         N/A
-                                    @endif</td>
+                                    @endif
+                                    </td>
 
                                     <td>
                                         <!-- Ellipsis icon to trigger dropdown -->
@@ -95,13 +98,10 @@
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <!-- Edit and Delete actions -->
-                                                <li>
+                                               
                                                 <li><a class="dropdown-item" href="#"
                                                         onclick="editBook('{{ $book->bookID }}', '{{ $book->genre }}')">Edit</a>
                                                 </li>
-                                                </li>
-                                                <li><a class="dropdown-item" href="#"
-                                                        onclick="deleteBook({{ $book->bookID }})">Delete</a></li>
                                             </ul>
                                         </div>
                                     </td>
