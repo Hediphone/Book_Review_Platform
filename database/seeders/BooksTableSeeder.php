@@ -56,8 +56,8 @@ class BooksTableSeeder extends Seeder
                 'genre' => 'Action, Fiction, Fantasy, Sci-Fi, Romance',
                 'description' => "One choice can transform you—or it can destroy you. But every choice has consequences, and as unrest surges in the factions all around her, Tris Prior must continue trying to save those she loves—and herself—while grappling with haunting questions of grief and forgiveness, identity and loyalty, politics and love.\r\n\r\nTris's initiation day should have been marked by celebration and victory with her chosen faction; instead, the day ended with unspeakable horrors. War now looms as conflict between the factions and their ideologies grows. And in times of war, sides must be chosen, secrets will emerge, and choices will become even more irrevocable—and even more powerful. Transformed by her own decisions but also by haunting grief and guilt, radical new discoveries, and shifting relationships, Tris must fully embrace her Divergence, even if she does not know what she may lose by doing so.\r\n\r\nNew York Times bestselling author Veronica Roth's much-anticipated second book of the dystopian DIVERGENT series is another intoxicating thrill ride of a story, rich with hallmark twists, heartbreaks, romance, and powerful insights about human nature.",
                 'cover' => 'assets\\covers\\Insurgent.jpg',
-                'created_at' => '2024-12-17 14:31:03',
-                'updated_at' => '2024-12-17 14:31:03',
+                'created_at' => now(),
+                'updated_at' => now(),
                 'release_date' => NULL,
             ],
             [
@@ -66,8 +66,8 @@ class BooksTableSeeder extends Seeder
                 'genre' => 'Action, Fiction, Fantasy, Sci-Fi, Romance',
                 'description' => "The faction-based society that Tris Prior once believed in is shattered - fractured by violence and power struggles and scarred by loss and betrayal. So when offered a chance to explore the world past the limits she's known, Tris is ready. Perhaps beyond the fence, she and Tobias will find a simple new life together, free from complicated lies, tangled loyalties, and painful memories.\r\n\r\nBut Tris's new reality is even more alarming than the one she left behind. Old discoveries are quickly rendered meaningless. Explosive new truths change the hearts of those she loves. And once again, Tris must battle to comprehend the complexities of human nature - and of herself - while facing impossible choices about courage, allegiance, sacrifice, and love.\r\n\r\nTold from a riveting dual perspective, ALLEGIANT, by #1 New York Times best-selling author Veronica Roth, brings the DIVERGENT series to a powerful conclusion while revealing the secrets of the dystopian world that has captivated millions of readers in DIVERGENT and INSURGENT.",
                 'cover' => 'assets\\covers\\Allegiant.jpg',
-                'created_at' => '2024-12-17 14:31:03',
-                'updated_at' => '2024-12-17 14:31:03',
+                'created_at' => now(),
+                'updated_at' => now(),
                 'release_date' => NULL,
             ],
             [
@@ -76,8 +76,8 @@ class BooksTableSeeder extends Seeder
                 'genre' => 'Action, Fiction, Fantasy, Sci-Fi, Thriller',
                 'description' => "If you ain’t scared, you ain’t human.\r\n\r\nWhen Thomas wakes up in the lift, the only thing he can remember is his name. He’s surrounded by strangers—boys whose memories are also gone.\r\n\r\nNice to meet ya, shank. Welcome to the Glade.\r\n\r\nOutside the towering stone walls that surround the Glade is a limitless, ever-changing maze. It’s the only way out—and no one’s ever made it through alive.\r\n\r\nEverything is going to change.\r\n\r\nThen a girl arrives. The first girl ever. And the message she delivers is terrifying.\r\n\r\nRemember. Survive. Run.",
                 'cover' => 'assets\\covers\\The Maze Runner.jpg',
-                'created_at' => '2024-12-17 14:31:03',
-                'updated_at' => '2024-12-17 14:31:03',
+                'created_at' => now(),
+                'updated_at' => now(),
                 'release_date' => NULL,
             ],
             [

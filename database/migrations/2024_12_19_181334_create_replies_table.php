@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamps(); // Timestamps for created_at and updated_at
 
             // Define the foreign key constraints
-            $table->foreign('review_id')->references('reviewID')->on('reviews')->onDelete('cascade');
+            $table->foreign('review_id')->references('id')->on('reviews')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
