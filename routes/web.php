@@ -10,14 +10,18 @@ use App\Http\Controllers\ReviewController;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 
+//aayuson pa mga ini
 Route::get('/search', [BooksController::class, 'search'])->name('books.search');
-
 Route::get('/modals/add-book', function () {
     return view(view: 'modals.add-book');
 });
 Route::get('/modals/edit-book', function () {
     return view(view: 'modals.edit-book');
 });
+Route::get('/admin-dash', [BooksController::class, 'index']);
+// Route::get('/admin-dash', function () {
+//     return view(view: 'admin-dash');
+// });
 
 // Authentication Routes (only for guests)
 Route::middleware('guest')->group(function () {
@@ -36,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin-dashboard', function () {
         return view('admin-dashboard');
     });
-    
+
     Route::get('/home', [HomeController::class, 'index'])->name('home.index');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/reviews', [ReviewController::class, 'show']);
@@ -49,10 +53,16 @@ Route::middleware('auth')->group(function () {
     // Content loading routes
     Route::get('/home/content', [BooksController::class, 'loadBooks'])->name('home.books');
     Route::get('/dashboard/content', [BooksController::class, 'loadBooks'])->name('dashboard.books');
-    
 
 
+    Route::post('/books/add', [BooksController::class, 'store'])->name('books.add');
+    Route::get('/books/add', [BooksController::class, 'store'])->name('books.index');
     
+    Route::get('/books/{genre}/{id}/json', [BooksController::class, 'showDetails'])->name('books.showDetails.json');
+
+    Route::get('books/{id}/edit', [BookController::class, 'edit'])->name('books.edit');
+    Route::get('books/{id}/delete', [BookController::class, 'delete'])->name('books.delete');
+
     Route::get('/browse', [BooksController::class, 'showByGenre'])->name('books.byGenre');
     //will trigger the showByGenre method ng BookController, yung showByGenre will fetch all the genres first (parang naka group by para one instance lang per genre)
     //after that it will pass variable sa method niya tas yung unique genres nasa taas parang category (referring sa browse view)
@@ -62,7 +72,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/browse-books/{genre}/book-detail/{id}', [BooksController::class, 'show'])->name('books.bookDetail');
     //will return yung details ng book
 
-    
+
     Route::get('/browse-books/{genre}', [BooksController::class, 'showGenre'])->name('books.browse.genre');
     //yung category sa browse view pag clinick yung genre it will show all the books to that genre (view rendered is show-books-by-genre)
 
@@ -83,15 +93,15 @@ Route::middleware('auth')->group(function () {
         // Retrieve book details from BooksController
         $booksController = new BooksController();
         $bookDetails = $booksController->show($genre, $id);  // Pass both genre and id
-        
+
         // Retrieve reviews from ReviewController
         $reviewController = new ReviewController();
         $ratings = $reviewController->showRatings($genre, $id);  // Pass both genre and id
-        
+
         // Merge data from both controllers and pass to the view
         return view('books.book-details', array_merge($bookDetails->getData(), $ratings->getData(), ['genre' => $genre, 'id' => $id]));
     })->name('books.bookDetail');
-    
+
     Route::post('/browse-books/{genre}/book-detail/{id}/reply/{review_id}', [ReviewController::class, 'addReply'])->name('reviews.reply');
 
     Route::post('/book/{id}/review', [ReviewController::class, 'store'])->name('reviews.store');
