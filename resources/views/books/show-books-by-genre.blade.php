@@ -7,13 +7,18 @@
 @section('content')
 <x-navbar />
 
-    <nav aria-label="breadcrumb" class="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('books.byGenre', ['genre' => $genre]) }}">Browse</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ ucfirst($genre) }}</li>
-        </ol>
-    </nav>
-
+<nav aria-label="breadcrumb" class="breadcrumb">
+    <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item">
+            <a href="{{ route('books.byGenre', ['genre' => $genre]) }}">
+                Browse
+            </a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+            {{ ucfirst($genre) }}
+        </li>
+    </ol>
+</nav>
 
 <section class="genre-section">
     <div class="containerr">

@@ -7,6 +7,8 @@ use App\Models\Review;
 use App\Models\Book;
 use App\Models\Reply;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class ReviewController extends Controller
@@ -48,11 +50,7 @@ class ReviewController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
+    
     /**
      * Remove the specified resource from storage.
      */
@@ -125,32 +123,99 @@ class ReviewController extends Controller
     
 
     public function store(Request $request, $book_id)
-    {
-        // Validate the input
-        $request->validate([
-            'rating' => 'required|integer|min:1|max:5',
-            'comment' => 'required|string|max:1000',
-        ]);
-        
-        // Create a new review
-        $review = new Review();
-        $review->userID = auth()->id();  // Correct column name (userID)
-        $review->bookID = $book_id;  // Correct column name (bookID)
-        $review->rating = $request->rating;
-        $review->comment = $request->comment;
-        $review->save();
-        
-        // Get the genre for the book (if available)
-        $book = Book::find($book_id);
-        $genre = $book ? $book->genre : ''; // Assuming the book has a 'genre' field
-        
-        // Redirect to the book's details page with genre and id
-        return redirect()->route('books.bookDetail', ['genre' => $genre, 'id' => $book_id])
-                         ->with('success', 'Your review has been submitted!');
-    }
+{
+    // Validate the input
+    $request->validate([
+        'rating' => 'required|integer|min:1|max:5',
+        'comment' => 'required|string|max:1000',
+    ]);
     
+    // Check if the user has already reviewed this book
+    $existingReview = Review::where('userID', auth()->id())
+                            ->where('bookID', $book_id)
+                            ->first();
+
+    if ($existingReview) {
+        return redirect()->route('books.bookDetail', ['genre' => $existingReview->book->genre, 'id' => $book_id])
+                         ->with('error', 'You can only submit one review per book.');
+    }
+
+    // Create a new review
+    $review = new Review();
+    $review->userID = auth()->id();  // Correct column name (userID)
+    $review->bookID = $book_id;  // Correct column name (bookID)
+    $review->rating = $request->rating;
+    $review->comment = $request->comment;
+    $review->save();
+    
+    // Get the genre for the book (if available)
+    $book = Book::find($book_id);
+    $genre = $book ? $book->genre : ''; // Assuming the book has a 'genre' field
+    
+    // Redirect to the book's details page with genre and id
+    return redirect()->route('books.bookDetail', ['genre' => $genre, 'id' => $book_id])
+                     ->with('success', 'Your review has been submitted!');
+}
+
     
 
-        
+
+    
+    
+    public function update(Request $request, $reviewID)
+{
+    // Validate the incoming request data
+    $validated = $request->validate([
+        'rating' => 'required|integer|between:1,5',
+        'comment' => 'required|string|max:1000',
+    ]);
+
+    // Find the review to update
+    $review = Review::findOrFail($reviewID);
+
+    // Ensure the user is the one who created the review
+    if ($review->userID !== Auth::id()) {
+        return redirect()->route('books.show', $review->bookID)->with('error', 'You are not authorized to edit this review.');
+    }
+
+    // Update the review
+    $review->update([
+        'rating' => $validated['rating'],
+        'comment' => $validated['comment'],
+    ]);
+
+    // Get the genre for the book (if available)
+    $book = Book::find($review->bookID);
+    $genre = $book ? $book->genre : ''; // Assuming the book has a 'genre' field
+
+    // Redirect back to the book's detail page with genre and id
+    return redirect()->route('books.bookDetail', ['genre' => $genre, 'id' => $review->bookID])
+                     ->with('success', 'Review updated successfully.');
+}
+
+
+public function delete($reviewID)
+{
+    // Find the review to delete
+    $review = Review::findOrFail($reviewID);
+
+    // Ensure the user is the one who created the review
+    if ($review->userID !== Auth::id()) {
+        return redirect()->route('books.show', $review->bookID)->with('error', 'You are not authorized to delete this review.');
+    }
+
+    // Delete the review
+    $review->delete();
+
+    // Get the genre for the book (if available)
+    $book = Book::find($review->bookID);
+    $genre = $book ? $book->genre : ''; // Assuming the book has a 'genre' field
+
+    // Redirect back to the book's detail page with genre and id
+    return redirect()->route('books.bookDetail', ['genre' => $genre, 'id' => $review->bookID])
+                     ->with('success', 'Review deleted successfully.');
+}
+
+
 
     }

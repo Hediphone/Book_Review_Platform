@@ -30,7 +30,7 @@
                                     @if ($i < floor($book->reviews_avg_rating))
                                         <i class="bi bi-star-fill filled"></i> 
                                     @elseif ($i == floor($book->reviews_avg_rating) && $book->reviews_avg_rating - floor($book->reviews_avg_rating) >= 0.5)
-                                        <i class="bi bi-star-half"></i>>
+                                        <i class="bi bi-star-half"></i>
                                     @else
                                         <i class="bi bi-star"></i> 
                                     @endif

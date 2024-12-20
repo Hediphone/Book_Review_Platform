@@ -198,6 +198,7 @@ h3{
 }
 .view-all-link:hover {
     text-decoration: none;
+    color:#212529;
 }
 
 
@@ -234,6 +235,16 @@ h3{
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.0);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
 
 
 .latest-books-section, .genre-section,.rating-section{
@@ -245,9 +256,45 @@ h3{
 .genre-section{
   margin-bottom: 10px !important;
 }
+
 .breadcrumb{
-  margin-left: 130px;
-  margin-right: 130px;
+  text-align: left;
+  margin-top: 10px;
+}
+
+
+.breadcrumb {
+  background-color: #ffffff !important; /* Light background for a clean look */
+  padding: 10px 15px; /* Add spacing for better appearance */
+  border-radius: 5px; /* Rounded corners for a modern feel */
+  font-size: 1rem; /* Slightly smaller font size */
+  padding: 0px 130px 0px 130px !important; /* Apply 130px padding to all sides */
+
+}
+
+ol.breadcrumb{
+  padding:20px 0px 20px 0px !important;
+  background-color: #B4D51E;
+}
+
+.breadcrumb-item a {
+  color: #007bff; /* Primary color for links */
+  text-decoration: none; /* Remove underline */
+  font-weight: 500; /* Slightly bolder text */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.breadcrumb-item a:hover {
+  color: #0056b3; /* Darker shade on hover */
+}
+
+.breadcrumb-item.active {
+  color: #6c757d; /* Muted color for the active item */
+  font-weight: 600; /* Slightly bolder for emphasis */
+}
+
+.nav.breadcrumb{
+  background-color: none !important;
 }
 
 
@@ -275,12 +322,18 @@ footer{
   margin-bottom:100px;
 }
 
+.book-review-section{
+  margin:20px 130px 120px 130px !important;
+}
+
 
 #card-style{
   border-radius: 5px;
   padding:30px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
+
+
 
 .book-details-image{
   width: 240px;
@@ -409,7 +462,7 @@ footer{
   border-radius: 10px; /* Rounded shape */
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* Soft shadow */
   font-weight:400;
-  color: #212529;
+  color: #828282;
   transition: background-color 0.3s ease, transform 0.3s ease;
   text-decoration: none;
 
@@ -419,7 +472,6 @@ footer{
   background-color: #cbe45b; /* Change background on hover */
   color: white; /* Change text color on hover */
   transform: scale(1.05); /* Slight zoom effect */
-  text-decoration: none;
 }
 
 .genre-item a {
@@ -473,18 +525,27 @@ footer{
 
 
 
-.text-muted{
-  color:#828282;
-  font-size:12px;
-  font-family: "Inter","Sans-serif";
-  margin-left: 8px;
-}
 
 .review-content{
   font-size: small;
   margin-left:7px;
   margin-top: 10px;;
   font-style: italic;
+  margin-bottom: 0px; /* Small margin below the comment */
+
+}
+
+.text-muted{
+  display: block; /* Ensures the date appears on a new line */
+  margin: 10px 0px 10px 8px; /* Removes any additional spacing */
+  padding: 0;
+  color:#828282;
+  font-size:11px;
+  font-family: "Inter","Sans-serif";
+}
+
+.main-review{
+  background-color: #212529;
 }
 
 
@@ -504,7 +565,7 @@ footer{
 
 
 .reply-item{
-  margin-left: 20px;
+  margin-left: 50px;
 }
 
 .add-review h5{
@@ -521,6 +582,55 @@ footer{
     font-size: 14px;
 }
 
+#reply{
+  border-radius: 5px;
+  width:90px;
+  padding:10px;
+  background-color: #B4D51E;
+  color: #ffffff;
+  border: none;
+  font-family: "Merriweather", Helvetica;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#cust-bt1{
+  border-radius: 5px;
+  width:70px;
+  padding:8px;
+  border: none;
+  font-family: "Merriweather", Helvetica;
+  font-size: 10px;
+  font-weight: bold;
+  background-color: #b89a9a;
+}
+
+#cust-bt2{
+  border-radius: 5px;
+  width:70px;
+  padding:8px;
+  border: none;
+  font-family: "Merriweather", Helvetica;
+  font-size: 10px;
+  font-weight: bold;
+  background-color: #d44949;
+}
+
+
+#custom-button{
+  border-radius: 5px;
+  color:white;
+  width:70px;
+  padding:8px;
+  border: none;
+  font-family: "Merriweather", Helvetica;
+  font-size: 10px;
+  font-weight: bold;
+  margin-top: 15px;
+  background-color: #0eb3ff;
+}
+
+
 
 #review-text{
   border-radius: 10px;
@@ -529,6 +639,51 @@ footer{
   font-size: 13px;
 }
 
+#review-text-area {
+  border-radius: 10px;
+  background-color: #F8F8F8;
+  padding: 20px;
+  font-size: 13px;
+  height:80px;
+  resize: none;
+  width:810px;
+  overflow-y: auto;  /* Add a scrollbar if the content exceeds the max height */
+}
+
+
 .add-review{
   font-size: 14px;
 }
+
+
+
+.reply-item {
+  border-radius: 15px; /* Optional: rounded corners for replies */
+  padding: 5px; /* Add padding inside the reply box */
+  margin-top: 15px; /* Space between review and replies */
+  margin-left: 60px; /* Indentation for replies */
+  background-color: 	#F8F8F8;
+  box-shadow: rgba(236, 229, 229, 0.1) 0px 2px 8px ;
+  max-width: 750px;
+  height:110px;
+
+}
+
+
+/* Style for the review container */
+#review-item {
+  padding:15px !important;
+}
+
+
+/* Additional optional styles */
+.review-content {
+  font-size: 14px; /* Adjust font size for the review text */
+}
+
+.add-review {
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid #ccc; /* Light border around the form */
+}
+

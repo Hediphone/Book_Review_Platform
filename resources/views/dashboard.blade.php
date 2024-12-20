@@ -126,11 +126,6 @@
             </div>
             <div class="row" id="book-list">
 
-
-
-           
-
-                <!-- Hidden books that will be shown when the "View All" button is clicked -->
                
 
             </div>

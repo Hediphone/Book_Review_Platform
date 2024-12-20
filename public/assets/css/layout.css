@@ -101,6 +101,12 @@
       margin-right: 10px;
       width: 100px;
     }
+
+    .custom-btn:focus,
+.custom-btn2:focus {
+    outline: none;
+    box-shadow: none; /* Optional: Removes any focus shadow */
+}
    
   
     .nav-link {

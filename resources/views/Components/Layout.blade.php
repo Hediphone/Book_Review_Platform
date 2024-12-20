@@ -20,6 +20,8 @@
     <link href="https://fonts.googleapis.com/css2?family=McLaren&display=swap" rel="stylesheet">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
     @yield('styles')
 </head>
 
@@ -90,8 +92,6 @@
                     <ul class="list-unstyled cm">
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Categories</a></li>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">Blog</a></li>
                     </ul>
                 </div>
 

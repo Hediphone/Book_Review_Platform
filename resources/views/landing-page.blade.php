@@ -29,7 +29,7 @@
                             <span class="">{{ number_format($book->reviews_avg_rating, 1) }}</span>
                                 @for ($i = 0; $i < 5; $i++)
                                     @if ($i < floor($book->reviews_avg_rating))
-                                        <i class="bi bi-star-fill filled"></i> <!-- Full star -->
+                                        <i class="bi bi-star-fill filled"></i><!-- Full star -->
                                     @elseif ($i == floor($book->reviews_avg_rating) && $book->reviews_avg_rating - floor($book->reviews_avg_rating) >= 0.5)
                                         <i class="bi bi-star-half"></i> <!-- Half star -->
                                     @else
