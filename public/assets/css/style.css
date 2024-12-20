@@ -486,12 +486,13 @@ footer{
   text-decoration: none; /* No underline on hover */
 }
 
+/* serach-result */
 .results {
   height: auto;
   padding:0px 130px 0px 130px;
 }
 .results_container {
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 50px;
   height: auto;
 }

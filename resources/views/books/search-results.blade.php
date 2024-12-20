@@ -5,7 +5,10 @@
 @endsection
 
 @section('content')
-<section class="results">
+
+<x-navbar />
+
+<section class="">
     <div class="container">
         <div class="results_container">
             <div class="d-flex justify-content-between align-items-center mb-4">
