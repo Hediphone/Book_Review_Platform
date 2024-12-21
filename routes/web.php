@@ -13,14 +13,38 @@ Route::get('/', [LandingPageController::class, 'index'])->name('landing-page'); 
 Route::get('/browse/books/view-all/rating/{genre}', [BooksController::class, 'showByRating'])->name('view-all.rating.show'); //Second
 // sa home ito since nandun yung popular now, naka based yun sa rating ng user, (averega rating) see logic nalang sa showbyratingmethod
 
+//aayuson pa mga ini
 Route::get('/search', [BooksController::class, 'search'])->name('books.search');
-
 Route::get('/modals/add-book', function () {
     return view(view: 'modals.add-book');
 });
+
 Route::get('/modals/edit-book', function () {
     return view(view: 'modals.edit-book');
 });
+Route::get('/admin-dash', [BooksController::class, 'index']);
+// Route::get('/admin-dash', function () {
+//     return view(view: 'admin-dash');
+// });
+Route::post('/admin-dash', [BooksController::class, 'updateBook'])->name('books.updateBook');
+
+Route::get('/books/delete', function () {
+    return view(view: 'modals.edit-book');
+});
+Route::post('/books/delete', [BooksController::class, 'destroySelected'])->name('books.destroySelected');
+
+
+Route::post('/books/delete', [BooksController::class, 'destroySelected'])->name('books.destroySelected');
+
+Route::post('/books/add', [BooksController::class, 'store'])->name('books.add');
+Route::get('/books/add', [BooksController::class, 'indexforadd'])->name('books.index');
+
+Route::get('/books/{genre}/{id}/json', [BooksController::class, 'showDetails'])->name('books.showDetails.json');
+
+Route::get('books/{id}/edit', [BookController::class, 'edit'])->name('books.edit');
+Route::get('books/{id}/delete', [BookController::class, 'delete'])->name('books.delete');
+
+//
 
 // Authentication Routes (only for guests)
 Route::middleware('guest')->group(function () {
