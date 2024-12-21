@@ -40,19 +40,14 @@
                         <button class="genreBtn" type="submit" name="genre" value="Romance">Romance</button>
                         <button class="genreBtn" type="submit" name="genre" value="Adventure">Adventure</button>
                         <button class="genreBtn" type="submit" name="genre" value="Fiction">Fiction</button>
-                        <button class="genreBtn" type="submit" name="genre"
-                            value="Science-Fiction">Science-Fiction</button>
+                        <button class="genreBtn" type="submit" name="genre" value="Sci-Fi">Sci-Fi</button>
                         <button class="genreBtn" type="submit" name="genre" value="Mystery">Mystery</button>
                         <button class="genreBtn" type="submit" name="genre" value="Thriller">Thriller</button>
-                        <button class="genreBtn" type="submit" name="genre" value="Literary Fiction">Literary
-                            Fiction</button>
-                        <button class="genreBtn" type="submit" name="genre" value="Historical Fiction">Historical
-                            Fiction</button>
+                        <button class="genreBtn" type="submit" name="genre" value="Historical Fiction">Historical Fiction</button>
                         <button class="genreBtn" type="submit" name="genre" value="Contemporary">Contemporary</button>
                         <button class="genreBtn" type="submit" name="genre" value="Crime Fiction">Crime Fiction</button>
                         <button class="genreBtn" type="submit" name="genre" value="Drama">Drama</button>
                         <button class="genreBtn" type="submit" name="genre" value="Psychology">Psychology</button>
-                        <button class="genreBtn" type="submit" name="genre" value="Travel">Travel</button>
                         <button class="genreBtn" type="submit" name="genre" value="True Crime">True Crime</button>
                     </form>
 
@@ -162,6 +157,30 @@
             });
         });
     });
+
+    $(document).ready(function () {
+        // Handle the genre search form submission
+        $('#genreContainer').on('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            var genre = $('button[name="genre"]:focus').val(); // Get the selected genre
+
+            // Send AJAX request
+            $.ajax({
+                url: '{{ route('adminSearchByGenre') }}', // The URL for the genre search route
+                type: 'GET',
+                data: { genre: genre },
+                success: function (response) {
+                    // Update the table with the new genre results
+                    $('#booksTable tbody').html(response); // Replace the table body with new results
+                },
+                error: function () {
+                    alert('There was an error processing your request.');
+                }
+            });
+        });
+    });
+
 </script>
 
 </html>
