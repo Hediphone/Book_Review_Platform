@@ -152,10 +152,6 @@ class BooksController extends Controller
          return view('books.browse', compact('booksByGenre', 'genres'));
      }
      
-
-
-    
-
     /**
      * Show books for a specific genre with average ratings.
      */
@@ -190,17 +186,6 @@ class BooksController extends Controller
         
      }
 
-
-
-
-
-
-
-
-
-
-
-
      public function viewAllByGenre($genre)
      {
          // Sanitize the genre input
@@ -233,17 +218,23 @@ class BooksController extends Controller
 
     /**
      * Search books based on the query.
-     */
-    public function search(Request $request)
+     */public function search(Request $request)
     {
         $query = $request->input('search');
-
-        $books = Book::where('title', 'like', '%' . $query . '%')
-            ->orWhere('author', 'like', '%' . $query . '%')
-            ->orWhere('genre', 'LIKE', '%' . $query . '%')
+        
+        // Convert the query to lowercase
+        $query = strtolower($query);
+        
+        // Perform a case-insensitive search on title, author, and genre
+        $books = Book::whereRaw('LOWER(title) like ?', ['%' . $query . '%'])
+            ->orWhereRaw('LOWER(author) like ?', ['%' . $query . '%'])
+            ->orWhereRaw('LOWER(genre) like ?', ['%' . $query . '%'])
             ->withAvg('reviews', 'rating') // Fetch average rating
             ->get();
-
-        return view('books.search-results', compact('books'));
+        
+        // Return the results view and pass the books
+        return view('books.search-results', compact('books', 'query'));
     }
+
+    
 }

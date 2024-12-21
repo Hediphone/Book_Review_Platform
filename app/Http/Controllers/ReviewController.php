@@ -129,6 +129,19 @@ class ReviewController extends Controller
     
     
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function store(Request $request, $book_id)
 {
     // Validate the input
@@ -144,7 +157,8 @@ class ReviewController extends Controller
 
     if ($existingReview) {
         return redirect()->route('books.bookDetail', ['genre' => $existingReview->book->genre, 'id' => $book_id])
-                         ->with('error', 'You can only submit one review per book.');
+                         ->with('error_title', 'Add Review Error')
+                         ->with('error_message', 'You can only submit one review per book.');
     }
 
     // Create a new review
@@ -161,13 +175,12 @@ class ReviewController extends Controller
     
     // Redirect to the book's details page with genre and id
     return redirect()->route('books.bookDetail', ['genre' => $genre, 'id' => $book_id])
-                     ->with('success', 'Your review has been submitted!');
-}
+                     ->with('error_title', 'Review Submitted')
+                     ->with('error_message', 'Your review has been submitted!');
+    }
+                     
 
-    
 
-
-    
     
     public function update(Request $request, $reviewID)
 {
@@ -197,7 +210,9 @@ class ReviewController extends Controller
 
     // Redirect back to the book's detail page with genre and id
     return redirect()->route('books.bookDetail', ['genre' => $genre, 'id' => $review->bookID])
-                     ->with('success', 'Review updated successfully.');
+                     ->with('error_title', 'Review Updated')
+                     ->with('error_message', 'Your review has been updated.');
+    
 }
 
 
@@ -220,9 +235,11 @@ public function delete($reviewID)
 
     // Redirect back to the book's detail page with genre and id
     return redirect()->route('books.bookDetail', ['genre' => $genre, 'id' => $review->bookID])
-                     ->with('success', 'Review deleted successfully.');
+                     ->with('success', 'Review deleted successfully.')
+                     ->with('error_title', 'Review Deleted Succesfully')
+                     ->with('error_message', 'Your review has been removed succesfully.');
+    
 }
-
 
 
     }

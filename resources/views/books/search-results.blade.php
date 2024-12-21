@@ -8,18 +8,18 @@
 
 <x-navbar />
 
-<section class="">
+<section class="search-section">
     <div class="container">
         <div class="results_container">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h3 class="text-left">Search Results</h3>
+                <h3 class="text-left">Search Results for <i>"{{ $query }}"</i></h3>
             </div>
 
             @if ($books->isEmpty())
                 <div class="row">
                     <div class="col-md-12 mb-4">
                         <div class="noResult_container">
-                            <p>No books found matching your search criteria.</p>
+                <p class="text-bg-danger text-center">No books found matching <i>{{ $query }}"</i>.</p>
                         </div>
                     </div>
                 </div>

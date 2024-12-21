@@ -188,7 +188,7 @@ h3{
   font-weight:600 !important;
 }
 
-.genre-list-section{
+.genre-list-section,.search-section{
     padding:0px 130px 0px 130px;
 }
 
@@ -616,6 +616,18 @@ footer{
 }
 
 
+#cust-bt3{
+  border-radius: 5px;
+  width:135px;
+  padding:8px;
+  border: none;
+  font-family: "Merriweather", Helvetica;
+  font-size: 10px;
+  font-weight: bold;
+  background-color: #d44949;
+}
+
+
 #custom-button{
   border-radius: 5px;
   color:white;
@@ -684,5 +696,41 @@ footer{
 .add-review {
   margin-top: 30px;
   padding: 20px;
+}
+
+
+#errorModal .modal-content {
+  border-radius: 15px; /* Adjust to make the modal edges more rounded */
+  border: none; /* Optional: Remove border for cleaner look */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for emphasis */
+}
+
+#errorModal .modal-title {
+  padding-top:5px;
+  padding-left:7px;
+  font-weight: bold; /* Make title stand out */
+  color:#463C74;
+  text-align: center !important;
+}
+
+#errorModal .modal-body p {
+  font-size: 15x; /* Adjust message font size */
+  text-align: center;
+  padding:10px;
+}
+
+#errorModal .btn {
+  padding: 0.6rem 1rem 0.6rem 1rem; /* Add padding to button */
+  border-radius: 14px;
+  color:#ffffff;
+  background: #B4D51E;
+  outline: none;
+  border: none;
+}
+
+
+
+button.close:focus {
+  outline: none;
 }
 

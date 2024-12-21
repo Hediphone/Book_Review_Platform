@@ -8,10 +8,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ReviewController;
 
-Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');   // First
+Route::get('/', [LandingPageController::class, 'index'])->name('landing-page')->middleware('logout.home');   // First
 
-Route::get('/browse/books/view-all/rating/{genre}', [BooksController::class, 'showByRating'])->name('view-all.rating.show'); //Second
-// sa home ito since nandun yung popular now, naka based yun sa rating ng user, (averega rating) see logic nalang sa showbyratingmethod
+
 
 Route::get('/search', [BooksController::class, 'search'])->name('books.search');
 
@@ -79,6 +78,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/browse/books/view-all/release-date/{genre}', [BooksController::class, 'showbyReleaseDate'])->name('view-all.latest-release.show');
     // nakabased to sa released at column sa books since latest books siya, see logic sa method niya
 
+    Route::get('/browse/books/view-all/rating/{genre}', [BooksController::class, 'showByRating'])->name('view-all.rating.show'); //Second
+// sa home ito since nandun yung popular now, naka based yun sa rating ng user, (averega rating) see logic nalang sa showbyratingmethod
 
     Route::get('/browse-books/book-detail/{id}', function ($id) {
         // Retrieve book details from BooksController

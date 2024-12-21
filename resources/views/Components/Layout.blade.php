@@ -5,22 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
     <link href="{{ asset('assets/css/layout.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/styleguide.css') }}" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/helvetica-neue-5" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=McLaren&display=swap" rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="{{ asset('favicon(bb).ico') }}" type="image/x-icon">
 
     @yield('styles')
 </head>
@@ -50,25 +45,23 @@
                 </div>
             </form>
 
-            @if (Request::is('home*') || Request::is('dashboard') || Request::is('browse*') || Request::is('search'))
             <div class="col-md-4 d-flex justify-content-end align-items-center">
-            <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                @csrf
-                <button type="submit" class="custom-btn2">Logout</button>
-            </form>
-            </div>
-
-            @else
-                <!-- Default Top Navigation Icons -->
-                <div class="col-md-4 d-flex justify-content-end align-items-center">
+                @if (Auth::check())
+                    <!-- Show logout button if user is logged in -->
+                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <button type="submit" class="custom-btn2">Logout</button>
+                    </form>
+                @else
+                    <!-- Show Sign In and Register buttons if user is not logged in -->
                     <a href="{{ route('login') }}">
                         <button class="custom-btn2">Sign In</button>
                     </a>
                     <a href="{{ route('register') }}">
                         <button class="custom-btn">Create an Account</button>
                     </a>
-                </div>
-            @endif
+                @endif
+            </div>
 
     </header>
 
