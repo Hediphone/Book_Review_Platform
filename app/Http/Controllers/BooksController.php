@@ -15,20 +15,20 @@ class BooksController extends Controller
      */
     public function index(Request $request)
     {
-        // Check if the logged-in user is the admin and verify the password
-        if (auth()->check()) {
-            $user = auth()->user();
+        // // Check if the logged-in user is the admin and verify the password
+        // if (auth()->check()) {
+        //     $user = auth()->user();
 
-            // Check if the email and password are correct
-            if ($user->email == 'admin@example.com' || !Hash::check($request->input('password'), $user->password)) {
+        //     // Check if the email and password are correct
+        //     if ($user->email == 'admin@example.com' || !Hash::check($request->input('password'), $user->password)) {
                 $books = Book::all();
 
                 return view('admin-dash', compact('books'));
-            }
-        } else {
-            // If the user is not authenticated
-            return redirect('/home');
-        }
+        //     }
+        // } else {
+        //     // If the user is not authenticated
+        //     return redirect('/home');
+        // }
 
 
     }
