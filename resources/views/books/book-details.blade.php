@@ -17,7 +17,8 @@
                     
                     <div class="mt-3">
                         <button class="btn btn-primary btn-block mb-2" id="book-btn1">Add to Favorites</button>
-                        <button class="btn btn-secondary btn-block" id="book-btn2">Rate this Book</button>
+                        <button class="btn btn-secondary btn-block" id="book-btn2" onclick="scrollToReviewForm()">Rate this Book</button>
+
                     </div>
                 </div>
 
@@ -140,7 +141,7 @@
         </div>
 
         <!-- Add Review Form -->
-        <div class="add-review">
+        <div class="add-review" id="add-review-form">
             <h5 class="mb-3">Add a Review</h5>
             <form action="{{ route('reviews.store', ['id' => $book->bookID]) }}" method="POST">
                 @csrf
@@ -201,6 +202,12 @@
             $('#errorModal').modal('show');
         @endif
     });
+    function scrollToReviewForm() {
+        const reviewForm = document.getElementById('add-review-form');
+        if (reviewForm) {
+            reviewForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
 
    
 
