@@ -373,7 +373,7 @@ class BooksController extends Controller
         Book::whereIn('bookID', $bookIDs)->delete();
 
         // Redirect or return a response
-        return redirect()->back()->with('success', 'Selected books have been deleted successfully.');
+        return redirect()->back()->with('success', 'Selected book(s) have been deleted successfully.');
     }
 
 
