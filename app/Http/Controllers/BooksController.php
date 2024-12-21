@@ -402,40 +402,34 @@ class BooksController extends Controller
             'descriptionInput' => 'required|string',
         ]);
 
-        dd($request->file('editCoverImage'));
+        $book = Book::findOrFail($bookID); // Find the book to update
 
+        // Handle the file upload if a new file is provided
+        if ($request->hasFile('editCoverImage') && $request->file('editCoverImage')->isValid()) {
+            $image = $request->file('editCoverImage');
+            $destinationPath = public_path('assets\\covers');
 
-        // $book = Book::findOrFail($bookID); // Find the book to update
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true);
+            }
 
-        // // Handle the file upload if a new file is provided
-        // if ($request->hasFile('editCoverImage') && $request->file('editCoverImage')->isValid()) {
-        //     $image = $request->file('editCoverImage');
-        //     $destinationPath = public_path('assets\\covers');
+            $image->move($destinationPath, $image->getClientOriginalName());
+            $coverImagePath = 'assets\\covers\\' . $image->getClientOriginalName();
+        } else {
+            $coverImagePath = $book->cover; // Keep the existing cover if no new file is uploaded
+        }
 
-        //     if (!file_exists($destinationPath)) {
-        //         mkdir($destinationPath, 0777, true);
-        //     }
+        // Update the book data
+        $book->title = $validatedData['title'];
+        $book->author = $validatedData['author'];
+        $book->genre = $validatedData['genres'];
+        $book->description = $validatedData['descriptionInput'];
+        $book->cover = $coverImagePath; // Update the cover path
 
-        //     $image->move($destinationPath, $image->getClientOriginalName());
-        //     $coverImagePath = 'assets\\covers\\' . $image->getClientOriginalName();
-        // } else {
-        //     $coverImagePath = $book->cover; // Keep the existing cover if no new file is uploaded
-        // }
+        // Save the updated book
+        $book->save();
 
-
-
-
-        // // Update the book data
-        // $book->title = $validatedData['title'];
-        // $book->author = $validatedData['author'];
-        // $book->genre = $validatedData['genres'];
-        // $book->description = $validatedData['descriptionInput'];
-        // $book->cover = $coverImagePath; // Update the cover path
-
-        // // Save the updated book
-        // $book->save();
-
-        // return redirect()->back()->with('success', 'Book updated successfully!');
+        return redirect()->back()->with('success', 'Book updated successfully!');
     }
 
 

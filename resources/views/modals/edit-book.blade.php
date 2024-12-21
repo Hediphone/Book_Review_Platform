@@ -65,13 +65,11 @@
     // Function to show the edit book modal and pre-fill it with the book data
     function showEditBookModal(bookID) {
 
-        alert('bookid: ' + bookID);
-
         // Fetch the book data using AJAX or Laravel route, and populate the modal
         fetch(`/books/edit/${bookID}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
 
                 // Dynamically update the form's action with the book ID
                 document.getElementById('editBookForm').action = `/books/update/${data.bookID}`;
@@ -91,7 +89,7 @@
                 // Update the hidden field value
                 document.getElementById('editCoverURL').value = coverPath;
 
-                console.log(coverPath); // Log the corrected path
+                // console.log(coverPath); // Log the corrected path
             })
             .catch(error => console.error('Error fetching book data:', error));
     }
@@ -114,7 +112,6 @@
             // Create a URL for the selected image file
             editCoverImage.src = URL.createObjectURL(editFile); // Update the src of the image
             editCoverURL.value = editFile.name; // Store the file name in the hidden input
-            alert(editCoverURL.value); // Optional: log the filename for debugging
         }
     };
 </script>
