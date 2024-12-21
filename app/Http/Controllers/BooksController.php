@@ -156,9 +156,9 @@ class BooksController extends Controller
         }
 
 
-         return view('books.browse', compact('booksByGenre', 'genres'));
-     }
-     
+        return view('books.browse', compact('booksByGenre', 'genres'));
+    }
+
     /**
      * Show books for a specific genre with average ratings.
      */
@@ -190,8 +190,8 @@ class BooksController extends Controller
         // Return the view with books matching the genres
         return view('books.show-books-by-genre', compact('booksByGenre', 'genre'));
 
-        
-     }
+
+    }
 
     public function viewAllByGenre($genre)
     {
@@ -225,23 +225,65 @@ class BooksController extends Controller
 
     /**
      * Search books based on the query.
-     */public function search(Request $request)
+     */
+    public function search(Request $request)
     {
         $query = $request->input('search');
-        
+
         // Convert the query to lowercase
         $query = strtolower($query);
-        
+
         // Perform a case-insensitive search on title, author, and genre
         $books = Book::whereRaw('LOWER(title) like ?', ['%' . $query . '%'])
             ->orWhereRaw('LOWER(author) like ?', ['%' . $query . '%'])
             ->orWhereRaw('LOWER(genre) like ?', ['%' . $query . '%'])
             ->withAvg('reviews', 'rating') // Fetch average rating
             ->get();
-        
+
         // Return the results view and pass the books
         return view('books.search-results', compact('books', 'query'));
     }
+
+    public function adminBookSearch(Request $request)
+    {
+        $query = $request->input('search');
+
+        // Convert the query to lowercase
+        $query = strtolower($query);
+
+        // Perform a case-insensitive search on title, author, and genre
+        $books = Book::whereRaw('LOWER(title) like ?', ['%' . $query . '%'])
+            ->orWhereRaw('LOWER(author) like ?', ['%' . $query . '%'])
+            ->orWhereRaw('LOWER(genre) like ?', ['%' . $query . '%'])
+            ->withAvg('reviews', 'rating') // Fetch average rating
+            ->get();
+
+        // If it's an AJAX request, return only the table rows
+        if ($request->ajax()) {
+            return view('admin.search-results', compact('books'));
+        }
+
+        // Return the full results view
+        return view('admin.search-results', compact('books', 'query'));
+    }
+
+    public function adminSearchbyGenre(Request $request)
+    {
+        $query = Book::query();
+
+        if ($request->has('search')) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->has('genre') && $request->genre !== 'All') {
+            $query->where('genre', $request->genre);
+        }
+
+        $books = $query->get();
+
+        return view('admin.search-results', compact('books'));
+    }
+
 
     public function store(Request $request)
     {
@@ -358,43 +400,42 @@ class BooksController extends Controller
             'author' => 'required|string|max:255',
             'genres' => 'required|string',
             'descriptionInput' => 'required|string',
-            'editCoverImage' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate image file (optional)
         ]);
 
-        // Log the validated data
-        Log::info('Validated Data:', $validatedData);
-
-        $book = Book::findOrFail($bookID); // Find the book to update
-
-        // Handle the file upload if a new file is provided
-        if ($request->hasFile('editCoverImage') && $request->file('editCoverImage')->isValid()) {
-            $image = $request->file('editCoverImage');
-            $destinationPath = public_path('assets\\covers');
-
-            if (!file_exists($destinationPath)) {
-                mkdir($destinationPath, 0777, true);
-            }
-
-            $image->move($destinationPath, $image->getClientOriginalName());
-            $coverImagePath = 'assets\\covers\\' . $image->getClientOriginalName();
-        } else {
-            $coverImagePath = $book->cover; // Keep the existing cover if no new file is uploaded
-        }
+        dd($request->file('editCoverImage'));
 
 
+        // $book = Book::findOrFail($bookID); // Find the book to update
+
+        // // Handle the file upload if a new file is provided
+        // if ($request->hasFile('editCoverImage') && $request->file('editCoverImage')->isValid()) {
+        //     $image = $request->file('editCoverImage');
+        //     $destinationPath = public_path('assets\\covers');
+
+        //     if (!file_exists($destinationPath)) {
+        //         mkdir($destinationPath, 0777, true);
+        //     }
+
+        //     $image->move($destinationPath, $image->getClientOriginalName());
+        //     $coverImagePath = 'assets\\covers\\' . $image->getClientOriginalName();
+        // } else {
+        //     $coverImagePath = $book->cover; // Keep the existing cover if no new file is uploaded
+        // }
 
 
-        // Update the book data
-        $book->title = $validatedData['title'];
-        $book->author = $validatedData['author'];
-        $book->genre = $validatedData['genres'];
-        $book->description = $validatedData['descriptionInput'];
-        $book->cover = $coverImagePath; // Update the cover path
 
-        // Save the updated book
-        $book->save();
 
-        return redirect()->back()->with('success', 'Book updated successfully!');
+        // // Update the book data
+        // $book->title = $validatedData['title'];
+        // $book->author = $validatedData['author'];
+        // $book->genre = $validatedData['genres'];
+        // $book->description = $validatedData['descriptionInput'];
+        // $book->cover = $coverImagePath; // Update the cover path
+
+        // // Save the updated book
+        // $book->save();
+
+        // return redirect()->back()->with('success', 'Book updated successfully!');
     }
 
 

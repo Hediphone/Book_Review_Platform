@@ -5,7 +5,8 @@
                 <h3>Edit Book Details</h3>
                 <form id="editBookForm" name="editBookForm" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')                     <div class="formContent">
+                    @method('PUT') 
+                   <div class="formContent">
                         <div class="bookInfo">
                             <label for="bookInfo">Book Info</label><br><br>
                             <input type="hidden" id="editBookID" name="editBookID" value="">
@@ -14,7 +15,6 @@
                                 <div class="addImage">
                                     <div class="imageContainer">
                                         <img src="" id="editCoverImage" alt="Cover Image">
-                                        <?php $editBookID; ?>
                                         <input type="hidden" name="editCoverURL" id="editCoverURL" value=""
                                             required><br><br>
                                     </div>
@@ -114,9 +114,7 @@
             // Create a URL for the selected image file
             editCoverImage.src = URL.createObjectURL(editFile); // Update the src of the image
             editCoverURL.value = editFile.name; // Store the file name in the hidden input
-            alert(editCoverURL.value);
+            alert(editCoverURL.value); // Optional: log the filename for debugging
         }
     };
-
-
 </script>

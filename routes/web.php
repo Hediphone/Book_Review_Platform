@@ -14,6 +14,8 @@ Route::get('/', [LandingPageController::class, 'index'])->name('landing-page')->
 
 //aayuson pa mga ini
 Route::get('/search', [BooksController::class, 'search'])->name('books.search');
+Route::get('/books/search', [BooksController::class, 'adminBookSearch'])->name('admin.books.search');
+Route::get('/books/search-by-genre', [BooksController::class, 'adminSearchbyGenre'])->name('admin.books.search-by-genre');
 Route::get('/modals/add-book', function () {
     return view(view: 'modals.add-book');
 });
@@ -32,7 +34,6 @@ Route::post('/admin-dash', [BooksController::class, 'destroySelected'])->name('b
 Route::get('/books/delete', function () {
     return view(view: 'modals.edit-book');
 });
-Route::post('/books/delete', [BooksController::class, 'deleteBooks'])->name('books.delete');
 
 Route::post('/admin-dash', action: [BooksController::class, 'deleteBooks'])->name('books.delete');
 
@@ -40,10 +41,20 @@ Route::post('/admin-dash', action: [BooksController::class, 'deleteBooks'])->nam
 
 Route::get('/books/{genre}/{bookId}/json', [BooksController::class, 'showDetails'])->name('books.showDetails.json');
 
+// Route to show the edit form (AJAX request)
+Route::get('/books/edit/{bookID}', action: [BooksController::class, 'edit'])->name('books.edit');
+
+// Route to update the book details
+Route::put('/books/update/{book}', [BooksController::class, 'update'])->name('books.update');
+
+
 //
 //ok 
 Route::post('/books/add', [BooksController::class, 'store'])->name('books.add');
 Route::get('/books/add', [BooksController::class, 'indexforadd'])->name('books.index');
+
+Route::post('/books/delete', action: [BooksController::class, 'deleteBooks'])->name('books.delete');
+
 //
 
 // Authentication Routes (only for guests)
