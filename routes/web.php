@@ -31,9 +31,7 @@ Route::get('/modals/edit-book', function () {
     return view(view: 'modals.edit-book');
 });
 
-// Keep the route the same
-Route::get('/admin-dash', [AuthController::class, 'loginPost'])->middleware('auth');
-
+Route::get('/admin-dash', [BooksController::class, 'index']);
 // Route::get('/admin-dash', function () {
 //     return view(view: 'admin-dash');
 // });

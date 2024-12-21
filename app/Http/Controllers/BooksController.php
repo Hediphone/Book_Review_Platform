@@ -15,15 +15,15 @@ class BooksController extends Controller
      */
     public function index(Request $request)
     {
-        // Check if the logged-in user is the admin and verify the password
+        // // Check if the logged-in user is the admin and verify the password
         // if (auth()->check()) {
         //     $user = auth()->user();
 
         //     // Check if the email and password are correct
         //     if ($user->email == 'admin@example.com' || !Hash::check($request->input('password'), $user->password)) {
-        //         $books = Book::all();
+                $books = Book::all();
 
-        //         return view('admin-dash', compact('books'));
+                return view('admin-dash', compact('books'));
         //     }
         // } else {
         //     // If the user is not authenticated
@@ -373,7 +373,7 @@ class BooksController extends Controller
         Book::whereIn('bookID', $bookIDs)->delete();
 
         // Redirect or return a response
-        return redirect()->back()->with('success', 'Selected books have been deleted successfully.');
+        return redirect()->back()->with('success', 'Selected book(s) have been deleted successfully.');
     }
 
 
