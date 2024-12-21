@@ -1,58 +1,57 @@
-<section id="editBookInfo">
-    <div id="editBookModal">
+<section id="editBook">
+    <div id="editBookModal" style="display:none;">
         <div class="background">
             <div class="ItemContainer">
-                <h3>Edit Book Information</h3>
-                <form id="editBookForm" name="editBookForm" action="{{ route('books.updateBook') }} method=" POST">
+                <h3>Edit Book Details</h3>
+                <form id="editBookForm" name="editBookForm" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="formContent">
+                    @method('PUT')                     <div class="formContent">
                         <div class="bookInfo">
                             <label for="bookInfo">Book Info</label><br><br>
+                            <input type="hidden" id="editBookID" name="editBookID" value="">
                             <div class="labelInput">
                                 <label>Cover Image</label>
                                 <div class="addImage">
                                     <div class="imageContainer">
                                         <img src="" id="editCoverImage" alt="Cover Image">
-                                        <input type="hidden" id="coverURLInput" name="coverURLInput">
+                                        <?php $editBookID; ?>
+                                        <input type="hidden" name="editCoverURL" id="editCoverURL" value=""
+                                            required><br><br>
                                     </div>
                                     <div class="addImageBtn">
-                                        <label for="editInput-file" class="editBook">Upload Image</label>
-                                        <input type="file" accept="image/jpeg, image/png, image/jpg" id="editInput-file"
-                                            name="coverImage">
+                                        <label for="input-file" class="addBook">Upload Image</label>
+                                        <input type="file" name="editCoverImage"
+                                            accept="image/jpeg, image/png, image/jpg" id="editInput-file">
                                     </div>
                                 </div>
                             </div>
-                            <input type="hidden" id="bookIdInput" name="bookIdInput">
-
                             <div class="labelInput">
                                 <label>Title</label>
-                                <input type="text" id="titleInput" name="titleInput" required><br><br>
+                                <input type="text" id="editTitle" name="title" value="" required><br><br>
                             </div>
                             <div class="labelInput">
                                 <label>Author</label>
-                                <input type="text" id="authorInput" name="authorInput"><br><br>
+                                <input type="text" id="editAuthor" name="author" value=""><br><br>
                             </div>
-
                             <div class="labelInput">
-                                <label for="genre">Genre/s</label>
-                                <input type="text" name="genresInput" id="genresInput"><br><br>
+                                <label for="genres">Genre/s</label>
+                                <input type="text" id="editGenre" name="genres" value=""><br><br>
                             </div>
                         </div>
-
                         <div class="additionalInfo">
                             <div class="description">
                                 <div class="labelInput">
                                     <label for="descriptionInput">Synopsis</label>
-                                    <textarea id="descriptionInput" name="descriptionInput" class="descriptionInput"
+                                    <textarea id="editDesciprion" name="descriptionInput" class="descriptionInput"
                                         rows="4" cols="30" required></textarea><br><br>
                                 </div>
                             </div>
 
                             <div class="modalButtons">
-                                <button class="editBook" id="editBookBtn" name="editBookBtn" type="submit">Save
+                                <button class="addBook" id="editBookBtn" name="editBookBtn" type="submit">Update
                                     Book</button>
-                                <button class="cancel" id="editCancelBtn" onclick="closeEditModal()">Cancel</button>
-
+                                <button class="cancel" type="button" id="editCancelBtn"
+                                    onclick="closeEditBookModal()">Cancel</button>
                             </div>
                         </div>
                     </div>
@@ -63,48 +62,61 @@
 </section>
 
 <script>
-    // JavaScript for handling edit and delete
-    function editBook(bookId, genre) {
-        alert('Edit book with ID: ' + bookId);
-        // Show the modal
-        document.getElementById('editBookModal').style.display = 'block';
-        // Populate the modal with book information
-        populateModal(bookId, genre);
-    }
+    // Function to show the edit book modal and pre-fill it with the book data
+    function showEditBookModal(bookID) {
 
-    function closeEditModal() {
-        document.getElementById('editBookModal').style.display = 'none';
-    }
+        alert('bookid: ' + bookID);
 
-    function deleteBook(bookId) {
-        if (confirm('Are you sure you want to delete this book?')) {
-            alert('Delete book with ID: ' + bookId);
-            // You can replace this alert with your actual delete logic, e.g., using AJAX to delete the book
-        }
-    }
-
-    function populateModal(bookId, genre) {
-        // Fetch book information from the server
-        fetch(`/books/${genre}/${bookId}/json`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch book details');
-                }
-                return response.json(); // Parse response as JSON
-            })
+        // Fetch the book data using AJAX or Laravel route, and populate the modal
+        fetch(`/books/edit/${bookID}`)
+            .then(response => response.json())
             .then(data => {
-                // Populate modal fields with fetched data
-                document.getElementById('titleInput').value = data.title || '';
-                document.getElementById('authorInput').value = data.author || '';
-                document.querySelector('input[name="genresInput"]').value = data.genre || '';
-                document.getElementById('descriptionInput').value = data.synopsis || '';
-                document.getElementById('editCoverImage').src = data.coverImage || '/assets/svg/addImage.svg';
+                console.log(data);
+
+                // Dynamically update the form's action with the book ID
+                document.getElementById('editBookForm').action = `/books/update/${data.bookID}`;
+
+                document.getElementById('editBookModal').style.display = 'block';
+                document.getElementById('editBookID').value = data.bookID;
+                document.getElementById('editTitle').value = data.title;
+                document.getElementById('editAuthor').value = data.author;
+                document.getElementById('editGenre').value = data.genre;
+                document.getElementById('editDesciprion').value = data.description;
+
+                let coverPath = data.cover.replace(/\\/g, '/');
+
+                // Update the image preview source
+                document.getElementById('editCoverImage').src = coverPath;
+
+                // Update the hidden field value
+                document.getElementById('editCoverURL').value = coverPath;
+
+                console.log(coverPath); // Log the corrected path
             })
-            .catch(error => {
-                console.error('Error fetching book details:', error);
-                alert('Unable to fetch book details. Please try again later.');
-            });
+            .catch(error => console.error('Error fetching book data:', error));
     }
+
+    // Function to close the edit book modal
+    function closeEditBookModal() {
+        document.getElementById("editBookModal").style.display = "none";
+    }
+
+    // Update the book cover image preview when the user selects a new image
+    // Get the elements
+    let editCoverImage = document.getElementById("editCoverImage"); // The image element you want to change
+    let editInputFile = document.getElementById("editInput-file"); // The file input element
+    let editCoverURL = document.getElementById("editCoverURL"); // Hidden input to store the file name
+
+    // When the user selects a file
+    editInputFile.onchange = function () {
+        let editFile = editInputFile.files[0]; // Get the selected file
+        if (editFile) {
+            // Create a URL for the selected image file
+            editCoverImage.src = URL.createObjectURL(editFile); // Update the src of the image
+            editCoverURL.value = editFile.name; // Store the file name in the hidden input
+            alert(editCoverURL.value);
+        }
+    };
 
 
 </script>

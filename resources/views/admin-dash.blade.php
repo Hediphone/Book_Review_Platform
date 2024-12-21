@@ -92,17 +92,17 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <!-- Ellipsis icon to trigger dropdown -->
                                             <div class="dropdown">
                                                 <button class="btn btn-link dropdown-toggle" type="button"
                                                     id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <i class="bi bi-three-dots-vertical"></i> <!-- Ellipsis Icon -->
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <!-- Edit and Delete actions -->
-                                                    <li><a class="dropdown-item" href="#"
-                                                            onclick="editBook('{{ $book->bookID }}', '{{ $book->genre }}')">Edit</a>
+                                                    <li>
+                                                        <a class="dropdown-item" href="#"
+                                                            onclick="showEditBookModal('{{ $book->bookID }}')">Edit</a>
                                                     </li>
+
                                                 </ul>
                                             </div>
                                         </td>

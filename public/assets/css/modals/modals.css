@@ -243,7 +243,12 @@ input[type=text]:-ms-input-placeholder {
 }
 
 .successMessage {
-    margin-top: 20px;
+    margin: 20px auto;
+}
+
+.successMessage p {
+    margin: 0 auto;
+    text-align: center;
 }
 
 .successmodalButtons button{
@@ -292,10 +297,7 @@ input[type=text]:-ms-input-placeholder {
     cursor: pointer;
 }
 
-.successPrompt,
-#add_successPrompt,
-#update_successPrompt,
-#remove_successPrompt {
+#successPrompt {
     position: absolute;
     height: 100vh;
     top: 0px;
@@ -307,8 +309,8 @@ input[type=text]:-ms-input-placeholder {
 }
 
 .sucessContainer {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 325px;
     border-radius: 13px;
     background: #FAFAFA;
     display: flex;
