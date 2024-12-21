@@ -21,7 +21,7 @@
                     </div>
                     <div class="formContent">
                         <div class="deleteButtons">
-                            <button class="deleteBook" id="deleteBtn">Confirm</button>
+                            <button class="deleteBook" id="deleteBtn" onclick="removeSelectedProducts()">Confirm</button>
                             <button class="cancel" id="deleteCancelBtn" onclick="closeDeleteBookModal()">Cancel</button>
                         </div>
                     </div>
@@ -32,65 +32,33 @@
 </body>
 
 <script>
+    // Open the delete modal
     function showDeleteBookModal() {
-        document.getElementById('deleteBookModal').style.display = 'block';
+        document.getElementById('deleteBookModal').style.display = 'flex';
     }
-    
+
+    // Close the delete modal
     function closeDeleteBookModal() {
-        // Close the modal or reset the form
-        document.getElementById("deleteBookModal").style.display = "none";
+        document.getElementById('deleteBookModal').style.display = 'none';
     }
 
-    //get the selected checkboxes
-    function getSelectedCheckboxes() {
-        var checkboxes = document.querySelectorAll('.inventoryTable tbody input[type="checkbox"]:checked');
-        var selectedBooks = [];
-        checkboxes.forEach(function (checkbox) {
-            selectedBooks.push(checkbox.value);
-        });
-        return selectedBooks;
-    }
-
-    //removal of selected products
     function removeSelectedProducts() {
-        var selectedBooks = getSelectedCheckboxes();
+    const selectedBooks = [];
+    const checkboxes = document.querySelectorAll('input[name="selectedBooks[]"]:checked');
 
-        var modalConfirm = document.getElementById("deleteBookModal");
-        modalConfirm.style.display = "flex";
+    checkboxes.forEach((checkbox) => {
+        const row = checkbox.closest('tr');
+        const bookID = row.querySelector('td:nth-child(2)').textContent.trim();
+        selectedBooks.push(bookID);
+    });
 
+    // Assign the collected IDs to the hidden field
+    document.getElementById('selectedBooks').value = selectedBooks.join(',');
 
-        var confirmCancelBtn = document.getElementById("confirmCancelBtn");
+    // Submit the form
+    document.getElementById('removeBookForm').submit();
+}
 
-        confirmCancelBtn.addEventListener("click", function () {
-            var modalConfirm = document.getElementById("deleteBookModal");
-
-            modalConfirm.style.display = "none";
-        });
-
-
-        var confirmation = document.getElementById("confirmBtn");
-
-        confirmation.addEventListener("click", function () {
-            //update the hidden input field with selected products 
-            document.getElementById("selectedBooks").value = selectedBooks.join(',');
-
-            document.getElementById("removeBookForm").submit();
-
-            var remove_successPrompt = document.getElementById("remove_successPrompt");
-
-            remove_successPrompt.style.display = "flex";
-
-            var remove_okBtn = document.getElementById("remove_okBtn");
-
-            remove_okBtn.addEventListener("click", function () {
-                remove_successPrompt.style.display = "none";
-            });
-        });
-    }
-
-    document.getElementById("removeBookBtn").onclick = function () {
-        removeSelectedProducts();
-    };
 </script>
 
 </html>

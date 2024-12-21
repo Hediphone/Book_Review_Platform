@@ -26,24 +26,25 @@ Route::get('/admin-dash', [BooksController::class, 'index']);
 // Route::get('/admin-dash', function () {
 //     return view(view: 'admin-dash');
 // });
-Route::post('/admin-dash', [BooksController::class, 'updateBook'])->name('books.updateBook');
+// Route::post('/admin-dash', [BooksController::class, 'updateBook'])->name('books.updateBook');
+Route::post('/admin-dash', [BooksController::class, 'destroySelected'])->name('books.destroySelected');
+
 
 Route::get('/books/delete', function () {
     return view(view: 'modals.edit-book');
 });
-Route::post('/books/delete', [BooksController::class, 'destroySelected'])->name('books.destroySelected');
+Route::post('/books/delete', [BooksController::class, 'deleteBooks'])->name('books.delete');
+
+Route::post('/admin-dash', action: [BooksController::class, 'deleteBooks'])->name('books.delete');
 
 
-Route::post('/books/delete', [BooksController::class, 'destroySelected'])->name('books.destroySelected');
 
+Route::get('/books/{genre}/{bookId}/json', [BooksController::class, 'showDetails'])->name('books.showDetails.json');
+
+//
+//ok 
 Route::post('/books/add', [BooksController::class, 'store'])->name('books.add');
 Route::get('/books/add', [BooksController::class, 'indexforadd'])->name('books.index');
-
-Route::get('/books/{genre}/{id}/json', [BooksController::class, 'showDetails'])->name('books.showDetails.json');
-
-Route::get('books/{id}/edit', [BookController::class, 'edit'])->name('books.edit');
-Route::get('books/{id}/delete', [BookController::class, 'delete'])->name('books.delete');
-
 //
 
 // Authentication Routes (only for guests)

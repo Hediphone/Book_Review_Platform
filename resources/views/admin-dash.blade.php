@@ -101,7 +101,8 @@
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <!-- Edit and Delete actions -->
                                                     <li><a class="dropdown-item" href="#"
-                                                            onclick="editBook('{{ $book->bookID }}', '{{ $book->genre }}')">Edit</a></li>
+                                                            onclick="editBook('{{ $book->bookID }}', '{{ $book->genre }}')">Edit</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </td>
@@ -110,10 +111,11 @@
                             </tbody>
                         </table>
 
-                        <form id="removeBookForm" name="form" action="" method="post">
+                        <form id="removeBookForm" action="{{ route('books.delete') }}" method="POST">
                             @csrf
                             <input type="hidden" id="selectedBooks" name="selectedBooks">
                         </form>
+
                     </div>
                 </div>
             </div>
