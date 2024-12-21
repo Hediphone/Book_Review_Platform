@@ -216,33 +216,6 @@ class BooksController extends Controller
          // Return the view with the books
          return view('books.show-books-by-genre', compact('booksByGenre', 'genre'));
      }
-     
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

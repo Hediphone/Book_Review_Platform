@@ -66,49 +66,12 @@ Route::middleware('auth')->group(function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     //Route::get('/browse-books/view-all/{genre}', [BooksController::class, 'showGenre'])->name('view-all.genre.show');
    // Route::get('/browse-books/view-all', [BooksController::class, 'viewAllGenre'])->name('view-all.genre.show');
     Route::get('/browse-books/view-all/{genre}', [BooksController::class, 'viewAllByGenre'])->name('view-all.genre.show');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 
     //sa browse view , since nakalimit sa 4 ang books per genre pag clinick view all maggashow lahat ng books to that genre
 
