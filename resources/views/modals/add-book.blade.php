@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
     <section id="addNewBook">
         <div id="addBookModal">
             <div class="background">
@@ -71,25 +72,25 @@
     </section>
 
     @if(session('success'))
-        <section id="addSuccess">
-            <div class="successPrompt" id="add_successPrompt" style="display:flex;">
-                <div class="sucessContainer">
-                    <div class="image">
-                        <img src="../assets/check.png" alt="">
-                    </div>
-                    <div class="message">
-                        <p>{{ session('success') }}</p>
-                    </div>
-                    <div class="formContent">
-                        <div class="modalButtons">
-                            <button class="addBook" id="add_okBtn"
-                                onclick="window.location.href='{{ url('/home') }}'">Ok</button>
+    <section id="addSuccess">
+        <div class="successPrompt" id="add_successPrompt" style="display:flex;">
+            <div class="sucessContainer">
+                <div class="image">
+                    <img class="checksvg" src="/assets/svg/check.png" alt="">
+                </div>
+                <div class="successMessage">
+                    <p>{{ session('success') }}</p>
+                </div>
+                <div class="formContent">
+                    <div class="successmodalButtons">
+                        <button class="addBook" id="add_okBtn"
+                            onclick="window.location.href='{{ url('/home') }}'">Ok</button>
 
-                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
     @endif
 </body>
 

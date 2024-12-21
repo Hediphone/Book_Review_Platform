@@ -236,6 +236,29 @@ input[type=text]:-ms-input-placeholder {
     /* Push the button to the bottom */
 }
 
+.checksvg {
+    width: 100px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.successMessage {
+    margin-top: 20px;
+}
+
+.successmodalButtons button{
+    width: auto;
+    padding: 0px 20px;
+    height: 40px;
+    border: none;
+    border-radius: 7px;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 30px;
+    /* Push the button to the bottom */
+}
+
 .cancel {
     background-color: #dbdbdb;
     transition: all .2s ease-in-out;
@@ -285,8 +308,8 @@ input[type=text]:-ms-input-placeholder {
 }
 
 .sucessContainer {
-    width: 450px;
-    height: 450px;
+    width: 300px;
+    height: 300px;
     border-radius: 13px;
     background: #FAFAFA;
     display: flex;

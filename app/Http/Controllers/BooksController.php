@@ -21,6 +21,10 @@ class BooksController extends Controller
         return view('admin-dash', compact('books')); // Pass the books variable to the view
     }
 
+    public function indexforadd()
+    {
+        return view('modals.add-book');
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -34,14 +38,24 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
+        // if ($request->hasFile('coverImage')) {
+        //     dd('File is being uploaded!');
+        // } else {
+        //     dd('No file uploaded');
+        // }
+        
+        // return response('Entering store method');
         // Validate the request
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'author' => 'required|string|max:255',
             'genres' => 'required|string',
-            'description' => 'required|string',
+            'descriptionInput' => 'required|string',
             'coverImage' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate image file
         ]);
+
+    //     // Debug the validated data
+    // dd($validatedData);
 
         // Handle the file upload
         if ($request->hasFile('coverImage') && $request->file('coverImage')->isValid()) {
@@ -67,7 +81,7 @@ class BooksController extends Controller
             'title' => $validatedData['title'],
             'author' => $validatedData['author'],
             'genre' => $validatedData['genres'],
-            'description' => $validatedData['description'],
+            'description' => $validatedData['descriptionInput'],
             'cover' => $coverImagePath,  // Save the image path
         ]);
 
@@ -134,41 +148,37 @@ class BooksController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function updateBook(Request $request)
+    public function updateBook(Request $request, $bookId)
 {
-    // Validate the input
-    $validated = $request->validate([
+    // Validate and update the book
+    $request->validate([
         'titleInput' => 'required|string|max:255',
         'authorInput' => 'nullable|string|max:255',
         'genresInput' => 'nullable|string|max:255',
         'descriptionInput' => 'required|string',
-        'coverImage' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image
+        'coverImage' => 'nullable|image|mimes:jpeg,png,jpg,gif',
     ]);
 
-    try {
-        // Find the book by ID
-        $book = Book::findOrFail($request->bookIdInput);
+    $book = Book::find($bookId);
 
-        // Handle cover image upload (if provided)
-        if ($request->hasFile('coverImage')) {
-            $image = $request->file('coverImage');
-            $imagePath = $image->store('covers', 'public');
-            $book->cover = $imagePath;
-        }
-
-        // Update book details
+    if ($book) {
         $book->title = $request->titleInput;
         $book->author = $request->authorInput;
         $book->genre = $request->genresInput;
         $book->synopsis = $request->descriptionInput;
+
+        // Handle file upload if a new cover image is provided
+        if ($request->hasFile('coverImage')) {
+            $coverPath = $request->file('coverImage')->store('covers', 'public');
+            $book->cover = $coverPath;
+        }
+
         $book->save();
 
-        // Return success response
-        return response()->json(['success' => true, 'message' => 'Book updated successfully']);
-    } catch (\Exception $e) {
-        // Handle any errors
-        return response()->json(['success' => false, 'message' => 'Failed to update book: ' . $e->getMessage()]);
+        return redirect()->route('admin.books')->with('success', 'Book updated successfully!');
     }
+
+    return back()->with('error', 'Book not found!');
 }
 
 
@@ -193,6 +203,7 @@ class BooksController extends Controller
         return view('books.browse');
     }
 
+    
     public function showByGenre()
     {
         $genres = Book::select('genre')->distinct()->get(); // This fetches unique genres

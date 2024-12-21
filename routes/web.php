@@ -22,6 +22,7 @@ Route::get('/admin-dash', [BooksController::class, 'index']);
 // Route::get('/admin-dash', function () {
 //     return view(view: 'admin-dash');
 // });
+Route::post('/admin-dash', [BooksController::class, 'store'])->name('books.updateBook');
 
 // Authentication Routes (only for guests)
 Route::middleware('guest')->group(function () {
@@ -56,7 +57,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::post('/books/add', [BooksController::class, 'store'])->name('books.add');
-    Route::get('/books/add', [BooksController::class, 'store'])->name('books.index');
+    Route::get('/books/add', [BooksController::class, 'indexforadd'])->name('books.index');
     
     Route::get('/books/{genre}/{id}/json', [BooksController::class, 'showDetails'])->name('books.showDetails.json');
 
