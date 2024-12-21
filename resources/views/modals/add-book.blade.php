@@ -61,7 +61,7 @@
                                     <button class="addBook" id="addNewBookBtn" name="addNewBookBtn" type="submit">Add
                                         Book</button>
                                     <button class="cancel" type="button" id="addCancelBtn"
-                                        onclick="closeModal()">Cancel</button>
+                                        onclick="closeAddBookModal()">Cancel</button>
                                 </div>
                             </div>
                         </div>
@@ -95,6 +95,10 @@
 </body>
 
 <script>
+    function showAddBookModal() {
+        document.getElementById('addBookModal').style.display = 'block';
+    }
+
     // Get the elements
     let coverImage = document.getElementById("coverImage"); // The image element you want to change
     let inputFile = document.getElementById("input-file"); // The file input element
@@ -120,7 +124,7 @@
         }
     });
 
-    function closeModal() {
+    function closeAddBookModal() {
         // Close the modal or reset the form
         document.getElementById("addBookModal").style.display = "none";
     }

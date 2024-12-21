@@ -21,7 +21,7 @@
                             <input type="text" id="search" placeholder="Search">
                         </div>
                         <button class="inventoryLogBtn" id="inventory_LogBtn">Inventory Log </button>
-                        <button class="removeBook" id="removeBookBtn">Delete Book</button>
+                        <button class="removeBook" id="removeBookBtn" onclick="showDeleteBookModal()">Delete Book</button>
                         <button class="addBook" id="addBookBtn"  onclick="showAddBookModal()">Add Book</button>
                     </div>
                     <form class="genre" id="genreContainer" name="form" action="" method="post">
@@ -126,59 +126,9 @@
     <!-- Include the modals from the partial view -->
     @include('modals.add-book')
     @include('modals.edit-book')
+    @include('modals.delete-book')
     </main>
 </body>
-<script>
-    function showAddBookModal() {
-        document.getElementById('addBookModal').style.display = 'block';
-    }
-</script>
-
-<script>
-    // JavaScript for handling edit and delete
-    function editBook(bookId, genre) {
-        alert('Edit book with ID: ' + bookId);
-        // Show the modal
-        document.getElementById('editBookModal').style.display = 'block';
-        // Populate the modal with book information
-        populateModal(bookId, genre);
-    }
-
-    function closeEditModal() {
-        document.getElementById('editBookModal').style.display = 'none';
-    }
-
-    function deleteBook(bookId) {
-        if (confirm('Are you sure you want to delete this book?')) {
-            alert('Delete book with ID: ' + bookId);
-            // You can replace this alert with your actual delete logic, e.g., using AJAX to delete the book
-        }
-    }
-
-    function populateModal(bookId, genre) {
-        // Fetch book information from the server
-        fetch(`/books/${genre}/${bookId}/json`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch book details');
-                }
-                return response.json(); // Parse response as JSON
-            })
-            .then(data => {
-                // Populate modal fields with fetched data
-                document.getElementById('titleInput').value = data.title || '';
-                document.getElementById('authorInput').value = data.author || '';
-                document.querySelector('input[name="genresInput"]').value = data.genre || '';
-                document.getElementById('descriptionInput').value = data.synopsis || '';
-                document.getElementById('editCoverImage').src = data.coverImage || '/assets/svg/addImage.svg';
-            })
-            .catch(error => {
-                console.error('Error fetching book details:', error);
-                alert('Unable to fetch book details. Please try again later.');
-            });
-    }
-
-
 </script>
 
 
