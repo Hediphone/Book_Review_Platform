@@ -14,8 +14,15 @@ Route::get('/', [LandingPageController::class, 'index'])->name('landing-page')->
 
 //aayuson pa mga ini
 Route::get('/search', [BooksController::class, 'search'])->name('books.search');
-Route::get('/books/search', [BooksController::class, 'adminBookSearch'])->name('admin.books.search');
-Route::get('/books/search-by-genre', [BooksController::class, 'adminSearchbyGenre'])->name('admin.books.search-by-genre');
+// Route::get('/books/search', [BooksController::class, 'adminBookSearch'])->name('admin.books.search');
+
+// Route for searching by title
+Route::get('/admin/books/search', [BooksController::class, 'adminBookSearch'])->name('admin.books.search');
+
+// Route for searching by genre
+Route::get('/admin/books/search/genre', [BooksController::class, 'adminSearchByGenre'])->name('adminSearchByGenre');
+
+
 Route::get('/modals/add-book', function () {
     return view(view: 'modals.add-book');
 });
