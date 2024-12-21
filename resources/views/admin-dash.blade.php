@@ -31,7 +31,30 @@
                         <button class="addBook" id="addBookBtn" onclick="showAddBookModal()">Add Book</button>
                     </div>
 
-                    <!-- Other content here -->
+                    <!-- Genre Buttons Form -->
+                    <form class="genre" id="genreContainer" name="form" action="{{ route('adminSearchByGenre') }}"
+                        method="GET">
+                        <button class="genreBtn" type="submit" name="genre" value="All">All</button>
+                        <button class="genreBtn" type="submit" name="genre" value="Action">Action</button>
+                        <button class="genreBtn" type="submit" name="genre" value="Fantasy">Fantasy</button>
+                        <button class="genreBtn" type="submit" name="genre" value="Romance">Romance</button>
+                        <button class="genreBtn" type="submit" name="genre" value="Adventure">Adventure</button>
+                        <button class="genreBtn" type="submit" name="genre" value="Fiction">Fiction</button>
+                        <button class="genreBtn" type="submit" name="genre"
+                            value="Science-Fiction">Science-Fiction</button>
+                        <button class="genreBtn" type="submit" name="genre" value="Mystery">Mystery</button>
+                        <button class="genreBtn" type="submit" name="genre" value="Thriller">Thriller</button>
+                        <button class="genreBtn" type="submit" name="genre" value="Literary Fiction">Literary
+                            Fiction</button>
+                        <button class="genreBtn" type="submit" name="genre" value="Historical Fiction">Historical
+                            Fiction</button>
+                        <button class="genreBtn" type="submit" name="genre" value="Contemporary">Contemporary</button>
+                        <button class="genreBtn" type="submit" name="genre" value="Crime Fiction">Crime Fiction</button>
+                        <button class="genreBtn" type="submit" name="genre" value="Drama">Drama</button>
+                        <button class="genreBtn" type="submit" name="genre" value="Psychology">Psychology</button>
+                        <button class="genreBtn" type="submit" name="genre" value="Travel">Travel</button>
+                        <button class="genreBtn" type="submit" name="genre" value="True Crime">True Crime</button>
+                    </form>
 
                     <div class="inventory">
                         <table class="inventoryTable">

@@ -267,22 +267,39 @@ class BooksController extends Controller
         return view('admin.search-results', compact('books', 'query'));
     }
 
-    public function adminSearchbyGenre(Request $request)
+    public function adminSearchByGenre(Request $request)
     {
-        $query = Book::query();
+        $genre = $request->input('genre');
 
-        if ($request->has('search')) {
-            $query->where('title', 'like', '%' . $request->search . '%');
+        // Ensure the genre is not empty
+        if (!$genre) {
+            return redirect()->route('admin.books.search'); // Redirect to the search page if genre is not set
         }
 
-        if ($request->has('genre') && $request->genre !== 'All') {
-            $query->where('genre', $request->genre);
+        // If "All" is selected, show all books
+        if ($genre == 'All') {
+            $books = Book::withAvg('reviews', 'rating')->get();
+        } else {
+            // Use `like` to check if the genre is part of the genres stored in the database
+            $books = Book::where('genre', 'like', '%' . $genre . '%')
+                ->withAvg('reviews', 'rating')
+                ->get();
         }
 
-        $books = $query->get();
+        // Check if books are found
+        if ($books->isEmpty()) {
+            return view('admin.search-results', ['message' => 'No books found for this genre.']);
+        }
 
-        return view('admin.search-results', compact('books'));
+        // If it's an AJAX request, return only the table rows
+        if ($request->ajax()) {
+            return view('admin.search-results', compact('books'));
+        }
+
+        // Return the full results view
+        return view('admin.search-results', compact('books', 'genre'));
     }
+
 
 
     public function store(Request $request)
