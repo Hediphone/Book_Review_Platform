@@ -11,28 +11,17 @@ main {
 }
 
 .dashboard_container {
-    padding: 30px 20px;
+    padding: 30px 50px;
     background-color: #FBF4E2;
     border-radius: 30px;
     width: 100%;
     height: 100%;
-    margin: 15px auto 50px auto;
+    margin: auto auto 50px auto;
+    box-shadow: 1px 1px 2px rgba(1, 0.2, 0.3, 0.2);
+
 }
 
-.custom-btn2 {
-    color: #B4D51E;
-    background-color: #ffffff;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.10);
-    border: none;
-    border-radius: 15px;
-    padding-right:10px;
-    padding-left:10px;
-    font-family: "Merriweather", Helvetica;
-    font-size: 15px;
-    height: 32px;
-    margin-right: 10px;
-    width: 100px;
-  }
+
 .dashboard_container h1 {
     text-align: center;
     color: #463C74;
@@ -40,20 +29,82 @@ main {
     font-size: 20px;
 }
 
+
+
+
+
 .profile_container {
-    width: 100%;
-    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center */
+    align-items: center; /* Horizontally center */
     text-align: center;
-    padding: 5px;
-    padding-left: 30px;
 }
 
-.profile_pic,
-.favebook_pic {
-    height: 100%;
+/* Flexbox for profile_pic to center the image */
+#profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 210px !important;
+    height: 90%;
     margin-bottom: 10px;
-    border-radius: 30px;
+    border-radius: 140px;
+    outline:2px #5b5648;
     overflow: hidden;
+    width:200px;
+    border: 1px solid #4e4949;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+.favebook_pic {
+    height: 70%;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    border-radius: 140px;
+    outline:2px #5b5648;
+    overflow: hidden;
+    width:70%;
+    width:200px;
+    border: 1px solid #4e4949;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.fave_genres{
+    margin-top: 20px;
+
+}
+
+.register_date{
+    font-size: smaller !important;
+}
+
+.username {
+    margin-bottom: 0px; /* Adjust as needed */
+}
+
+
+#profile {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+}
+
+
+.register_date {
+    margin-top: 0; /* Remove top margin */
 }
 
 .dashboard_container img {
@@ -63,7 +114,7 @@ main {
 }
 
 .username p {
-    font-size: 23px;
+    font-size: 17px;
     color: #556800;
 }
 
@@ -102,9 +153,10 @@ main {
 
 .rectangle {
     border-radius: 30px;
+    width:150px;
     height: auto;
     padding: 10px;
-    border: 2px solid #B4D51E;
+    border: 1.5px solid #B4D51E;
 }
 
 .mybookshelves {
@@ -213,6 +265,7 @@ main {
 
 .reviewed_books {
     text-align: left;
+    margin-bottom: 200px;;
 }
 
 .reviewed_books h1 {
@@ -301,7 +354,34 @@ h3 {
     object-fit: cover;
     /* Ensures the image covers the area without distorting aspect ratio */
 }
+.custom-btn {
+    background-color: #B4D51E;
+    color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    padding-right:10px;
+    padding-left:10px;
+    font-family: "Merriweather", Helvetica;
+    font-size: 15px;
+    height: 32px;
+    width: 190px;
+  }
 
+  .custom-btn2 {
+    color: #B4D51E;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.10);
+    border: none;
+    border-radius: 15px;
+    padding-right:10px;
+    padding-left:10px;
+    font-family: "Merriweather", Helvetica;
+    font-size: 15px;
+    height: 32px;
+    margin-right: 10px;
+    width: 100px;
+  }
+  
 
 
 .book-title,.release-date{
@@ -363,4 +443,10 @@ h3 {
     /* Prevents underlining on hover */
     color: inherit;
     /* Keeps the color the same on hover */
+}
+
+
+.dashboard,.recent_reviews,.reviewed_books{
+    padding:0px 130px 0px 130px;
+
 }

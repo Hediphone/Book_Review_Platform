@@ -24,7 +24,7 @@
                   <a class="nav-link {{ Request::is('browse*') ? 'active' : '' }}" href="/browse">Browse Books</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">Profile</a>
+                    <a class="nav-link {{ Request::is('profile') ? 'active' : '' }}" href="/profile">Profile</a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="/contact">Contact Us</a>

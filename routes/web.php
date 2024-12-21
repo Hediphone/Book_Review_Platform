@@ -3,10 +3,10 @@
 use App\Http\Controllers\BooksController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page')->middleware('logout.home');   // First
 
@@ -65,7 +65,6 @@ Route::middleware('auth')->group(function () {
     });
     
     Route::get('/home', [HomeController::class, 'index'])->name('home.index');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/reviews', [ReviewController::class, 'show']);
 
     Route::post('/logout', function () {
@@ -75,7 +74,6 @@ Route::middleware('auth')->group(function () {
 
     // Content loading routes
     Route::get('/home/content', [BooksController::class, 'loadBooks'])->name('home.books');
-    Route::get('/dashboard/content', [BooksController::class, 'loadBooks'])->name('dashboard.books');
     
     
     Route::get('/browse', [BooksController::class, 'showByGenre'])->name('books.byGenre');
@@ -129,6 +127,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/reviews/{reviewID}/update', [ReviewController::class, 'update'])->name('reviews.update');
     Route::delete('/reviews/{reviewID}', [ReviewController::class, 'delete'])->name('reviews.delete');
 
+    Route::get('/profile', function () {
+        return view('profile');
+    })->name('profile');
+    
+
+    Route::get('/profile/favorite-genre', [ProfileController::class, 'favoriteGenre'])->name('profile.favorite-genre');
 
 
 
