@@ -8,7 +8,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ReviewController;
 
-Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
+Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');   // First
+
+Route::get('/browse/books/view-all/rating/{genre}', [BooksController::class, 'showByRating'])->name('view-all.rating.show'); //Second
+// sa home ito since nandun yung popular now, naka based yun sa rating ng user, (averega rating) see logic nalang sa showbyratingmethod
 
 Route::get('/search', [BooksController::class, 'search'])->name('books.search');
 
@@ -50,8 +53,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/home/content', [BooksController::class, 'loadBooks'])->name('home.books');
     Route::get('/dashboard/content', [BooksController::class, 'loadBooks'])->name('dashboard.books');
     
-
-
     
     Route::get('/browse', [BooksController::class, 'showByGenre'])->name('books.byGenre');
     //will trigger the showByGenre method ng BookController, yung showByGenre will fetch all the genres first (parang naka group by para one instance lang per genre)
@@ -59,43 +60,81 @@ Route::middleware('auth')->group(function () {
     //then each genre naka loop siya will display the books related dun sa genre (limit 4)
 
 
-    Route::get('/browse-books/{genre}/book-detail/{id}', [BooksController::class, 'show'])->name('books.bookDetail');
-    //will return yung details ng book
-
-    
     Route::get('/browse-books/{genre}', [BooksController::class, 'showGenre'])->name('books.browse.genre');
     //yung category sa browse view pag clinick yung genre it will show all the books to that genre (view rendered is show-books-by-genre)
 
 
-    Route::get('/browse-books/view-all/{genre}', [BooksController::class, 'showGenre'])->name('view-all.genre.show');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Route::get('/browse-books/view-all/{genre}', [BooksController::class, 'showGenre'])->name('view-all.genre.show');
+   // Route::get('/browse-books/view-all', [BooksController::class, 'viewAllGenre'])->name('view-all.genre.show');
+    Route::get('/browse-books/view-all/{genre}', [BooksController::class, 'viewAllByGenre'])->name('view-all.genre.show');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
     //sa browse view , since nakalimit sa 4 ang books per genre pag clinick view all maggashow lahat ng books to that genre
 
-    Route::get('/browse/books/view-all/rating/{genre}', [BooksController::class, 'showbyRating'])->name('view-all.rating.show');
-    // sa home ito since nandun yung popular now, naka based yun sa rating ng user, (averega rating) see logic nalang sa showbyratingmethod
 
     Route::get('/browse/books/view-all/release-date/{genre}', [BooksController::class, 'showbyReleaseDate'])->name('view-all.latest-release.show');
     // nakabased to sa released at column sa books since latest books siya, see logic sa method niya
 
 
-
-
-    Route::get('/browse-books/{genre}/book-detail/{id}', function ($genre, $id) {
+    Route::get('/browse-books/book-detail/{id}', function ($id) {
         // Retrieve book details from BooksController
         $booksController = new BooksController();
-        $bookDetails = $booksController->show($genre, $id);  // Pass both genre and id
+        $bookDetails = $booksController->show($id);  
         
         // Retrieve reviews from ReviewController
         $reviewController = new ReviewController();
-        $ratings = $reviewController->showRatings($genre, $id);  // Pass both genre and id
+        $ratings = $reviewController->showRatings($id);  
         
         // Merge data from both controllers and pass to the view
-        return view('books.book-details', array_merge($bookDetails->getData(), $ratings->getData(), ['genre' => $genre, 'id' => $id]));
+        return view('books.book-details', array_merge($bookDetails->getData(), $ratings->getData(), ['id' => $id]));
     })->name('books.bookDetail');
     
-    Route::post('/browse-books/{genre}/book-detail/{id}/reply/{review_id}', [ReviewController::class, 'addReply'])->name('reviews.reply');
+
+    
+    Route::post('/browse-books/{id}/reply/{review_id}', [ReviewController::class, 'addReply'])->name('reviews.reply');
 
     Route::post('/book/{id}/review', [ReviewController::class, 'store'])->name('reviews.store');
-
 
 
     Route::put('/reviews/{reviewID}/update', [ReviewController::class, 'update'])->name('reviews.update');

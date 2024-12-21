@@ -202,7 +202,6 @@ h3{
 }
 
 
-
 .card-img-top {
   padding: 13px 18px 0 18px; /* 10px padding around the image */
   width: 100%; /* Ensure the image takes up the full width */
@@ -456,7 +455,6 @@ footer{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px 20px;
   margin: 8px;
   background-color: #f8f9fa;
   border-radius: 10px; /* Rounded shape */
@@ -638,6 +636,7 @@ footer{
   background-color: 	#F8F8F8;
   padding:20px;
   font-size: 13px;
+  resize: none;
 }
 
 #review-text-area {
@@ -685,6 +684,5 @@ footer{
 .add-review {
   margin-top: 30px;
   padding: 20px;
-  border: 1px solid #ccc; /* Light border around the form */
 }
 

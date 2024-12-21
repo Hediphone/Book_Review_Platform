@@ -61,20 +61,25 @@ class ReviewController extends Controller
 
 
 
-    public function showRatings($genre, $id)
+    public function showRatings($id)
     {
-        // Retrieve the book and its genre
+        // Retrieve the book by ID
         $book = Book::find($id);
-        $bookGenre = $book ? $book->genre : 'Unknown'; // Default to 'Unknown' if the book is not found
-    
+        
+        // If the book is not found, set genre to 'Unknown'
+        $bookGenre = $book ? $book->genre : 'Unknown';
+        
+        // Split the genre string into an array to handle multiple genres
+        $bookGenres = explode(',', $bookGenre); // Split the genres into an array
+        
         // Retrieve all reviews for the specified book
         $reviews = Review::where('bookID', $id)
                          ->with('replies') // Load replies for each review
                          ->get();
-    
+        
         // Retrieve all ratings for the specified book
         $ratings = Review::where('bookID', $id)->pluck('rating');
-    
+        
         // Calculate the average rating
         $averageRating = $ratings->avg();
         
@@ -88,10 +93,11 @@ class ReviewController extends Controller
             $percentage = $totalReviews > 0 ? ($count / $totalReviews) * 100 : 0;
             $starRatings[$i] = round($percentage, 1);
         }
-    
+        
         // Pass data to the view
-        return view('books.book-details', compact('reviews', 'starRatings', 'totalReviews', 'averageRating', 'bookGenre'));
+        return view('books.book-details', compact('reviews', 'starRatings', 'totalReviews', 'averageRating', 'bookGenres'));
     }
+    
     
     
    
@@ -100,7 +106,7 @@ class ReviewController extends Controller
 
 
 
-    public function addReply(Request $request, $genre, $id, $review_id)
+    public function addReply(Request $request, $id, $review_id)
     {
         // Validate the reply content
         $request->validate([
@@ -117,9 +123,10 @@ class ReviewController extends Controller
         $reply->comment = $request->comment;
         $reply->save();
     
-        // Redirect back to the book details page with the genre and book id
-        return redirect()->route('books.bookDetail', ['genre' => $genre, 'id' => $id]);
+        // Redirect back to the book details page with the book id
+        return redirect()->route('books.bookDetail', ['id' => $id]);
     }
+    
     
 
     public function store(Request $request, $book_id)

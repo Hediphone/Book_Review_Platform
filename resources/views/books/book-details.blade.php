@@ -34,11 +34,11 @@
                     <p class="book-genres">
                         <span id="genres-title">Genres:</span>
                         @php
-                            $genres = is_string($book['genre']) ? explode(',', $book['genre']) : $book['genre'];
+                            $genres = is_array($bookGenres) ? $bookGenres : explode(',', $book['genre']);
                         @endphp
 
                         @foreach ($genres as $genre)
-                            <a href="{{ route('books.browse.genre', ['genre' => trim($genre)]) }}" class="genre-itemm">{{ $genre }}</a>
+                            <a href="{{ route('books.browse.genre', ['genre' => trim($genre)]) }}" class="genre-itemm">{{ trim($genre) }}</a>
                             @if (!$loop->last)
                                 &nbsp;
                             @endif

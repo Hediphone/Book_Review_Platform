@@ -411,16 +411,6 @@ Now it's up to Thomas, Teresa and the others, who will discover that while they 
                 'release_date' => NULL,
             ],
             [
-                'title' => '',
-                'author' => '',
-                'genre' => '',
-                'description' => "",
-                'cover' => 'assets\\covers\\',
-                'created_at' => now(),
-                'updated_at' => now(),
-                'release_date' => NULL,
-            ],
-            [
                 'title' => 'The Priory of the Orange Tree',
                 'author' => 'Samantha Shannon',
                 'genre' => 'Fantasy, LGBTQ+, Adventure',
@@ -731,16 +721,6 @@ Now it's up to Thomas, Teresa and the others, who will discover that while they 
                 'release_date' => NULL,
             ],
             [
-                'title' => '',
-                'author' => '',
-                'genre' => '',
-                'description' => "",
-                'cover' => 'assets\\covers\\',
-                'created_at' => now(),
-                'updated_at' => now(),
-                'release_date' => NULL,
-            ],
-            [
                 'title' => 'Hyperion',
                 'author' => 'Dan Simmons',
                 'genre' => 'Sci-Fi, Space Opera, Adventure',
@@ -972,7 +952,7 @@ Now it's up to Thomas, Teresa and the others, who will discover that while they 
             ],
             [
                 'title' => 'Before I Go to Sleep',
-                'author' => '',
+                'author' => 'S. J. Watson',
                 'genre' => 'Mystery, Psychological Fiction, Thriller',
                 'description' => "Christine Lucas wakes up every day with no memory of who she is due to amnesia caused by a traumatic incident. Each day, her therapist helps her piece together her life, but as she uncovers more about her past, she begins to question everyone around her and the truth about her condition.",
                 'cover' => 'assets\\covers\\Before I Go to Sleep.jpg',
