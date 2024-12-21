@@ -404,3 +404,18 @@ input[type=text]:-ms-input-placeholder {
     font-weight: bold;
     cursor: pointer;
 }
+
+.removeBook {
+    background-color: #FF4747;
+    transition: all .2s ease-in-out;
+}
+
+.addProduct {
+    background-color: #04B075;
+    transition: all .2s ease-in-out;
+}
+
+
+.removeBook:hover {
+    background-color: #d13131; /* Darker shade on hover */
+}

@@ -8,6 +8,11 @@
     font-family: 'Helvetica', sans-serif;
 }
 
+main {
+    height: 100vh;
+    overflow: hidden;
+}
+
 body{
     background-color: #F9F9F9;
     display: block;
@@ -17,7 +22,6 @@ body{
     background-color: #F9F9F9;
     height: 100vh;
     min-width: 550px;
-    margin-left: 115px;
     padding: 30px;
 }
 
@@ -131,7 +135,7 @@ body{
 /* Table styles */
 .inventory{
     height: auto;
-    max-height: 64vh; /*modified*/
+    max-height: 75vh; /*modified*/
     overflow-y: scroll;
     display: flex;
     flex-wrap: wrap;

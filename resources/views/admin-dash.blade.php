@@ -21,8 +21,8 @@
                             <input type="text" id="search" placeholder="Search">
                         </div>
                         <button class="inventoryLogBtn" id="inventory_LogBtn">Inventory Log </button>
-                        <button class="removeProduct" id="removeProductBtn">Delete Book</button>
-                        <button class="addProduct" id="addProductBtn"  onclick="showAddBookModal()">Add Book</button>
+                        <button class="removeBook" id="removeBookBtn">Delete Book</button>
+                        <button class="addBook" id="addBookBtn"  onclick="showAddBookModal()">Add Book</button>
                     </div>
                     <form class="genre" id="genreContainer" name="form" action="" method="post">
                         <button class="genreBtn" type="submit" name="genre" value="All">All</button>
@@ -113,20 +113,20 @@
                             </tbody>
                         </table>
 
-                        <form id="removeProductForm" name="form" action="" method="post">
-                            <input type="hidden" id="selectedProducts" name="selectedProducts">
+                        <form id="removeBookForm" name="form" action="" method="post">
+                            <input type="hidden" id="selectedBooks" name="selectedBooks">
                         </form>
                     </div>
                 </div>
             </div>
         </section>
 
-    </main>
+   
 
     <!-- Include the modals from the partial view -->
     @include('modals.add-book')
     @include('modals.edit-book')
-
+    </main>
 </body>
 <script>
     function showAddBookModal() {
