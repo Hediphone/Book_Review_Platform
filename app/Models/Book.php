@@ -15,6 +15,8 @@ class Book extends Model
 
     public $timestamps = true;
 
+    protected $fillable = ['title', 'author', 'genre', 'description', 'cover'];
+
     // Define the one-to-many relationship with Review
     public function reviews()
     {
