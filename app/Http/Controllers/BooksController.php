@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
 
 
 class BooksController extends Controller
@@ -12,12 +13,24 @@ class BooksController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // return view('modals.add-book');
-        $books = Book::all(); // Retrieve all books from the database
+        // Check if the logged-in user is the admin and verify the password
+        // if (auth()->check()) {
+        //     $user = auth()->user();
 
-        return view('/admin-dash', compact('books')); // Pass the books variable to the view
+        //     // Check if the email and password are correct
+        //     if ($user->email == 'admin@example.com' || !Hash::check($request->input('password'), $user->password)) {
+        //         $books = Book::all();
+
+        //         return view('admin-dash', compact('books'));
+        //     }
+        // } else {
+        //     // If the user is not authenticated
+        //     return redirect('/home');
+        // }
+
+
     }
 
     public function indexforadd()
