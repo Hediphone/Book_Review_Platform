@@ -125,6 +125,7 @@
         @include('modals.add-book')
         @include('modals.edit-book')
         @include('modals.delete-book')
+        @include('modals.success-prompt')
     </main>
 </body>
 
