@@ -12,7 +12,6 @@
 
 <body>
     <main>
-    
         <section id="booksTable">
             <div class="mainContainer">
                 <div class="productDisplay">
@@ -21,8 +20,9 @@
                             <input type="text" id="search" placeholder="Search">
                         </div>
                         <button class="inventoryLogBtn" id="inventory_LogBtn">Inventory Log </button>
-                        <button class="removeBook" id="removeBookBtn" onclick="showDeleteBookModal()">Delete Book</button>
-                        <button class="addBook" id="addBookBtn"  onclick="showAddBookModal()">Add Book</button>
+                        <button class="removeBook" id="removeBookBtn" onclick="showDeleteBookModal()">Delete
+                            Book</button>
+                        <button class="addBook" id="addBookBtn" onclick="showAddBookModal()">Add Book</button>
                     </div>
                     <form class="genre" id="genreContainer" name="form" action="" method="post">
                         <button class="genreBtn" type="submit" name="genre" value="All">All</button>
@@ -102,9 +102,7 @@
                                                     <!-- Edit and Delete actions -->
                                                     <li><a class="dropdown-item" href="#"
                                                             onclick="editBook('{{ $book->bookID }}', '{{ $book->genre }}')">Edit</a>
-
-                                                        <!-- <li><a class="dropdown-item" href="#"
-                                                                            onclick="deleteBook({{ $book->bookID }})">Delete</a></li> -->
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </td>
@@ -113,23 +111,22 @@
                             </tbody>
                         </table>
 
-                        <form id="removeBookForm" name="form" action="" method="post">
+                        <form id="removeBookForm" action="{{ route('books.delete') }}" method="POST">
+                            @csrf
                             <input type="hidden" id="selectedBooks" name="selectedBooks">
                         </form>
+
                     </div>
                 </div>
             </div>
         </section>
 
-   
-
-    <!-- Include the modals from the partial view -->
-    @include('modals.add-book')
-    @include('modals.edit-book')
-    @include('modals.delete-book')
+        <!-- Include the modals from the partial view -->
+        @include('modals.add-book')
+        @include('modals.edit-book')
+        @include('modals.delete-book')
+        @include('modals.success-prompt')
     </main>
 </body>
-</script>
-
 
 </html>

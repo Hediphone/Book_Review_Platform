@@ -1,98 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('assets/css/modals/modals.css') }}">
-    <title>Add New Book</title>
-</head>
-
-<body>
-
-    <section id="addNewBook">
-        <div id="addBookModal" style="display:none;">
-            <div class="background">
-                <div class="ItemContainer">
-                    <h3>Add New Book</h3>
-                    <form id="addBookForm" name="addBookForm" action="{{ route('books.add') }}" method="POST"
-                        enctype="multipart/form-data">
-                        @csrf
-                        <div class="formContent">
-                            <div class="bookInfo">
-                                <label for="bookInfo">Book Info</label><br><br>
-                                <div class="labelInput">
-                                    <label>Cover Image</label>
-                                    <div class="addImage">
-                                        <div class="imageContainer">
-                                            <img src="/assets/svg/addImage.svg" id="coverImage">
-                                            <input type="hidden" name="coverURL" id="coverURL" required><br><br>
-                                        </div>
-                                        <div class="addImageBtn">
-                                            <label for="input-file" class="addBook">Upload Image</label>
-                                            <input type="file" name="coverImage"
-                                                accept="image/jpeg, image/png, image/jpg," id="input-file">
-                                        </div>
+<section id="addNewBook">
+    <div id="addBookModal" style="display:none;">
+        <div class="background">
+            <div class="ItemContainer">
+                <h3>Add New Book</h3>
+                <form id="addBookForm" name="addBookForm" action="{{ route('books.add') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="formContent">
+                        <div class="bookInfo">
+                            <label for="bookInfo">Book Info</label><br><br>
+                            <div class="labelInput">
+                                <label>Cover Image</label>
+                                <div class="addImage">
+                                    <div class="imageContainer">
+                                        <img src="/assets/svg/addImage.svg" id="coverImage">
+                                        <input type="hidden" name="coverURL" id="coverURL" required><br><br>
                                     </div>
-                                </div>
-                                <div class="labelInput">
-                                    <label>Title</label>
-                                    <input type="text" name="title" required><br><br>
-                                </div>
-                                <div class="labelInput">
-                                    <label>Author</label>
-                                    <input type="text" name="author"><br><br>
-                                </div>
-                                <div class="labelInput">
-                                    <label for="genres">Genre/s</label>
-                                    <input type="text" name="genres"><br><br>
+                                    <div class="addImageBtn">
+                                        <label for="input-file" class="addBook">Upload Image</label>
+                                        <input type="file" name="coverImage" accept="image/jpeg, image/png, image/jpg,"
+                                            id="input-file">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="additionalInfo">
-                                <div class="description">
-                                    <div class="labelInput">
-                                        <label for="descriptionInput">Synopsis</label>
-                                        <textarea id="descriptionInput" name="descriptionInput" class="descriptionInput"
-                                            rows="4" cols="30" required></textarea><br><br>
-                                    </div>
-                                </div>
-
-                                <div class="modalButtons">
-                                    <button class="addBook" id="addNewBookBtn" name="addNewBookBtn" type="submit">Add
-                                        Book</button>
-                                    <button class="cancel" type="button" id="addCancelBtn"
-                                        onclick="closeAddBookModal()">Cancel</button>
-                                </div>
+                            <div class="labelInput">
+                                <label>Title</label>
+                                <input type="text" name="title" required><br><br>
+                            </div>
+                            <div class="labelInput">
+                                <label>Author</label>
+                                <input type="text" name="author"><br><br>
+                            </div>
+                            <div class="labelInput">
+                                <label for="genres">Genre/s</label>
+                                <input type="text" name="genres"><br><br>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+                        <div class="additionalInfo">
+                            <div class="description">
+                                <div class="labelInput">
+                                    <label for="descriptionInput">Synopsis</label>
+                                    <textarea id="descriptionInput" name="descriptionInput" class="descriptionInput"
+                                        rows="4" cols="30" required></textarea><br><br>
+                                </div>
+                            </div>
 
-    @if(session('success'))
-    <section id="addSuccess">
-        <div class="successPrompt" id="add_successPrompt" style="display:flex;">
-            <div class="sucessContainer">
-                <div class="image">
-                    <img class="checksvg" src="/assets/svg/check.png" alt="">
-                </div>
-                <div class="successMessage">
-                    <p>{{ session('success') }}</p>
-                </div>
-                <div class="formContent">
-                    <div class="successmodalButtons">
-                        <button class="addBook" id="add_okBtn"
-                            onclick="window.location.href='{{ url('/admin-dash') }}'">Ok</button>
-
+                            <div class="modalButtons">
+                                <button class="addBook" id="addNewBookBtn" name="addNewBookBtn" type="submit">Add
+                                    Book</button>
+                                <button class="cancel" type="button" id="addCancelBtn"
+                                    onclick="closeAddBookModal()">Cancel</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
-    </section>
-    @endif
-</body>
+    </div>
+</section>
 
 <script>
     function showAddBookModal() {
@@ -129,5 +94,3 @@
         document.getElementById("addBookModal").style.display = "none";
     }
 </script>
-
-</html>
