@@ -281,10 +281,9 @@ input[type=text]:-ms-input-placeholder {
     /* Darker shade on hover */
 }
 
-#addBookModal,
-#editBookModal,
+#addBookModal, #editBookModal,
 #deleteBookModal {
-    display: block;
+    display: none;
 }
 
 .modalButtons {

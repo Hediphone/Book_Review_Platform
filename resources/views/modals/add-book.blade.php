@@ -11,7 +11,7 @@
 <body>
 
     <section id="addNewBook">
-        <div id="addBookModal">
+        <div id="addBookModal" style="display:none;">
             <div class="background">
                 <div class="ItemContainer">
                     <h3>Add New Book</h3>
@@ -84,7 +84,7 @@
                 <div class="formContent">
                     <div class="successmodalButtons">
                         <button class="addBook" id="add_okBtn"
-                            onclick="window.location.href='{{ url('/home') }}'">Ok</button>
+                            onclick="window.location.href='{{ url('/admin-dash') }}'">Ok</button>
 
                     </div>
                 </div>
@@ -109,9 +109,7 @@
             coverURL.value = file.name; // Store the file name in the hidden input
         }
     };
-</script>
 
-<script>
     document.addEventListener('DOMContentLoaded', function () {
         if (document.querySelector('.successPrompt')) {
             // Hide the addBookModal if successPrompt is displayed
@@ -122,22 +120,6 @@
         }
     });
 
-</script>
-<!-- 
-<script>
-    document.getElementById("input-file").addEventListener("change", function (e) {
-        var file = e.target.files[0];
-        if (file) {
-            // Update the hidden input field with the file name or URL
-            document.getElementById("coverURL").value = file.name;
-
-            // Optionally, update the image preview
-            var coverImage = document.getElementById("coverImage");
-            coverImage.src = URL.createObjectURL(file);
-        }
-    });
-</script> -->
-<script>
     function closeModal() {
         // Close the modal or reset the form
         document.getElementById("addBookModal").style.display = "none";

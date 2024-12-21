@@ -33,6 +33,59 @@ class BooksController extends Controller
         //
     }
 
+    public function showDetails($genre, $id)
+    {
+        // Retrieve the book by ID using Eloquent's find() method
+        $book = Book::find($id);
+
+        // If the book is not found or genre mismatches, return error
+        if (!$book || $book->genre !== $genre) {
+            return response()->json(['error' => 'Book not found or genre mismatch'], 404);
+        }
+
+        // Return book details as JSON
+        return response()->json([
+            'title' => $book->title,
+            'author' => $book->author,
+            'genre' => $book->genre,
+            'synopsis' => $book->description,
+            'coverImage' => asset('storage/' . $book->coverImage)
+        ]);
+    }
+
+
+    /**
+     * Display the specified resource.
+     */
+    public function show($genre, $id)
+    {
+        // Retrieve the book by ID using Eloquent's find() method
+        $book = Book::find($id);
+
+        // If the book is not found, return 404
+        if (!$book) {
+            abort(404);
+        }
+
+        // Validate that the book belongs to the given genre
+        if ($book->genre !== $genre) {
+            abort(404, 'Genre mismatch');
+        }
+
+        // Pass the book and genre to the view
+        return view('books.book-details', compact('book', 'genre'));
+    }
+
+
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -92,59 +145,7 @@ class BooksController extends Controller
         return redirect()->route('books.index')->with('success', 'Book added successfully!');
     }
 
-    public function showDetails($genre, $id)
-    {
-        // Retrieve the book by ID using Eloquent's find() method
-        $book = Book::find($id);
-
-        // If the book is not found or genre mismatches, return error
-        if (!$book || $book->genre !== $genre) {
-            return response()->json(['error' => 'Book not found or genre mismatch'], 404);
-        }
-
-        // Return book details as JSON
-        return response()->json([
-            'title' => $book->title,
-            'author' => $book->author,
-            'genre' => $book->genre,
-            'synopsis' => $book->description,
-            'coverImage' => asset('storage/' . $book->coverImage)
-        ]);
-    }
-
-
-    /**
-     * Display the specified resource.
-     */
-    public function show($genre, $id)
-    {
-        // Retrieve the book by ID using Eloquent's find() method
-        $book = Book::find($id);
-
-        // If the book is not found, return 404
-        if (!$book) {
-            abort(404);
-        }
-
-        // Validate that the book belongs to the given genre
-        if ($book->genre !== $genre) {
-            abort(404, 'Genre mismatch');
-        }
-
-        // Pass the book and genre to the view
-        return view('books.book-details', compact('book', 'genre'));
-    }
-
-
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
+    
     /**
      * Update the specified resource in storage.
      */

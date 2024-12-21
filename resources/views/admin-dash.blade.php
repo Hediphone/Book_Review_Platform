@@ -12,71 +12,7 @@
 
 <body>
     <main>
-        <section id="editBookInfo">
-            <div id="editBookModal">
-                <div class="background">
-                    <div class="ItemContainer">
-                        <h3>Edit Book Information</h3>
-                        <form id="editBookForm" name="editBookForm" action="" method="POST">
-                            @csrf
-                            <div class="formContent">
-                                <div class="bookInfo">
-                                    <label for="bookInfo">Book Info</label><br><br>
-                                    <div class="labelInput">
-                                        <label>Cover Image</label>
-                                        <div class="addImage">
-                                            <div class="imageContainer">
-                                                <img src="" id="editCoverImage" alt="Cover Image">
-                                                <input type="hidden" id="coverURLInput" name="coverURLInput">
-                                            </div>
-                                            <div class="addImageBtn">
-                                                <label for="editInput-file" class="editBook">Upload Image</label>
-                                                <input type="file" accept="image/jpeg, image/png, image/jpg"
-                                                    id="editInput-file" name="coverImage">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="bookIdInput" name="bookIdInput">
-
-                                    <div class="labelInput">
-                                        <label>Title</label>
-                                        <input type="text" id="titleInput" name="titleInput" required><br><br>
-                                    </div>
-                                    <div class="labelInput">
-                                        <label>Author</label>
-                                        <input type="text" id="authorInput" name="authorInput"><br><br>
-                                    </div>
-
-                                    <div class="labelInput">
-                                        <label for="genre">Genre/s</label>
-                                        <input type="text" name="genresInput" id="genresInput"><br><br>
-                                    </div>
-                                </div>
-
-                                <div class="additionalInfo">
-                                    <div class="description">
-                                        <div class="labelInput">
-                                            <label for="descriptionInput">Synopsis</label>
-                                            <textarea id="descriptionInput" name="descriptionInput" class="descriptionInput" rows="4" cols="30"
-                                                required></textarea><br><br>
-                                        </div>
-                                    </div>
-
-                                    <div class="modalButtons">
-                                        <button class="editBook" id="editBookBtn" name="editBookBtn" type="submit">Save
-                                            Book</button>
-                                        <button class="cancel" id="editCancelBtn"
-                                            onclick="closeEditModal()">Cancel</button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+    
         <section id="booksTable">
             <div class="mainContainer">
                 <div class="productDisplay">
@@ -86,7 +22,7 @@
                         </div>
                         <button class="inventoryLogBtn" id="inventory_LogBtn">Inventory Log </button>
                         <button class="removeProduct" id="removeProductBtn">Delete Book</button>
-                        <button class="addProduct" id="addProductBtn">Add Book</button>
+                        <button class="addProduct" id="addProductBtn"  onclick="showAddBookModal()">Add Book</button>
                     </div>
                     <form class="genre" id="genreContainer" name="form" action="" method="post">
                         <button class="genreBtn" type="submit" name="genre" value="All">All</button>
@@ -168,7 +104,7 @@
                                                             onclick="editBook('{{ $book->bookID }}', '{{ $book->genre }}')">Edit</a>
 
                                                         <!-- <li><a class="dropdown-item" href="#"
-                                                                    onclick="deleteBook({{ $book->bookID }})">Delete</a></li> -->
+                                                                            onclick="deleteBook({{ $book->bookID }})">Delete</a></li> -->
                                                 </ul>
                                             </div>
                                         </td>
@@ -187,7 +123,17 @@
 
     </main>
 
+    <!-- Include the modals from the partial view -->
+    @include('modals.add-book')
+    @include('modals.edit-book')
+
 </body>
+<script>
+    function showAddBookModal() {
+        document.getElementById('addBookModal').style.display = 'block';
+    }
+</script>
+
 <script>
     // JavaScript for handling edit and delete
     function editBook(bookId, genre) {
