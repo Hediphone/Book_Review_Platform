@@ -127,13 +127,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/reviews/{reviewID}/update', [ReviewController::class, 'update'])->name('reviews.update');
     Route::delete('/reviews/{reviewID}', [ReviewController::class, 'delete'])->name('reviews.delete');
 
-    Route::get('/profile', function () {
-        return view('profile');
-    })->name('profile');
     
 
-    Route::get('/profile/favorite-genre', [ProfileController::class, 'favoriteGenre'])->name('profile.favorite-genre');
-
+    Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile');
 
 
 

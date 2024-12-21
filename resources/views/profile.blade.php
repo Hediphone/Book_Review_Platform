@@ -24,17 +24,31 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 rf_margin">
+                        <div class="col-md rf_margin">
                             <div class="row left_pd">
                                 <div class="col-md-12">
                                     <p class="fave_genres"><b>Favorite Genres:</b></p>
-                                    <p class="genres">{{ Auth::user()->favorite_genres }}</p>
+                                    <p>
+                                        @forelse ($favoriteGenres as $index => $genre)
+                                            {{ $genre }}@if(!$loop->last), @endif
+                                        @empty
+                                            No favorite genres available.
+                                        @endforelse
+                                    </p>
                                 </div>
                             </div>
                             <div class="row left_pd">
                                 <div class="col-md-12">
                                     <p class="fave_genres"><b>Top Reviewed Books:</b></p>
-                                    <p class="genres">{{ Auth::user()->favorite_genres }}</p>
+                                    </p>
+                                    @if(is_string($topReviewedBooks))
+    <p>{{ $topReviewedBooks }}</p> <!-- If no reviews yet, show message -->
+@else
+    @foreach ($topReviewedBooks as $book)
+        <p>{{ $book->title }} (Your Rating: {{ number_format($book->rating, 1) }})</p>
+    @endforeach
+@endif
+
                                 </div>
                             </div>
                             <div class="row left_pd">
