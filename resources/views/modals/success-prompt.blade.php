@@ -10,10 +10,16 @@
                 </div>
                 <div class="formContent">
                     <div class="successmodalButtons">
-                        <button class="addBook" id="add_okBtn"
-                            onclick="window.location.href='{{ url('/admin-dash') }}'">Ok</button>
-
+                        <button class="addBook" id="add_okBtn" onclick="closeSuccessModal()">Ok</button>
                     </div>
+
+                    <script>
+                        function closeSuccessModal() {
+                            // Find the modal container and hide it
+                            document.getElementById('successPrompt').style.display = 'none';
+                        }
+                    </script>
+
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 
 class BooksController extends Controller
@@ -13,12 +14,28 @@ class BooksController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // return view('modals.add-book');
-        $books = Book::all(); // Retrieve all books from the database
+        // // Check if the logged-in user is the admin and verify the password
+        // if (auth()->check()) {
+        //     $user = auth()->user();
 
-        return view('/admin-dash', compact('books')); // Pass the books variable to the view
+        //     // Check if the email and password are correct
+        //     if ($user->email == 'admin@example.com' || !Hash::check($request->input('password'), $user->password)) {
+            $books = Book::all();
+
+            // Return the view with books data and set the active sidebar
+            return view('admin-books-dashboard', [
+                'activeSidebar' => 'books',
+                'books' => $books
+            ]);
+        //     }
+        // } else {
+        //     // If the user is not authenticated
+        //     return redirect('/home');
+        // }
+
+
     }
 
     public function indexforadd()
@@ -157,9 +174,9 @@ class BooksController extends Controller
         }
 
 
-         return view('books.browse', compact('booksByGenre', 'genres'));
-     }
-     
+        return view('books.browse', compact('booksByGenre', 'genres'));
+    }
+
     /**
      * Show books for a specific genre with average ratings.
      */
@@ -191,8 +208,8 @@ class BooksController extends Controller
         // Return the view with books matching the genres
         return view('books.show-books-by-genre', compact('booksByGenre', 'genre'));
 
-        
-     }
+
+    }
 
     public function viewAllByGenre($genre)
     {
@@ -226,23 +243,79 @@ class BooksController extends Controller
 
     /**
      * Search books based on the query.
-     */public function search(Request $request)
+     */
+    public function search(Request $request)
     {
         $query = $request->input('search');
-        
+
         // Convert the query to lowercase
         $query = strtolower($query);
-        
+
         // Perform a case-insensitive search on title, author, and genre
         $books = Book::whereRaw('LOWER(title) like ?', ['%' . $query . '%'])
             ->orWhereRaw('LOWER(author) like ?', ['%' . $query . '%'])
             ->orWhereRaw('LOWER(genre) like ?', ['%' . $query . '%'])
             ->withAvg('reviews', 'rating') // Fetch average rating
             ->get();
-        
+
         // Return the results view and pass the books
         return view('books.search-results', compact('books', 'query'));
     }
+
+    public function adminBookSearch(Request $request)
+    {
+        $query = $request->input('search');
+
+        // Convert the query to lowercase
+        $query = strtolower($query);
+
+        // Perform the search
+        $books = Book::whereRaw('LOWER(title) like ?', ['%' . $query . '%'])
+            ->orWhereRaw('LOWER(author) like ?', ['%' . $query . '%'])
+            ->orWhereRaw('LOWER(genre) like ?', ['%' . $query . '%'])
+            ->withAvg('reviews', 'rating')
+            ->get();
+
+        // Return the view with the search results
+        return view('admin.search-results', compact('books', 'query'));
+    }
+
+
+    public function adminSearchByGenre(Request $request)
+    {
+        $genre = $request->input('genre');
+
+        // Ensure the genre is not empty
+        if (!$genre) {
+            return redirect()->route('admin.books.search'); // Redirect to the search page if genre is not set
+        }
+
+        // If "All" is selected, show all books
+        if ($genre == 'All') {
+            $books = Book::withAvg('reviews', 'rating')->get();
+        } else {
+            // Use `like` to check if the genre is part of the genres stored in the database
+            $books = Book::where('genre', 'like', '%' . $genre . '%')
+                ->withAvg('reviews', 'rating')
+                ->get();
+        }
+
+        // Check if books are found
+        if ($books->isEmpty()) {
+            return view('admin.search-results', ['message' => 'No books found for this genre.']);
+        }
+
+        // If it's an AJAX request, return only the table rows
+        if ($request->ajax()) {
+            return view('admin.search-results', compact('books'));
+        }
+
+        // Return the full results view
+        return view('admin.search-results', compact('books', 'genre'));
+    }
+
+
+
 
     public function store(Request $request)
     {
@@ -302,7 +375,7 @@ class BooksController extends Controller
         Book::whereIn('bookID', $bookIDs)->delete();
 
         // Redirect or return a response
-        return redirect()->back()->with('success', 'Selected books have been deleted successfully.');
+        return redirect()->back()->with('success', 'Selected book(s) have been deleted successfully.');
     }
 
 
@@ -359,11 +432,7 @@ class BooksController extends Controller
             'author' => 'required|string|max:255',
             'genres' => 'required|string',
             'descriptionInput' => 'required|string',
-            'editCoverImage' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate image file (optional)
         ]);
-
-        // Log the validated data
-        Log::info('Validated Data:', $validatedData);
 
         $book = Book::findOrFail($bookID); // Find the book to update
 
@@ -381,9 +450,6 @@ class BooksController extends Controller
         } else {
             $coverImagePath = $book->cover; // Keep the existing cover if no new file is uploaded
         }
-
-
-
 
         // Update the book data
         $book->title = $validatedData['title'];

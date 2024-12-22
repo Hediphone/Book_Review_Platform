@@ -13,15 +13,13 @@
                                 <label>Cover Image</label>
                                 <div class="addImage">
                                     <div class="imageContainer">
-                                        <img src="" id="editCoverImage" alt="Cover Image">
-                                        <?php $editBookID; ?>
-                                        <input type="hidden" name="editCoverURL" id="editCoverURL" value=""
-                                            required><br><br>
+                                        <img src="" id="editCoverImage" >
+                                        <input type="hidden" name="editCoverURL" id="editCoverURL" required><br><br>
                                     </div>
                                     <div class="addImageBtn">
-                                        <label for="input-file" class="addBook">Upload Image</label>
+                                        <label for="editInputFile" class="addBook">Upload Image</label>
                                         <input type="file" name="editCoverImage"
-                                            accept="image/jpeg, image/png, image/jpg" id="editInput-file">
+                                            accept="image/jpeg, image/png, image/jpg," id="editInputFile">
                                     </div>
                                 </div>
                             </div>
@@ -65,13 +63,11 @@
     // Function to show the edit book modal and pre-fill it with the book data
     function showEditBookModal(bookID) {
 
-        alert('bookid: ' + bookID);
-
         // Fetch the book data using AJAX or Laravel route, and populate the modal
         fetch(`/books/edit/${bookID}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
 
                 // Dynamically update the form's action with the book ID
                 document.getElementById('editBookForm').action = `/books/update/${data.bookID}`;
@@ -91,7 +87,7 @@
                 // Update the hidden field value
                 document.getElementById('editCoverURL').value = coverPath;
 
-                console.log(coverPath); // Log the corrected path
+                // console.log(coverPath); // Log the corrected path
             })
             .catch(error => console.error('Error fetching book data:', error));
     }
@@ -101,22 +97,30 @@
         document.getElementById("editBookModal").style.display = "none";
     }
 
-    // Update the book cover image preview when the user selects a new image
-    // Get the elements
+    // // Update the book cover image preview when the user selects a new image
+    // // Get the elements
     let editCoverImage = document.getElementById("editCoverImage"); // The image element you want to change
-    let editInputFile = document.getElementById("editInput-file"); // The file input element
+    let ediInputFile = document.getElementById("editInputFile"); // The file input element
     let editCoverURL = document.getElementById("editCoverURL"); // Hidden input to store the file name
 
     // When the user selects a file
-    editInputFile.onchange = function () {
-        let editFile = editInputFile.files[0]; // Get the selected file
-        if (editFile) {
+    ediInputFile.onchange = function () {
+        let file = ediInputFile.files[0]; // Get the selected file
+        if (file) {
             // Create a URL for the selected image file
-            editCoverImage.src = URL.createObjectURL(editFile); // Update the src of the image
-            editCoverURL.value = editFile.name; // Store the file name in the hidden input
-            alert(editCoverURL.value);
+            editCoverImage.src = URL.createObjectURL(file); // Update the src of the image
+            editCoverURL.value = file.name; // Store the file name in the hidden input
         }
     };
 
+    document.addEventListener('DOMContentLoaded', function () {
+        if (document.querySelector('.successPrompt')) {
+            // Hide the addBookModal if successPrompt is displayed
+            const addBookModal = document.getElementById('addBookModal');
+            if (addBookModal) {
+                addBookModal.style.display = 'none';
+            }
+        }
+    });
 
 </script>

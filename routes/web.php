@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BooksController;
 use App\Http\Middleware\LogOutOnLandingPage;
 use Illuminate\Support\Facades\Route;
@@ -11,9 +12,28 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 
+// // Route to show the users dashboard and handle search
+// Route::get('/admin/users', [AdminController::class, 'showUsers'])->name('admin.showUsers');
+
+Route::get('/admin/users/search', [AdminController::class, 'adminUserSearch'])->name('admin.users.search');
+Route::get('/admin/reviews/search', [AdminController::class, 'adminReviewSearch'])->name('admin.reviews.search');
 
 //aayuson pa mga ini
+
+Route::get('/admin/admin-books-dashboard', [AdminController::class, 'showBooksDashboard'])->name('admin.books.dashboard');
+Route::get('/admin/admin-users-dashboard', [AdminController::class, 'showUsersDashboard'])->name('admin.users.dashboard');
+Route::get('/admin/admin-reviews-dashboard', [AdminController::class, 'showReviewsDashboard'])->name('admin.reviews.dashboard');
+
 Route::get('/search', [BooksController::class, 'search'])->name('books.search');
+// Route::get('/books/search', [BooksController::class, 'adminBookSearch'])->name('admin.books.search');
+
+// Route for searching by title
+Route::get('/admin/books/search', [BooksController::class, 'adminBookSearch'])->name('admin.books.search');
+
+// Route for searching by genre
+Route::get('/admin/books/search/genre', [BooksController::class, 'adminSearchByGenre'])->name(name: 'adminSearchByGenre');
+
+
 Route::get('/modals/add-book', function () {
     return view(view: 'modals.add-book');
 });
@@ -21,29 +41,39 @@ Route::get('/modals/add-book', function () {
 Route::get('/modals/edit-book', function () {
     return view(view: 'modals.edit-book');
 });
-Route::get('/admin-dash', [BooksController::class, 'index']);
-// Route::get('/admin-dash', function () {
-//     return view(view: 'admin-dash');
+
+Route::get('/admin-books-dashboard', [BooksController::class, 'index']);
+// Route::get('/aadmin-books-dashboard', function () {
+//     return view(view: 'aadmin-books-dashboard');
 // });
-// Route::post('/admin-dash', [BooksController::class, 'updateBook'])->name('books.updateBook');
-Route::post('/admin-dash', [BooksController::class, 'destroySelected'])->name('books.destroySelected');
+// Route::post('/aadmin-books-dashboard', [BooksController::class, 'updateBook'])->name('books.updateBook');
+Route::post('/admin-books-dashboard', [BooksController::class, 'destroySelected'])->name('books.destroySelected');
 
 
 Route::get('/books/delete', function () {
     return view(view: 'modals.edit-book');
 });
-Route::post('/books/delete', [BooksController::class, 'deleteBooks'])->name('books.delete');
 
-Route::post('/admin-dash', action: [BooksController::class, 'deleteBooks'])->name('books.delete');
+Route::post('/admin-books-dashboard', action: [BooksController::class, 'deleteBooks'])->name('books.delete');
 
 
 
 Route::get('/books/{genre}/{bookId}/json', [BooksController::class, 'showDetails'])->name('books.showDetails.json');
 
+// Route to show the edit form (AJAX request)
+Route::get('/books/edit/{bookID}', action: [BooksController::class, 'edit'])->name('books.edit');
+
+// Route to update the book details
+Route::put('/books/update/{book}', [BooksController::class, 'update'])->name('books.update');
+
+
 //
 //ok 
 Route::post('/books/add', [BooksController::class, 'store'])->name('books.add');
 Route::get('/books/add', [BooksController::class, 'indexforadd'])->name('books.index');
+
+Route::post('/books/delete', action: [BooksController::class, 'deleteBooks'])->name('books.delete');
+
 //
 
 // Authentication Routes (only for guests)
@@ -60,8 +90,8 @@ Route::middleware('auth')->group(function () {
         return view('contact');
     });
 
-    Route::get('/admin-dashboard', function () {
-        return view('admin-dashboard');
+    Route::get('/aadmin-books-dashboardboard', function () {
+        return view('aadmin-books-dashboardboard');
     });
     
     Route::get('/home', [HomeController::class, 'index'])->name('home.index');
