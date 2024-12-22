@@ -1,6 +1,6 @@
 @extends('Components.Admin-Dashboard-Layout')
 
-@section('title', 'Admin Reviews Dashboard')
+@section('title', 'Admin Users Dashboard')
 
 @section('styles')
 <link rel="stylesheet" href="{{ asset('assets/css/admin/admin-users-dashboard.css') }}">
@@ -13,7 +13,7 @@
             <div class="delAddProduct">
                 <div class="searchBar">
                     <form id="searchForm" method="GET">
-                        <input type="text" id="search" name="search" placeholder="Search">
+                        <input type="text" id="search" name="search" placeholder="Search by name or email">
                         <button type="submit" class="searchBtn">Search</button>
                     </form>
                 </div>
@@ -31,7 +31,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="usersTableBody">
                         @foreach ($users as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
@@ -40,7 +40,7 @@
                                 <td>{{ $user->created_at }}</td>
                                 <td>{{ $user->updated_at }}</td>
                                 <td>
-                                    action
+                                    <!-- Add any actions you need here -->
                                 </td>
                             </tr>
                         @endforeach
@@ -50,4 +50,31 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('scripts')
+<script>
+$(document).ready(function () {
+    // Handle the search form submission
+    $('#searchForm').on('submit', function (e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        var query = $('#search').val(); // Get the search query
+
+        // Send AJAX request
+        $.ajax({
+            url: '{{ route('admin.users.search') }}', // The URL for the search route
+            type: 'GET',
+            data: { search: query },
+            success: function (response) {
+                // Update the table with the new search results
+                $('#usersTableBody').html(response); // Replace the table body with the new rows
+            },
+            error: function () {
+                alert('There was an error processing your request.');
+            }
+        });
+    });
+});
+</script>
 @endsection

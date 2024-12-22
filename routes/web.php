@@ -12,6 +12,11 @@ use App\Http\Controllers\ProfileController;
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page')->middleware('logout.home');   // First
 
 
+// // Route to show the users dashboard and handle search
+// Route::get('/admin/users', [AdminController::class, 'showUsers'])->name('admin.showUsers');
+
+Route::get('/admin/users/search', [AdminController::class, 'adminUserSearch'])->name('admin.users.search');
+
 
 //aayuson pa mga ini
 

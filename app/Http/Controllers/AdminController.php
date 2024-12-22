@@ -94,7 +94,6 @@ class AdminController extends Controller
         // }
     }
 
-
     public function showUsersDashboard()
     {
         $users = User::all();
@@ -115,5 +114,26 @@ class AdminController extends Controller
             'reviews' => $reviews
         ]);
     }
+
+    public function adminUserSearch(Request $request)
+    {
+        $query = $request->input('search');
+        $query = strtolower($query);
+
+        // Perform the search on 'name' and 'email'
+        $users = User::whereRaw('LOWER(name) like ?', ['%' . $query . '%'])
+            ->orWhereRaw('LOWER(email) like ?', ['%' . $query . '%'])
+            ->get();
+
+        // Return the HTML for the table rows as a response
+        $html = view('admin.users-search-results', compact('users'))->render();
+        return response()->json($html);
+    }
+
+
+
+
+
+
 
 }
