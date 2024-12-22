@@ -63,8 +63,6 @@
                 </a>
             </div>
         </div>
-        
->>>>>>> Stashed changes
     </section>
 
     <main>
