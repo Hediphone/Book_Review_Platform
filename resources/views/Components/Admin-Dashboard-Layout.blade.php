@@ -57,6 +57,26 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        //redirect to Books Dashboard
+        document.getElementById("booksBtn").onclick = function () {
+            window.location.href = "/admin-books-dashboard";
+        };
+
+        //redirect to Users Dashboard
+        document.getElementById("usersBtn").onclick = function () {
+            window.location.href = "admin/admin-users-dashboard";
+        };
+
+        //redirect to Reviews Dashboard
+        document.getElementById("reviewsBtn").onclick = function () {
+            window.location.href = "admin/admin-reviews-dashboard";
+        };
+
+        //redirect to login page
+        document.getElementById("logoutBtn").onclick = function () {
+            window.location.href = "/admin-books-dashboard";
+        };
+
         // Select all genre buttons
         const genreButtons = document.querySelectorAll('.genreBtn');
 

@@ -13,6 +13,15 @@ Route::get('/', [LandingPageController::class, 'index'])->name('landing-page')->
 
 
 //aayuson pa mga ini
+Route::get('/admin/admin-users-dashboard', function () {
+    return view(view: 'admin.admin-users-dashboard');
+});
+
+Route::get('/admin/admin-reviews-dashboard', function () {
+    return view(view: 'admin.admin-reviews-dashboard');
+});
+
+
 Route::get('/search', [BooksController::class, 'search'])->name('books.search');
 // Route::get('/books/search', [BooksController::class, 'adminBookSearch'])->name('admin.books.search');
 
