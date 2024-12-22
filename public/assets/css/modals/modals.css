@@ -20,9 +20,44 @@ body {
 .addBook,
 .editBook,
 .deleteBook {
-    background-color: #B4D51E;
+    background-color: #61d51e;
     transition: all .2s ease-in-out;
 }
+
+
+.addBook1{
+    font-size: 12px;
+    color: #61d51e;
+}
+
+.addImageBtn {
+    margin-top: 20px;
+    margin-left: -50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    gap: 10px; /* Add spacing between label and input */
+}
+
+.uploadContainer {
+    background: transparent;
+    border: 1px solid #63f005; /* Subtle border */
+    padding: 8px 12px; /* Padding for spacing */
+    border-radius: 15px; /* Rounded corners */
+    text-align: center; /* Center the text */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.uploadContainer:hover {
+    background-color: #48ff0057; /* Slightly darker on hover */
+}
+
+#editInputFile {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
 
 .addBook:hover,
 .editBook:hover {

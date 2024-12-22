@@ -17,10 +17,12 @@
                                         <input type="hidden" name="editCoverURL" id="editCoverURL" required><br><br>
                                     </div>
                                     <div class="addImageBtn">
-                                        <label for="editInputFile" class="addBook">Upload Image</label>
+                                        <div class="uploadContainer">
+                                            <label for="editInputFile" class="addBook1">Upload Image</label>
+                                        </div>
                                         <input type="file" name="editCoverImage"
                                             accept="image/jpeg, image/png, image/jpg," id="editInputFile">
-                                    </div>
+                                    </div>                                    
                                 </div>
                             </div>
                             <div class="labelInput">

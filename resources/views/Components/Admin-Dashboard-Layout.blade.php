@@ -24,26 +24,27 @@
                 <button id="booksBtn">
                     <img src="{{ $activeSidebar === 'books' ? '/assets/svg/book-white.svg' : '/assets/svg/book-gray.svg' }}"
                         alt=""><br>
-                    <strong>Books</strong>
+                    <strong class="text">Books</strong>
                 </button>
             </div>
             <div class="sbUsers">
                 <button id="usersBtn">
                     <img src="{{ $activeSidebar === 'users' ? '/assets/svg/user-white.svg' : '/assets/svg/user-gray.svg' }}"
                         alt=""><br>
-                    <strong>Users</strong>
+                    <strong class="text">Users</strong>
                 </button>
             </div>
             <div class="sbReviews">
                 <button id="reviewsBtn">
                     <img src="{{ $activeSidebar === 'reviews' ? '/assets/svg/reviews-white.svg' : '/assets/svg/reviews-gray.svg' }}"
                         alt=""><br>
-                    <strong>Reviews</strong>
+                    <strong class="text">Reviews</strong>
                 </button>
             </div>
         </div>
         <div class="logout">
             <div class="sbLogout">
+<<<<<<< Updated upstream
                 <!-- Add the POST method to logout and redirect -->
                 <form action="{{ route('logout') }}" method="POST" id="logoutForm">
                     @csrf <!-- Include the CSRF token for security -->
@@ -54,6 +55,16 @@
             </div>
         </div>
 
+=======
+                <a href="" id="logoutBtn">
+                    <img src="{{ asset('assets/svg/logout-gray.svg') }}" alt="Logout">
+                    <br>
+                    <strong class="logoutText">Logout</strong>
+                </a>
+            </div>
+        </div>
+        
+>>>>>>> Stashed changes
     </section>
 
     <main>

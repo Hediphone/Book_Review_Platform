@@ -3,6 +3,7 @@
 @section('title', 'Admin Books Dashboard')
 
 @section('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet" href="{{ asset('assets/css/admin/admin-books-dashboard.css') }}">
 @endsection
 
@@ -48,23 +49,23 @@
                     <thead>
                         <tr>
                             <th></th>
-                            <th>BookID</th>
-                            <th>Cover</th>
+                            <th class="bookID">ID</th>
+                            <th class="cover">Cover</th>
                             <th>Title</th>
                             <th>Author</th>
                             <th>Genre</th>
-                            <th>Rating</th>
+                            <th class="rate">Rating</th>
                             <th>Description</th>
-                            <th>Date Created</th>
-                            <th>Date Updated</th>
-                            <th>Release Date</th>
-                            <th>Action</th>
+                            <th>Created At</th>
+                            <th>Updated At</th>
+                            <th class="rd">Release Date</th>
+                            <th class="dets">Details</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($books as $book)
                             <tr>
-                                <td><input type="checkbox" name="selectedBooks[]"></td>
+                                <td class="cbox"><input type="checkbox" name="selectedBooks[]"></td>
                                 <td>{{ $book->bookID }}</td>
                                 <td><img src="{{ asset($book->cover) }}" alt="Book Cover"
                                         style="width: 50px; height: auto;"></td>
@@ -81,7 +82,7 @@
                                 <td>{{ $book->description }}</td>
                                 <td>{{ $book->created_at }}</td>
                                 <td>{{ $book->updated_at }}</td>
-                                <td>
+                                <td  class="rd">
                                     @if($book->release_date)
                                         {{ $book->release_date }}
                                     @else
@@ -90,15 +91,12 @@
                                 </td>
                                 <td>
                                     <div class="dropdown">
-                                        <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bi bi-three-dots-vertical"></i> <!-- Ellipsis Icon -->
-                                        </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <li>
-                                                <a class="dropdown-item" href="#"
-                                                    onclick="showEditBookModal('{{ $book->bookID }}')">Edit</a>
-                                            </li>
+                                                <a class="dropdown-item" onclick="showEditBookModal('{{ $book->bookID }}')">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </li>                                                    
                                         </ul>
                                     </div>
                                 </td>
@@ -106,6 +104,7 @@
                         @endforeach
                     </tbody>
                 </table>
+
 
                 <form id="removeBookForm" action="{{ route('books.delete') }}" method="POST">
                     @csrf
