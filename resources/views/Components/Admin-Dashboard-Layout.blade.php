@@ -50,7 +50,7 @@
                     @csrf <!-- Include the CSRF token for security -->
                     <button type="submit" id="logoutBtn" style="background: none; border: none;">
                         <img src="{{ asset('assets/svg/logout-gray.svg') }}" alt="Logout">
-                        Logout
+                        <p class="logoutText">Logout</p>
                     </button>
                 </form>
             </div>
