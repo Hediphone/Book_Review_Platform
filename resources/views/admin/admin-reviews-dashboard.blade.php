@@ -20,7 +20,7 @@
                     </form>
                 </div>
 
-                <button class="removeReview" id="removeReviewBtn">Delete
+                <button class="removeReview" id="removeReviewBtn" onclick="showDeleteReviewModalNew()">Delete
                     Review</button>
                 <button class="addReview" id="addReviewBtn">Add Review</button>
             </div>
@@ -36,12 +36,10 @@
                 <button class="ratingBtn" type="submit" name="rating" value="5">5 Stars</button>
             </form>
 
-
             <div class="inventory">
                 <table class="inventoryTable">
                     <thead>
                         <tr>
-                            <th></th>
                             <th></th>
                             <th>ID</th>
                             <th>Book Title</th>
@@ -50,20 +48,17 @@
                             <th>Comment</th>
                             <th>Date Created</th>
                             <th>Date Updated</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody id="reviewsTableBody">
                         @foreach ($reviews as $review)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td><input type="checkbox" name="selectedReviews[]"></td>
+                                <td><input type="checkbox" name="selectedReviews[]" value="{{ $review->reviewID }}"></td>
                                 <td>{{ $review->reviewID }}</td>
                                 <td>{{ $review->book->title }}</td>
                                 <td>{{ $review->user->name }}</td>
                                 <td>{{ number_format($review->rating, 1) }}</td>
-                                <td>{{ $review->comment }}</td>
+                                <td>{!! $review->highlighted_comment !!}</td> <!-- Display highlighted comment -->
                                 <td>{{ $review->created_at }}</td>
                                 <td>{{ $review->updated_at }}</td>
                                 <td>
@@ -72,12 +67,6 @@
                                             data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="bi bi-three-dots-vertical"></i> <!-- Ellipsis Icon -->
                                         </button>
-                                        <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#"
-                                                                        onclick="showEditReviewModal('{{ $review->reviewID }}')">Edit</a>
-                                                                </li>
-                                                            </ul> -->
                                     </div>
                                 </td>
                             </tr>
@@ -88,6 +77,15 @@
         </div>
     </div>
 </section>
+
+<!-- Include the delete modal -->
+@include('modals.delete-review')
+
+<!-- Hidden input field for selected reviews -->
+<form id="removeReviewForm" method="POST" action="{{ route('admin.reviews.delete') }}">
+    @csrf
+    <input type="hidden" id="selectedReviews" name="selectedReviews">
+</form>
 
 <script>
     $(document).ready(function () {
@@ -151,5 +149,62 @@
         location.reload();
     });
 
+    // Open the delete modal
+    function showDeleteReviewModalNew() {
+        const selectedReviewsNew = [];
+        const reviewCheckboxesNew = document.querySelectorAll('input[name="selectedReviews[]"]:checked');
+
+        reviewCheckboxesNew.forEach((reviewCheckbox) => {
+            const row = reviewCheckbox.closest('tr');
+            const reviewIDNew = row.querySelector('td:nth-child(2)').textContent.trim(); // Adjust index if needed
+            selectedReviewsNew.push(reviewIDNew);
+        });
+
+        if (selectedReviewsNew.length === 0) {
+            // Show "none selected" modal
+            document.getElementById('noneSelectedSection').style.display = 'block';
+            document.getElementById('deleteReviewsModal').style.display = 'none';
+            return;
+        }
+
+        // Show the delete modal
+        document.getElementById('deleteReviewsModal').style.display = 'block';
+        document.getElementById('noneSelectedSection').style.display = 'none';
+    }
+
+    function removeSelectedReviewsNew() {
+        const selectedReviewsNew = [];
+        const reviewCheckboxesNew = document.querySelectorAll('input[name="selectedReviews[]"]:checked');
+
+        reviewCheckboxesNew.forEach((reviewCheckbox) => {
+            const row = reviewCheckbox.closest('tr');
+            const reviewIDNew = row.querySelector('td:nth-child(2)').textContent.trim(); // Adjust index if needed
+            selectedReviewsNew.push(reviewIDNew);
+        });
+
+        if (selectedReviewsNew.length === 0) {
+            // Show noneSelected modal and hide deleteReviewModal
+            document.getElementById('deleteReviewsModal').style.display = 'none';
+            document.getElementById('noneSelectedSection').style.display = 'block';
+            return; // Exit the function to prevent further execution
+        }
+
+        // Assign the collected IDs to the hidden field
+        document.getElementById('selectedReviews').value = selectedReviewsNew.join(',');
+
+        // Submit the form
+        document.getElementById('removeReviewForm').submit();
+    }
+
+    function resetModalsNew() {
+        // Reset the modals to their original state
+        document.getElementById('noneSelectedSection').style.display = 'none';
+    }
+
+    // Close the delete modal
+    function closeDeleteBookModalNew() {
+        document.getElementById('deleteReviewsModal').style.display = 'none';
+    }
 </script>
+
 @endsection

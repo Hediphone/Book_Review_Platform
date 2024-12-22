@@ -94,6 +94,9 @@ class AdminController extends Controller
         // }
     }
 
+
+    //USERS
+
     public function showUsersDashboard()
     {
         $users = User::all();
@@ -101,17 +104,6 @@ class AdminController extends Controller
         return view('admin.admin-users-dashboard', [
             'activeSidebar' => 'users',
             'users' => $users
-        ]);
-    }
-
-    public function showReviewsDashboard()
-    {
-        // Fetch all reviews along with the book and user information
-        $reviews = Review::with(['book', 'user'])->get();
-
-        return view('admin.admin-reviews-dashboard', [
-            'activeSidebar' => 'reviews',
-            'reviews' => $reviews
         ]);
     }
 
@@ -172,7 +164,45 @@ class AdminController extends Controller
         return response()->json($html);
     }
 
+    //REVIEWS
+    public function showReviewsDashboard()
+    {
+        // Define an array of bad words
+        $badWords = [
+            'unique',
+            'deeply ',
+            'offensiveword1',
+            'offensiveword2'  // Add your list of bad words here
+        ];
 
+        // Fetch all reviews along with the book and user information
+        $reviews = Review::with(['book', 'user'])->get();
+
+        // Iterate through reviews and highlight bad words in comments
+        foreach ($reviews as $review) {
+            $review->highlighted_comment = $this->highlightBadWords($review->comment, $badWords);
+        }
+
+        return view('admin.admin-reviews-dashboard', [
+            'activeSidebar' => 'reviews',
+            'reviews' => $reviews
+        ]);
+    }
+
+    // Helper Method to Highlight Bad Words and Wrap Entire Comment
+    private function highlightBadWords($text, $badWords)
+    {
+        // Check if any bad word exists in the comment
+        foreach ($badWords as $badWord) {
+            $escapedWord = preg_quote($badWord, '/');
+            // If a bad word is found, wrap the entire comment in a red container
+            if (preg_match('/\b' . $escapedWord . '\b/i', $text)) {
+                return '<div class="highlight-bad-comment">' . e($text) . '</div>';
+            }
+        }
+        // If no bad word is found, return the text as is
+        return e($text);
+    }
 
 
     public function adminReviewSearch(Request $request)
@@ -245,6 +275,23 @@ class AdminController extends Controller
             'rating' => $rating ?? 'All',
         ])->render();
     }
+
+    public function adminDeleteReviews(Request $request)
+    {
+
+        $selectedReviews = $request->input('selectedReviews'); // Get the review IDs as a comma-separated string
+        $reviewIDs = explode(',', $selectedReviews); // Convert to an array
+
+        // Perform the deletion
+        Review::whereIn('reviewID', $reviewIDs)->delete();
+
+        // Redirect or return a response
+        return redirect()->back()->with('success', 'Selected review(s) have been deleted successfully.');
+    }
+
+
+
+
 
 
 

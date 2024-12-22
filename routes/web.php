@@ -17,6 +17,7 @@ Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 
 Route::get('/admin/users/search', [AdminController::class, 'adminUserSearch'])->name('admin.users.search');
 Route::get('/admin/reviews/search', [AdminController::class, 'adminReviewSearch'])->name('admin.reviews.search');
+Route::post('/admin/reviews/delete', [AdminController::class, 'adminDeleteReviews'])->name('admin.reviews.delete');
 
 //aayuson pa mga ini
 
@@ -46,17 +47,10 @@ Route::get('/admin-books-dashboard', [BooksController::class, 'index']);
 // Route::get('/aadmin-books-dashboard', function () {
 //     return view(view: 'aadmin-books-dashboard');
 // });
-// Route::post('/aadmin-books-dashboard', [BooksController::class, 'updateBook'])->name('books.updateBook');
-Route::post('/admin-books-dashboard', [BooksController::class, 'destroySelected'])->name('books.destroySelected');
-
 
 Route::get('/books/delete', function () {
     return view(view: 'modals.edit-book');
 });
-
-Route::post('/admin-books-dashboard', action: [BooksController::class, 'deleteBooks'])->name('books.delete');
-
-
 
 Route::get('/books/{genre}/{bookId}/json', [BooksController::class, 'showDetails'])->name('books.showDetails.json');
 
