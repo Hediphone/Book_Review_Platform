@@ -11,9 +11,7 @@ use Illuminate\Support\Facades\Hash;
 
 class BooksController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index(Request $request)
     {
         // // Check if the logged-in user is the admin and verify the password
@@ -42,35 +40,17 @@ class BooksController extends Controller
     {
         return view('modals.success-prompt');
     }
-    /**
-     * Show the form for creating a new resource.
-     */
+   
     public function create()
     {
-        //
+        
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    // public function store(Request $request)
-    // {
-    //     //
-    // }
-
-    /**
-     * Display the specified resource.
-     */
-
-
-
 
 
     public function show($id)
     {
         $book = Book::find($id);
 
-        // If the book is not found
         if (!$book) {
             abort(404);
         }
@@ -78,18 +58,10 @@ class BooksController extends Controller
         // Split the genre string into an array to handle multiple genres
         $bookGenres = explode(',', $book->genre);  // Split the stored genre string into an array
 
-        return view('books.book-details', compact('book', 'bookGenres'));  // Pass both the book and its genres
+        return view('books.book-details', compact('book', 'bookGenres'));  
     }
 
 
-
-    
-
-
-
-    /**
-     * Show books ordered by rating.
-     */
     public function showByRating()
     {
         $booksByRating = Book::withAvg('reviews', 'rating') // Calculate average rating
@@ -98,7 +70,6 @@ class BooksController extends Controller
 
         return view('books.show-books-by-rating', compact('booksByRating'));
     }
-
 
 
     public function showBookDetail($id)
@@ -114,7 +85,6 @@ class BooksController extends Controller
         $recommendedBooks = $this->recommendBooks($id)->take(4)->toArray();  // Convert to array and limit to 4 books
         
 
-        // Return the view with the necessary data
         return view('books.book-details', array_merge(
             $bookDetails->getData(),  // Pass book details as array
             $ratings->getData(),  // Pass ratings as array
@@ -124,7 +94,6 @@ class BooksController extends Controller
     }
     
 
-
     public function recommendBooks($bookId)
     {
         // Fetch the current book details
@@ -132,7 +101,7 @@ class BooksController extends Controller
     
         // Split the genres of the current book
         $currentGenres = explode(',', $currentBook->genre);
-        $currentGenres = array_map('trim', $currentGenres); // Trim whitespace
+        $currentGenres = array_map('trim', $currentGenres); 
     
         $recommendedBooks = collect();
     
@@ -151,83 +120,19 @@ class BooksController extends Controller
     
         return $recommendedBooks;
     }
-    
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    // public function edit(string $id)
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Update the specified resource in storage.
-    //  */
-    // public function update(Request $request, string $id)
-    // {
-    //     //
-    // }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-
-    /**
-     * Load all books as an array.
-     */
     public function loadBooks()
     {
         return Book::all()->toArray(); // Convert collection to array
     }
 
-    /**
-     * Show the browse page.
-     */
+   
     public function browse()
     {
         return view('books.browse');
     }
 
-    /**
-     * Show books grouped by genre with average ratings.
-     */
 
     public function showByGenre()
     {
@@ -252,14 +157,12 @@ class BooksController extends Controller
 
                 Log::debug('Individual genre processed', ['TrimmedGenre' => $trimmedGenre]);
 
-                // Fetch books by genre with a limit of 4, using LIKE for a flexible match
                 $books = Book::where('genre', 'like', '%' . $trimmedGenre . '%')
                     ->withAvg('reviews', 'rating') // Calculate average rating
                     ->take(4) // Limit to 4 books
                     ->get(); // Eloquent Collection
 
 
-                // Ensure it doesn't overwrite if books already exist
                 if (!isset($booksByGenre[$trimmedGenre])) {
                     $booksByGenre[$trimmedGenre] = $books;
                 } else {
@@ -268,29 +171,18 @@ class BooksController extends Controller
                 }
             }
         }
-
-
         return view('books.browse', compact('booksByGenre', 'genres'));
     }
-
-    /**
-     * Show books for a specific genre with average ratings.
-     */
-
 
 
     public function showGenre($genre)
     {
-        // Log the requested genre for debugging
         Log::debug('Requested Genre:', ['genre' => $genre]);
 
-        // Split the genre into an array if it's a comma-separated list
         $genreList = explode(',', $genre);
 
-        // Log the split genre list for debugging
         Log::debug('Genre List:', ['genreList' => $genreList]);
 
-        // Fetch books where the genre matches any in the list
         $booksByGenre = Book::where(function ($query) use ($genreList) {
             foreach ($genreList as $singleGenre) {
                 // Use "like" for partial matching, you may adjust it as needed
@@ -299,35 +191,24 @@ class BooksController extends Controller
         })
             ->withAvg('reviews', 'rating') // Calculate average rating
             ->get();
-
-
-        // Return the view with books matching the genres
         return view('books.show-books-by-genre', compact('booksByGenre', 'genre'));
-
-
     }
 
+    
     public function viewAllByGenre($genre)
     {
-        // Sanitize the genre input
         $genre = trim($genre);
 
         Log::info('Genre being passed to viewAllByGenre:', ['genre' => $genre]);
 
-        // Fetch all books based on the genre
         $booksByGenre = Book::where('genre', 'like', '%' . $genre . '%')
             ->withAvg('reviews', 'rating') // Calculate average rating
             ->get();
 
-        // Return the view with the books
         return view('books.show-books-by-genre', compact('booksByGenre', 'genre'));
     }
 
 
-
-    /**
-     * Show latest books ordered by release date.
-     */
     public function showByReleaseDate()
     {
         $latestBooks = Book::withAvg('reviews', 'rating') // Calculate average rating
@@ -337,10 +218,7 @@ class BooksController extends Controller
         return view('books.show-books-by-release', compact('latestBooks'));
     }
 
-    /**
-     * Search books based on the query.
-     */
-    public function search(Request $request)
+       public function search(Request $request)
     {
         $query = $request->input('search');
 
@@ -357,6 +235,74 @@ class BooksController extends Controller
         // Return the results view and pass the books
         return view('books.search-results', compact('books', 'query'));
     }
+
+
+    public function toggleFavorite($bookID)
+    {
+        $user = Auth::user();
+        $book = Book::findOrFail($bookID);
+    
+        // Log the action of toggling favorite for the given book
+        Log::info('User ' . $user->id . ' is toggling favorite for Book ' . $book->bookID);
+    
+        // Check if the user already has this book in their favorites
+        if ($user->favoriteBooks->contains($book->bookID)) {
+            // Log the removal of the book from favorites
+            Log::info('User ' . $user->id . ' is removing Book ' . $book->bookID . ' from favorites.');
+            $user->favoriteBooks()->detach($book->bookID); // Remove the book from favorites
+        } else {
+            // Log the addition of the book to favorites
+            Log::info('User ' . $user->id . ' is adding Book ' . $book->bookID . ' to favorites.');
+            $user->favoriteBooks()->attach($book->bookID); // Add the book to favorites
+        }
+    
+        // Log the result of the action (after adding/removing the book)
+        Log::info('Favorite status for Book ' . $book->bookID . ' has been toggled by User ' . $user->id);
+    
+        return redirect()->back(); // Redirect back to the previous page after the action
+    }
+
+
+
+
+
+    
+    /**
+     * Show the form for editing the specified resource.
+     */
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
+
+    // /**
+    //  * Update the specified resource in storage.
+    //  */
+    // public function update(Request $request, string $id)
+    // {
+    //     //
+    // }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+   
+ 
+
+    /**
+     * Show books grouped by genre with average ratings.
+     */
+
+   
+
+    /**
+     * Show books for a specific genre with average ratings.
+     */
+
+
+
+   
+
 
     public function adminBookSearch(Request $request)
     {
@@ -581,30 +527,7 @@ class BooksController extends Controller
             'description' => $book->description,
         ]);
     }
-    public function toggleFavorite($bookID)
-    {
-        $user = Auth::user();
-        $book = Book::findOrFail($bookID);
-    
-        // Log the action of toggling favorite for the given book
-        Log::info('User ' . $user->id . ' is toggling favorite for Book ' . $book->bookID);
-    
-        // Check if the user already has this book in their favorites
-        if ($user->favoriteBooks->contains($book->bookID)) {
-            // Log the removal of the book from favorites
-            Log::info('User ' . $user->id . ' is removing Book ' . $book->bookID . ' from favorites.');
-            $user->favoriteBooks()->detach($book->bookID); // Remove the book from favorites
-        } else {
-            // Log the addition of the book to favorites
-            Log::info('User ' . $user->id . ' is adding Book ' . $book->bookID . ' to favorites.');
-            $user->favoriteBooks()->attach($book->bookID); // Add the book to favorites
-        }
-    
-        // Log the result of the action (after adding/removing the book)
-        Log::info('Favorite status for Book ' . $book->bookID . ' has been toggled by User ' . $user->id);
-    
-        return redirect()->back(); // Redirect back to the previous page after the action
-    }
+   
     
     
     
