@@ -44,11 +44,16 @@
         </div>
         <div class="logout">
             <div class="sbLogout">
-                <a href="" id="logoutBtn">
-                    <img src="{{ asset('assets/svg/logout-gray.svg') }}" alt="Logout">
-                </a>
+                <!-- Add the POST method to logout and redirect -->
+                <form action="{{ route('logout') }}" method="POST" id="logoutForm">
+                    @csrf <!-- Include the CSRF token for security -->
+                    <button type="submit" id="logoutBtn" style="background: none; border: none;">
+                        <img src="{{ asset('assets/svg/logout-gray.svg') }}" alt="Logout">
+                    </button>
+                </form>
             </div>
         </div>
+
     </section>
 
     <main>
@@ -94,6 +99,7 @@
             });
         });
 
+        //Search
         $(document).ready(function () {
             // Handle the search form submission
             $('#searchForm').on('submit', function (e) {
@@ -117,6 +123,8 @@
             });
         });
 
+
+        // Search by genre
         $(document).ready(function () {
             // Handle the genre search form submission
             $('#genreContainer').on('submit', function (e) {
@@ -139,8 +147,17 @@
                 });
             });
         });
-    </script>
 
+        //Logout
+        document.getElementById('logoutBtn').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the form from submitting immediately
+
+            // Show confirmation dialog
+            if (confirm('Are you sure you want to log out?')) {
+                document.getElementById('logoutForm').submit();
+            }
+        });
+    </script>
 </body>
 
 </html>

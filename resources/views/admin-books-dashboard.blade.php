@@ -122,5 +122,6 @@
 @include('modals.edit-book')
 @include('modals.delete-book')
 @include('modals.success-prompt')
+@include('modals.logout-prompt')
 @include('admin.search-results')
 @endsection

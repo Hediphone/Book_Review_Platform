@@ -22,7 +22,7 @@
 
                 <button class="removeReview" id="removeReviewBtn" onclick="showDeleteReviewModalNew()">Delete
                     Review</button>
-                <button class="addReview" id="addReviewBtn">Add Review</button>
+                <button class="addReview" id="showNegativeCommentsBtn">Show Negative Comments</button>
             </div>
 
             <!-- Rating Buttons Form -->
@@ -205,6 +205,29 @@
     function closeDeleteBookModalNew() {
         document.getElementById('deleteReviewsModal').style.display = 'none';
     }
+
+    //
+    $(document).ready(function () {
+        // When the "Show Negative Comments" button is clicked
+        $('#showNegativeCommentsBtn').on('click', function () {
+            // Get all the rows in the reviews table
+            var allRows = $('#reviewsTableBody tr');
+
+            // Loop through each row and hide/show based on the highlighted comment class
+            allRows.each(function () {
+                var row = $(this);
+                var highlightedComment = row.find('td:nth-child(6)').html(); // Assuming the 6th column contains the highlighted comment
+
+                // Check if the comment is highlighted (it will have a div with a class of 'highlight-bad-comment')
+                if (highlightedComment && highlightedComment.includes('highlight-bad-comment')) {
+                    row.show(); // Show the row if it contains a bad word
+                } else {
+                    row.hide(); // Hide the row if it does not contain a bad word
+                }
+            });
+        });
+    });
+
 </script>
 
 @endsection

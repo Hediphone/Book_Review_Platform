@@ -204,6 +204,30 @@ class AdminController extends Controller
         return e($text);
     }
 
+    public function showNegativeComments(Request $request)
+    {
+        $query = Review::query();
+
+        // Search functionality
+        if ($request->has('search')) {
+            $query->where('comment', 'like', '%' . $request->search . '%');
+        }
+
+        // Rating functionality
+        if ($request->has('rating') && $request->rating != 'All') {
+            $query->where('rating', $request->rating);
+        }
+
+        // Filter by highlighted comments if 'showNegativeComments' is set
+        if ($request->has('showNegativeComments') && $request->showNegativeComments == 'true') {
+            $query->where('highlighted_comment', '!=', ''); // Assuming this field holds highlighted comments
+        }
+
+        $reviews = $query->get();
+
+        return view('admin.reviews-dashboard', compact('reviews'));
+    }
+
 
     public function adminReviewSearch(Request $request)
     {
