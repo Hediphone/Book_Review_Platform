@@ -25,15 +25,16 @@ body {
 }
 
 .login {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: #463C74;
     margin-bottom: 10px;
     text-align: center;
     padding-top: 20px;
+    font-weight: 800;
 }
 
 .sign {
-    font-size: .8rem;
+    font-size: .7rem;
     color: #111111;
     text-align: center;
 }
@@ -92,11 +93,12 @@ body {
     padding: 10px;
     margin-top: 15px;
     margin-bottom: 18px;
-    background-color: #B4D51E;
-    color: rgb(0, 0, 0);
+    background-color: #a9ca14;
+    color: rgb(255, 255, 255);    
     border: none;
     border-radius: 30px;
-    font-size: .8rem;
+    letter-spacing: .1em;
+    font-size: .7rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -117,7 +119,7 @@ body {
     height: 190px;
     width: 190px;
     margin-top: -180px;
-    margin-bottom: -160px;
+    margin-bottom: -170px;
     margin-left: -20px;
 }
 
