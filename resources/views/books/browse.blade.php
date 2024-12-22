@@ -48,8 +48,6 @@
 </section>
 
 
-
-
 <!-- Books by Genre -->
 @foreach ($booksByGenre as $genre => $books)
     <section class="genre-section">

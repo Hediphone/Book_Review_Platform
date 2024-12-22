@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BooksController;
+use App\Http\Middleware\LogOutOnLandingPage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
@@ -8,8 +9,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ProfileController;
 
-Route::get('/', [LandingPageController::class, 'index'])->name('landing-page')->middleware('logout.home');   // First
-
+Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 
 
 //aayuson pa mga ini
@@ -116,6 +116,9 @@ Route::middleware('auth')->group(function () {
         // Merge data from both controllers and pass to the view
         return view('books.book-details', array_merge($bookDetails->getData(), $ratings->getData(), ['id' => $id]));
     })->name('books.bookDetail');
+
+
+   
     
 
     
@@ -130,6 +133,12 @@ Route::middleware('auth')->group(function () {
     
 
     Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile');
+
+
+    Route::post('/favorite/{bookId}/toggle', [BooksController::class, 'toggleFavorite'])->name('favorite.toggle');
+
+
+
 
 
 

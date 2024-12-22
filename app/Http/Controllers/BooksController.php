@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 
 class BooksController extends Controller
@@ -418,5 +419,32 @@ class BooksController extends Controller
             'description' => $book->description,
         ]);
     }
-
+    public function toggleFavorite($bookID)
+    {
+        $user = Auth::user();
+        $book = Book::findOrFail($bookID);
+    
+        // Log the action of toggling favorite for the given book
+        Log::info('User ' . $user->id . ' is toggling favorite for Book ' . $book->bookID);
+    
+        // Check if the user already has this book in their favorites
+        if ($user->favoriteBooks->contains($book->bookID)) {
+            // Log the removal of the book from favorites
+            Log::info('User ' . $user->id . ' is removing Book ' . $book->bookID . ' from favorites.');
+            $user->favoriteBooks()->detach($book->bookID); // Remove the book from favorites
+        } else {
+            // Log the addition of the book to favorites
+            Log::info('User ' . $user->id . ' is adding Book ' . $book->bookID . ' to favorites.');
+            $user->favoriteBooks()->attach($book->bookID); // Add the book to favorites
+        }
+    
+        // Log the result of the action (after adding/removing the book)
+        Log::info('Favorite status for Book ' . $book->bookID . ' has been toggled by User ' . $user->id);
+    
+        return redirect()->back(); // Redirect back to the previous page after the action
+    }
+    
+    
+    
+    
 }

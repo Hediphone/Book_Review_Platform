@@ -15,16 +15,17 @@ class LogOutOnLandingPage
      */
     public function handle(Request $request, Closure $next)
     {
-        // Check if the user is visiting the homepage and is logged in
-        if ($request->is('/') && Auth::check()) {
+        // Check if the current route is the landing page and the user is logged in
+        if ($request->routeIs('landing-page') && Auth::check()) {
             // Log the user out
             Auth::logout();
-            // Optionally, invalidate the session
+            // Invalidate the session
             $request->session()->invalidate();
+            // Regenerate the session token
             $request->session()->regenerateToken();
         }
 
-        // Allow the request to continue
         return $next($request);
     }
+
 }

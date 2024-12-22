@@ -19,17 +19,13 @@ class Reply extends Model
         'comment',    // Reply content
     ];
 
-    // Define relationships:
 
     // A reply belongs to a review
-
    
     public function review()
     {
         return $this->belongsTo(Review::class, 'review_id');
     }
-
-    // Define the relationship to the User model
 
     // A reply belongs to a user
     public function user()

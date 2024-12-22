@@ -21,6 +21,14 @@ class Book extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class, 'bookID');  // The 'bookID' is the foreign key in the 'reviews' table
+
     }
+
+    public function usersWhoFavorited()
+    {
+        return $this->belongsToMany(User::class, 'favorites', 'book_id', 'user_id');
+    }
+
+
     
 }

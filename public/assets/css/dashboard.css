@@ -265,7 +265,14 @@ main {
 
 .reviewed_books {
     text-align: left;
-    margin-bottom: 200px;;
+    margin-bottom: 50px;
+}
+
+.favorite_books{
+    margin-bottom: 200px;
+}
+.hidden {
+    display: none;
 }
 
 .reviewed_books h1 {
@@ -446,7 +453,7 @@ h3 {
 }
 
 
-.dashboard,.recent_reviews,.reviewed_books{
+.dashboard,.recent_reviews,.reviewed_books,.favorite_books{
     padding:0px 130px 0px 130px;
 
 }

@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
     <link href="{{ asset('assets/css/layout.css') }}" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -16,13 +15,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="icon" href="{{ asset('favicon(bb).ico') }}" type="image/x-icon">
-
     @yield('styles')
 </head>
 
 <body>
     <!-- Header -->
     <header class="container-fluid py-3">
+
         <div class="row align-items-center justify-content-between">
             <!-- Logo/Title -->
             <div class="col-md-3">
@@ -63,7 +62,7 @@
                 @endif
             </div>
 
-    </header>
+         </header>
 
     @yield('content')
 
@@ -83,8 +82,8 @@
                 <div class="col-md-2 mb-4">
                     <h6 style="font-size: 15px;">Quick Links</h6>
                     <ul class="list-unstyled cm">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Categories</a></li>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/browse">Categories</a></li>
                     </ul>
                 </div>
 
@@ -103,6 +102,8 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
     @yield('scripts')

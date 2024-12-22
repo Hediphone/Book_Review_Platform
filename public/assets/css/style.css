@@ -356,6 +356,32 @@ footer{
   font-weight: 700;
 }
 
+.btn-1{
+  width:240px;
+  border-radius: 20px;
+  max-height: 5em;
+  height: 2.6em;
+  background-color: #B4D51E !important;
+  color: #ffffff;
+  border: none;
+  font-family: "Merriweather", Helvetica;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.btn-1{
+  width:240px;
+  border-radius: 20px;
+  max-height: 5em;
+  height: 2.6em;
+  background-color: #c7ed1f !important;
+  color: #ffffff;
+  border: none;
+  font-family: "Merriweather", Helvetica;
+  font-size: 15px;
+  font-weight: 700;
+}
+
 
 #book-btn2{
   background-color: #E6E7E3;

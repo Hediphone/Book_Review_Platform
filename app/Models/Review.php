@@ -20,8 +20,6 @@ class Review extends Model
     protected $fillable = ['userID', 'bookID', 'rating', 'comment'];
 
     
-    
-    
      // Define the relationship for replies
 
     public function user()
@@ -37,11 +35,12 @@ class Review extends Model
 
     public function book()
     {
-        return $this->belongsTo(Book::class, 'bookID');
+        return $this->belongsTo(Book::class, foreignKey: 'bookID');
     }
+
     public function reviews()
-{
-    return $this->hasMany(Review::class, 'bookID');
-}
+    {
+        return $this->hasMany(Review::class, 'bookID');
+    }
 
 }

@@ -16,9 +16,15 @@
                     <img src="{{ asset($book['cover']) }}" class="book-details-image" alt="Book Cover">
                     
                     <div class="mt-3">
-                        <button class="btn btn-primary btn-block mb-2" id="book-btn1">Add to Favorites</button>
-                        <button class="btn btn-secondary btn-block" id="book-btn2" onclick="scrollToReviewForm()">Rate this Book</button>
+                        <form action="{{ route('favorite.toggle', $book->bookID) }}" method="POST">
+                            @csrf
+                            <button type="submit" id="book-btn1" 
+                                class="btn btn-block mb-2 {{ Auth::user()->favoriteBooks->contains($book->bookID) ? 'btn-1' : 'btn2' }}">
+                                {{ Auth::user()->favoriteBooks->contains($book->bookID) ? 'Added to Favorites' : 'Add to Favorites' }}
+                            </button>
+                        </form>
 
+                        <button class="btn btn-secondary btn-block" id="book-btn2" onclick="scrollToReviewForm()">Rate this Book</button>
                     </div>
                 </div>
 
@@ -39,7 +45,6 @@
                         @php
                             $genres = is_array($bookGenres) ? $bookGenres : explode(',', $book['genre']);
                         @endphp
-
                         @foreach ($genres as $genre)
                             <a href="{{ route('books.browse.genre', ['genre' => trim($genre)]) }}" class="genre-itemm">{{ trim($genre) }}</a>
                             @if (!$loop->last) &nbsp; @endif
@@ -79,7 +84,7 @@
             @foreach ($reviews as $review)
                 <div id="review-item" class="review-item mb-4 border-top">
                     <div class="d-flex align-items-start">
-                        <img src="{{ asset('asset/images/renjun.png') }}" alt="User" class="rounded-circle me-3" style="width: 32px; height: 32px;">
+                        <img src="{{ asset($review->user->profile_picture ?? 'assets/user/default-profile.png') }}" alt="User" class="rounded-circle me-3" style="width: 32px; height: 32px;">
                         <div>
                             <h6 class="mb-1" id="username-review">
                                 {{ $review->user->name }} 
@@ -93,7 +98,7 @@
                             @foreach ($review->replies as $reply)
                                 <div class="reply-item ms-10 p-3 border-top border-secondary">
                                     <div class="d-flex align-items-start">
-                                        <img src="{{ asset('asset/images/front.png') }}" alt="User" class="rounded-circle me-3" style="width: 32px; height: 32px;">
+                                    <img src="{{ asset($reply->user->profile_picture ?? 'assets/user/default-profile.png') }}" alt="User" class="rounded-circle me-3" style="width: 32px; height: 32px;">
                                         <div>
                                             <h6 class="mb-1" id="username-review">{{ $reply->user->name }}</h6>
                                             <p class="review-content">{{ $reply->comment }}</p>
@@ -165,26 +170,25 @@
 
     <!-- Modal for Errors -->
     <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center" id="errorModalLabel">
-                    {{ session('error_title') ?? 'Error' }}
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>  
-            </div>
-            <div class="modal-body">
-                <p id="errorMessage">{{ session('error_message') }}</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="errorModalLabel">
+                        {{ session('error_title') ?? 'Error' }}
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>  
+                </div>
+                <div class="modal-body">
+                    <p id="errorMessage">{{ session('error_message') }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
 
     <script>
         function toggleEditForm(reviewID) {
@@ -197,19 +201,17 @@
             deleteForm.style.display = (deleteForm.style.display === 'none' || deleteForm.style.display === '') ? 'block' : 'none';
         }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        @if(session('error_message'))
-            $('#errorModal').modal('show');
-        @endif
-    });
-    function scrollToReviewForm() {
-        const reviewForm = document.getElementById('add-review-form');
-        if (reviewForm) {
-            reviewForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.addEventListener('DOMContentLoaded', function () {
+            @if(session('error_message'))
+                $('#errorModal').modal('show');
+            @endif
+        });
+
+        function scrollToReviewForm() {
+            const reviewForm = document.getElementById('add-review-form');
+            if (reviewForm) {
+                reviewForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
-    }
-
-   
-
     </script>
 @endsection
