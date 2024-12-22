@@ -16,7 +16,7 @@ Route::get('/', [LandingPageController::class, 'index'])->name('landing-page')->
 // Route::get('/admin/users', [AdminController::class, 'showUsers'])->name('admin.showUsers');
 
 Route::get('/admin/users/search', [AdminController::class, 'adminUserSearch'])->name('admin.users.search');
-
+Route::get('/admin/reviews/search', [AdminController::class, 'adminReviewSearch'])->name('admin.reviews.search');
 
 //aayuson pa mga ini
 

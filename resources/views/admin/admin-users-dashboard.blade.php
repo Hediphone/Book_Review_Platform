@@ -40,7 +40,7 @@
                                 <td>{{ $user->created_at }}</td>
                                 <td>{{ $user->updated_at }}</td>
                                 <td>
-                                    <!-- Add any actions you need here -->
+                                    action
                                 </td>
                             </tr>
                         @endforeach

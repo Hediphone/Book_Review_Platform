@@ -120,15 +120,110 @@ class AdminController extends Controller
         $query = $request->input('search');
         $query = strtolower($query);
 
-        // Perform the search on 'name' and 'email'
+        // Parse the query to check if it's a valid date
+        $isDate = false;
+        try {
+            $parsedDate = date('Y-m-d', strtotime($query)); // Convert to Y-m-d format
+            $isDate = true;
+        } catch (\Exception $e) {
+            $isDate = false;
+        }
+
+        // Perform the search
         $users = User::whereRaw('LOWER(name) like ?', ['%' . $query . '%'])
-            ->orWhereRaw('LOWER(email) like ?', ['%' . $query . '%'])
-            ->get();
+            ->orWhereRaw('LOWER(email) like ?', ['%' . $query . '%']);
+
+        if ($isDate) {
+            $users = $users->orWhereDate('created_at', $parsedDate)
+                ->orWhereDate('updated_at', $parsedDate);
+        }
+
+        $users = $users->get();
 
         // Return the HTML for the table rows as a response
         $html = view('admin.users-search-results', compact('users'))->render();
         return response()->json($html);
     }
+
+
+    public function adminReviewSearch(Request $request)
+    {
+        $query = $request->input('search');
+        $rating = $request->input('rating');
+        $queryLower = strtolower($query ?? '');
+
+        $reviewsQuery = Review::query();
+
+        if (!empty($query)) {
+            $reviewsQuery->whereRaw('LOWER(comment) like ?', ['%' . $queryLower . '%'])
+                ->orWhereHas('book', function ($q) use ($queryLower) {
+                    $q->whereRaw('LOWER(title) like ?', ['%' . $queryLower . '%']);
+                })
+                ->orWhereHas('user', function ($q) use ($queryLower) {
+                    $q->whereRaw('LOWER(name) like ?', ['%' . $queryLower . '%']);
+                })
+                ->orWhereRaw('DATE_FORMAT(created_at, "%Y-%m-%d %H:%i:%s") like ?', ['%' . $query . '%'])
+                ->orWhereRaw('DATE_FORMAT(updated_at, "%Y-%m-%d %H:%i:%s") like ?', ['%' . $query . '%']);
+        }
+
+        if (!empty($rating) && $rating !== 'All') {
+            $reviewsQuery->where('rating', '=', $rating);
+        }
+
+        $reviews = $reviewsQuery->with(['book', 'user'])->get();
+
+        // Highlight matches
+        foreach ($reviews as $review) {
+            if (!empty($query)) {
+                $review->highlighted_comment = preg_replace(
+                    '/' . preg_quote($query, '/') . '/i',
+                    '<span class="highlight">$0</span>',
+                    $review->comment
+                );
+                $review->book->highlighted_title = preg_replace(
+                    '/' . preg_quote($query, '/') . '/i',
+                    '<span class="highlight">$0</span>',
+                    $review->book->title
+                );
+                $review->user->highlighted_name = preg_replace(
+                    '/' . preg_quote($query, '/') . '/i',
+                    '<span class="highlight">$0</span>',
+                    $review->user->name
+                );
+                $review->highlighted_created_at = preg_replace(
+                    '/' . preg_quote($query, '/') . '/i',
+                    '<span class="highlight">$0</span>',
+                    $review->created_at->format('Y-m-d H:i:s')
+                );
+                $review->highlighted_updated_at = preg_replace(
+                    '/' . preg_quote($query, '/') . '/i',
+                    '<span class="highlight">$0</span>',
+                    $review->updated_at->format('Y-m-d H:i:s')
+                );
+            } else {
+                // No highlights
+                $review->highlighted_comment = $review->comment;
+                $review->book->highlighted_title = $review->book->title;
+                $review->user->highlighted_name = $review->user->name;
+                $review->highlighted_created_at = $review->created_at->format('Y-m-d H:i:s');
+                $review->highlighted_updated_at = $review->updated_at->format('Y-m-d H:i:s');
+            }
+        }
+
+        return view('admin.reviews-search-results', [
+            'reviews' => $reviews,
+            'query' => $query ?? '',
+            'rating' => $rating ?? 'All',
+        ])->render();
+    }
+
+
+
+
+
+
+
+
 
 
 

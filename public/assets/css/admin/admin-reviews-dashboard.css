@@ -407,3 +407,57 @@ body{
 .editremoveProduct:hover{
     background-color: #cfcfcf;
 }
+
+/* highlight */
+.highlight {
+    background-color: rgb(237, 237, 141);
+    font-weight: bold;
+}
+
+/* rating button */
+.rating{
+    display: flex;
+    overflow-x: scroll;
+    min-width:  500px;
+    font-size: 20px;
+}
+
+.rating::-webkit-scrollbar{
+    width: 0px;
+}
+.ratingBtn {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    font-size: 13px;
+    width: auto;
+    padding: 7px 25px 7px 25px;
+    margin: 5px 5px 10px 5px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    color: #008D5D;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    outline: 1.5px solid #04B075;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+}
+
+.ratingBtn:hover {
+    background-color: #008D5D;
+    color: #ffffff;
+    outline: none;
+}
+
+.ratingBtn:active {
+    background-color: #00744d;
+    color: #ffffff;
+    outline: none;
+}
+
+/* Active state for the clicked button */
+.ratingBtn.active {
+    background-color: #04B075;
+    color: white;
+    outline: none;
+}
