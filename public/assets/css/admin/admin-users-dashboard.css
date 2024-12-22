@@ -454,3 +454,15 @@ body{
     background-color: rgb(237, 237, 141);
     font-weight: bold;
 }
+
+.highlight-row {
+    background-color: red;
+    color: rgb(255, 7, 7);
+    font-weight: bolder;
+}
+
+
+.trash {
+    height: 20px;
+}
+

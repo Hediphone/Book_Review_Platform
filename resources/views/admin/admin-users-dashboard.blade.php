@@ -35,7 +35,7 @@
                     </thead>
                     <tbody id="usersTableBody">
                         @foreach ($users as $user)
-                            <tr>
+                            <tr class="{{ $user->violations >= 3 ? 'highlight-row' : '' }}">
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
@@ -43,17 +43,27 @@
                                 <td>{{ $user->updated_at }}</td>
                                 <td>{{ $user->violations ?? "-" }}</td>
                                 <td>
-                                    <a href="">action</a>
+                                    @if ($user->violations >= 3)
+                                        <button id="confirmUserDelete" type="submit" onclick="showConfirmUserDeleteModal({{ $user->id }})">
+                                            <img src="{{ asset('assets/svg/trash.svg') }}" class="trash">
+                                        </button>
+                                    @else
+                                        -
+                                    @endif
                                 </td>
+
                             </tr>
                         @endforeach
                     </tbody>
+
                 </table>
             </div>
         </div>
     </div>
 </section>
 @endsection
+
+@include('modals.delete-user')
 
 @section('scripts')
 <script>
@@ -86,5 +96,22 @@
         location.reload();
     });
 
+    // Delet user
+    // Function to show the confirmation modal
+    function showconfirmUserDelete(userId) {
+        document.getElementById('confirmUserDeleteModal').style.display = 'block';
+        document.getElementById('confirmUserDelete').onclick = function () {
+            window.location.href = '/admin/users/delete/' + userId; // Redirect to the delete route
+        };
+        document.getElementById('cancelUserDelete').onclick = function () {
+            document.getElementById('confirmUserDeleteModal').style.display = 'none';
+        };
+    }
+
+    // Function to close the success modal
+    function closeSuccessModal() {
+        document.getElementById('successPrompt').style.display = 'none';
+    }
 </script>
+
 @endsection
