@@ -82,19 +82,8 @@
                     <p>No reviews yet. Start reviewing your books!</p>
                 @else
                     <div class="row" id="review-list">
-                        @foreach ($reviews->take(4) as $review)
-                            <div class="col-md-3 mb-4 review-item book-item">
-                                <div class="card">
-                                    <div class="reviews">
-                                        <h5 class="book_title" style="font-style: italic;">"{{ $review->comment }}"</h5>
-                                        <p class="review_comment">{{ $review->book->title }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                        @foreach ($reviews->skip(4) as $review)
-                            <div class="col-md-3 mb-4 review-item" style="display: none;">
+                        @foreach ($reviews as $index => $review)
+                            <div class="col-md-3 mb-4 review-item {{ $index >= 4 ? 'hidden' : '' }}">
                                 <div class="card">
                                     <div class="reviews">
                                         <h5 class="book_title" style="font-style: italic;">"{{ $review->comment }}"</h5>
@@ -119,34 +108,8 @@
                     <p>You haven't reviewed any books yet.</p>
                 @else
                     <div class="row" id="book-list">
-                        @foreach ($reviewedBooksWithAvgRating->take(4) as $book)
-                            <div class="col-md-3 mb-4 book-item">
-                                <div class="card">
-                                    <a href="{{ route('books.bookDetail', ['id' => $book->bookID]) }}">
-                                        <img src="{{ asset($book->cover) }}" class="card-img-top" alt="Book Cover">
-                                    </a>
-                                    <div class="card-body">
-                                        <h5 class="book-title">{{ $book->title }}</h5>
-                                        <h6 class="book-author">{{ $book->author }}</h6>
-                                        <div class="star-rating">
-                                            <span>{{ number_format($book->average_rating, 1) }}</span>
-                                            @for ($i = 0; $i < 5; $i++)
-                                                @if ($i < floor($book->average_rating))
-                                                    <i class="bi bi-star-fill filled"></i>
-                                                @elseif ($i == floor($book->average_rating) && $book->average_rating - floor($book->average_rating) >= 0.5)
-                                                    <i class="bi bi-star-half"></i>
-                                                @else
-                                                    <i class="bi bi-star"></i>
-                                                @endif
-                                            @endfor
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                        @foreach ($reviewedBooksWithAvgRating->skip(4) as $book)
-                            <div class="col-md-3 mb-4 book-item" style="display: none;">
+                        @foreach ($reviewedBooksWithAvgRating as $index => $book)
+                            <div class="col-md-3 mb-4 book-item {{ $index >= 4 ? 'hidden' : '' }}">
                                 <div class="card">
                                     <a href="{{ route('books.bookDetail', ['id' => $book->bookID]) }}">
                                         <img src="{{ asset($book->cover) }}" class="card-img-top" alt="Book Cover">
@@ -175,45 +138,20 @@
             </div>
         </section>
 
+
         <section class="favorite_books">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h3 class="text-left">My Favorite Books</h3>
-                    <button id="view-all-books" class="view-all-link">View All</button>
+                    <button id="view-all-fav-books" class="view-all-link">View All</button>
                 </div>
 
                 @if ($favoriteBooks->isEmpty())
                     <p>You haven't added any books to your favorites yet.</p>
                 @else
                     <div class="row" id="book-list">
-                        @foreach ($favoriteBooks->take(4) as $book)
-                            <div class="col-md-3 mb-4 book-item">
-                                <div class="card">
-                                    <a href="{{ route('books.bookDetail', ['id' => $book->bookID]) }}">
-                                        <img src="{{ asset($book->cover) }}" class="card-img-top" alt="Book Cover">
-                                    </a>
-                                    <div class="card-body">
-                                        <h5 class="book-title">{{ $book->title }}</h5>
-                                        <h6 class="book-author">{{ $book->author }}</h6>
-                                        <div class="star-rating">
-                                            <span>{{ number_format($book->average_rating, 1) }}</span>
-                                            @for ($i = 0; $i < 5; $i++)
-                                                @if ($i < floor($book->average_rating))
-                                                    <i class="bi bi-star-fill filled"></i>
-                                                @elseif ($i == floor($book->average_rating) && $book->average_rating - floor($book->average_rating) >= 0.5)
-                                                    <i class="bi bi-star-half"></i>
-                                                @else
-                                                    <i class="bi bi-star"></i>
-                                                @endif
-                                            @endfor
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                        @foreach ($favoriteBooks->skip(4) as $book)
-                            <div class="col-md-3 mb-4 book-item" style="display: none;">
+                        @foreach ($favoriteBooks as $index => $book)
+                            <div class="col-md-3 mb-4 book-item-fav {{ $index >= 4 ? 'hidden' : '' }}">
                                 <div class="card">
                                     <a href="{{ route('books.bookDetail', ['id' => $book->bookID]) }}">
                                         <img src="{{ asset($book->cover) }}" class="card-img-top" alt="Book Cover">
@@ -248,18 +186,54 @@
 
 @section('scripts')
     <script>
-        document.getElementById('view-all-books').addEventListener('click', function () {
-            const bookItems = document.querySelectorAll('.book-item');
-            const viewAllButton = document.getElementById('view-all-books');
-            bookItems.forEach(item => item.style.display = 'block');
-            viewAllButton.style.display = 'none'; // Hide "View All" button after expanding
-        });
+       document.getElementById('view-all-books').addEventListener('click', function () {
+        const bookItems = document.querySelectorAll('.book-item');
+        const hiddenBooks = Array.from(bookItems).filter(item => item.classList.contains('hidden'));
+
+        if (hiddenBooks.length > 0) {
+            bookItems.forEach(item => item.classList.remove('hidden'));
+            this.textContent = 'Show Less';
+        } else {
+            bookItems.forEach((item, index) => {
+                if (index >= 4) {
+                    item.classList.add('hidden');
+                }
+            });
+            this.textContent = 'View All';
+        }
+    });
 
         document.getElementById('view-all-reviews').addEventListener('click', function () {
             const reviewItems = document.querySelectorAll('.review-item');
-            const viewAllButton = document.getElementById('view-all-reviews');
-            reviewItems.forEach(item => item.style.display = 'block');
-            viewAllButton.style.display = 'none'; // Hide "View All" button after expanding
+            const hiddenReviews = Array.from(reviewItems).filter(item => item.classList.contains('hidden'));
+
+            if (hiddenReviews.length > 0) {
+                reviewItems.forEach(item => item.classList.remove('hidden'));
+                this.textContent = 'Show Less';
+            } else {
+                reviewItems.forEach((item, index) => {
+                    if (index >= 4) {
+                        item.classList.add('hidden');
+                    }
+                });
+                this.textContent = 'View All';
+            }
+        });
+        document.getElementById('view-all-fav-books').addEventListener('click', function () {
+            const bookfavItems = document.querySelectorAll('.book-item-fav');
+            const hiddenBooks = Array.from(bookfavItems).filter(item => item.classList.contains('hidden'));
+
+            if (hiddenBooks.length > 0) {
+                bookfavItems.forEach(item => item.classList.remove('hidden'));
+                this.textContent = 'Show Less';
+            } else {
+                bookfavItems.forEach((item, index) => {
+                    if (index >= 4) {
+                        item.classList.add('hidden');
+                    }
+                });
+                this.textContent = 'View All';
+            }
         });
     </script>
 @endsection
