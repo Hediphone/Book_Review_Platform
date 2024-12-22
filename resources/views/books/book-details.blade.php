@@ -168,17 +168,48 @@
         </div>
     </section>
 
+
+    <section class="book-recommendations-section">
+        <h3 class="text-left mb-3">You might also like</h3>
+        <div class="container">
+            <div class="row">
+                @foreach ($recommendedBooks as $book)
+                    <div class="card">
+                        <a href="{{ route('books.bookDetail', $book['bookID']) }}">
+                            <img src="{{ asset($book['cover']) }}" class="card-img-top" alt="Book Cover">
+                            <div class="card-body">
+                                <h5 class="book-title">{{ $book['title'] }}</h5>
+                                <h6 class="book-author">{{ $book['author'] }}</h6>
+                                <div class="star-rating">
+                                    <span>{{ number_format($book['reviews_avg_rating'], 1) }}</span>
+                                    @for ($i = 0; $i < 5; $i++)
+                                        @if ($i < floor($book['reviews_avg_rating']))
+                                            <i class="bi bi-star-fill filled"></i> 
+                                        @elseif ($i == floor($book['reviews_avg_rating']) && $book['reviews_avg_rating'] - floor($book['reviews_avg_rating']) >= 0.5)
+                                            <i class="bi bi-star-half"></i> 
+                                        @else
+                                            <i class="bi bi-star"></i> 
+                                        @endif
+                                    @endfor
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+
+
     <!-- Modal for Errors -->
     <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-center" id="errorModalLabel">
+                    <h5 class="modal-title text-center mx-auto" id="errorModalLabel">
                         {{ session('error_title') ?? 'Error' }}
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>  
                 </div>
                 <div class="modal-body">
                     <p id="errorMessage">{{ session('error_message') }}</p>

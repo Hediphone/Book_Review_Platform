@@ -134,22 +134,27 @@ Route::middleware('auth')->group(function () {
     Route::get('/browse/books/view-all/rating/{genre}', [BooksController::class, 'showByRating'])->name('view-all.rating.show'); //Second
 // sa home ito since nandun yung popular now, naka based yun sa rating ng user, (averega rating) see logic nalang sa showbyratingmethod
 
-    Route::get('/browse-books/book-detail/{id}', function ($id) {
-        // Retrieve book details from BooksController
-        $booksController = new BooksController();
-        $bookDetails = $booksController->show($id);  
+    // Route::get('/browse-books/book-detail/{id}', function ($id) {
+    //     // Retrieve book details from BooksController
+    //     $booksController = new BooksController();
+    //     $bookDetails = $booksController->show($id);  
         
-        // Retrieve reviews from ReviewController
-        $reviewController = new ReviewController();
-        $ratings = $reviewController->showRatings($id);  
+    //     // Retrieve reviews from ReviewController
+    //     $reviewController = new ReviewController();
+    //     $ratings = $reviewController->showRatings($id);  
+
         
-        // Merge data from both controllers and pass to the view
-        return view('books.book-details', array_merge($bookDetails->getData(), $ratings->getData(), ['id' => $id]));
-    })->name('books.bookDetail');
+    //     // Merge data from both controllers and pass to the view
+    //     return view('books.book-details', array_merge($bookDetails->getData(), $ratings->getData(), ['id' => $id]));
+    // })->name('books.bookDetail');
 
 
-   
+
     
+    Route::get('/browse-books/book-detail/{id}', [BooksController::class, 'showBookDetail'])->name('books.bookDetail');
+
+    
+
 
     
     Route::post('/browse-books/{id}/reply/{review_id}', [ReviewController::class, 'addReply'])->name('reviews.reply');

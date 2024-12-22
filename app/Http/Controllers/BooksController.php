@@ -61,6 +61,11 @@ class BooksController extends Controller
     /**
      * Display the specified resource.
      */
+
+
+
+
+
     public function show($id)
     {
         $book = Book::find($id);
@@ -77,6 +82,11 @@ class BooksController extends Controller
     }
 
 
+
+    
+
+
+
     /**
      * Show books ordered by rating.
      */
@@ -88,6 +98,92 @@ class BooksController extends Controller
 
         return view('books.show-books-by-rating', compact('booksByRating'));
     }
+
+
+
+    public function showBookDetail($id)
+    {
+        // Retrieve book details from BooksController
+        $bookDetails = $this->show($id);  
+    
+        // Retrieve reviews from ReviewController
+        $reviewController = new ReviewController();
+        $ratings = $reviewController->showRatings($id);  
+    
+        // Retrieve recommended books
+        $recommendedBooks = $this->recommendBooks($id)->take(4)->toArray();  // Convert to array and limit to 4 books
+        
+
+        // Return the view with the necessary data
+        return view('books.book-details', array_merge(
+            $bookDetails->getData(),  // Pass book details as array
+            $ratings->getData(),  // Pass ratings as array
+            ['id' => $id],  // Pass the book id
+            ['recommendedBooks' => $recommendedBooks]  // Pass recommended books as array
+        ));
+    }
+    
+
+
+    public function recommendBooks($bookId)
+    {
+        // Fetch the current book details
+        $currentBook = Book::findOrFail($bookId);
+    
+        // Split the genres of the current book
+        $currentGenres = explode(',', $currentBook->genre);
+        $currentGenres = array_map('trim', $currentGenres); // Trim whitespace
+    
+        $recommendedBooks = collect();
+    
+        foreach ($currentGenres as $genre) {
+            if (empty($genre)) continue;
+    
+            // Fetch books matching the genre, excluding the current book
+            $books = Book::where('bookID', '!=', $bookId)
+                ->where('genre', 'like', '%' . $genre . '%')
+                ->withAvg('reviews', 'rating') // Include average rating
+                ->take(4) // Limit recommendations per genre
+                ->get();
+    
+            $recommendedBooks = $recommendedBooks->merge($books)->unique('id');
+        }
+    
+        return $recommendedBooks;
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Show the form for editing the specified resource.
