@@ -16,9 +16,18 @@ main {
     margin: 50px 20px;
 }
 
+.message {
+    color: #265073!important;
+    font-size: 20px!important;
+    font-weight: bolder;
+    letter-spacing: 0.9px;
+    margin-top: -25px;
+}
+
 .contact-container {
-    max-width: 700px!important;
-    margin: 0 auto;
+    max-width: 600px!important;
+    height: 550px;
+    margin: -35px auto;
     padding: 60px;
     border: 2px solid #FBF4E2;
     background-color: #FBF4E2;
@@ -41,8 +50,10 @@ main {
 
 label {
     font-weight: 500;
-    font-size: 1em;
+    font-size: 0.9em;
     color: #000000;
+    letter-spacing: 0.5px;
+    text-align: right!important;
 }
 
 textarea {
@@ -52,34 +63,48 @@ textarea {
     padding: 10px 15px;
     border: 1px solid #FBF4E2;
     border-radius: 10px;
+    margin-top: -10px;
+}
+
+.messageF{
+    height: 70px;
 }
 
 .message-form {
     text-align: left;
+    margin-top: -10px;
 }
 
 .sendBtn {
-    background-color: #265073!important;
+    background-color: #97b31a!important;
+    border: none!important;
+    font-size: 13px!important;
+    letter-spacing: 0.7px;
     color: #FFF;
-    border: none;
-    padding: 10px;
+    padding: 6px 12px 6px!important;
     border-radius: 5px;
-    font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
+button:hover {
+    background-color: #00ff15!important;
+    border: none;
+}
 
 .form-fields {
     position: relative;
     z-index: 1;
+    font-size: 12.5px;
+    margin-top: -15px;
+    margin-bottom: -10px;
 }
 
 .contact-image {
     position: absolute;
     bottom: 0px; 
     right: 0px;
-    width: 200px;
+    width: 150px;
     height: auto;
     z-index: 0; 
 }

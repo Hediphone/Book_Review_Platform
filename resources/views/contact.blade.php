@@ -16,31 +16,31 @@
                     <div class="form-fields">
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label>Full Name</label>
-                                <textarea name="fullname" placeholder="Enter name" rows="1"></textarea>
+                                <label>First Name</label>
+                                <textarea name="fullname" placeholder="First Name" rows="1"></textarea>
                             </div>
                             <div class="col-md-6">
-                                <label>Company</label>
-                                <textarea name="company" placeholder="Company name" rows="1"></textarea>
+                                <label>Last Name</label>
+                                <textarea name="company" placeholder="Last Name" rows="1"></textarea>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label>Email</label>
-                                <textarea name="email" placeholder="example@gmail.com" rows="1"></textarea>
+                                <textarea name="email" placeholder="Email Address" rows="1"></textarea>
                             </div>
                             <div class="col-md-6">
                                 <label>Phone Number</label>
-                                <textarea name="phone" placeholder="+1 (555) 000 - 0000" rows="1"></textarea>
+                                <textarea name="phone" placeholder="Phone Number" rows="1"></textarea>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label>Address</label>
-                            <textarea name="address" placeholder="Brgy, City, Province" rows="1"></textarea>
+                            <textarea name="address" placeholder="Complete Address" rows="1"></textarea>
                         </div>
                         <div class="message-form mb-3">
-                            <label>Your Message</label>
-                            <textarea name="message" placeholder="Type your message here" rows="5"></textarea>
+                            <label>Message</label>
+                            <textarea name="message" class="messageF" placeholder="Type your message here..." rows="5"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary sendBtn">Send Message</button>
                     </div>
