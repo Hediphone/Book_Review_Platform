@@ -21,9 +21,9 @@ class BooksController extends Controller
 
         //     // Check if the email and password are correct
         //     if ($user->email == 'admin@example.com' || !Hash::check($request->input('password'), $user->password)) {
-                $books = Book::all();
+        $books = Book::all();
 
-                return view('admin-dash', compact('books'));
+        return view('admin-books-dashboard', compact('books'));
         //     }
         // } else {
         //     // If the user is not authenticated
@@ -264,21 +264,17 @@ class BooksController extends Controller
         // Convert the query to lowercase
         $query = strtolower($query);
 
-        // Perform a case-insensitive search on title, author, and genre
+        // Perform the search
         $books = Book::whereRaw('LOWER(title) like ?', ['%' . $query . '%'])
             ->orWhereRaw('LOWER(author) like ?', ['%' . $query . '%'])
             ->orWhereRaw('LOWER(genre) like ?', ['%' . $query . '%'])
-            ->withAvg('reviews', 'rating') // Fetch average rating
+            ->withAvg('reviews', 'rating')
             ->get();
 
-        // If it's an AJAX request, return only the table rows
-        if ($request->ajax()) {
-            return view('admin.search-results', compact('books'));
-        }
-
-        // Return the full results view
+        // Return the view with the search results
         return view('admin.search-results', compact('books', 'query'));
     }
+
 
     public function adminSearchByGenre(Request $request)
     {
@@ -312,6 +308,7 @@ class BooksController extends Controller
         // Return the full results view
         return view('admin.search-results', compact('books', 'genre'));
     }
+
 
 
 

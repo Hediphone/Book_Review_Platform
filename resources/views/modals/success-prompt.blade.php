@@ -11,7 +11,7 @@
                 <div class="formContent">
                     <div class="successmodalButtons">
                         <button class="addBook" id="add_okBtn"
-                            onclick="window.location.href='{{ url('/admin-dash') }}'">Ok</button>
+                            onclick="window.location.href='{{ url('/admin-books-dashboard') }}'">Ok</button>
 
                     </div>
                 </div>

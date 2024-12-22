@@ -20,7 +20,7 @@ Route::get('/search', [BooksController::class, 'search'])->name('books.search');
 Route::get('/admin/books/search', [BooksController::class, 'adminBookSearch'])->name('admin.books.search');
 
 // Route for searching by genre
-Route::get('/admin/books/search/genre', [BooksController::class, 'adminSearchByGenre'])->name('adminSearchByGenre');
+Route::get('/admin/books/search/genre', [BooksController::class, 'adminSearchByGenre'])->name(name: 'adminSearchByGenre');
 
 
 Route::get('/modals/add-book', function () {
@@ -31,19 +31,19 @@ Route::get('/modals/edit-book', function () {
     return view(view: 'modals.edit-book');
 });
 
-Route::get('/admin-dash', [BooksController::class, 'index']);
-// Route::get('/admin-dash', function () {
-//     return view(view: 'admin-dash');
+Route::get('/admin-books-dashboard', [BooksController::class, 'index']);
+// Route::get('/aadmin-books-dashboard', function () {
+//     return view(view: 'aadmin-books-dashboard');
 // });
-// Route::post('/admin-dash', [BooksController::class, 'updateBook'])->name('books.updateBook');
-Route::post('/admin-dash', [BooksController::class, 'destroySelected'])->name('books.destroySelected');
+// Route::post('/aadmin-books-dashboard', [BooksController::class, 'updateBook'])->name('books.updateBook');
+Route::post('/admin-books-dashboard', [BooksController::class, 'destroySelected'])->name('books.destroySelected');
 
 
 Route::get('/books/delete', function () {
     return view(view: 'modals.edit-book');
 });
 
-Route::post('/admin-dash', action: [BooksController::class, 'deleteBooks'])->name('books.delete');
+Route::post('/admin-books-dashboard', action: [BooksController::class, 'deleteBooks'])->name('books.delete');
 
 
 
@@ -79,8 +79,8 @@ Route::middleware('auth')->group(function () {
         return view('contact');
     });
 
-    Route::get('/admin-dashboard', function () {
-        return view('admin-dashboard');
+    Route::get('/aadmin-books-dashboardboard', function () {
+        return view('aadmin-books-dashboardboard');
     });
     
     Route::get('/home', [HomeController::class, 'index'])->name('home.index');
