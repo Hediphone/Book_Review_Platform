@@ -227,8 +227,7 @@ class AdminController extends Controller
 
         return view('admin.reviews-dashboard', compact('reviews'));
     }
-
-
+    
     public function adminReviewSearch(Request $request)
     {
         $query = $request->input('search');
@@ -300,6 +299,7 @@ class AdminController extends Controller
         ])->render();
     }
 
+    
     public function adminDeleteReviews(Request $request)
     {
 
@@ -313,6 +313,25 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Selected review(s) have been deleted successfully.');
     }
 
+    public function incrementViolation($userID)
+    {
+        // Retrieve the user by user_id
+        $user = User::find($userID);
+
+        // Check if the user exists
+        if (!$user) {
+            return response()->json(['message' => 'User not found.'], 404);
+        }
+
+        // Increment the violations count for the user
+        $user->violations += 1;
+
+        // Save the updated user record
+        $user->save();
+
+        // Return a JSON response indicating success
+        return response()->json(['message' => 'Violation count incremented successfully.']);
+    }
 
 
 

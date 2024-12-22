@@ -48,6 +48,7 @@
                             <th>Comment</th>
                             <th>Date Created</th>
                             <th>Date Updated</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody id="reviewsTableBody">
@@ -61,13 +62,14 @@
                                 <td>{!! $review->highlighted_comment !!}</td> <!-- Display highlighted comment -->
                                 <td>{{ $review->created_at }}</td>
                                 <td>{{ $review->updated_at }}</td>
+
                                 <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bi bi-three-dots-vertical"></i> <!-- Ellipsis Icon -->
-                                        </button>
-                                    </div>
+                                    <form action="{{ route('admin.reviews.violation', ['userID' => $review->userID]) }}"
+                                        method="POST" class="actionForm">
+                                        @csrf
+                                        <input type="hidden" name="userID" value="{{ $review->userID }}">
+                                        <button type="submit">Report Violation</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -206,7 +208,7 @@
         document.getElementById('deleteReviewsModal').style.display = 'none';
     }
 
-    //
+    // Show Negative Comments
     $(document).ready(function () {
         // When the "Show Negative Comments" button is clicked
         $('#showNegativeCommentsBtn').on('click', function () {
@@ -216,7 +218,7 @@
             // Loop through each row and hide/show based on the highlighted comment class
             allRows.each(function () {
                 var row = $(this);
-                var highlightedComment = row.find('td:nth-child(6)').html(); // Assuming the 6th column contains the highlighted comment
+                var highlightedComment = row.find('td:nth-child(6)').html(); // The 6th column contains the highlighted comment
 
                 // Check if the comment is highlighted (it will have a div with a class of 'highlight-bad-comment')
                 if (highlightedComment && highlightedComment.includes('highlight-bad-comment')) {
@@ -227,7 +229,6 @@
             });
         });
     });
-
 </script>
 
 @endsection

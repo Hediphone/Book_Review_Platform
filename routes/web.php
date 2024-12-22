@@ -12,8 +12,8 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 
-// // Route to show the users dashboard and handle search
-// Route::get('/admin/users', [AdminController::class, 'showUsers'])->name('admin.showUsers');
+
+Route::post('/admin/review/{userID}/violation', [AdminController::class, 'incrementViolation'])->name('admin.reviews.violation');
 
 Route::get('/admin/users/search', [AdminController::class, 'adminUserSearch'])->name('admin.users.search');
 Route::get('/admin/reviews/search', [AdminController::class, 'adminReviewSearch'])->name('admin.reviews.search');

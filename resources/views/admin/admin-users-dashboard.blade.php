@@ -29,6 +29,7 @@
                             <th>Email</th>
                             <th>Joined At</th>
                             <th>Updated At</th>
+                            <th>Violations</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -40,8 +41,9 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>{{ $user->updated_at }}</td>
+                                <td>{{ $user->violations ?? "-" }}</td>
                                 <td>
-                                    action
+                                    <a href="">action</a>
                                 </td>
                             </tr>
                         @endforeach
