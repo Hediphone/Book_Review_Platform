@@ -10,6 +10,7 @@
     @yield('styles')
 
     <link rel="stylesheet" href="{{ asset('assets/css/modals/modals.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
@@ -44,23 +45,14 @@
         </div>
         <div class="logout">
             <div class="sbLogout">
-<<<<<<< Updated upstream
                 <!-- Add the POST method to logout and redirect -->
                 <form action="{{ route('logout') }}" method="POST" id="logoutForm">
                     @csrf <!-- Include the CSRF token for security -->
                     <button type="submit" id="logoutBtn" style="background: none; border: none;">
                         <img src="{{ asset('assets/svg/logout-gray.svg') }}" alt="Logout">
+                        Logout
                     </button>
                 </form>
-            </div>
-        </div>
-
-=======
-                <a href="" id="logoutBtn">
-                    <img src="{{ asset('assets/svg/logout-gray.svg') }}" alt="Logout">
-                    <br>
-                    <strong class="logoutText">Logout</strong>
-                </a>
             </div>
         </div>
     </section>
