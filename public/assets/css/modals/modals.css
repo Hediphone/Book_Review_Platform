@@ -24,8 +24,17 @@ body {
     transition: all .2s ease-in-out;
 }
 
+.deleteUserBtn {
+    background-color: #61d51e;
+    transition: all .2s ease-in-out;
+    margin-top: 30px;
+}
 
-.addBook1{
+.deleteUserButtons {
+    margin-top: 20px;
+}
+
+.addBook1 {
     font-size: 12px;
     color: #61d51e;
 }
@@ -35,22 +44,29 @@ body {
     margin-left: -50px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center horizontally */
-    gap: 10px; /* Add spacing between label and input */
+    align-items: center;
+    /* Center horizontally */
+    gap: 10px;
+    /* Add spacing between label and input */
 }
 
 .uploadContainer {
     background: transparent;
-    border: 1px solid #63f005; /* Subtle border */
-    padding: 8px 12px; /* Padding for spacing */
-    border-radius: 15px; /* Rounded corners */
-    text-align: center; /* Center the text */
+    border: 1px solid #63f005;
+    /* Subtle border */
+    padding: 8px 12px;
+    /* Padding for spacing */
+    border-radius: 15px;
+    /* Rounded corners */
+    text-align: center;
+    /* Center the text */
     font-weight: bold;
     cursor: pointer;
 }
 
 .uploadContainer:hover {
-    background-color: #48ff0057; /* Slightly darker on hover */
+    background-color: #48ff0057;
+    /* Slightly darker on hover */
 }
 
 #editInputFile {
@@ -277,6 +293,15 @@ input[type=text]:-ms-input-placeholder {
     margin-bottom: 30px;
 }
 
+.deleteUserMessage {
+    color: black;
+}
+
+.deleteUsersModal {
+    position: absolute;
+    z-index: 1;
+}
+
 .successMessage {
     margin: 20px auto;
 }
@@ -286,7 +311,7 @@ input[type=text]:-ms-input-placeholder {
     text-align: center;
 }
 
-.successmodalButtons button{
+.successmodalButtons button {
     width: auto;
     padding: 0px 20px;
     height: 40px;
@@ -321,7 +346,8 @@ input[type=text]:-ms-input-placeholder {
     /* Darker shade on hover */
 }
 
-#addBookModal, #editBookModal,
+#addBookModal,
+#editBookModal,
 #deleteBookModal {
     display: none;
 }
@@ -332,7 +358,8 @@ input[type=text]:-ms-input-placeholder {
     cursor: pointer;
 }
 
-#successPrompt {
+#successPrompt,
+#confirmUserDeleteModal {
     position: absolute;
     height: 100vh;
     top: 0px;
@@ -343,7 +370,19 @@ input[type=text]:-ms-input-placeholder {
     display: block;
 }
 
-.sucessContainer {
+.deleteUsersModal {
+    position: absolute;
+    height: 100vh;
+    top: 0px;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.30);
+    justify-content: center;
+    align-items: center;
+    display: block;
+}
+
+.sucessContainer,
+.deleteItemContainer {
     width: 400px;
     height: 325px;
     border-radius: 13px;

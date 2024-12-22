@@ -111,66 +111,26 @@ Route::middleware('auth')->group(function () {
     Route::get('/browse-books/{genre}', [BooksController::class, 'showGenre'])->name('books.browse.genre');
     //yung category sa browse view pag clinick yung genre it will show all the books to that genre (view rendered is show-books-by-genre)
 
-
-
-
-    //Route::get('/browse-books/view-all/{genre}', [BooksController::class, 'showGenre'])->name('view-all.genre.show');
-   // Route::get('/browse-books/view-all', [BooksController::class, 'viewAllGenre'])->name('view-all.genre.show');
     Route::get('/browse-books/view-all/{genre}', [BooksController::class, 'viewAllByGenre'])->name('view-all.genre.show');
-
-
-
-
-    //sa browse view , since nakalimit sa 4 ang books per genre pag clinick view all maggashow lahat ng books to that genre
-
 
     Route::get('/browse/books/view-all/release-date/{genre}', [BooksController::class, 'showbyReleaseDate'])->name('view-all.latest-release.show');
     // nakabased to sa released at column sa books since latest books siya, see logic sa method niya
 
     Route::get('/browse/books/view-all/rating/{genre}', [BooksController::class, 'showByRating'])->name('view-all.rating.show'); //Second
-// sa home ito since nandun yung popular now, naka based yun sa rating ng user, (averega rating) see logic nalang sa showbyratingmethod
-
-    // Route::get('/browse-books/book-detail/{id}', function ($id) {
-    //     // Retrieve book details from BooksController
-    //     $booksController = new BooksController();
-    //     $bookDetails = $booksController->show($id);  
-        
-    //     // Retrieve reviews from ReviewController
-    //     $reviewController = new ReviewController();
-    //     $ratings = $reviewController->showRatings($id);  
-
-        
-    //     // Merge data from both controllers and pass to the view
-    //     return view('books.book-details', array_merge($bookDetails->getData(), $ratings->getData(), ['id' => $id]));
-    // })->name('books.bookDetail');
-
-
-
     
     Route::get('/browse-books/book-detail/{id}', [BooksController::class, 'showBookDetail'])->name('books.bookDetail');
 
-    
-
-
-    
     Route::post('/browse-books/{id}/reply/{review_id}', [ReviewController::class, 'addReply'])->name('reviews.reply');
 
     Route::post('/book/{id}/review', [ReviewController::class, 'store'])->name('reviews.store');
 
-
     Route::put('/reviews/{reviewID}/update', [ReviewController::class, 'update'])->name('reviews.update');
-    Route::delete('/reviews/{reviewID}', [ReviewController::class, 'delete'])->name('reviews.delete');
 
-    
+    Route::delete('/reviews/{reviewID}', [ReviewController::class, 'delete'])->name('reviews.delete');
 
     Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile');
 
-
     Route::post('/favorite/{bookId}/toggle', [BooksController::class, 'toggleFavorite'])->name('favorite.toggle');
-
-
-
-
 
 
 });
