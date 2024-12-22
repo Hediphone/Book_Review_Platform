@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 
+Route::delete('/admin/users/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
 
 Route::post('/admin/review/{userID}/violation', [AdminController::class, 'incrementViolation'])->name('admin.reviews.violation');
 
