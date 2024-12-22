@@ -118,32 +118,61 @@ class AdminController extends Controller
     public function adminUserSearch(Request $request)
     {
         $query = $request->input('search');
-        $query = strtolower($query);
+        $queryLower = strtolower($query ?? '');
 
-        // Parse the query to check if it's a valid date
-        $isDate = false;
-        try {
-            $parsedDate = date('Y-m-d', strtotime($query)); // Convert to Y-m-d format
-            $isDate = true;
-        } catch (\Exception $e) {
-            $isDate = false;
+        // Perform the search query
+        $usersQuery = User::query();
+
+        if (!empty($query)) {
+            $usersQuery->whereRaw('LOWER(name) like ?', ['%' . $queryLower . '%'])
+                ->orWhereRaw('LOWER(email) like ?', ['%' . $queryLower . '%'])
+                ->orWhereRaw('DATE_FORMAT(created_at, "%Y-%m-%d %H:%i:%s") like ?', ['%' . $query . '%'])
+                ->orWhereRaw('DATE_FORMAT(updated_at, "%Y-%m-%d %H:%i:%s") like ?', ['%' . $query . '%']);
         }
 
-        // Perform the search
-        $users = User::whereRaw('LOWER(name) like ?', ['%' . $query . '%'])
-            ->orWhereRaw('LOWER(email) like ?', ['%' . $query . '%']);
+        $users = $usersQuery->get();
 
-        if ($isDate) {
-            $users = $users->orWhereDate('created_at', $parsedDate)
-                ->orWhereDate('updated_at', $parsedDate);
+        // Check if there are no users
+        $noResults = $users->isEmpty();
+
+        // Highlight matches in the users' name and email
+        foreach ($users as $user) {
+            if (!empty($query)) {
+                $user->highlighted_name = preg_replace(
+                    '/' . preg_quote($query, '/') . '/i',
+                    '<span class="highlight">$0</span>',
+                    $user->name
+                );
+                $user->highlighted_email = preg_replace(
+                    '/' . preg_quote($query, '/') . '/i',
+                    '<span class="highlight">$0</span>',
+                    $user->email
+                );
+                $user->highlighted_created_at = preg_replace(
+                    '/' . preg_quote($query, '/') . '/i',
+                    '<span class="highlight">$0</span>',
+                    $user->created_at->format('Y-m-d H:i:s')
+                );
+                $user->highlighted_updated_at = preg_replace(
+                    '/' . preg_quote($query, '/') . '/i',
+                    '<span class="highlight">$0</span>',
+                    $user->updated_at->format('Y-m-d H:i:s')
+                );
+            } else {
+                // No highlights
+                $user->highlighted_name = $user->name;
+                $user->highlighted_email = $user->email;
+                $user->highlighted_created_at = $user->created_at->format('Y-m-d H:i:s');
+                $user->highlighted_updated_at = $user->updated_at->format('Y-m-d H:i:s');
+            }
         }
 
-        $users = $users->get();
-
-        // Return the HTML for the table rows as a response
-        $html = view('admin.users-search-results', compact('users'))->render();
+        // Return the HTML for the table rows and the noResults flag
+        $html = view('admin.users-search-results', compact('users', 'noResults', 'query'))->render();
         return response()->json($html);
     }
+
+
 
 
     public function adminReviewSearch(Request $request)

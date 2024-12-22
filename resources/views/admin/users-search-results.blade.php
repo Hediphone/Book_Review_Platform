@@ -1,12 +1,24 @@
-@foreach ($users as $user)
+@if ($noResults)
     <tr>
-        <td>{{ $user->id }}</td>
-        <td>{{ $user->name }}</td>
-        <td>{{ $user->email }}</td>
-        <td>{{ $user->created_at }}</td>
-        <td>{{ $user->updated_at }}</td>
-        <td>
-            action
+        <td colspan="6" style="text-align: center; font-weight: bold;">
+            @if (isset($query) && $query !== '')
+                No matching results found for "<em>{{ $query }}</em>".
+            @else
+                No users available.
+            @endif
         </td>
     </tr>
-@endforeach
+@else
+    @foreach ($users as $user)
+        <tr>
+            <td>{{ $user->id }}</td>
+            <td>{!! $user->highlighted_name !!}</td>
+            <td>{!! $user->highlighted_email !!}</td>
+            <td>{!! $user->highlighted_created_at !!}</td>
+            <td>{!! $user->highlighted_updated_at !!}</td>
+            <td>
+                action
+            </td>
+        </tr>
+    @endforeach
+@endif

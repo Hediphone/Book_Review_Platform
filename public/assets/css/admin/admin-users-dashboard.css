@@ -407,3 +407,8 @@ body{
 .editremoveProduct:hover{
     background-color: #cfcfcf;
 }
+
+.highlight {
+    background-color: rgb(237, 237, 141);
+    font-weight: bold;
+}
