@@ -3,7 +3,7 @@
 @section('title', 'Admin Books Dashboard')
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/admin-books-dashboard.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/admin/admin-books-dashboard.css') }}">
 @endsection
 
 @section('content')
@@ -55,8 +55,8 @@
                             <th>Genre</th>
                             <th>Rating</th>
                             <th>Description</th>
-                            <th>Created At</th>
-                            <th>Updated At</th>
+                            <th>Date Created</th>
+                            <th>Date Updated</th>
                             <th>Release Date</th>
                             <th>Action</th>
                         </tr>

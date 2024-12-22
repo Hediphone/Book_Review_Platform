@@ -22,19 +22,22 @@
         <div class="features">
             <div class="sbBooks">
                 <button id="booksBtn">
-                    <img src="/assets/svg/book-white.svg" alt=""><br>
+                    <img src="{{ $activeSidebar === 'books' ? '/assets/svg/book-white.svg' : '/assets/svg/book-gray.svg' }}"
+                        alt=""><br>
                     <strong>Books</strong>
                 </button>
             </div>
             <div class="sbUsers">
                 <button id="usersBtn">
-                    <img src="/assets/svg/reviews-gray.svg" alt=""><br>
+                    <img src="{{ $activeSidebar === 'users' ? '/assets/svg/user-white.svg' : '/assets/svg/user-gray.svg' }}"
+                        alt=""><br>
                     <strong>Users</strong>
                 </button>
             </div>
             <div class="sbReviews">
                 <button id="reviewsBtn">
-                    <img src="/assets/svg/user-gray.svg" alt=""><br>
+                    <img src="{{ $activeSidebar === 'reviews' ? '/assets/svg/reviews-white.svg' : '/assets/svg/reviews-gray.svg' }}"
+                        alt=""><br>
                     <strong>Reviews</strong>
                 </button>
             </div>
@@ -42,7 +45,7 @@
         <div class="logout">
             <div class="sbLogout">
                 <a href="" id="logoutBtn">
-                    <img src="/assets/svg/logout-gray.svg" alt=""><br>
+                    <img src="{{ asset('assets/svg/logout-gray.svg') }}" alt="Logout">
                 </a>
             </div>
         </div>
@@ -64,12 +67,12 @@
 
         //redirect to Users Dashboard
         document.getElementById("usersBtn").onclick = function () {
-            window.location.href = "admin/admin-users-dashboard";
+            window.location.href = "/admin/admin-users-dashboard";
         };
 
         //redirect to Reviews Dashboard
         document.getElementById("reviewsBtn").onclick = function () {
-            window.location.href = "admin/admin-reviews-dashboard";
+            window.location.href = "/admin/admin-reviews-dashboard";
         };
 
         //redirect to login page

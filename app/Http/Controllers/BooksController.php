@@ -21,9 +21,13 @@ class BooksController extends Controller
 
         //     // Check if the email and password are correct
         //     if ($user->email == 'admin@example.com' || !Hash::check($request->input('password'), $user->password)) {
-        $books = Book::all();
+            $books = Book::all();
 
-        return view('admin-books-dashboard', compact('books'));
+            // Return the view with books data and set the active sidebar
+            return view('admin-books-dashboard', [
+                'activeSidebar' => 'books',
+                'books' => $books
+            ]);
         //     }
         // } else {
         //     // If the user is not authenticated
