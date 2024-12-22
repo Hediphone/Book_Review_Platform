@@ -30,11 +30,12 @@
             </td>
             <td>
                 <div class="dropdown">
-                    <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-three-dots-vertical"></i> <!-- Ellipsis Icon -->
-                    </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#" onclick="showEditBookModal('{{ $book->bookID }}')">Edit</a></li>
+                        <li>
+                            <a class="dropdown-item" onclick="showEditBookModal('{{ $book->bookID }}')">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                        </li>                                                    
                     </ul>
                 </div>
             </td>
