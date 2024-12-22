@@ -81,11 +81,6 @@
             window.location.href = "/admin/admin-reviews-dashboard";
         };
 
-        //redirect to login page
-        document.getElementById("logoutBtn").onclick = function () {
-            window.location.href = "/admin-books-dashboard";
-        };
-
         // Select all genre buttons
         const genreButtons = document.querySelectorAll('.genreBtn');
 
@@ -149,16 +144,17 @@
             });
         });
 
-        //Logout
-        document.getElementById('logoutBtn').addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent the form from submitting immediately
+        @include('modals.logout-prompt')
 
-            // Show confirmation dialog
-            if (confirm('Are you sure you want to log out?')) {
-                document.getElementById('logoutForm').submit();
-            }
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default link behavior
+            // Submit the logout form and redirect to the homepage
+            document.getElementById('logoutForm').submit(); // Submit the logout form
         });
     </script>
+
+
 </body>
 
 </html>

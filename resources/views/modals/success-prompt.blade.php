@@ -15,7 +15,6 @@
 
                     <script>
                         function closeSuccessModal() {
-                            // Find the modal container and hide it
                             document.getElementById('successPrompt').style.display = 'none';
                         }
                     </script>
@@ -25,3 +24,4 @@
         </div>
     </section>
 @endif
+
