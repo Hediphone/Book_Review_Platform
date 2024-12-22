@@ -44,9 +44,10 @@
                                 <td>{{ $user->violations ?? "-" }}</td>
                                 <td>
                                     @if ($user->violations >= 3)
-                                        <button id="confirmUserDelete" type="submit" onclick="showConfirmUserDeleteModal({{ $user->id }})">
+                                        <button id="confirmUserDelete" onclick="showConfirmUserDelete({{ $user->id }})">
                                             <img src="{{ asset('assets/svg/trash.svg') }}" class="trash">
                                         </button>
+
                                     @else
                                         -
                                     @endif
@@ -96,22 +97,27 @@
         location.reload();
     });
 
-    // Delet user
     // Function to show the confirmation modal
-    function showconfirmUserDelete(userId) {
-        document.getElementById('confirmUserDeleteModal').style.display = 'block';
-        document.getElementById('confirmUserDelete').onclick = function () {
-            window.location.href = '/admin/users/delete/' + userId; // Redirect to the delete route
+    function showConfirmUserDelete(userId) {
+        // Show the modal by changing the display style to 'block'
+        document.getElementById('confirmUserDeleteModal').style.display = 'flex';
+
+        // Bind the "Yes" button action to delete the user when confirmed
+        document.getElementById('deleteUserBtn').onclick = function () {
+            window.location.href = '/admin/users/delete/' + userId; // Redirect to delete the user
         };
-        document.getElementById('cancelUserDelete').onclick = function () {
-            document.getElementById('confirmUserDeleteModal').style.display = 'none';
+
+        // Bind the "No" button action to close the modal
+        document.getElementById('cancelUserDeleteBtn').onclick = function () {
+            document.getElementById('confirmUserDeleteModal').style.display = 'none'; // Hide the modal
         };
     }
 
     // Function to close the success modal
-    function closeSuccessModal() {
-        document.getElementById('successPrompt').style.display = 'none';
+    function closeSuccessUserDeleteModal() {
+        document.getElementById('successUserDeleteModal').style.display = 'none';
     }
+
 </script>
 
 @endsection

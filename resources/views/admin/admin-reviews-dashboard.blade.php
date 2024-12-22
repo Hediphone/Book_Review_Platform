@@ -59,18 +59,23 @@
                                 <td>{{ $review->book->title }}</td>
                                 <td>{{ $review->user->name }}</td>
                                 <td>{{ number_format($review->rating, 1) }}</td>
-                                <td>{!! $review->highlighted_comment !!}</td> <!-- Display highlighted comment -->
+                                <td>{!! $review->highlighted_comment !!}</td>
                                 <td>{{ $review->created_at }}</td>
                                 <td>{{ $review->updated_at }}</td>
 
                                 <td>
-                                    <form action="{{ route('admin.reviews.violation', ['userID' => $review->userID]) }}"
-                                        method="POST" class="actionForm">
-                                        @csrf
-                                        <input type="hidden" name="userID" value="{{ $review->userID }}">
-                                        <button type="submit">Report Violation</button>
-                                    </form>
+                                    @if (strpos($review->highlighted_comment, 'highlight-bad-comment') !== false)
+                                        <form action="{{ route('admin.reviews.violation', ['userID' => $review->userID]) }}"
+                                            method="POST" class="actionForm">
+                                            @csrf
+                                            <input type="hidden" name="userID" value="{{ $review->userID }}">
+                                            <button type="submit">Add Violation</button>
+                                        </form>
+                                        @else
+                                        -
+                                    @endif
                                 </td>
+
                             </tr>
                         @endforeach
                     </tbody>
@@ -82,6 +87,8 @@
 
 <!-- Include the delete modal -->
 @include('modals.delete-review')
+@include('modals.message-prompt')
+
 
 <!-- Hidden input field for selected reviews -->
 <form id="removeReviewForm" method="POST" action="{{ route('admin.reviews.delete') }}">

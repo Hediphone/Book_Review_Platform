@@ -5,7 +5,7 @@
                 <img class="checksvg" src="/assets/svg/question.png" alt="">
             </div>
             <div class="successMessage">
-                <p>Are you sure you want to log out?</p>
+                <p>Log out successful!</p>
             </div>
             <div class="formContent">
                 <div class="successmodalButtons">
