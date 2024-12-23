@@ -26,15 +26,16 @@ body {
 }
 
 .login {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: #463C74;
     margin-bottom: 10px;
     text-align: center;
     padding-top: 20px;
+    font-weight: 800;
 }
 
 .sign {
-    font-size: .8rem;
+    font-size: .7rem;
     color: #111111;
     text-align: center;
 }
@@ -73,7 +74,7 @@ body {
     flex: 1;
     border: none;
     outline: none;
-    font-size: .8rem;
+    font-size: .7rem;
     color: #555;
 }
 
@@ -94,7 +95,7 @@ body {
     margin-top: 15px;
     margin-bottom: 30px;
     background-color: #B4D51E;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 30px;
     font-size: .8rem;
