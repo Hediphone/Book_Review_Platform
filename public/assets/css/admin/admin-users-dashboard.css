@@ -461,6 +461,11 @@ body{
     font-weight: bolder;
 }
 
+button {
+    border: none;
+    height: 20px;
+    cursor: pointer;
+}
 
 .trash {
     height: 20px;
