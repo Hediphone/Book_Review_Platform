@@ -91,33 +91,29 @@
         });
     });
 
-    // When the "Clear" button is clicked, refresh the page
     $('.clearBtn').on('click', function () {
-        // Reload the page
         location.reload();
     });
 
     // Function to show the confirmation modal
     function showConfirmUserDelete(userId) {
-        // Show the modal by changing the display style to 'block'
         document.getElementById('confirmUserDeleteModal').style.display = 'flex';
 
-        // Bind the "Yes" button action to delete the user when confirmed
         document.getElementById('deleteUserBtn').onclick = function () {
-            window.location.href = '/admin/users/delete/' + userId; // Redirect to delete the user
+            const deleteUserForm = document.getElementById('deleteUserForm');
+            deleteUserForm.action = '/admin/users/delete/' + userId; /
+            alert(userId);
+            deleteUserForm.submit();
         };
 
-        // Bind the "No" button action to close the modal
         document.getElementById('cancelUserDeleteBtn').onclick = function () {
             document.getElementById('confirmUserDeleteModal').style.display = 'none'; // Hide the modal
         };
     }
 
-    // Function to close the success modal
     function closeSuccessUserDeleteModal() {
         document.getElementById('successUserDeleteModal').style.display = 'none';
     }
-
 </script>
 
 @endsection

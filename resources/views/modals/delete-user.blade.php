@@ -28,6 +28,13 @@
                 <div class="formContent">
                     <div class="deleteButtons">
                         <button class="deleteBook" id="deleteUserBtn">Yes</button>
+
+                        <form id="deleteUserForm" action="" method="POST"
+                            style="display: none;">
+                            @csrf
+                            @method('DELETE')
+                        </form>
+
                         <button class="cancel" id="cancelUserDeleteBtn">No</button>
                     </div>
                 </div>

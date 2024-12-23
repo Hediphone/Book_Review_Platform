@@ -13,10 +13,8 @@ use App\Http\Controllers\ProfileController;
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin-books-dashboard', [AdminController::class, 'showBooksDashboard'])->name('admin.books.dashboard');
+Route::get('/admin-books-dashboard', [AdminController::class, 'showBooksDashboard'])->name('admin.books.dashboard');
 
-
-Route::get('/admin/users/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
 Route::delete('/admin/users/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
 
 Route::post('/admin/review/{userID}/violation', [AdminController::class, 'incrementViolation'])->name('admin.reviews.violation');

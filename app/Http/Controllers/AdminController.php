@@ -260,7 +260,6 @@ class AdminController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        // Set the session message
         return redirect()->back()->with('deleteUser', 'User has been successfully deleted!');
     }
 
