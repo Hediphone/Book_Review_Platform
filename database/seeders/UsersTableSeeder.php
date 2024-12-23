@@ -23,7 +23,96 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'admin',
+            ],
+            [
+                'name' => 'James Anthony Rosales',
+                'email' => 'jamesanthonyrosales@example.com',
+                'email_verified_at' => now(),
+                'password' => '$2y$12$Fhxy/6MJy6Y2ylx.ys74DuOL7fpC7Or47n4fzgW7Hy0TtsMC71gC6',
+                'remember_token' => NULL,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'violations' => 0,
+                'role' => 'user',
+            ],
+            [
+                'name' => 'Laiza Mae Barias',
+                'email' => 'laizemaebarias@example.com',
+                'email_verified_at' => now(),
+                'password' => '$2y$12$9rcNtFvQh8S5XtdYGvaHA.g4fV3UKa8581FXoaEZ7VtVzn06eOkVK',
+                'remember_token' => NULL,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'violations' => 7,
+                'role' => 'user',
+            ],
+            [
+                'name' => 'Mae Anne Bongat',
+                'email' => 'maeannebongat@example.com',
+                'email_verified_at' => now(),
+                'password' => '$2y$12$ZTU1PxOXliJcazO7j4wZgOr/L1h/Bbxg8l7dW3.827orzIBRBIyf2',
+                'remember_token' => NULL,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'violations' => 0,
+                'role' => 'user',
+            ],
+            [
+                'name' => 'Jerald Jay Buban',
+                'email' => 'jeraldjaybuban@example.com',
+                'email_verified_at' => now(),
+                'password' => '$2y$12$8IvP2sV/n33t0JlQaD4WEOwQmMqAuU8tBh4tHYMS5wzIK3TOapos.',
+                'remember_token' => NULL,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'violations' => 0,
+                'role' => 'user',
+            ],
+            [
+                'name' => 'John Paul Azore',
+                'email' => 'johnpaulazore@example.com',
+                'email_verified_at' => now(),
+                'password' => '$2y$12$VT74M/m1QJlkR5Wv56XDMez.cGqU5USs.knTpR18S16IXz5C.Yb1e',
+                'remember_token' => NULL,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'violations' => 0,
+                'role' => 'user',
+            ],
+            [
+                'name' => 'Archie Onoya',
+                'email' => 'archieonoya@example.com',
+                'email_verified_at' => now(),
+                'password' => '$2y$12$kQPll/PUPJ3HEpQQvAgXtecBw2nd2LKXZWGZCrHow4SZ6Aua3AIqu',
+                'remember_token' => NULL,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'violations' => 0,
+                'role' => 'user',
+            ],
+            [
+                'name' => 'John Dave Bañas',
+                'email' => 'johndavebanas@example.com',
+                'email_verified_at' => now(),
+                'password' => '$2y$12$TuA6Mbyz1WOpAeCYBc8W3.rjP7Sohmk/.lY6f8Kfc1R4kDKoO0rdW',
+                'remember_token' => NULL,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'violations' => 0,
+                'role' => 'user',
+            ],
+            [
+                'name' => 'John Robert Rodejo',
+                'email' => 'johnrobertrodejo@example.com',
+                'email_verified_at' => now(),
+                'password' => '$2y$12$H06ToA2XN.goTxw7lLSa4.Lw0PGlhIG1zrx3xeoQqZiWzYzyobkzO',
+                'remember_token' => NULL,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'violations' => 0,
+                'role' => 'user',
             ],
             [
                 'name' => 'The Ugly King',
@@ -33,6 +122,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 3,
                 'role' => 'user',
             ],
             [
@@ -43,6 +133,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -53,6 +144,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -63,6 +155,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -73,6 +166,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -83,6 +177,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 4,
                 'role' => 'user',
             ],
             [
@@ -93,6 +188,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -103,6 +199,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -113,6 +210,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -123,6 +221,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -133,6 +232,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -143,6 +243,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -153,6 +254,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 6,
                 'role' => 'user',
             ],
             [
@@ -163,6 +265,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -173,6 +276,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -183,6 +287,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 1,
                 'role' => 'user',
             ],
             [
@@ -193,6 +298,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -203,6 +309,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -213,6 +320,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 2,
                 'role' => 'user',
             ],
             [
@@ -223,6 +331,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -233,6 +342,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -243,6 +353,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -253,6 +364,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 5,
                 'role' => 'user',
             ],
             [
@@ -263,6 +375,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -273,6 +386,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -283,6 +397,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 8,
                 'role' => 'user',
             ],
             [
@@ -293,6 +408,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -303,6 +419,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -313,6 +430,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -323,6 +441,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -333,6 +452,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -343,6 +463,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -353,6 +474,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -363,6 +485,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -373,6 +496,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -383,6 +507,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -393,6 +518,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -403,6 +529,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -413,6 +540,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -423,6 +551,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -433,6 +562,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 6,
                 'role' => 'user',
             ],
             [
@@ -443,6 +573,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -453,6 +584,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -463,6 +595,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -473,6 +606,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 6,
                 'role' => 'user',
             ],
             [
@@ -483,6 +617,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -493,6 +628,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -503,6 +639,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
             [
@@ -513,6 +650,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 4,
                 'role' => 'user',
             ],
             [
@@ -523,58 +661,9 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'violations' => 0,
                 'role' => 'user',
             ],
-            [
-                'name' => 'Laiza Mae Barias',
-                'email' => 'laizabarias@gmail.com',
-                'email_verified_at' => now(),
-                'password' => '$2y$12$fFZ9lqFa00rjLUDPl2qV8usCqxYDbfaTpC/oJnwcAsCBy0Np2S/x2',
-                'remember_token' => NULL,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'role' => 'user',
-            ],
-            [
-                'name' => 'Jeanliza Barias',
-                'email' => 'jean@gmail.com',
-                'email_verified_at' => now(),
-                'password' => '$2y$12$92v7xLTUtFw3k1wZ1bMZC.EoacDJynBsjefcL/nrfaYLpwKh50yVW',
-                'remember_token' => NULL,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'role' => 'user',
-            ],
-            [
-                'name' => 'John Doe',
-                'email' => 'johndoe@gmail.com',
-                'email_verified_at' => now(),
-                'password' => '$2y$12$rM9inDZe8CvbibWZm/WzoeSDS9kjRFTeqDuk41CyWmCSHL5oKMp0G',
-                'remember_token' => NULL,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'role' => 'user',
-            ],
-            [
-                'name' => 'Gold Ace',
-                'email' => 'ace@gmail.com',
-                'email_verified_at' => now(),
-                'password' => '$2y$12$2RO/xWl9pgvCoehKai8NC.Yc7UsNT9n2C6CAvCXvxMl3rrOMZYQ4K',
-                'remember_token' => NULL,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'role' => 'user',
-            ],
-            [
-                'name' => 'Jo Jo',
-                'email' => 'jojo@gmail.com',
-                'email_verified_at' => now(),
-                'password' => '$2y$12$TmzLgQooKna6nxJve/HWpOQF0ixHCPOsJQyIUUYVXZwWavdECmsm.',
-                'remember_token' => NULL,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'role' => 'user',
-            ]
         ]);
     }
 }

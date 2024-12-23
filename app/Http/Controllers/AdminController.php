@@ -290,15 +290,14 @@ class AdminController extends Controller
             'damn',
             'dick',
             'bastard',
-            'piss',
+            'piss off',
             'crap',
             'cunt',
             'hell',
-            'kike',
             'nigger',
             'slut',
             'whore',
-            'kill',
+            'kill you',
             'murder',
             'bomb',
             'terrorist',
@@ -310,7 +309,9 @@ class AdminController extends Controller
             'moron',
             'idiot',
             'imbecile',
-            'scum'
+            'scum',
+            'kill yourself',
+            'fucking'
         ];
 
         // Fetch all reviews along with the book and user information
