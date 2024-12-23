@@ -20,17 +20,25 @@ class AuthController extends Controller
             "email" => 'required',
             "password" => 'required',
         ]);
-        $credentials = $request->only("email","password");
-        if (Auth::attempt($credentials)){
-            return redirect()->route('profile', ['email' => Auth::user()->email]);
 
+        $credentials = $request->only("email", "password");
+
+        if (Auth::attempt($credentials)) {
+            if (Auth::user()->role === 'admin') {
+                return redirect()->route('admin.books.dashboard');
+            }
+
+            return redirect()->route('profile', ['email' => Auth::user()->email]);
         }
-        return redirect(route("login"))->with("error","Login failed");
+
+        return redirect(route("login"))->with("error", "Login failed");
+
 
     }
 
-    function register(){
-        
+    function register()
+    {
+
         return view('auth.register');
     }
 
@@ -47,12 +55,12 @@ class AuthController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
 
-        if ($user->save()){
+        if ($user->save()) {
             return redirect(route("login"))->with("success", "User created successfully");
         }
-        return redirect(route("register"))->with("error","Failed to create account");
+        return redirect(route("register"))->with("error", "Failed to create account");
 
     }
 
-    
+
 }
