@@ -269,10 +269,34 @@ class AdminController extends Controller
     {
         // Define an array of bad words
         $badWords = [
-            'unique',
-            'deeply ',
-            'offensiveword1',
-            'offensiveword2'  // Add your list of bad words here
+            'fuck',
+            'shit',
+            'ass',
+            'bitch',
+            'damn',
+            'dick',
+            'bastard',
+            'piss',
+            'crap',
+            'cunt',
+            'hell',
+            'kike',
+            'nigger',
+            'slut',
+            'whore',
+            'kill',
+            'murder',
+            'bomb',
+            'terrorist',
+            'stab',
+            'rape',
+            'assault',
+            'die',
+            'retard',
+            'moron',
+            'idiot',
+            'imbecile',
+            'scum'
         ];
 
         // Fetch all reviews along with the book and user information
@@ -409,7 +433,6 @@ class AdminController extends Controller
         // Perform the deletion
         Review::whereIn('reviewID', $reviewIDs)->delete();
 
-        // Redirect or return a response
         return redirect()->back()->with('success', 'Selected review(s) have been deleted successfully.');
     }
 
@@ -426,29 +449,8 @@ class AdminController extends Controller
         // Increment the violations count for the user
         $user->violations += 1;
 
-        // Save the updated user record
         $user->save();
 
-        // Return a JSON response indicating success
         return redirect()->back()->with('violation', 'Violation count incremented successfully.');
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
