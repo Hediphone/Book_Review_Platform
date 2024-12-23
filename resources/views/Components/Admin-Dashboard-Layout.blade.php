@@ -144,7 +144,7 @@
             });
         });
 
-        @include('modals.logout-prompt')
+    
 
         // Logout functionality
         document.getElementById('logoutBtn').addEventListener('click', function (event) {

@@ -41,7 +41,6 @@
                 <button class="genreBtn" type="submit" name="genre" value="Crime Fiction">Crime Fiction</button>
                 <button class="genreBtn" type="submit" name="genre" value="Drama">Drama</button>
                 <button class="genreBtn" type="submit" name="genre" value="Psychology">Psychology</button>
-                <button class="genreBtn" type="submit" name="genre" value="True Crime">True Crime</button>
             </form>
 
             <div class="inventory">
