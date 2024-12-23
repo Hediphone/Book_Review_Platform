@@ -101,8 +101,7 @@
 
         document.getElementById('deleteUserBtn').onclick = function () {
             const deleteUserForm = document.getElementById('deleteUserForm');
-            deleteUserForm.action = '/admin/users/delete/' + userId; /
-            alert(userId);
+            deleteUserForm.action = '/admin/users/delete/' + userId;
             deleteUserForm.submit();
         };
 
