@@ -16,8 +16,15 @@
             <td>{!! $user->highlighted_email !!}</td>
             <td>{!! $user->highlighted_created_at !!}</td>
             <td>{!! $user->highlighted_updated_at !!}</td>
+            <td>{{ $user->violations ?? "-" }}</td>
             <td>
-                action
+                @if ($user->violations >= 3)
+                    <button id="confirmUserDelete" onclick="showConfirmUserDelete({{ $user->id }})">
+                        <img src="{{ asset('assets/svg/trash.svg') }}" class="trash">
+                    </button>
+                @else
+                    -
+                @endif
             </td>
         </tr>
     @endforeach

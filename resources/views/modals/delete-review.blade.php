@@ -29,7 +29,7 @@
                     <img src="/assets/svg/circle-xmark-regular.svg" alt="">
                 </div>
                 <div class="message">
-                    <p>Please select at least 1 book to delete.</p>
+                    <p>Please select at least 1 review to delete.</p>
                 </div>
                 <div class="formContent">
                     <div class="deleteButtons">

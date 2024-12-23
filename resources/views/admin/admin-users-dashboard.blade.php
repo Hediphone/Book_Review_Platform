@@ -15,9 +15,10 @@
                     <form id="searchForm" method="GET">
                         <input type="text" id="search" name="search" placeholder="Search by name or email">
                         <button type="submit" class="searchBtn">Search</button>
-                        <button type="button" class="removeBook">Clear</button>
+                        <button type="button" id="clearSearch" class="removeBook">Clear</button>
                     </form>
                 </div>
+                <button class="addBook" id="showViolators">Show Users with Violations</button>
             </div>
 
             <div class="inventory">
@@ -91,9 +92,31 @@
         });
     });
 
-    $('.clearBtn').on('click', function () {
+    $('#clearSearch').on('click', function () {
         location.reload();
     });
+
+    $(document).ready(function () {
+        // When the "Show Violators" button is clicked
+        $('#showViolators').on('click', function () {
+            // Get all the rows in the users table
+            var allRows = $('#usersTableBody tr');
+
+            // Loop through each row and hide/show based on the presence of the violation icon
+            allRows.each(function () {
+                var row = $(this);
+                var violationIcon = row.find('td:nth-child(7) img'); // Assuming the violation icon (e.g., trash icon) is in the 6th column
+
+                // Check if the violation icon exists
+                if (violationIcon.length > 0) {
+                    row.show(); // Show the row if it contains a violation icon
+                } else {
+                    row.hide(); // Hide the row if it does not contain a violation icon
+                }
+            });
+        });
+    });
+
 
     // Function to show the confirmation modal
     function showConfirmUserDelete(userId) {

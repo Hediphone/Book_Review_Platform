@@ -84,6 +84,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // Routes for Admin User Management
     Route::get('/admin/users/search', [AdminController::class, 'adminUserSearch'])->name('admin.users.search');
     Route::delete('/admin/users/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
+    Route::get('/admin/users/show-violators', [AdminController::class, 'showUsersWithViolations'])->name('admin.users.showViolators');
 
     //Routes for Admin Review Management
     Route::get('/admin/reviews/search', [AdminController::class, 'adminReviewSearch'])->name('admin.reviews.search');

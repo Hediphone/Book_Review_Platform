@@ -264,6 +264,20 @@ class AdminController extends Controller
     }
 
 
+    public function showUserswithViolations(Request $request)
+    {
+        $query = Review::query();
+
+        // Filter by highlighted comments if 'showNegativeComments' is set
+        if ($request->has('showViolators') && $request->showViolators == 'true') {
+            $query->where('highlighted_comment', '!=', ''); // Assuming this field holds highlighted comments
+        }
+
+        $reviews = $query->get();
+
+        return view('admin.users-dashboard', compact('reviews'));
+    }
+
     //REVIEWS
     public function showReviewsDashboard()
     {
