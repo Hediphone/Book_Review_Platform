@@ -11,72 +11,8 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-
     public function showBooksDashboard(Request $request)
     {
-        // Check if the logged-in user is authenticated
-        // if (auth()->check()) {
-        //     $user = auth()->user();
-
-        //     // Verify that the user is an admin and password is correct (if needed)
-        //     // Replace with your actual check for the admin
-        //     if ($user->email == 'admin@example.com') {
-        //         // Fetch all books
         $books = Book::all();
 
         // Return the view with books data and set the active sidebar
@@ -84,16 +20,171 @@ class AdminController extends Controller
             'activeSidebar' => 'books',
             'books' => $books
         ]);
-        //     } else {
-        //         // If the user is not an admin, redirect them to home page
-        //         return redirect('/home');
-        //     }
-        // } else {
-        //     // If the user is not authenticated, redirect to login page
-        //     return redirect('/login');
-        // }
     }
 
+    public function store(Request $request)
+    {
+        // Validate the request
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'genres' => 'required|string',
+            'descriptionInput' => 'required|string',
+            'coverImage' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate image file
+        ]);
+
+        // Handle the file upload
+        if ($request->hasFile('coverImage') && $request->file('coverImage')->isValid()) {
+            $image = $request->file('coverImage');
+
+            // Define the path where the file should be stored directly in the public directory
+            $destinationPath = public_path('assets\\covers');
+
+            // Create the directory if it does not exist
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true); // Creates directories recursively
+            }
+
+            // Move the file to the desired location
+            $image->move($destinationPath, $image->getClientOriginalName());
+
+            // Get the relative path to store in the DB
+            $coverImagePath = 'assets\\covers\\' . $image->getClientOriginalName();
+        }
+
+        // Save the other data to the database along with the cover image path
+        $book = new Book([
+            'title' => $validatedData['title'],
+            'author' => $validatedData['author'],
+            'genre' => $validatedData['genres'],
+            'description' => $validatedData['descriptionInput'],
+            'cover' => $coverImagePath,  // Save the image path
+        ]);
+
+        // Save the book to the database
+        $book->save();
+
+        // Redirect or return success message
+        return redirect()->back()->with('success', 'Book added successfully!');
+    }
+
+    public function addBookSucess()
+    {
+        return view('modals.success-prompt');
+    }
+
+    public function adminBookSearch(Request $request)
+    {
+        $query = $request->input('search');
+
+        // Convert the query to lowercase
+        $query = strtolower($query);
+
+        // Perform the search
+        $books = Book::whereRaw('LOWER(title) like ?', ['%' . $query . '%'])
+            ->orWhereRaw('LOWER(author) like ?', ['%' . $query . '%'])
+            ->orWhereRaw('LOWER(genre) like ?', ['%' . $query . '%'])
+            ->withAvg('reviews', 'rating')
+            ->get();
+
+        // Return the view with the search results
+        return view('admin.search-results', compact('books', 'query'));
+    }
+
+    public function adminSearchByGenre(Request $request)
+    {
+        $genre = $request->input('genre');
+
+        // Ensure the genre is not empty
+        if (!$genre) {
+            return redirect()->route('admin.books.search'); // Redirect to the search page if genre is not set
+        }
+
+        // If "All" is selected, show all books
+        if ($genre == 'All') {
+            $books = Book::withAvg('reviews', 'rating')->get();
+        } else {
+            // Use `like` to check if the genre is part of the genres stored in the database
+            $books = Book::where('genre', 'like', '%' . $genre . '%')
+                ->withAvg('reviews', 'rating')
+                ->get();
+        }
+
+        // Check if books are found
+        if ($books->isEmpty()) {
+            return view('admin.search-results', ['message' => 'No books found for this genre.']);
+        }
+
+        // If it's an AJAX request, return only the table rows
+        if ($request->ajax()) {
+            return view('admin.search-results', compact('books'));
+        }
+
+        // Return the full results view
+        return view('admin.search-results', compact('books', 'genre'));
+    }
+
+    public function edit($bookID)
+    {
+        Log::debug('Book ID received: ' . $bookID);
+
+        $book = Book::findOrFail($bookID); // Find the book by ID
+
+        return response()->json($book); // Return the book details as JSON for the front-end to use
+    }
+
+    // Update the book details
+    public function update(Request $request, $bookID)
+    {
+        // Validate the request
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'genres' => 'required|string',
+            'descriptionInput' => 'required|string',
+        ]);
+
+        $book = Book::findOrFail($bookID); // Find the book to update
+
+        // Handle the file upload if a new file is provided
+        if ($request->hasFile('editCoverImage') && $request->file('editCoverImage')->isValid()) {
+            $image = $request->file('editCoverImage');
+            $destinationPath = public_path('assets\\covers');
+
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true);
+            }
+
+            $image->move($destinationPath, $image->getClientOriginalName());
+            $coverImagePath = 'assets\\covers\\' . $image->getClientOriginalName();
+        } else {
+            $coverImagePath = $book->cover; // Keep the existing cover if no new file is uploaded
+        }
+
+        // Update the book data
+        $book->title = $validatedData['title'];
+        $book->author = $validatedData['author'];
+        $book->genre = $validatedData['genres'];
+        $book->description = $validatedData['descriptionInput'];
+        $book->cover = $coverImagePath; // Update the cover path
+
+        // Save the updated book
+        $book->save();
+
+        return redirect()->back()->with('success', 'Book updated successfully!');
+    }
+
+    public function deleteBooks(Request $request)
+    {
+        $selectedBooks = $request->input('selectedBooks'); // Get the book IDs as a comma-separated string
+        $bookIDs = explode(',', $selectedBooks); // Convert to an array
+
+        // Perform the deletion
+        Book::whereIn('bookID', $bookIDs)->delete();
+
+        // Redirect or return a response
+        return redirect()->back()->with('success', 'Selected book(s) have been deleted successfully.');
+    }
 
     //USERS
 
@@ -327,7 +418,7 @@ class AdminController extends Controller
     {
         // Retrieve the user by user_id
         $user = User::find($userID);
-        
+
         // Check if the user exists
         if (!$user) {
             return response()->json(['message' => 'User not found.'], 404);

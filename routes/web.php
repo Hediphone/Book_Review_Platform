@@ -12,6 +12,10 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin-books-dashboard', [AdminController::class, 'showBooksDashboard'])->name('admin.books.dashboard');
+
+
 Route::get('/admin/users/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
 Route::delete('/admin/users/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
 
@@ -21,56 +25,30 @@ Route::get('/admin/users/search', [AdminController::class, 'adminUserSearch'])->
 Route::get('/admin/reviews/search', [AdminController::class, 'adminReviewSearch'])->name('admin.reviews.search');
 Route::post('/admin/reviews/delete', [AdminController::class, 'adminDeleteReviews'])->name('admin.reviews.delete');
 
-//aayuson pa mga ini
-
-Route::get('/admin/admin-books-dashboard', [AdminController::class, 'showBooksDashboard'])->name('admin.books.dashboard');
 Route::get('/admin/admin-users-dashboard', [AdminController::class, 'showUsersDashboard'])->name('admin.users.dashboard');
 Route::get('/admin/admin-reviews-dashboard', [AdminController::class, 'showReviewsDashboard'])->name('admin.reviews.dashboard');
 
-Route::get('/search', [BooksController::class, 'search'])->name('books.search');
-// Route::get('/books/search', [BooksController::class, 'adminBookSearch'])->name('admin.books.search');
-
 // Route for searching by title
-Route::get('/admin/books/search', [BooksController::class, 'adminBookSearch'])->name('admin.books.search');
+Route::get('/admin/books/search', [AdminController::class, 'adminBookSearch'])->name('admin.books.search');
 
 // Route for searching by genre
-Route::get('/admin/books/search/genre', [BooksController::class, 'adminSearchByGenre'])->name(name: 'adminSearchByGenre');
-
-
-Route::get('/modals/add-book', function () {
-    return view(view: 'modals.add-book');
-});
-
-Route::get('/modals/edit-book', function () {
-    return view(view: 'modals.edit-book');
-});
-
-Route::get('/admin-books-dashboard', [BooksController::class, 'index']);
-// Route::get('/aadmin-books-dashboard', function () {
-//     return view(view: 'aadmin-books-dashboard');
-// });
-
-Route::get('/books/delete', function () {
-    return view(view: 'modals.edit-book');
-});
-
-Route::get('/books/{genre}/{bookId}/json', [BooksController::class, 'showDetails'])->name('books.showDetails.json');
+Route::get('/admin/books/search/genre', [AdminController::class, 'adminSearchByGenre'])->name(name: 'adminSearchByGenre');
 
 // Route to show the edit form (AJAX request)
-Route::get('/books/edit/{bookID}', action: [BooksController::class, 'edit'])->name('books.edit');
+Route::get('/books/edit/{bookID}', action: [AdminController::class, 'edit'])->name('books.edit');
 
 // Route to update the book details
-Route::put('/books/update/{book}', [BooksController::class, 'update'])->name('books.update');
+Route::put('/books/update/{book}', [AdminController::class, 'update'])->name('books.update');
 
-
-//
 //ok 
-Route::post('/books/add', [BooksController::class, 'store'])->name('books.add');
-Route::get('/books/add', [BooksController::class, 'indexforadd'])->name('books.index');
+Route::post('/books/add', [AdminController::class, 'store'])->name('books.add');
+Route::get('/books/add', [AdminController::class, 'addBookSucess'])->name('books.index');
+Route::post('/books/delete', action: [AdminController::class, 'deleteBooks'])->name('books.delete');
+});
 
-Route::post('/books/delete', action: [BooksController::class, 'deleteBooks'])->name('books.delete');
+// Route for searching books (users)
+Route::get('/search', [BooksController::class, 'search'])->name('books.search');
 
-//
 
 // Authentication Routes (only for guests)
 Route::middleware('guest')->group(function () {
@@ -80,14 +58,11 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [AuthController::class, 'registerPost'])->name('register.post');
 });
 
+
 // Authenticated Routes (for logged-in users)
 Route::middleware('auth')->group(function () {
     Route::get('/contact', function () {
         return view('contact');
-    });
-
-    Route::get('/aadmin-books-dashboardboard', function () {
-        return view('aadmin-books-dashboardboard');
     });
     
     Route::get('/home', [HomeController::class, 'index'])->name('home.index');

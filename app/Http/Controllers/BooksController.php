@@ -11,41 +11,6 @@ use Illuminate\Support\Facades\Hash;
 
 class BooksController extends Controller
 {
-    
-    public function index(Request $request)
-    {
-        // // Check if the logged-in user is the admin and verify the password
-        // if (auth()->check()) {
-        //     $user = auth()->user();
-
-        //     // Check if the email and password are correct
-        //     if ($user->email == 'admin@example.com' || !Hash::check($request->input('password'), $user->password)) {
-            $books = Book::all();
-
-            // Return the view with books data and set the active sidebar
-            return view('admin-books-dashboard', [
-                'activeSidebar' => 'books',
-                'books' => $books
-            ]);
-        //     }
-        // } else {
-        //     // If the user is not authenticated
-        //     return redirect('/home');
-        // }
-
-
-    }
-
-    public function indexforadd()
-    {
-        return view('modals.success-prompt');
-    }
-   
-    public function create()
-    {
-        
-    }
-
 
     public function show($id)
     {
@@ -58,7 +23,7 @@ class BooksController extends Controller
         // Split the genre string into an array to handle multiple genres
         $bookGenres = explode(',', $book->genre);  // Split the stored genre string into an array
 
-        return view('books.book-details', compact('book', 'bookGenres'));  
+        return view('books.book-details', compact('book', 'bookGenres'));
     }
 
 
@@ -75,15 +40,15 @@ class BooksController extends Controller
     public function showBookDetail($id)
     {
         // Retrieve book details from BooksController
-        $bookDetails = $this->show($id);  
-    
+        $bookDetails = $this->show($id);
+
         // Retrieve reviews from ReviewController
         $reviewController = new ReviewController();
-        $ratings = $reviewController->showRatings($id);  
-    
+        $ratings = $reviewController->showRatings($id);
+
         // Retrieve recommended books
         $recommendedBooks = $this->recommendBooks($id)->take(4)->toArray();  // Convert to array and limit to 4 books
-        
+
 
         return view('books.book-details', array_merge(
             $bookDetails->getData(),  // Pass book details as array
@@ -92,32 +57,33 @@ class BooksController extends Controller
             ['recommendedBooks' => $recommendedBooks]  // Pass recommended books as array
         ));
     }
-    
+
 
     public function recommendBooks($bookId)
     {
         // Fetch the current book details
         $currentBook = Book::findOrFail($bookId);
-    
+
         // Split the genres of the current book
         $currentGenres = explode(',', $currentBook->genre);
-        $currentGenres = array_map('trim', $currentGenres); 
-    
+        $currentGenres = array_map('trim', $currentGenres);
+
         $recommendedBooks = collect();
-    
+
         foreach ($currentGenres as $genre) {
-            if (empty($genre)) continue;
-    
+            if (empty($genre))
+                continue;
+
             // Fetch books matching the genre, excluding the current book
             $books = Book::where('bookID', '!=', $bookId)
                 ->where('genre', 'like', '%' . $genre . '%')
                 ->withAvg('reviews', 'rating') // Include average rating
                 ->take(4) // Limit recommendations per genre
                 ->get();
-    
+
             $recommendedBooks = $recommendedBooks->merge($books)->unique('id');
         }
-    
+
         return $recommendedBooks;
     }
 
@@ -127,7 +93,7 @@ class BooksController extends Controller
         return Book::all()->toArray(); // Convert collection to array
     }
 
-   
+
     public function browse()
     {
         return view('books.browse');
@@ -141,7 +107,6 @@ class BooksController extends Controller
         $booksByGenre = [];
 
         Log::debug('Unique genres fetched', ['Genres' => $genres->pluck('genre')->toArray()]);
-
 
         foreach ($genres as $genre) {
             // Split genre string by comma to handle multiple genres per book
@@ -174,7 +139,6 @@ class BooksController extends Controller
         return view('books.browse', compact('booksByGenre', 'genres'));
     }
 
-
     public function showGenre($genre)
     {
         Log::debug('Requested Genre:', ['genre' => $genre]);
@@ -194,7 +158,6 @@ class BooksController extends Controller
         return view('books.show-books-by-genre', compact('booksByGenre', 'genre'));
     }
 
-    
     public function viewAllByGenre($genre)
     {
         $genre = trim($genre);
@@ -208,7 +171,6 @@ class BooksController extends Controller
         return view('books.show-books-by-genre', compact('booksByGenre', 'genre'));
     }
 
-
     public function showByReleaseDate()
     {
         $latestBooks = Book::withAvg('reviews', 'rating') // Calculate average rating
@@ -218,7 +180,7 @@ class BooksController extends Controller
         return view('books.show-books-by-release', compact('latestBooks'));
     }
 
-       public function search(Request $request)
+    public function search(Request $request)
     {
         $query = $request->input('search');
 
@@ -236,15 +198,14 @@ class BooksController extends Controller
         return view('books.search-results', compact('books', 'query'));
     }
 
-
     public function toggleFavorite($bookID)
     {
         $user = Auth::user();
         $book = Book::findOrFail($bookID);
-    
+
         // Log the action of toggling favorite for the given book
         Log::info('User ' . $user->id . ' is toggling favorite for Book ' . $book->bookID);
-    
+
         // Check if the user already has this book in their favorites
         if ($user->favoriteBooks->contains($book->bookID)) {
             // Log the removal of the book from favorites
@@ -255,281 +216,10 @@ class BooksController extends Controller
             Log::info('User ' . $user->id . ' is adding Book ' . $book->bookID . ' to favorites.');
             $user->favoriteBooks()->attach($book->bookID); // Add the book to favorites
         }
-    
+
         // Log the result of the action (after adding/removing the book)
         Log::info('Favorite status for Book ' . $book->bookID . ' has been toggled by User ' . $user->id);
-    
+
         return redirect()->back(); // Redirect back to the previous page after the action
     }
-
-
-
-
-
-    
-    /**
-     * Show the form for editing the specified resource.
-     */
-    // public function edit(string $id)
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Update the specified resource in storage.
-    //  */
-    // public function update(Request $request, string $id)
-    // {
-    //     //
-    // }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-   
- 
-
-    /**
-     * Show books grouped by genre with average ratings.
-     */
-
-   
-
-    /**
-     * Show books for a specific genre with average ratings.
-     */
-
-
-
-   
-
-
-    public function adminBookSearch(Request $request)
-    {
-        $query = $request->input('search');
-
-        // Convert the query to lowercase
-        $query = strtolower($query);
-
-        // Perform the search
-        $books = Book::whereRaw('LOWER(title) like ?', ['%' . $query . '%'])
-            ->orWhereRaw('LOWER(author) like ?', ['%' . $query . '%'])
-            ->orWhereRaw('LOWER(genre) like ?', ['%' . $query . '%'])
-            ->withAvg('reviews', 'rating')
-            ->get();
-
-        // Return the view with the search results
-        return view('admin.search-results', compact('books', 'query'));
-    }
-
-
-    public function adminSearchByGenre(Request $request)
-    {
-        $genre = $request->input('genre');
-
-        // Ensure the genre is not empty
-        if (!$genre) {
-            return redirect()->route('admin.books.search'); // Redirect to the search page if genre is not set
-        }
-
-        // If "All" is selected, show all books
-        if ($genre == 'All') {
-            $books = Book::withAvg('reviews', 'rating')->get();
-        } else {
-            // Use `like` to check if the genre is part of the genres stored in the database
-            $books = Book::where('genre', 'like', '%' . $genre . '%')
-                ->withAvg('reviews', 'rating')
-                ->get();
-        }
-
-        // Check if books are found
-        if ($books->isEmpty()) {
-            return view('admin.search-results', ['message' => 'No books found for this genre.']);
-        }
-
-        // If it's an AJAX request, return only the table rows
-        if ($request->ajax()) {
-            return view('admin.search-results', compact('books'));
-        }
-
-        // Return the full results view
-        return view('admin.search-results', compact('books', 'genre'));
-    }
-
-
-
-
-    public function store(Request $request)
-    {
-        // Validate the request
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'author' => 'required|string|max:255',
-            'genres' => 'required|string',
-            'descriptionInput' => 'required|string',
-            'coverImage' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate image file
-        ]);
-
-        // Handle the file upload
-        if ($request->hasFile('coverImage') && $request->file('coverImage')->isValid()) {
-            $image = $request->file('coverImage');
-
-            // Define the path where the file should be stored directly in the public directory
-            $destinationPath = public_path('assets\\covers');
-
-            // Create the directory if it does not exist
-            if (!file_exists($destinationPath)) {
-                mkdir($destinationPath, 0777, true); // Creates directories recursively
-            }
-
-            // Move the file to the desired location
-            $image->move($destinationPath, $image->getClientOriginalName());
-
-            // Get the relative path to store in the DB
-            $coverImagePath = 'assets\\covers\\' . $image->getClientOriginalName();
-        }
-
-        // Save the other data to the database along with the cover image path
-        $book = new Book([
-            'title' => $validatedData['title'],
-            'author' => $validatedData['author'],
-            'genre' => $validatedData['genres'],
-            'description' => $validatedData['descriptionInput'],
-            'cover' => $coverImagePath,  // Save the image path
-        ]);
-
-        // Save the book to the database
-        $book->save();
-
-        // Redirect or return success message
-        return redirect()->back()->with('success', 'Book added successfully!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function deleteBooks(Request $request)
-    {
-        $selectedBooks = $request->input('selectedBooks'); // Get the book IDs as a comma-separated string
-        $bookIDs = explode(',', $selectedBooks); // Convert to an array
-
-        // Perform the deletion
-        Book::whereIn('bookID', $bookIDs)->delete();
-
-        // Redirect or return a response
-        return redirect()->back()->with('success', 'Selected book(s) have been deleted successfully.');
-    }
-
-
-    public function showDetails($genre, $id)
-    {
-        // Retrieve the book by ID using Eloquent's find() method
-        $book = Book::find($id);
-        // If the book is not found or genre mismatches, return error
-        if (!$book || $book->genre !== $genre) {
-            return response()->json(['error' => 'Book not found or genre mismatch'], 404);
-        }
-        // Return book details as JSON
-        return response()->json([
-            'title' => $book->title,
-            'author' => $book->author,
-            'genre' => $book->genre,
-            'description' => $book->description,
-            'cover' => $book->cover
-        ]);
-    }
-
-    public function getBookDetails($bookID)
-    {
-        $book = Book::find($bookID);
-        if ($book) {
-            return response()->json([
-                'bookID' => $book->bookID,
-                'cover' => $book->cover,
-                'title' => $book->title,
-                'author' => $book->author,
-                'genre' => $book->genre,
-                'description' => $book->description,
-            ]);
-        }
-        return response()->json(null); // Return null if book not found
-    }
-
-
-    public function edit($bookID)
-    {
-        Log::debug('Book ID received: ' . $bookID);
-
-        $book = Book::findOrFail($bookID); // Find the book by ID
-
-        return response()->json($book); // Return the book details as JSON for the front-end to use
-    }
-
-    // Update the book details
-    public function update(Request $request, $bookID)
-    {
-        // Validate the request
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'author' => 'required|string|max:255',
-            'genres' => 'required|string',
-            'descriptionInput' => 'required|string',
-        ]);
-
-        $book = Book::findOrFail($bookID); // Find the book to update
-
-        // Handle the file upload if a new file is provided
-        if ($request->hasFile('editCoverImage') && $request->file('editCoverImage')->isValid()) {
-            $image = $request->file('editCoverImage');
-            $destinationPath = public_path('assets\\covers');
-
-            if (!file_exists($destinationPath)) {
-                mkdir($destinationPath, 0777, true);
-            }
-
-            $image->move($destinationPath, $image->getClientOriginalName());
-            $coverImagePath = 'assets\\covers\\' . $image->getClientOriginalName();
-        } else {
-            $coverImagePath = $book->cover; // Keep the existing cover if no new file is uploaded
-        }
-
-        // Update the book data
-        $book->title = $validatedData['title'];
-        $book->author = $validatedData['author'];
-        $book->genre = $validatedData['genres'];
-        $book->description = $validatedData['descriptionInput'];
-        $book->cover = $coverImagePath; // Update the cover path
-
-        // Save the updated book
-        $book->save();
-
-        return redirect()->back()->with('success', 'Book updated successfully!');
-    }
-
-
-    public function getBookData($bookID)
-    {
-        // Retrieve the book data from the database by bookID
-        $book = Book::find($bookID);
-
-        // Check if the book exists
-        if (!$book) {
-            return response()->json(['error' => 'Book not found'], 404);
-        }
-
-        // Return the book data as a JSON response
-        return response()->json([
-            'bookID' => $book->bookID,
-            'title' => $book->title,
-            'author' => $book->author,
-            'genre' => $book->genre,
-            'cover' => $book->cover,
-            'description' => $book->description,
-        ]);
-    }
-   
-    
-    
-    
-    
 }
