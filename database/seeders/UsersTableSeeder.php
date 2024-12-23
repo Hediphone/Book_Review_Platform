@@ -23,6 +23,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'admin',
             ],
             [
                 'name' => 'The Ugly King',
@@ -32,6 +33,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'Silent Shadow',
@@ -41,6 +43,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'Lost Pirate',
@@ -50,6 +53,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'BlueSky',
@@ -59,6 +63,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'RedApple',
@@ -68,6 +73,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'GreenLeaf',
@@ -77,6 +83,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'HappyDay',
@@ -86,6 +93,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'QuietStar',
@@ -95,6 +103,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'BrightSun',
@@ -104,6 +113,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'SoftCloud',
@@ -113,6 +123,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'SilverMoon',
@@ -122,6 +133,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'QuickFox',
@@ -131,6 +143,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'LazyBear',
@@ -140,6 +153,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'BlueWave',
@@ -149,6 +163,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'CalmLake',
@@ -158,6 +173,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'GentleRain',
@@ -167,6 +183,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'MistySky',
@@ -176,6 +193,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'SunnyMeadow',
@@ -185,6 +203,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'DarkStone',
@@ -194,6 +213,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'LightRiver',
@@ -203,6 +223,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'FreshWind',
@@ -212,6 +233,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'RedRose',
@@ -221,6 +243,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'GoldenLeaf',
@@ -230,6 +253,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'SilentBird',
@@ -239,6 +263,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'SoftEcho',
@@ -248,6 +273,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'ClearWater',
@@ -257,6 +283,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'BrightStar',
@@ -266,6 +293,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'QuietMoon',
@@ -275,6 +303,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'SmallAnt',
@@ -284,6 +313,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'WiseOwl',
@@ -293,6 +323,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'TinyPebble',
@@ -302,6 +333,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'OldTree',
@@ -311,6 +343,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'SilentWolf',
@@ -320,6 +353,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'WarmFire',
@@ -329,6 +363,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'SweetMelody',
@@ -338,6 +373,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'OceanBreeze',
@@ -347,6 +383,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'LittleCloud',
@@ -356,6 +393,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'FreshSpring',
@@ -365,6 +403,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'BrightStarry',
@@ -374,6 +413,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'SweetBerry',
@@ -383,6 +423,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'FrostLeaf',
@@ -392,6 +433,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'CrystalWave',
@@ -401,6 +443,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'QuietRiver',
@@ -410,6 +453,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'GoldenSun',
@@ -419,6 +463,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'LittleFlame',
@@ -428,6 +473,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'ClearSky',
@@ -437,6 +483,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'SoftStone',
@@ -446,6 +493,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'SweetCloud',
@@ -455,6 +503,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'GentleWave',
@@ -464,6 +513,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'CalmSea',
@@ -473,6 +523,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'Laiza Mae Barias',
@@ -482,6 +533,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'Jeanliza Barias',
@@ -491,6 +543,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'John Doe',
@@ -500,6 +553,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'Gold Ace',
@@ -509,6 +563,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ],
             [
                 'name' => 'Jo Jo',
@@ -518,6 +573,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 'user',
             ]
         ]);
     }

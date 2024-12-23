@@ -15,6 +15,14 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        $this->call([
+            UsersTableSeeder::class,
+            BooksTableSeeder::class,
+            AddProfilePictureSeeder::class,
+            ReviewsTableSeeder::class,
+            RepliesTableSeeder::class,
+        ]);
+
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
