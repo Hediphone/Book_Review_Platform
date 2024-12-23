@@ -23,12 +23,16 @@
             <td>{!! $review->highlighted_created_at !!}</td>
             <td>{!! $review->highlighted_updated_at !!}</td>
             <td>
-                <div class="dropdown">
-                    <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="bi bi-three-dots-vertical"></i> <!-- Ellipsis Icon -->
-                    </button>
-                </div>
+                @if (strpos($review->highlighted_comment, 'highlight-bad-comment') !== false)
+                    <form action="{{ route('admin.reviews.violation', ['userID' => $review->userID]) }}" method="POST"
+                        class="actionForm">
+                        @csrf
+                        <input type="hidden" name="userID" value="{{ $review->userID }}">
+                        <button type="submit" class="add-violation-btn">Add Violation</button>
+                    </form>
+                @else
+                    -
+                @endif
             </td>
         </tr>
     @endforeach

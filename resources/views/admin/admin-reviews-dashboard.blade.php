@@ -16,7 +16,7 @@
                     <form id="searchForm" method="GET">
                         <input type="text" id="search" name="search" placeholder="Search">
                         <button type="submit" class="searchBtn">Search</button>
-                        <button type="button" class="removeBook">Clear</button>
+                        <button type="button" id="reviewClearBtn" class="removeBook">Clear</button>
                     </form>
                 </div>
 
@@ -69,13 +69,12 @@
                                             method="POST" class="actionForm">
                                             @csrf
                                             <input type="hidden" name="userID" value="{{ $review->userID }}">
-                                            <button type="submit">Add Violation</button>
-                                        </form>
+                                            <button type="submit" class="add-violation-btn">Add Violation</button>
+                                            </form>
                                         @else
                                         -
                                     @endif
                                 </td>
-
                             </tr>
                         @endforeach
                     </tbody>
@@ -153,7 +152,7 @@
     });
 
     // When the "Clear" button is clicked, refresh the page
-    $('.clearBtn').on('click', function () {
+    $('#reviewClearBtn').on('click', function () {
         // Reload the page
         location.reload();
     });
