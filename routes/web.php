@@ -12,40 +12,6 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin-books-dashboard', [AdminController::class, 'showBooksDashboard'])->name('admin.books.dashboard');
-
-
-// Route::get('/admin/users/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
-Route::delete('/admin/users/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
-
-Route::post('/admin/review/{userID}/violation', [AdminController::class, 'incrementViolation'])->name('admin.reviews.violation');
-
-Route::get('/admin/users/search', [AdminController::class, 'adminUserSearch'])->name('admin.users.search');
-Route::get('/admin/reviews/search', [AdminController::class, 'adminReviewSearch'])->name('admin.reviews.search');
-Route::post('/admin/reviews/delete', [AdminController::class, 'adminDeleteReviews'])->name('admin.reviews.delete');
-
-Route::get('/admin/admin-users-dashboard', [AdminController::class, 'showUsersDashboard'])->name('admin.users.dashboard');
-Route::get('/admin/admin-reviews-dashboard', [AdminController::class, 'showReviewsDashboard'])->name('admin.reviews.dashboard');
-
-// Route for searching by title
-Route::get('/admin/books/search', [AdminController::class, 'adminBookSearch'])->name('admin.books.search');
-
-// Route for searching by genre
-Route::get('/admin/books/search/genre', [AdminController::class, 'adminSearchByGenre'])->name(name: 'adminSearchByGenre');
-
-// Route to show the edit form (AJAX request)
-Route::get('/books/edit/{bookID}', action: [AdminController::class, 'edit'])->name('books.edit');
-
-// Route to update the book details
-Route::put('/books/update/{book}', [AdminController::class, 'update'])->name('books.update');
-
-//ok 
-Route::post('/books/add', [AdminController::class, 'store'])->name('books.add');
-Route::get('/books/add', [AdminController::class, 'addBookSucess'])->name('books.index');
-Route::post('/books/delete', action: [AdminController::class, 'deleteBooks'])->name('books.delete');
-});
-
 // Route for searching books (users)
 Route::get('/search', [BooksController::class, 'search'])->name('books.search');
 
@@ -106,6 +72,30 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile');
 
     Route::post('/favorite/{bookId}/toggle', [BooksController::class, 'toggleFavorite'])->name('favorite.toggle');
+});
 
+// Authentication Routes (only for admin)
+Route::middleware(['auth', 'admin'])->group(function () {
+    // Show dashboard views
+    Route::get('/admin-books-dashboard', [AdminController::class, 'showBooksDashboard'])->name('admin.books.dashboard');
+    Route::get('/admin/admin-users-dashboard', [AdminController::class, 'showUsersDashboard'])->name('admin.users.dashboard');
+    Route::get('/admin/admin-reviews-dashboard', [AdminController::class, 'showReviewsDashboard'])->name('admin.reviews.dashboard');
+        
+    // Routes for Admin User Management
+    Route::get('/admin/users/search', [AdminController::class, 'adminUserSearch'])->name('admin.users.search');
+    Route::delete('/admin/users/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
 
+    //Routes for Admin Review Management
+    Route::get('/admin/reviews/search', [AdminController::class, 'adminReviewSearch'])->name('admin.reviews.search');
+    Route::post('/admin/reviews/delete', [AdminController::class, 'adminDeleteReviews'])->name('admin.reviews.delete');
+    Route::post('/admin/review/{userID}/violation', [AdminController::class, 'incrementViolation'])->name('admin.reviews.violation');
+
+    //Routes for Admin Book Management    
+    Route::get('/admin/books/search', [AdminController::class, 'adminBookSearch'])->name('admin.books.search'); // Route for searching by title
+    Route::get('/admin/books/search/genre', [AdminController::class, 'adminSearchByGenre'])->name(name: 'adminSearchByGenre'); // Route for searching by genre
+    Route::get('/books/edit/{bookID}', action: [AdminController::class, 'edit'])->name('books.edit'); // Route to show the edit form (AJAX request)
+    Route::put('/books/update/{book}', [AdminController::class, 'update'])->name('books.update'); // Route to update the book details
+    Route::post('/books/add', [AdminController::class, 'store'])->name('books.add'); // Route to add a book
+    Route::get('/books/add', [AdminController::class, 'addBookSucess'])->name('books.index'); // Route to show success prompt
+    Route::post('/books/delete', action: [AdminController::class, 'deleteBooks'])->name('books.delete'); // Route to delete a book 
 });
