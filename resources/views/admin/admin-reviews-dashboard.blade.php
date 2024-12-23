@@ -16,13 +16,13 @@
                     <form id="searchForm" method="GET">
                         <input type="text" id="search" name="search" placeholder="Search">
                         <button type="submit" class="searchBtn">Search</button>
-                        <button type="button" class="clearBtn">Clear</button>
+                        <button type="button" class="removeBook">Clear</button>
                     </form>
                 </div>
 
-                <button class="removeReview" id="removeReviewBtn" onclick="showDeleteReviewModalNew()">Delete
+                <button class="removeBook" id="removeReviewBtn" onclick="showDeleteReviewModalNew()">Delete
                     Review</button>
-                <button class="addReview" id="showNegativeCommentsBtn">Show Negative Comments</button>
+                <button class="addBook" id="showNegativeCommentsBtn">Show Negative Comments</button>
             </div>
 
             <!-- Rating Buttons Form -->

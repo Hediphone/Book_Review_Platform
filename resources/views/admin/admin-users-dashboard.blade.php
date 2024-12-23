@@ -15,7 +15,7 @@
                     <form id="searchForm" method="GET">
                         <input type="text" id="search" name="search" placeholder="Search by name or email">
                         <button type="submit" class="searchBtn">Search</button>
-                        <button type="button" class="clearBtn">Clear</button>
+                        <button type="button" class="removeBook">Clear</button>
                     </form>
                 </div>
             </div>
